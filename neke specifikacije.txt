@@ -1,0 +1,16 @@
+periodni 
+	-prikaz informacija o elementu
+	-pretraživanje
+	-did you know - funfacts about elements - gumb - izbaci random fact o random elementu
+	-kviz
+	-drag and drop - klasifikacija elemenata - metali, polumetali i nemetali, blokovi (sfdp)
+
+*za one koji žele znati više
+-
+0. napisat ideju
+1. napravit projekt na gitu - ja
+2. napravit bazu (tablice) i stavit u VS - Eraz
+3. 
+
+
+	
