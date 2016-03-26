@@ -5,8 +5,135 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InteractivePeriodicTable"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="72" Margin="50,70,0,0" VerticalAlignment="Top" Width="96"/>
+        Title="MainWindow" Height="1130.372" Width="1567.928">
+    <Grid RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="0.459"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Button x:Name="Hydrogen" Content="Button" HorizontalAlignment="Left" Height="60" Margin="143,179,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Lithium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="143,239,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Sodium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="143,299,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Potassium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="143,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Rubidium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="143,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Caesium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="143,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Francium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="143,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Beryllium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="203,239,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Magnesium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="203,299,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Calcium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="203,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Strontium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="203,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Barium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="203,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Radium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="203,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Scandium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="263,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Yttrium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="263,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="57-71" Content="Button" HorizontalAlignment="Left" Height="60" Margin="263,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="89-103" Content="Button" HorizontalAlignment="Left" Height="60" Margin="263,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Titanium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="325,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Zirconium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="325,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Hafnium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="325,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Rutherfordium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="325,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Vanadium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="385,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Niobium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="385,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Tantalum" Content="Button" HorizontalAlignment="Left" Height="60" Margin="385,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Dubnium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="385,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Chromium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="445,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Molybdenum" Content="Button" HorizontalAlignment="Left" Height="60" Margin="445,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Tungsten" Content="Button" HorizontalAlignment="Left" Height="60" Margin="445,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Seaborgium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="445,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Manganese" Content="Button" HorizontalAlignment="Left" Height="60" Margin="506,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Technetium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="506,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Rhenium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="506,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Bohrium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="506,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Iron" Content="Button" HorizontalAlignment="Left" Height="60" Margin="566,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Ruthenium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="566,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Osmium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="566,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Hassium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="566,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Cobalt" Content="Button" HorizontalAlignment="Left" Height="60" Margin="626,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Rhodium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="626,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Iridium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="626,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Meitnerium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="626,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Nickel" Content="Button" HorizontalAlignment="Left" Height="60" Margin="684,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Palladium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="684,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Platinum" Content="Button" HorizontalAlignment="Left" Height="60" Margin="684,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Darmstadtium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="684,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Copper" Content="Button" HorizontalAlignment="Left" Height="60" Margin="744,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Silver" Content="Button" HorizontalAlignment="Left" Height="60" Margin="744,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Gold" Content="Button" HorizontalAlignment="Left" Height="60" Margin="744,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Roentgenium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="744,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Zinc" Content="Button" HorizontalAlignment="Left" Height="60" Margin="804,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Cadmium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="804,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Mercury_(element)" Content="Button" HorizontalAlignment="Left" Height="60" Margin="804,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Copernicium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="804,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Boron" Content="Button" HorizontalAlignment="Left" Height="60" Margin="866,239,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Aluminium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="866,299,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Gallium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="866,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Indium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="866,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Thallium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="866,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Ununtrium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="866,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Carbon" Content="Button" HorizontalAlignment="Left" Height="60" Margin="926,239,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Silicon" Content="Button" HorizontalAlignment="Left" Height="60" Margin="926,299,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Germanium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="926,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Tin" Content="Button" HorizontalAlignment="Left" Height="60" Margin="926,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Lead" Content="Button" HorizontalAlignment="Left" Height="60" Margin="926,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Flerovium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="926,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Nitrogen" Content="Button" HorizontalAlignment="Left" Height="60" Margin="985,239,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Phosphorus" Content="Button" HorizontalAlignment="Left" Height="60" Margin="985,299,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Arsenic" Content="Button" HorizontalAlignment="Left" Height="60" Margin="985,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Antimony" Content="Button" HorizontalAlignment="Left" Height="60" Margin="985,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Bismuth" Content="Button" HorizontalAlignment="Left" Height="60" Margin="985,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Ununpentium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="985,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Oxygen" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1045,239,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Sulfur" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1045,299,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Selenium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1045,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Tellurium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1045,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Polonium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1045,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Livermorium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1045,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Fluorine" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1105,239,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Chlorine" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1105,299,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Bromine" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1105,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Iodine" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1105,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Astatine" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1105,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Ununseptium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1105,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Neon" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1165,239,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Argon" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1165,299,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Krypton" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1165,359,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Xenon" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1165,419,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Radon" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1165,479,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Ununoctium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1165,539,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Helium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1165,179,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Lanthanum" Content="Button" HorizontalAlignment="Left" Height="60" Margin="325,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Actinium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="325,766,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Cerium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="385,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Thorium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="385,766,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Praseodymium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="445,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Protactinium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="445,766,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Neodymium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="506,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Uranium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="506,766,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Promethium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="566,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Neptunium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="566,766,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Samarium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="626,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Plutonium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="626,766,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Europium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="684,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Americium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="684,766,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Gadolinium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="744,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Curium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="744,766,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Terbium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="804,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Berkelium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="804,766,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Dysprosium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="866,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Californium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="866,766,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Holmium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="926,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Einsteinium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="926,766,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Erbium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="985,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Fermium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="985,766,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Thulium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1045,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Mendelevium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1045,766,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Ytterbium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1105,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Nobelium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1105,766,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Lutetium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1165,706,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="Lawrencium" Content="Button" HorizontalAlignment="Left" Height="60" Margin="1165,766,0,0" VerticalAlignment="Top" Width="60"/>
     </Grid>
 </Window>
