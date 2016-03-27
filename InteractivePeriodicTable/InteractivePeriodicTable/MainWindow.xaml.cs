@@ -30,24 +30,8 @@ namespace InteractivePeriodicTable
 
         private void Element_klik(object sender, RoutedEventArgs e)
         {
-            string[] tekst1 = System.IO.File.ReadAllLines(@"C:\Users\Marko\Source\Repos\InteractivePeriodicTable\InteractivePeriodicTable\InteractivePeriodicTable\Notepad_resursi+ErazDB\broj_ime_simbol.txt");
-            string[] tekst2 = System.IO.File.ReadAllLines(@"C:\Users\Marko\Source\Repos\InteractivePeriodicTable\InteractivePeriodicTable\InteractivePeriodicTable\Notepad_resursi+ErazDB\elementi.txt");
             var element = (e.Source as Button);
-
-            foreach (string i in tekst1)
-            {
-                
-
-                if (i.Contains(element.Name.ToString().Trim()))
-                {
-                    string brojstr = i.Substring(0, 2).Trim();
-                    Console.WriteLine(brojstr);
-                    int broj=Convert.ToInt32(brojstr);
-                    element.Content = tekst2[broj-1];
-                }
-            }
-
-
+            MessageBox.Show(element.Name.ToString());
         }
 
 
