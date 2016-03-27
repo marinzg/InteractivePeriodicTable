@@ -150,7 +150,7 @@ INSERT INTO quiz (Question, Answer, A1, A2, A3, A4) VALUES ('Which of the follow
 INSERT INTO quiz (Question, Answer, A1, A2, A3, A4) VALUES ('Carbon cannot be broken down into anything simpler by chemical means, so carbon must be', 3 , 'a heterogeneous mixture. ', ' a homogeneous mixture. ', ' an element. ', 'a compound. ');
 INSERT INTO quiz (Question, Answer, A1, A2, A3, A4) VALUES ('Compared to metals, nonmetals are', 4, ' better conductors of heat. ', 'more ductile as a solid', 'better electrical conductors. ', 'more brittle as a solid. ');
 INSERT INTO quiz (Question, Answer, A1, A2, A3, A4) VALUES ('How many naturally occurring elements are found on the earth in significant quantities?',3 , '112 ', '92 ', '89 ', '32 ');
-INSERT INTO quiz (Question, Answer, A1, A2, A3, A4) VALUES ('', , '', '', '', '');
+
 
 GO
 

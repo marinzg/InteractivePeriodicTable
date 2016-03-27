@@ -216,6 +216,8 @@
   <ItemGroup />
   <ItemGroup>
     <Resource Include="Notepad_resursi+ErazDB\imena_elemenata.txt" />
+    <Resource Include="Notepad_resursi+ErazDB\broj_ime_simbol.txt" />
+    <Resource Include="Notepad_resursi+ErazDB\elementi.txt" />
     <Content Include="Notepad_resursi+ErazDB\PPIJ_DB.sql" />
     <Content Include="Notepad_resursi+ErazDB\PPIJ_INSERT.sql" />
     <Content Include="SQLqueries\PPIJ_DB.sql" />
