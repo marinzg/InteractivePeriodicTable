@@ -24,17 +24,24 @@ namespace InteractivePeriodicTable
         public MainWindow()
         {
             InitializeComponent();
-            
-            
+            //browser.LoadCompleted += browser_LoadCompleted;
+
         }
 
         private void Element_klik(object sender, RoutedEventArgs e)
         {
+            //ime kliknutog elementa
             var element = (e.Source as Button);
-            MessageBox.Show(element.Name.ToString());
+
+            //Otvori popup_window za webpage-eve
+            var popup_window = new Popup_webpage(element.Name.ToString());
+            popup_window.Show();
+            
+            //EXAMPLE PATH: C:\\Users\\Marko\\Source\\Repos\\InteractivePeriodicTable\\InteractivePeriodicTable\\InteractivePeriodicTable\\Notepad_resursi+ErazDB\\Web_pages\\Arsenic - Wikipedia, the free encyclopedia.mht
         }
 
 
 
     }
+   
 }
