@@ -24,6 +24,7 @@ namespace InteractivePeriodicTable
         public Popup_webpage(string ime)
         {
             InitializeComponent();
+            this.Title = ime;
             browser1.LoadCompleted += browser1_LoadCompleted;
             
             //Path i prijenos imena elementa
