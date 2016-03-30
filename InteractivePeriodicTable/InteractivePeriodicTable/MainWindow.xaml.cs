@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Text.RegularExpressions;
 
 
 namespace InteractivePeriodicTable
@@ -53,7 +54,24 @@ namespace InteractivePeriodicTable
             //EXAMPLE PATH: C:\\Users\\Marko\\Source\\Repos\\InteractivePeriodicTable\\InteractivePeriodicTable\\InteractivePeriodicTable\\Notepad_resursi+ErazDB\\Web_pages\\Arsenic - Wikipedia, the free encyclopedia.mht
         }
 
+        private async void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            listBox.Items.Clear();
+            System.IO.StreamReader myFile =
+               new StreamReader("imena_elemenata.txt");//TODO: PATHING
+            string myString = await myFile.ReadToEndAsync();
+            myFile.Close();
 
+            var regexPattern = (textBox.Text.ToString())+"\\w+";
+            regexPattern = char.ToUpper(regexPattern[0]) + regexPattern.Substring(1); //prvo slovo veliko
+            Match match = Regex.Match(myString, regexPattern);
+
+            while (match.Success)
+            {
+                listBox.Items.Add(match.Value.ToString());
+                match = match.NextMatch();
+            }
+        }
 
     }
    
