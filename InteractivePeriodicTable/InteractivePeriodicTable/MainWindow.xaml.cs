@@ -57,8 +57,9 @@ namespace InteractivePeriodicTable
         private async void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             listBox.Items.Clear();
+            string path = "C:\\Users\\Marko\\Source\\Repos\\InteractivePeriodicTable\\InteractivePeriodicTable\\InteractivePeriodicTable\\Notepad_resursi+ErazDB\\imena_elemenata.txt";
             System.IO.StreamReader myFile =
-               new StreamReader("imena_elemenata.txt");//TODO: PATHING
+               new StreamReader(path);//TODO: PATHING
             string myString = await myFile.ReadToEndAsync();
             myFile.Close();
 
