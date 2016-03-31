@@ -11,7 +11,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="913.622" Width="1296.428"
         WindowStartupLocation="Manual" 
-        Left="100" Top="50">
+        Left="100" Top="50"
+    WindowState="Maximized">
 
 
     <Grid ButtonBase.Click = "Element_klik">
