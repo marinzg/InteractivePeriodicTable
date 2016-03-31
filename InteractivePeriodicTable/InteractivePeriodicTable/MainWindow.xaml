@@ -173,16 +173,12 @@
             <Label x:Name="label2" Content="Actinides" FontWeight="Bold" FontSize="21.333"/>
         </Label>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="33" Margin="300,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..."/>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="185" Margin="301,130,0,0" VerticalAlignment="Top" Width="204"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="Auto" Margin="301,130,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed"/>
         <!--<wpf:AutoCompleteTextBox HorizontalAlignment="Left" Height="30" Margin="524,248,0,0" VerticalAlignment="Top" Width="232"
                                  Name="box"
                                  Watermark="Search an element here" 
                                  />-->
-
-
-
-
-
+        
 
     </Grid>
 </Window>
