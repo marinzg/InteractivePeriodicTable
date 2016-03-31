@@ -18,18 +18,16 @@ namespace InteractivePeriodicTable
     /// <summary>
     /// Interaction logic for Popup_webpage.xaml
     /// </summary>
-    public partial class Popup_webpage : Window
+    public partial class PopupWebpage : Window
     {
 
-        public Popup_webpage(string ime)
+        public PopupWebpage(string elementName)
         {
             InitializeComponent();
-            this.Title = ime;
+            this.Title = elementName;
             browser1.LoadCompleted += browser1_LoadCompleted;
             
-            //Path i prijenos imena elementa
-            string element_ime = ime;
-            string uri = "C:\\Users\\Marko\\Source\\Repos\\InteractivePeriodicTable\\InteractivePeriodicTable\\InteractivePeriodicTable\\Notepad_resursi+ErazDB\\Web_pages\\" + element_ime + " - Wikipedia, the free encyclopedia.mht";
+            string uri = PathingHelper.resourcesDir + "\\Web_pages\\" + elementName + " - Wikipedia, the free encyclopedia.mht";
 
 
             //Navigiranje na stranicu
