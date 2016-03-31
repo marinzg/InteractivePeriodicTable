@@ -15,11 +15,9 @@ namespace InteractivePeriodicTable
 
         private static string getAllElements(string path)
         {
-            path = path.Remove(path.IndexOf("\\bin\\"));
-            path = path + "\\Notepad_resursi+ErazDB\\imena_elemenata.txt";
-
             System.IO.StreamReader myFile =
-   new StreamReader(path);
+   new StreamReader(PathingHelper.resourcesDir + "\\imena_elemenata.txt");
+
             string myString = myFile.ReadToEnd();
             myFile.Close();
 

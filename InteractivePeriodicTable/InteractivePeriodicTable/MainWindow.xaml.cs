@@ -68,6 +68,7 @@ namespace InteractivePeriodicTable
                 match = match.NextMatch();
                 listBox.Visibility = Visibility.Visible;
             }
+
             if (listBox.Items.IsEmpty || listBox.Items.Count==119)
             {
                 listBox.Visibility = Visibility.Collapsed;
