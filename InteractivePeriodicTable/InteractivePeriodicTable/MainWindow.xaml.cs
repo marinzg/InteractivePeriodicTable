@@ -57,16 +57,20 @@ namespace InteractivePeriodicTable
         private async void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             listBox.Items.Clear();
-            string path = "C:\\Users\\Marko\\Source\\Repos\\InteractivePeriodicTable\\InteractivePeriodicTable\\InteractivePeriodicTable\\Notepad_resursi+ErazDB\\imena_elemenata.txt";
+
+            string path = Directory.GetCurrentDirectory();
+            path = path.Remove(path.IndexOf("\\bin\\"));
+            path = path + "\\Notepad_resursi+ErazDB\\imena_elemenata.txt";
+           
             System.IO.StreamReader myFile =
-               new StreamReader(path);//TODO: PATHING
+               new StreamReader(path);
             string myString = await myFile.ReadToEndAsync();
             myFile.Close();
 
             var regexPattern = (textBox.Text.ToString())+"\\w+";
             regexPattern = char.ToUpper(regexPattern[0]) + regexPattern.Substring(1); //prvo slovo veliko
-            Match match = Regex.Match(myString, regexPattern);
 
+            Match match = Regex.Match(myString, regexPattern);
             while (match.Success)
             {
                 listBox.Items.Add(match.Value.ToString());
