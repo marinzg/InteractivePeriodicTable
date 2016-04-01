@@ -9,8 +9,7 @@ namespace InteractivePeriodicTable
 {
     public static class ElementNames
     {
-        public static string allElements = getAllElements(Directory.GetCurrentDirectory());
-
+        public static string allElements = getAllElements(PathingHelper.localDir);
 
 
         private static string getAllElements(string path)

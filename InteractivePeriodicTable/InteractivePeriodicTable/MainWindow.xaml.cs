@@ -1,28 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.IO;
 using System.Text.RegularExpressions;
-
+using System.Collections.Generic;
 
 namespace InteractivePeriodicTable
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
+        private Dictionary<string, Brush> previousBackgroundColors = new Dictionary<string, Brush>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,77 +18,64 @@ namespace InteractivePeriodicTable
 
         private void Element_klik(object sender, RoutedEventArgs e)
         {
-                Button element = (e.Source as Button);
-                
-                //Otvori popup_window za webpage-eve
-                PopupWebpage popupWindow = new PopupWebpage(element.Name.ToString());
-                popupWindow.Show();
+            Button element = (e.Source as Button);
+
+            //Otvori popup_window za webpage-eve
+            PopupWebpage popupWindow = new PopupWebpage(element.Name.ToString());
+            popupWindow.Show();
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             listBox.Items.Clear();
 
-            string regexPattern = (textBox.Text.ToString())+"\\w+";
-            regexPattern = char.ToUpper(regexPattern[0]) + regexPattern.Substring(1); //prvo slovo veliko
-
-            Match match = Regex.Match(ElementNames.allElements, regexPattern);
-            while (match.Success)
+            if (textBox.Text.Trim() != "")
             {
-                listBox.Items.Add(match.Value.ToString());
-                match = match.NextMatch();
-                listBox.Visibility = Visibility.Visible;
+                string regexPattern = (textBox.Text.ToString()) + "\\w*";
+                regexPattern = char.ToUpper(regexPattern[0]) + regexPattern.Substring(1); //prvo slovo veliko
 
-                //Petar probaj skombat nes sa sljedecim sto se tice highlightanja
+                Match match = Regex.Match(ElementNames.allElements, regexPattern);
+                while (match.Success && match.Value != "")
+                {
+                    listBox.Items.Add(match.Value.ToString());
+                    listBox.Visibility = Visibility.Visible;
 
-                /*  foreach(Button searchedElement in FindVisualChildren<Button>(this))
-                    {
-                         if(match.ToString()==searchedElement.Name.ToString())
-                            {
-                                searchedElement.BorderBrush = Brushes.Red;
-                                searchedElement.BorderThickness = new Thickness(1000, 1000, 1000, 1000);
-                                searchedElement.Background = Brushes.Red;
-                                }
-
-                      }
-                 */
-
-
+                    match = match.NextMatch();
+                }
             }
 
-            if (listBox.Items.IsEmpty || listBox.Items.Count == 119)
-            {
-                listBox.Visibility = Visibility.Collapsed;
-            }
+                if (listBox.Items.IsEmpty || listBox.Items.Count == 119)
+                {
+                    listBox.Visibility = Visibility.Collapsed;
+                    if (listBox.Items.Count == 119) listBox.Items.Clear();
+                }
 
-
-
-
+            HighlightElementsOnTable();
         }
 
-        //S ovom funkcijom mozemo pretrazivati kontrole na formi 
-        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        private void HighlightElementsOnTable()
         {
-            if (depObj != null)
+            foreach (Button buttonInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
             {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                if (listBox.Items.Contains(buttonInForm.Name.ToString()))
                 {
-                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-                    if (child != null && child is T)
-                    {
-                        yield return (T)child;
-                    }
-
-                    foreach (T childOfChild in FindVisualChildren<T>(child))
-                    {
-                        yield return childOfChild;
-                    }
+                    buttonInForm.Background = Brushes.Red;
+                }
+                else
+                {
+                    buttonInForm.Background = previousBackgroundColors[buttonInForm.Name];
                 }
             }
         }
 
 
+        private void textBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            foreach (Button buttonInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
+            {
+                previousBackgroundColors.Add(buttonInForm.Name, buttonInForm.Background);
+            }
+        }
 
     }
-
 }
