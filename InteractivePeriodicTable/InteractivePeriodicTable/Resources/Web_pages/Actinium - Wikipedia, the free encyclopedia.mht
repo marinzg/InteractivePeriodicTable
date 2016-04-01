@@ -17,7 +17,14 @@ Content-Location: https://en.wikipedia.org/wiki/Actinium
 
 =EF=BB=BF<!DOCTYPE HTML>
 <!DOCTYPE html PUBLIC "" ""><HTML class=3D"client-nojs" lang=3D"en"=20
-dir=3D"ltr"><HEAD><META content=3D"IE=3D11.0000" =
+dir=3D"ltr"><HEAD>
+<style type="text/css">
+<!--
+a:{ color: #000000; text-decoration: none}
+-->
+</style>
+
+<META content=3D"IE=3D11.0000" =
 http-equiv=3D"X-UA-Compatible">
 =20
 <META charset=3D"UTF-8"> <TITLE>Actinium - Wikipedia, the free=20
@@ -7167,7 +7174,17 @@ ogger","ext.uls.interlanguage"]);=0A=
 mw.config.set({"wgBackendResponseTime":117,"wgHostname":"mw1076"}); /* =
 @nomin */=0A=
 } );</SCRIPT>
-	 </BODY></HTML>
+	 </BODY>
+	  
+	 <style TYPE="text/css">
+
+   a:link, a:visited, a:hover, a:active { color: #000000;
+       text-decoration: none;
+     }
+
+    </style>
+	 
+	 </HTML>
 
 ------=_NextPart_000_0CDE_01D180AE.1C42F4F0
 Content-Type: image/png

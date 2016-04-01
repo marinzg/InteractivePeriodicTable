@@ -11120,7 +11120,17 @@ ogger","ext.uls.interlanguage"]);=0A=
 mw.config.set({"wgBackendResponseTime":81,"wgHostname":"mw1238"}); /* =
 @nomin */=0A=
 } );</SCRIPT>
-	 </BODY></HTML>
+	 </BODY>
+	 
+	 <style TYPE="text/css">
+
+   a:link, a:visited, a:hover, a:active { color: #000000;
+       text-decoration: none;
+     }
+
+    </style>
+	 
+	 </HTML>
 
 ------=_NextPart_000_0109_01D180AD.96E2D280
 Content-Type: image/png
