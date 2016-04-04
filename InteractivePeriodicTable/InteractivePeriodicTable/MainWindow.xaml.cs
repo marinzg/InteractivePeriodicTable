@@ -10,6 +10,7 @@ namespace InteractivePeriodicTable
     public partial class MainWindow : Window
     {
         private Dictionary<string, Brush> previousBackgroundColors = new Dictionary<string, Brush>();
+        private Dictionary<string, Brush> previousForegroundColors = new Dictionary<string, Brush>();
 
         public MainWindow()
         {
@@ -51,31 +52,69 @@ namespace InteractivePeriodicTable
                 }
 
             HighlightElementsOnTable();
+            OtherButtonsHighlight();
+            BringBackColors();
         }
 
-        private void HighlightElementsOnTable()
+        private void BringBackColors()
         {
-            foreach (Button buttonInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
+            if (listBox.Items.IsEmpty)
             {
-                if (listBox.Items.Contains(buttonInForm.Name.ToString()))
+                foreach (Button allbuttons in Utils.VisualChildren.FindVisualChildren<Button>(this))
                 {
-                    buttonInForm.Background = Brushes.Red;
-                }
-                else
-                {
-                    buttonInForm.Background = previousBackgroundColors[buttonInForm.Name];
+                    if (allbuttons.Background == Brushes.Gainsboro)
+                    {
+                        allbuttons.Background = previousBackgroundColors[allbuttons.Name];
+                    }
                 }
             }
         }
 
+        private void HighlightElementsOnTable()
+        {
+            
+            foreach (Button buttonInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
+            {
+                if (listBox.Items.Contains(buttonInForm.Name.ToString()))
+                {
+                    buttonInForm.Background = Brushes.DarkBlue;
+                    buttonInForm.Foreground = Brushes.Gold;
+                }
+                else
+                {
+                    buttonInForm.Background = previousBackgroundColors[buttonInForm.Name];
+                    buttonInForm.Foreground = previousForegroundColors[buttonInForm.Name];
+                }
+            }
+        }
+
+        private void OtherButtonsHighlight()
+        {
+            
+            foreach (Button otherButtonsInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
+            {
+                if (listBox.Items.Contains(otherButtonsInForm.Name.ToString())==false)
+                {
+                    otherButtonsInForm.Background = Brushes.Gainsboro;
+                }
+               
+
+            }
+        }
 
         private void textBox_Loaded(object sender, RoutedEventArgs e)
         {
             foreach (Button buttonInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
             {
+                previousForegroundColors.Add(buttonInForm.Name, buttonInForm.Foreground);
+            }
+            foreach (Button buttonInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
+            {
                 previousBackgroundColors.Add(buttonInForm.Name, buttonInForm.Background);
             }
         }
+
+       
 
     }
 }

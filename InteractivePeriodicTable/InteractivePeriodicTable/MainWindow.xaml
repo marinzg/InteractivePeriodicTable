@@ -14,11 +14,12 @@
         Left="100" Top="50"
     WindowState="Maximized">
 
+    
 
-    <Grid ButtonBase.Click = "Element_klik">
+    <Grid ButtonBase.Click = "Element_klik" Margin="0,0,15.5,22.5" >
         <WebBrowser x:Name="browser" Visibility =" hidden" Height="700"/>
-
-
+       
+       
 
 
         <Button x:Name="Hydrogen" HorizontalAlignment="Left" Height="60" Margin="143,179,0,0" VerticalAlignment="Top" Width="60" Content="1&#xA;H" Background="#FF5CF435" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
@@ -141,45 +142,58 @@
         <Button x:Name="Nobelium" Content="102&#xA;No" HorizontalAlignment="Left" Height="60" Margin="1104,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Button x:Name="Lutetium" Content="71&#xA;Lu" HorizontalAlignment="Left" Height="60" Margin="1165,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Button x:Name="Lawrencium" Content="103&#xA;Lr" HorizontalAlignment="Left" Height="60" Margin="1165,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period" Content="Group&#xA;Period" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="143,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy1" Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="203,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy2" Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="263,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy3" Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="325,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy4" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="385,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy5" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="445,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy6" Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="506,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy7" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="566,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy8" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="626,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy9" Content="10" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="684,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy10" Content="11" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="744,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy11" Content="12" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="804,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy12" Content="13" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="864,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy13" Content="14" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="924,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy14" Content="15" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="984,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy15" Content="16" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="1045,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy16" Content="17" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="1105,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy17" Content="18" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="1165,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy18" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="24,179,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy19" Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="24,239,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy20" Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="24,299,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy21" Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="24,359,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy22" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="24,419,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy23" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="24,479,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label_group_period_Copy24" Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="24,539,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="label" HorizontalAlignment="Left" Height="60" Margin="143,706,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-            <Label x:Name="label1" Content="Lanthanides" FontWeight="Bold" FontSize="21.333"/>
+
+
+        <Label Foreground="LightBlue" x:Name="label_group_period" Content="Group&#xA;Period" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="143,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy1" Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="203,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy2" Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="263,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy3" Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="325,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy4" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="385,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy5" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="445,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy6" Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="506,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy7" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="566,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy8" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="626,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy9" Content="10" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="684,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy10" Content="11" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="744,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy11" Content="12" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="804,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy12" Content="13" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="864,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy13" Content="14" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="924,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy14" Content="15" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="984,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy15" Content="16" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="1045,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy16" Content="17" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="1105,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy17" Content="18" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="1165,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy18" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="24,179,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy19" Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="24,239,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy20" Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="24,299,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy21" Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="24,359,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy22" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="24,419,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy23" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="24,479,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period_Copy24" Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="24,539,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+        <Label x:Name="label" HorizontalAlignment="Left" Height="60" Margin="143,706,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue">
+            <Label x:Name="label1" Content="Lanthanides" FontWeight="Bold" FontSize="21.333" Foreground="LightBlue"/>
         </Label>
-        <Label x:Name="label_Copy" HorizontalAlignment="Left" Height="60" Margin="143,766,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-            <Label x:Name="label2" Content="Actinides" FontWeight="Bold" FontSize="21.333"/>
+        <Label x:Name="label_Copy" HorizontalAlignment="Left" Height="60" Margin="143,766,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue">
+            <Label x:Name="label2" Content="Actinides" FontWeight="Bold" FontSize="21.333" Foreground="LightBlue"/>
         </Label>
+        <Label x:Name="label3" Content="Search an element:" HorizontalAlignment="Left" Height="31" Margin="130,92,0,0" VerticalAlignment="Top" Width="170" FontSize="18" FontWeight="Bold" Foreground="LightBlue"/>
+
+
+
+
+
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="33" Margin="300,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded"/>
         <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="Auto" Margin="301,130,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed"/>
-        <!--<wpf:AutoCompleteTextBox HorizontalAlignment="Left" Height="30" Margin="524,248,0,0" VerticalAlignment="Top" Width="232"
-                                 Name="box"
-                                 Watermark="Search an element here" 
-                                 />-->
-        
+
+
+
+
+
+
 
     </Grid>
+    <Window.Background>
+        <ImageBrush ImageSource="C:\Users\Marko\Source\Repos\InteractivePeriodicTable\InteractivePeriodicTable\InteractivePeriodicTable\Resources\Images\space.jpg" />
+    </Window.Background>
 </Window>

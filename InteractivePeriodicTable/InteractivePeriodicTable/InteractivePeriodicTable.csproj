@@ -278,6 +278,9 @@
     <Resource Include="Resources\Materijali o elementima\broj_ime_simbol.txt" />
     <Resource Include="Resources\Materijali o elementima\elementi.txt" />
     <Resource Include="Resources\Ideje_TODO_spec\neke specifikacije.txt" />
+    <Resource Include="Resources\Images\Potion.jpg" />
+    <Resource Include="Resources\Images\Chemistry.jpg" />
+    <Resource Include="Resources\Images\space.jpg" />
     <Content Include="Resources\PPIJ_DB.sql" />
     <Content Include="Resources\PPIJ_INSERT.sql" />
     <Content Include="SQLqueries\PPIJ_DB.sql" />

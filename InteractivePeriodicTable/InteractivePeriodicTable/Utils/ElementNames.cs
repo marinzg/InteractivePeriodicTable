@@ -15,7 +15,7 @@ namespace InteractivePeriodicTable
         private static string getAllElements(string path)
         {
             System.IO.StreamReader myFile =
-   new StreamReader(PathingHelper.resourcesDir + "\\imena_elemenata.txt");
+   new StreamReader(PathingHelper.resourcesDir + "\\Materijali o elementima" + "\\imena_elemenata.txt");
 
             string myString = myFile.ReadToEnd();
             myFile.Close();
