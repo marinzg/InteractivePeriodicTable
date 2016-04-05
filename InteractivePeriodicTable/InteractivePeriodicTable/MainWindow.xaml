@@ -10,7 +10,8 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:Custom="http://wpfcontrols.com/" x:Class="InteractivePeriodicTable.MainWindow"
         mc:Ignorable="d"
         Title="Interactive Period Table" Height="913.622" Width="1296.428"
-        WindowStartupLocation="Manual" 
+        Icon="/Resources/Images/Ikona.ico"
+    WindowStartupLocation="Manual" 
         Left="auto"
         Top="50"
     WindowState="Maximized">

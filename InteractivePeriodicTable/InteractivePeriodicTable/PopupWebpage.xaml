@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:InteractivePeriodicTable"
         mc:Ignorable="d"
         Title="Popup_webpage" Height="913.622" Width="1296.428"
+        Icon="/Resources/Images/Ikona.ico"
         WindowStartupLocation="Manual" 
         Left="100" Top="50">
     <Grid>
