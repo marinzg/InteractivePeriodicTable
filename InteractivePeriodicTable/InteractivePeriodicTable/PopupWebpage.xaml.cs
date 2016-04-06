@@ -26,7 +26,6 @@ namespace InteractivePeriodicTable
             InitializeComponent();
             this.Title = elementName;
             browser1.LoadCompleted += browser1_LoadCompleted;
-            
             string uri = PathingHelper.resourcesDir + "\\Web_pages\\" + elementName + " - Wikipedia, the free encyclopedia.mht";
 
 

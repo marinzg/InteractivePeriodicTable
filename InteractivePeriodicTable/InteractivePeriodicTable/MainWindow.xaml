@@ -192,8 +192,8 @@
         <Label x:Name="label_Copy" Content="Actinides" FontWeight="Bold" FontSize="21.333" HorizontalAlignment="Left" Height="60" Margin="143,766,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue"/>
         <Label x:Name="label3" Content="Search an element:" HorizontalAlignment="Left" Height="31" Margin="130,92,0,0" VerticalAlignment="Top" Width="170" FontSize="18" FontWeight="Bold" Foreground="LightBlue"/>
 
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="33" Margin="300,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="Auto" Margin="301,130,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed"/>
+        <TextBox x:Name="textBox"  HorizontalAlignment="Left" Height="33" Margin="300,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
+        <ListBox x:Name="listBox" SelectedIndex="0" HorizontalAlignment="Left" Height="Auto" Margin="301,130,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed"/>
         </Grid>
         
     </Grid>
