@@ -11,10 +11,10 @@
         mc:Ignorable="d"
         Title="Interactive Period Table" Height="913.622" Width="1296.428"
         Icon="/Resources/Images/Ikona.ico"
-    WindowStartupLocation="Manual" 
+        WindowStartupLocation="Manual" 
         Left="auto"
-        Top="50"
-    WindowState="Maximized">
+        Top="80"
+        WindowState="Maximized">
 
     <Grid Margin="0 0 0 0" >
 
@@ -160,7 +160,7 @@
         <Button x:Name="prazno2" Content="89-103" HorizontalAlignment="Left" Height="60" Margin="263,539,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
-        <Label Foreground="LightBlue" x:Name="label_group_period" Content="Group&#xA;Period" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Foreground="LightBlue" x:Name="label_group_period" Content="Group&#xA;Period" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0 10 0 0"/>
         <Label Foreground="LightBlue" x:Name="label_group_period_Copy" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="143,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Foreground="LightBlue" x:Name="label_group_period_Copy1" Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="203,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Foreground="LightBlue" x:Name="label_group_period_Copy2" Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="263,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
