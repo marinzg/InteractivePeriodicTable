@@ -16,7 +16,7 @@
         Top="50"
     WindowState="Maximized">
 
-    <Grid Margin="0 0 0 0" >
+    <Grid Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" >
 
 
         <StackPanel VerticalAlignment="Top">
@@ -34,8 +34,10 @@
 
 
         <WebBrowser x:Name="browser" Visibility="hidden" />
-        
-        <Grid ButtonBase.Click = "Element_klik">
+
+
+        <Grid ButtonBase.Click = "Element_klik" VerticalAlignment="Center" HorizontalAlignment="Center">
+
             <Button x:Name="Hydrogen" HorizontalAlignment="Left" Height="60" Margin="143,179,0,0" VerticalAlignment="Top" Width="60" Content="1&#xA;H" Background="#FFAEF59C" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <Button x:Name="Lithium" Content="3&#xA;Li" HorizontalAlignment="Left" Height="60" Margin="143,239,0,0" VerticalAlignment="Top" Width="60" Background="#FFFBB35D" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <Button x:Name="Sodium" Content="11&#xA;Na" HorizontalAlignment="Left" Height="60" Margin="143,299,0,0" VerticalAlignment="Top" Width="60" Background="#FFFBB35D" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
@@ -51,7 +53,6 @@
             <Button x:Name="Radium" Content="88&#xA;Ra" HorizontalAlignment="Left" Height="60" Margin="203,539,0,0" VerticalAlignment="Top" Width="60" Background="#FFFCFF74" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <Button x:Name="Scandium" Content="21&#xA;Sc" HorizontalAlignment="Left" Height="60" Margin="263,359,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFC1C1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <Button x:Name="Yttrium" Content="39&#xA;Y" HorizontalAlignment="Left" Height="60" Margin="263,419,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFC1C1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            
             <Button x:Name="Titanium" Content="22&#xA;Ti" HorizontalAlignment="Left" Height="60" Margin="323,359,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFC1C1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <Button x:Name="Zirconium" Content="40&#xA;Zr" HorizontalAlignment="Left" Height="60" Margin="323,419,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFC1C1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <Button x:Name="Hafnium" Content="72&#xA;Hf" HorizontalAlignment="Left" Height="60" Margin="323,479,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFC1C1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
@@ -156,7 +157,9 @@
             <Button x:Name="Lutetium" Content="71&#xA;Lu" HorizontalAlignment="Left" Height="60" Margin="1165,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <Button x:Name="Lawrencium" Content="103&#xA;Lr" HorizontalAlignment="Left" Height="60" Margin="1165,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Grid>
-        <Button x:Name="prazno1" Content="57-71" HorizontalAlignment="Left" Height="60" Margin="263,479,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+        <Grid Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button x:Name="prazno1" Content="57-71" HorizontalAlignment="Left" Height="60" Margin="263,479,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Button x:Name="prazno2" Content="89-103" HorizontalAlignment="Left" Height="60" Margin="263,539,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
@@ -186,29 +189,16 @@
         <Label Foreground="LightBlue" x:Name="label_group_period_Copy22" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="24,419,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Foreground="LightBlue" x:Name="label_group_period_Copy23" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="24,479,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Foreground="LightBlue" x:Name="label_group_period_Copy24" Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="24,539,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-
-        <Label x:Name="label" HorizontalAlignment="Left" Height="60" Margin="143,706,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue">
-            <Label x:Name="label1" Content="Lanthanides" FontWeight="Bold" FontSize="21.333" Foreground="LightBlue"/>
-        </Label>
-        <Label x:Name="label_Copy" HorizontalAlignment="Left" Height="60" Margin="143,766,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue">
-            <Label x:Name="label2" Content="Actinides" FontWeight="Bold" FontSize="21.333" Foreground="LightBlue"/>
-        </Label>
+        <Label x:Name="label" Content="Lanthanides" FontWeight="Bold" FontSize="21.333" HorizontalAlignment="Left" Height="60" Margin="143,706,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue"/>
+        <Label x:Name="label_Copy" Content="Actinides" FontWeight="Bold" FontSize="21.333" HorizontalAlignment="Left" Height="60" Margin="143,766,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue"/>
         <Label x:Name="label3" Content="Search an element:" HorizontalAlignment="Left" Height="31" Margin="130,92,0,0" VerticalAlignment="Top" Width="170" FontSize="18" FontWeight="Bold" Foreground="LightBlue"/>
-
-
-
-
 
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="33" Margin="300,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
         <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="Auto" Margin="301,130,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed"/>
-
-
-
-
-
-
-
+        </Grid>
+        
     </Grid>
+   
     <Window.Background>
         <ImageBrush ImageSource="/Resources/Images/space.jpg" />
     </Window.Background>
