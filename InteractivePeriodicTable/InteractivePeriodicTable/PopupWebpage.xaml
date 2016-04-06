@@ -10,7 +10,7 @@
         WindowStartupLocation="Manual" 
         Left="100" Top="50">
     <Grid>
-        <WebBrowser Name="browser1" Margin="-157,-98,-24.5,0.5" />
+        <WebBrowser Name="browser1" Margin="-180,-98,-24.5,0.5" />
 
     </Grid>
 </Window>
