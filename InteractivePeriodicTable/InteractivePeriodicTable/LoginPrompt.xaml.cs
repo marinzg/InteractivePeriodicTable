@@ -29,6 +29,7 @@ namespace InteractivePeriodicTable
 
         private void prijava_btn_Click(object sender, RoutedEventArgs e)
         {
+            //lol
             User usr = new User();
             usr.user_name = user.Text;
             usr.password = pass.Text;
