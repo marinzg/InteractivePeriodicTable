@@ -15,9 +15,23 @@
         Top="50"
     WindowState="Maximized">
 
-
-
     <Grid Margin="0 0 0 0" >
+
+
+        <StackPanel VerticalAlignment="Top">
+            <Menu Width="Auto" Height="20">
+                <MenuItem Header="_File">
+                    <MenuItem Header="E_xit" HorizontalAlignment="Left" Width="140"/>
+                </MenuItem>
+                <MenuItem Header="_Tools">
+                    <MenuItem Header="_Options" HorizontalAlignment="Left" Width="140"/>
+                </MenuItem>
+                <MenuItem x:Name="Logout" Header="_Odjava" Click="Logout_Click" />
+            </Menu>
+            <Label Content="Label"/>
+        </StackPanel>
+
+
         <WebBrowser x:Name="browser" Visibility="hidden" />
         
         <Grid ButtonBase.Click = "Element_klik">

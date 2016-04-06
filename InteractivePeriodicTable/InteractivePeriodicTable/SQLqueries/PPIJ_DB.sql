@@ -30,12 +30,21 @@ CREATE TABLE element
 );
 GO
 
+CREATE TABLE user_score
+(
+	User_name   NVARCHAR(10)    NOT NULL,
+	Password    NVARCHAR(10)    NOT NULL,
+	Score       INTEGER         NOT NULL
+);
+GO
+
 CREATE UNIQUE INDEX UI_dyk ON did_you_know (ID);
 
 CREATE UNIQUE INDEX UI_q ON quiz (ID);
 
 CREATE NONCLUSTERED INDEX I_e ON element (Type);
 
-ALTER TABLE element
-ADD CONSTRAINT PK_element_Name PRIMARY KEY CLUSTERED (Name);
+CREATE UNIQUE INDEX PK_usr ON user_score (User_name);
+
+ALTER TABLE element ADD CONSTRAINT PK_element_Name PRIMARY KEY CLUSTERED (Name);
 GO

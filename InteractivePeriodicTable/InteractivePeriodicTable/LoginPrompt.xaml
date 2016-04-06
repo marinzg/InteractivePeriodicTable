@@ -1,0 +1,17 @@
+﻿<Window x:Class="InteractivePeriodicTable.LoginPrompt"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InteractivePeriodicTable"
+        mc:Ignorable="d"
+        Title="Prijava" Height="300" Width="300">
+    <Grid Margin="0,0,0,0">
+        <Button x:Name="prijava_btn" Content="Prijavi se" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="170,143,0,0" Click="prijava_btn_Click" Height="30"/>
+        <Button x:Name="izlaz_btn" Content="Izlaz" HorizontalAlignment="Left" Margin="51,143,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="izlaz_btn_Click" />
+        <Label x:Name="label" Content="Korisničko ime:" HorizontalAlignment="Left" Margin="18,68,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.462,-0.769" Width="91"/>
+        <Label x:Name="label1" Content="Zaporka:" HorizontalAlignment="Left" Margin="18,99,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.708,0.082"/>
+        <TextBox x:Name="user" HorizontalAlignment="Left" Height="23" Margin="106,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" RenderTransformOrigin="-0.241,-1.62"/>
+        <TextBox x:Name="pass" HorizontalAlignment="Left" Height="23" Margin="106,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" RenderTransformOrigin="0.332,-1.499"/>
+    </Grid>
+</Window>

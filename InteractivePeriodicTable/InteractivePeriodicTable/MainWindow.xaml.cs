@@ -1,16 +1,18 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using System.IO;
 
 namespace InteractivePeriodicTable
 {
-
     public partial class MainWindow : Window
     {
         private Dictionary<string, Brush> previousBackgroundColors = new Dictionary<string, Brush>();
         private Dictionary<string, Brush> previousForegroundColors = new Dictionary<string, Brush>();
+        public User usr;
 
         public MainWindow()
         {
@@ -114,7 +116,11 @@ namespace InteractivePeriodicTable
             }
         }
 
-       
-
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            File.WriteAllText(Path.GetFullPath(@"sys\login.json"), "{ \"user_name\": \"\", \"password\": \"\", \"score\": 0 }");
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
+        }
     }
 }
