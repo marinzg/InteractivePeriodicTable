@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:InteractivePeriodicTable"
              Startup="Application_Startup">
     <Application.Resources>
-         
+
+    
     </Application.Resources>
 </Application>
