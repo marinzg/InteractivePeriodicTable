@@ -161,6 +161,12 @@ namespace InteractivePeriodicTable
                 }
                 e.Handled = true;
             }
+            else if (e.Key==Key.Enter)
+            {
+                PopupWebpage popupWindow = new PopupWebpage(listBox.SelectedItem.ToString());
+                popupWindow.Show();
+                e.Handled = true;
+            }
         }
 
         //nes sto sam isprobavo ranije... gore je lijepsa funkcija
