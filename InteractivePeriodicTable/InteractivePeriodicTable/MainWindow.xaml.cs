@@ -22,8 +22,9 @@ namespace InteractivePeriodicTable
         public MainWindow()
         {
             InitializeComponent();
-            listBox.PreviewKeyDown += new KeyEventHandler(listBox_KeyDownOrUp); //Marko-eventhandler za listbox navigiranje arrowsima
-            textBox.PreviewKeyDown += new KeyEventHandler(textBox_KeyDown); //Marko-eventhandler za arrow down
+            //listBox.PreviewKeyDown += new KeyEventHandler(listBox_KeyDownOrUp); //Marko-eventhandler za listbox navigiranje arrowsima
+            //textBox.PreviewKeyDown += new KeyEventHandler(textBox_KeyDown); //Marko-eventhandler za arrow down
+            textBox.PreviewKeyDown += new KeyEventHandler(txtSearchTerm_KeyDown);
         }
 
         private void Element_klik(object sender, RoutedEventArgs e)
@@ -133,59 +134,83 @@ namespace InteractivePeriodicTable
         }
 
 
-
-       /* TREBA POPRAVITI SLJEDECE: KADA SE SEARCHA NA PRIMJER H...otvori se listbox i mozes keydown-om selectat iteme...
-          Kada se sa arrow up vrati natrag u textbox i stisne arrow down...krenes selectati buttone umjesto listbox itema..
-          ...poplavi button..neznam zasto krene button-e selectat
-          kada npr: input h -> keydown -> fokus je na listboxu -> keyup -> fokusira textbox -> keydown -> krene buttone selectat
-
-         */
-        
+        /*Key down event...prebacuje sada sa textboxa na listbox i selecta lijepo mislim da je ok sada malo se poigrajte -- Urh*/
 
 
-        //Keydown za searchbox -- Urh
-        //capture key-a i prebacivanje fokusa na listbox
-        private void textBox_KeyDown(object sender, KeyEventArgs e)
+        private void txtSearchTerm_KeyDown(object sender, KeyEventArgs e)
         {
-
-            if (e.Key==Key.Down)
+            if (e.Key == Key.Down)
             {
-                try
+                if (listBox.SelectedIndex < (listBox.Items.Count - 1))
                 {
-                    string text = listBox.SelectedItem.ToString();
-                    HighLightSpecificElement(text);
-                    DeSelectOtherElements(text);
+                    
+                    listBox.SelectedIndex++;
+                    HighLightSpecificElement(listBox.SelectedItem.ToString());
+                    DeSelectOtherElements(listBox.SelectedItem.ToString());
                 }
-                catch{}
-                listBox.Focus();
+
+                e.Handled = true;
             }
-            
-   
+            else if (e.Key == Key.Up)
+            {
+                if (listBox.SelectedIndex > 0)
+                {
+                    listBox.SelectedIndex--;
+                    HighLightSpecificElement(listBox.SelectedItem.ToString());
+                    DeSelectOtherElements(listBox.SelectedItem.ToString());
+                }
+                e.Handled = true;
+            }
         }
 
-        //Navigacija po listboxu sa key-evima 
-        private void listBox_KeyDownOrUp(object sender, KeyEventArgs e)
+        //nes sto sam isprobavo ranije... gore je lijepsa funkcija
+        /*
+    //Keydown za searchbox -- Urh
+    //capture key-a i prebacivanje fokusa na listbox
+    private void textBox_KeyDown(object sender, KeyEventArgs e)
+    {
+
+        if (e.OriginalSource is TextBox && e.Key==Key.Down)
         {
-            
-            if(e.Key==Key.Up && listBox.SelectedIndex==0)
+            try
             {
-                textBox.Focus();
-            }
-            if (e.Key == Key.Down && (listBox.SelectedIndex < listBox.Items.Count - 1))
-            { 
-                string text = listBox.Items[listBox.SelectedIndex + 1].ToString();
+                string text = listBox.SelectedItem.ToString();
                 HighLightSpecificElement(text);
                 DeSelectOtherElements(text);
             }
-            if(e.Key==Key.Up && listBox.SelectedIndex>0)
-            {
-                string text = listBox.Items[listBox.SelectedIndex - 1].ToString();
-                HighLightSpecificElement(text);
-                DeSelectOtherElements(text);
-            }
-            
-
+            catch{}
+            listBox.Focus();
         }
+
+
+
+    }
+
+    //Navigacija po listboxu sa key-evima 
+    private void listBox_KeyDownOrUp(object sender, KeyEventArgs e)
+    {
+
+        if (e.Key==Key.Up && listBox.SelectedIndex==0)
+        {
+
+            textBox.Focus();
+        }
+        if (e.Key == Key.Down && (listBox.SelectedIndex < listBox.Items.Count - 1))
+        { 
+            string text = listBox.Items[listBox.SelectedIndex + 1].ToString();
+            HighLightSpecificElement(text);
+            DeSelectOtherElements(text);
+        }
+        if(e.Key==Key.Up && listBox.SelectedIndex>0)
+        {
+            string text = listBox.Items[listBox.SelectedIndex - 1].ToString();
+            HighLightSpecificElement(text);
+            DeSelectOtherElements(text);
+        }
+
+
+    }
+    */
 
         private void HighLightSpecificElement(string name)
         {
