@@ -37,7 +37,7 @@ namespace InteractivePeriodicTable
         private bool checkLogin() // provjerava da li je logiran
         {
             string json = "";
-            using (StreamReader sr = new StreamReader(Path.GetFullPath(@"sys\login.json")))
+            using (StreamReader sr = new StreamReader(PathingHelper.localDir+@"\sys\login.json"))
             {
                 json = sr.ReadToEnd();
             }
