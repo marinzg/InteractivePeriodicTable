@@ -7,8 +7,10 @@
         xmlns:behaviors="clr-namespace:WPFTextBoxAutoComplete;assembly=WPFTextBoxAutoComplete"
         xmlns:wpf="http://wpfcontrols.com/"
         xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:Custom="http://wpfcontrols.com/" x:Class="InteractivePeriodicTable.MainWindow"
         mc:Ignorable="d"
+    
         Title="Interactive Period Table" Height="913.622" Width="1296.428"
         Icon="/Resources/Images/Ikona.ico"
         WindowStartupLocation="Manual" 
@@ -215,15 +217,18 @@
                     </ListBox.Resources>
                 </ListBox>
 
-
-                <Image x:Name="image1" MouseEnter="Did_you_know_hover" HorizontalAlignment="Left" Height="60" Margin="604,79,0,0" VerticalAlignment="Top" Width="60" Source="/Resources/Images/Ikona.ico" RenderTransformOrigin="0.43,1.474">
-                    <Image.ToolTip>
-                        <ToolTip Background ="Transparent" BorderBrush="Transparent">
-                            <TextBlock Text="CINJENICA IDE OVDJE TREBA &#xA;PROGRAMSKI ODRADITI RANDOM" FontSize="18" FontWeight="SemiBold" Foreground="LightCoral" Background="Transparent"/>
-                        </ToolTip>
-                    </Image.ToolTip>
-                </Image>
-
+                <Grid Name="BackgroundZaGif" HorizontalAlignment="Left" Height="56" Margin="560,79,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="0.43,1.474" >
+                    <Grid.Background>
+                        <SolidColorBrush Color="LightBlue" Opacity="0.2" />
+                    </Grid.Background>
+                    <Image x:Name="image1" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill" MouseEnter="Did_you_know_hover" HorizontalAlignment="Center" Height="61" Margin="-2,0,0,-5" VerticalAlignment="Center" Width="70" RenderTransformOrigin="0.43,1.474">
+                        <Image.ToolTip>
+                            <ToolTip Background ="Transparent" BorderBrush="Transparent" Placement="Right">
+                                <TextBlock TextWrapping="Wrap" Text="CINJENICA IDE OVDJE TREBA &#xA;PROGRAMSKI ODRADITI RANDOM &#xA;DODJELU CINJENICA U .CS-u...DODAO SAM MOUSE HOVER EVENT NA &#xA;OVO OSTALO JE U XAML-u" FontSize="18" FontWeight="SemiBold" Foreground="LightCoral" Background="{x:Null}"/>
+                            </ToolTip>
+                        </Image.ToolTip>
+                    </Image>
+                </Grid>
 
 
 
