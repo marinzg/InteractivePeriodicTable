@@ -33,7 +33,7 @@ namespace InteractivePeriodicTable
 
             //Otvori popup_window za webpage-eve
             PopupWebpage popupWindow = new PopupWebpage(element.Name.ToString());
-            popupWindow.Show();
+            popupWindow.ShowDialog();
         }
 
         private void Did_you_know_click(object sender, RoutedEventArgs e)
@@ -253,6 +253,9 @@ namespace InteractivePeriodicTable
             }
         }
 
+        private void Did_you_know(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }
