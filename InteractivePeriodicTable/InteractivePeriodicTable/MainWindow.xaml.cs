@@ -33,7 +33,7 @@ namespace InteractivePeriodicTable
 
             //Otvori popup_window za webpage-eve
             PopupWebpage popupWindow = new PopupWebpage(element.Name.ToString());
-            popupWindow.Show();
+            popupWindow.ShowDialog();
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
