@@ -17,8 +17,8 @@
         WindowState="Maximized">
 
 
-
-    <Grid Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" >
+    <Viewbox>
+        <Grid Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" >
 
 
         <StackPanel VerticalAlignment="Top">
@@ -227,7 +227,7 @@
 
         </Grid>
     </Grid>
-
+    </Viewbox>
 
 
     <Window.Background>
