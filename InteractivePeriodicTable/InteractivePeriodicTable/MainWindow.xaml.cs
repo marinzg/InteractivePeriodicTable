@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Input;
+using System.Windows.Controls.Primitives;
 
 
 
@@ -36,9 +37,13 @@ namespace InteractivePeriodicTable
             popupWindow.ShowDialog();
         }
 
-        private void Did_you_know_click(object sender, RoutedEventArgs e)
+        private void Did_you_know_hover(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Eraz je gay");
+            //did_you_know.ToolTip = "Cinjenica";
+            //ili
+            
+            
+
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
