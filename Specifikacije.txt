@@ -1,0 +1,24 @@
+Periodni 
+	-prikaz informacija o elementu - dovršeno
+	-pretraživanje - dovršeno
+	-did you know - funfacts about elements - gumb - izbaci random fact o random elementu
+	-kviz
+	-drag and drop - klasifikacija elemenata - metali, polumetali i nemetali, blokovi (sfdp)
+
+*za one koji žele znati više
+
+Kviz:
+	- se sastoji od nekoliko pitanja (koliko? kakvih?)
+	- bodovi se dobivaju isključivo na točne odgovore ovisno o vremenu koje je prošlo od učitavanja pitanja
+	- na kraju kviza, ako je korisnik napravio top 5 (globalni) rezultat, može upisati neko ime i upisati se na leaderboard
+		- taj rezultat se sprema u bazu hostanu na Azureu (informacije na BazaInfo)
+		
+Baza:
+	- hostana na Microsoft Azure, 32MB upper limit
+	- dijagram baze se nalazi u ovom repozitoriju pod "DijagramBaze"
+	- informacije o spajanju u ovom repozitoriju pod "BazaInfo"
+	
+TODO :
+	- treba updejtati TODO
+
+	
