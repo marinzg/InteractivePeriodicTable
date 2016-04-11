@@ -1,4 +1,5 @@
 server name :interactiveperiodictable.database.windows.net
+port: 1433
 Server admin login: PPiJ
 password : botickijeveliki001.
 Resource group: FERPPiJ

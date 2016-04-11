@@ -333,6 +333,7 @@
     <Resource Include="Resources\Images\space.jpg" />
     <Resource Include="Resources\Images\Ikona.ico" />
     <Resource Include="1459881686_chemistry.ico" />
+    <Resource Include="Resources\Images\dyk.png" />
     <Content Include="Resources\PPIJ_DB.sql" />
     <Content Include="Resources\PPIJ_INSERT.sql" />
     <Content Include="SQLqueries\PPIJ_DB.sql" />
