@@ -1,7 +1,7 @@
 
 CREATE TABLE DidYouKnow
 (
-	ID			 INTEGER         IDENTITY(1,1),
+	ID		PRIMARY KEY		 INTEGER         IDENTITY(1,1),
 	Fact		 NVARCHAR(100)   NOT NULL
 );
 
