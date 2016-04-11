@@ -36,6 +36,11 @@ namespace InteractivePeriodicTable
             popupWindow.Show();
         }
 
+        private void Did_you_know_click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Penis");
+        }
+
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 

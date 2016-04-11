@@ -215,8 +215,8 @@
                 </ListBox.Resources>
             </ListBox>
             <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="did_you_know" Click="Did_you_know" HorizontalAlignment="Left" Margin="506,239,0,0" VerticalAlignment="Top" Width="75" Height="50" RenderTransformOrigin="6.619,-10.581" >
-                <Image Source="/Resources/Images/Ikona.ico" Stretch="Fill"></Image>
+            <Button x:Name="did_you_know" Click="Did_you_know_click" HorizontalAlignment="Left" Margin="24,716,0,0" VerticalAlignment="Top" Width="75" Height="50" RenderTransformOrigin="6.619,-10.581" >
+                <Image Source="/Resources/Images/Ikona.ico" Stretch="Fill" RenderTransformOrigin="-5.874,10.797"></Image>
             </Button>
 
 
