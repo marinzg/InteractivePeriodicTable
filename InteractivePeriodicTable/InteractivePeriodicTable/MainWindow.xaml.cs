@@ -253,9 +253,6 @@ namespace InteractivePeriodicTable
             }
         }
 
-        private void Did_you_know(object sender, RoutedEventArgs e)
-        {
 
-        }
     }
 }
