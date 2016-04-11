@@ -38,7 +38,7 @@ namespace InteractivePeriodicTable
 
         private void Did_you_know_click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Penis");
+            MessageBox.Show("Eraz je gay");
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
