@@ -11,7 +11,7 @@ Kviz:
 	- se sastoji od nekoliko pitanja (koliko? kakvih?)
 	- bodovi se dobivaju isključivo na točne odgovore ovisno o vremenu koje je prošlo od učitavanja pitanja
 	- na kraju kviza, ako je korisnik napravio top 5 (globalni) rezultat, može upisati neko ime i upisati se na leaderboard
-		- taj rezultat se sprema u bazu hostanu na Azureu (informacije na BazaInfo)
+		- taj rezultat se sprema u bazu
 		
 --------------------------------------------------------------------------------------------------------
 	
