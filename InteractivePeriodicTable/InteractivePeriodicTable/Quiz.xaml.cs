@@ -191,6 +191,7 @@ namespace InteractivePeriodicTable
 
             TextBox txbx = new TextBox();
             txbx.Name = "QuizPictures_txbx";
+            txbx.TextAlignment = TextAlignment.Center;
 
             this.sp.RegisterName(txbx.Name, txbx);
 
