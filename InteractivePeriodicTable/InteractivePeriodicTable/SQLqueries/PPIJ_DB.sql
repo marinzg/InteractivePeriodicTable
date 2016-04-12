@@ -27,6 +27,7 @@ CREATE TABLE QuizYesNo
 CREATE TABLE QuizPictures
 (
 	ID           INTEGER         PRIMARY KEY IDENTITY(1,1),
+	ImageFile    VARBINARY(MAX)  NOT NULL,
 	ImagePath    NVARCHAR(200)   NOT NULL,
 	Answer       NVARCHAR(100)   NOT NULL,
 );

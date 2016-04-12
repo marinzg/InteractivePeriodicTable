@@ -61,7 +61,7 @@ namespace InteractivePeriodicTable
 
             scr_lbl.Content = "Score: " + score.ToString();
 
-            byte question_type = (byte)rand.Next(0, 3); // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures
+            byte question_type = (byte)rand.Next(0, 2); // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures
 
             if( question_type == 0 )
             {
@@ -180,6 +180,7 @@ namespace InteractivePeriodicTable
             Image image = new Image();
             
             image.Width = 300;
+            image.Height = 300;
 
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
