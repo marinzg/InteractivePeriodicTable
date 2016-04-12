@@ -39,7 +39,7 @@ namespace InteractivePeriodicTable
         private void getQuestions()
         {
             string json = "";
-            using (StreamReader sr = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Sys/quiz.json"))
+            using (StreamReader sr = new StreamReader(Pathing.sysDir + "/quiz.json"))
             {
                 json = sr.ReadToEnd();
             }
