@@ -58,7 +58,15 @@ namespace InteractivePeriodicTable
                         cmnd.CommandText = "INSERT INTO UserScore (UserName, Score) VALUES (@user, @score);";
                         cmnd.Parameters.AddWithValue("@score", score);
 
-                        cmnd.ExecuteNonQuery();
+                        try
+                        {
+                            cmnd.ExecuteNonQuery();
+                        }
+                        catch(System.Data.SqlClient.SqlException)
+                        {
+                            MessageBox.Show("Please enter shorter username!");
+                            return;
+                        }
 
                         this.Close();
                     }
