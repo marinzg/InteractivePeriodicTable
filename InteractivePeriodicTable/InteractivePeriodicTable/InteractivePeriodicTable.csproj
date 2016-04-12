@@ -136,6 +136,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\CrystalStructure.cs" />
+    <Compile Include="Models\Element.cs" />
+    <Compile Include="Models\ElementCategory.cs" />
+    <Compile Include="Models\ElementSubcategory.cs" />
+    <Compile Include="Models\Phase.cs" />
     <Compile Include="Quiz.xaml.cs">
       <DependentUpon>Quiz.xaml</DependentUpon>
     </Compile>
@@ -144,6 +149,9 @@
     </Compile>
     <Compile Include="ScoreBoard.xaml.cs">
       <DependentUpon>ScoreBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SortElements.xaml.cs">
+      <DependentUpon>SortElements.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\VisualChildren.cs" />
     <Page Include="MainWindow.xaml">
@@ -172,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ScoreBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SortElements.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -239,5 +239,10 @@ namespace InteractivePeriodicTable
             }
             return;
         }
+        private void play_DragDrop_Click(object sender, RoutedEventArgs e)
+        {
+            SortElements window = new SortElements();
+            window.ShowDialog();
+        }
     }
 }

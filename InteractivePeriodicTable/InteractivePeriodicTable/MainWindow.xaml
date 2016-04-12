@@ -296,6 +296,27 @@
 
 
                 <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="0" X2="100" Y2="50" Height="59" Margin="-40,45,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="108"/>
+                <Button x:Name="DragDropGames" Content="DragDropGame" HorizontalAlignment="Left" Margin="1223,66,0,0" VerticalAlignment="Top" Width="108" Click="play_DragDrop_Click" Background="Transparent">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Foreground" Value="LightBlue"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </Grid>
 
         </Grid>

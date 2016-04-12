@@ -1,0 +1,42 @@
+﻿<Window x:Class="InteractivePeriodicTable.SortElements"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InteractivePeriodicTable"
+        mc:Ignorable="d"
+        Title="SortElements" Height="515.415" Width="855.813">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type ListBox}">
+            <!--<span class="code-comment"> Set the ItemTemplate of the ListBox to a DataTemplate which
+           explains how to display an object of type BitmapImage. -->
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter
+  Property="ScrollViewer.HorizontalScrollBarVisibility"
+  Value="Disabled"
+  />
+        </Style>
+
+    </Window.Resources>
+
+
+
+    <Grid>
+
+
+        <ListBox x:Name="DropListMetals" HorizontalAlignment="Left" Height="133" Margin="10,136,0,0" VerticalAlignment="Top" Width="200" Drop="DropList_Drop" DragEnter="DropList_DragEnter" AllowDrop="True"/>
+        <ListBox x:Name="DropListNonmetals" HorizontalAlignment="Left" Height="133" Margin="638,136,0,0" VerticalAlignment="Top" Width="200" Drop="DropList_Drop" DragEnter="DropList_DragEnter" AllowDrop="True"/>
+        <ListBox x:Name="DropListMetalloids" HorizontalAlignment="Left" Height="133" Margin="309,136,0,0" VerticalAlignment="Top" Width="200" Drop="DropList_Drop" DragEnter="DropList_DragEnter" AllowDrop="True"/>
+        <ListBox x:Name="DragList" HorizontalAlignment="Left" Margin="10,324.958,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonDown="List_PreviewMouseLeftButtonDown" PreviewMouseMove="List_MouseMove"  UseLayoutRounding="False" Height="149.042" Width="828"/>
+
+
+
+    </Grid>
+</Window>
