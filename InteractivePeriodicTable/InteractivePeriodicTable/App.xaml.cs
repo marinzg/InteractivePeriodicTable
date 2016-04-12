@@ -169,6 +169,8 @@ namespace InteractivePeriodicTable
         }
         private string getQuizPictures()
         {
+            //getQuizPicturesImages();
+
             StringBuilder data = new StringBuilder();
             data.Append("[");
 
@@ -205,6 +207,27 @@ namespace InteractivePeriodicTable
         }
         private void getQuizPicturesImages()
         {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
+            {
+                conn.Open();
+
+                using (SqlCommand cmnd = new SqlCommand("SELECT ImageFile, ImagePath FROM QuizPictures;", conn))
+                {
+                    using (SqlDataReader rdr = cmnd.ExecuteReader())
+                    {
+                        if (rdr.HasRows == false)
+                        {
+                            return;
+                        }
+                        while (rdr.Read())
+                        {
+                            byte[] image_bytes = (byte[])(rdr["ImageFile"]);
+                            string img_name = rdr["ImagePath"].ToString();
+                            File.WriteAllBytes(Pathing.imgDir + "\\" + img_name, image_bytes);
+                        }
+                    }
+                }
+            }
             return;
         }
         private string getFacts()

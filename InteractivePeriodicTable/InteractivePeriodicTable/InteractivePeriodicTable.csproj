@@ -324,8 +324,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Resources\Sys\dyk.json" />
-    <None Include="Resources\Sys\quiz.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -359,7 +357,9 @@
     <Content Include="SQLqueries\PPIJ_INSERT.sql" />
     <Resource Include="Resources\Materijali o elementima\wiki_linkovi.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\Sys\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

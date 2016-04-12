@@ -61,7 +61,7 @@ namespace InteractivePeriodicTable
 
             scr_lbl.Content = "Score: " + score.ToString();
 
-            byte question_type = (byte)rand.Next(0, 3); // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures
+            byte question_type = (byte)rand.Next(0, 2); // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures
 
             if( question_type == 0 )
             {
@@ -213,7 +213,7 @@ namespace InteractivePeriodicTable
                 TextBox txbx = (TextBox)this.sp.FindName("QuizPictures_txbx");
                 this.sp.UnregisterName("QuizPictures_txbx");
 
-                if (txbx.Text == btn.Tag.ToString())
+                if (txbx.Text.ToUpper() == btn.Tag.ToString().ToUpper())
                 {
                     correctAns(sender, e);
                 }
