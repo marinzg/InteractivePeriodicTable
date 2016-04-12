@@ -212,23 +212,91 @@
                     </ListBox.Resources>
                 </ListBox>
 
-                <Grid Name="BackgroundZaGif" HorizontalAlignment="Left" Height="56" Margin="377,179,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="0.43,1.474" >
+                <Grid Name="BackgroundZaGif" HorizontalAlignment="Left" Height="56" Margin="595,85,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="0.43,1.474" >
                     <Grid.Background>
                         <SolidColorBrush Color="LightBlue" Opacity="0.2" />
                     </Grid.Background>
                     <Image x:Name="image1" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill" MouseEnter="Did_you_know_hover" HorizontalAlignment="Center" Height="61" Margin="-2,-5,0,0" VerticalAlignment="Bottom" Width="70" RenderTransformOrigin="0.43,1.474">
                         <Image.ToolTip>
-                            <ToolTip Background ="Transparent" BorderBrush="Transparent" Placement="Top">
+                            <ToolTip Background ="Transparent" BorderBrush="Transparent" Placement="Right">
                                 <TextBlock x:Name="fact_tip" TextWrapping="Wrap" FontSize="18" FontWeight="SemiBold" Foreground="LightCoral" Background="{x:Null}"/>
                             </ToolTip>
                         </Image.ToolTip>
                     </Image>
                 </Grid>
-                <Button x:Name="play_quiz" Content="Igraj" HorizontalAlignment="Left" Margin="1372,14,-116,0" VerticalAlignment="Top" Width="75" Click="play_quiz_Click"/>
-                <Button x:Name="show_scoreboard" Content="Top 10" HorizontalAlignment="Left" Margin="1372,39,-116,0" VerticalAlignment="Top" Width="75" Click="show_scoreboard_Click"/>
-                <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Margin="1372,733,-116,0" VerticalAlignment="Top" Width="75" Click="update_Click"/>
-                <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="0" X2="100" Y2="50" Height="59" Margin="29,51,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="108"/>
 
+                <Grid Name="Buttoni_igre">
+                    <Button x:Name="play_quiz" Content="Play a game" HorizontalAlignment="Left" Margin="1339,14,-116,0" VerticalAlignment="Top" Width="108" Click="play_quiz_Click" Background="Transparent" >
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Foreground" Value="LightBlue"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <Button x:Name="show_scoreboard" Content="Top 10 users" HorizontalAlignment="Left" Margin="1339,45,-116,0" VerticalAlignment="Top" Width="108" Click="show_scoreboard_Click" Background="Transparent">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Foreground" Value="LightBlue"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+
+
+                    <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Margin="1372,733,-116,0" VerticalAlignment="Top" Width="75" Click="update_Click" Background="Transparent">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Foreground" Value="LightBlue"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+
+                    <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="0" X2="100" Y2="50" Height="59" Margin="29,51,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="108"/>
+                </Grid>
 
 
 
