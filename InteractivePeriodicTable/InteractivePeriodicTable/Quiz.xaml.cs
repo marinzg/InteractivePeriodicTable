@@ -25,6 +25,7 @@ namespace InteractivePeriodicTable
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         public Quiz()
         {
+            Closing += QuitQuiz;
             getQuestions();
             InitializeComponent();
 
@@ -39,7 +40,7 @@ namespace InteractivePeriodicTable
         private void getQuestions()
         {
             string json = "";
-            using (StreamReader sr = new StreamReader(Pathing.sysDir + "\\quiz.json"))
+            using (StreamReader sr = new StreamReader(Pathing.sysDir + "/quiz.json"))
             {
                 json = sr.ReadToEnd();
             }
@@ -201,6 +202,10 @@ namespace InteractivePeriodicTable
             }
 
             return;
+        }
+        public void QuitQuiz(object sender, EventArgs e)
+        {
+            dispatcherTimer.Stop();
         }
     }
 }
