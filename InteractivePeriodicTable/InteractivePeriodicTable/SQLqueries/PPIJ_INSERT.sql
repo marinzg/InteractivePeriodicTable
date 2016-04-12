@@ -33,7 +33,7 @@ INSERT INTO QuizYesNo (Question, Answer, A1, A2) VALUES ('Oxygen (O) has a great
 INSERT INTO QuizYesNo (Question, Answer, A1, A2) VALUES ('Oxygen (O) has a greater mass than chlorine (Cl)', 1, 'True', 'False');
 GO
 
-INSERT INTO QuizPictures (ImagePath, Answer) VALUES ('', '');
+INSERT INTO QuizPictures (ImagePath, Answer, ImageFile) SELECT 'water.jpg', 'voda', * FROM OPENROWSET(BULK 'D:\water.jpg', SINGLE_BLOB) rs;
 GO
 
 INSERT INTO DidYouKnow (Fact) VALUES ('Did you know that dynamite contains peanuts as an ingredient !');

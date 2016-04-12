@@ -11,7 +11,9 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:Custom="http://wpfcontrols.com/" x:Class="InteractivePeriodicTable.MainWindow"
         mc:Ignorable="d"
     
-        Title="Interactive Period Table" Height="913.622" Width="1296.428"
+        Title="Interactive Period Table"
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}" 
         Icon="/Resources/Images/Ikona.ico"
         WindowStartupLocation="Manual" 
         Left="auto"
@@ -32,7 +34,7 @@
             <WebBrowser x:Name="browser" Visibility="hidden" />
 
 
-            <Grid ButtonBase.Click = "Element_klik" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid ButtonBase.Click = "Element_klik" VerticalAlignment="Center" HorizontalAlignment="Center" Height="826" Margin="-106,0,0,0" Width="1331">
 
                 <Button x:Name="Hydrogen" HorizontalAlignment="Left" Height="60" Margin="143,179,0,0" VerticalAlignment="Top" Width="60" Content="1&#xA;H" Background="#FFAEF59C" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="Lithium" Content="3&#xA;Li" HorizontalAlignment="Left" Height="60" Margin="143,239,0,0" VerticalAlignment="Top" Width="60" Background="#FFFBB35D" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
@@ -122,44 +124,45 @@
                 <Button x:Name="Radon" Content="86&#xA;Rn" HorizontalAlignment="Left" Height="60" Margin="1165,479,0,0" VerticalAlignment="Top" Width="60" Background="#FF9FC8FF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="Ununoctium" Content="118&#xA;Uuo" HorizontalAlignment="Left" Height="60" Margin="1165,539,0,0" VerticalAlignment="Top" Width="60" Background="#FF9FC8FF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="Helium" Content="2&#xA;He" HorizontalAlignment="Left" Height="60" Margin="1165,179,0,0" VerticalAlignment="Top" Width="60" Background="#FF9FC8FF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Lanthanum" Content="57&#xA;La" HorizontalAlignment="Left" Height="60" Margin="325,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Actinium" Content="89&#xA;Ac" HorizontalAlignment="Left" Height="60" Margin="325,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Cerium" Content="58&#xA;Ce" HorizontalAlignment="Left" Height="60" Margin="385,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Thorium" Content="90&#xA;Th" HorizontalAlignment="Left" Height="60" Margin="385,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Praseodymium" Content="59&#xA;Pr" HorizontalAlignment="Left" Height="60" Margin="445,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Protactinium" Content="91&#xA;Pa" HorizontalAlignment="Left" Height="60" Margin="445,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Neodymium" Content="60&#xA;Nd" HorizontalAlignment="Left" Height="60" Margin="506,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Uranium" Content="92&#xA;U" HorizontalAlignment="Left" Height="60" Margin="506,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Promethium" Content="61&#xA;Pm" HorizontalAlignment="Left" Height="60" Margin="566,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Neptunium" Content="93&#xA;Np" HorizontalAlignment="Left" Height="60" Margin="566,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Samarium" Content="62&#xA;Sm" HorizontalAlignment="Left" Height="60" Margin="626,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Plutonium" Content="942&#xA;Pu" HorizontalAlignment="Left" Height="60" Margin="626,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Europium" Content="63&#xA;Eu" HorizontalAlignment="Left" Height="60" Margin="684,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Americium" Content="95&#xA;Am" HorizontalAlignment="Left" Height="60" Margin="684,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Gadolinium" Content="64&#xA;Gd" HorizontalAlignment="Left" Height="60" Margin="744,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Curium" Content="96&#xA;Cm" HorizontalAlignment="Left" Height="60" Margin="744,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Terbium" Content="65&#xA;Tb" HorizontalAlignment="Left" Height="60" Margin="804,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Berkelium" Content="97&#xA;Bk" HorizontalAlignment="Left" Height="60" Margin="804,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Dysprosium" Content="66&#xA;Dy" HorizontalAlignment="Left" Height="60" Margin="864,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Californium" Content="97&#xA;Bk" HorizontalAlignment="Left" Height="60" Margin="864,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Holmium" Content="67&#xA;Ho" HorizontalAlignment="Left" Height="60" Margin="924,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Einsteinium" Content="99&#xA;Es" HorizontalAlignment="Left" Height="60" Margin="924,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Erbium" Content="68&#xA;Er" HorizontalAlignment="Left" Height="60" Margin="984,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Fermium" Content="100&#xA;Fm" HorizontalAlignment="Left" Height="60" Margin="984,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Thulium" Content="69&#xA;Tm" HorizontalAlignment="Left" Height="60" Margin="1044,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Mendelevium" Content="101&#xA;Md" HorizontalAlignment="Left" Height="60" Margin="1044,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Ytterbium" Content="70&#xA;Yb" HorizontalAlignment="Left" Height="60" Margin="1104,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Nobelium" Content="102&#xA;No" HorizontalAlignment="Left" Height="60" Margin="1104,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Lutetium" Content="71&#xA;Lu" HorizontalAlignment="Left" Height="60" Margin="1165,706,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Lawrencium" Content="103&#xA;Lr" HorizontalAlignment="Left" Height="60" Margin="1165,766,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Lanthanum" Content="57&#xA;La" HorizontalAlignment="Left" Height="60" Margin="325,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Actinium" Content="89&#xA;Ac" HorizontalAlignment="Left" Height="60" Margin="323,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Cerium" Content="58&#xA;Ce" HorizontalAlignment="Left" Height="60" Margin="385,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Thorium" Content="90&#xA;Th" HorizontalAlignment="Left" Height="60" Margin="383,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Praseodymium" Content="59&#xA;Pr" HorizontalAlignment="Left" Height="60" Margin="445,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Protactinium" Content="91&#xA;Pa" HorizontalAlignment="Left" Height="60" Margin="443,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Neodymium" Content="60&#xA;Nd" HorizontalAlignment="Left" Height="60" Margin="506,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Uranium" Content="92&#xA;U" HorizontalAlignment="Left" Height="60" Margin="504,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Promethium" Content="61&#xA;Pm" HorizontalAlignment="Left" Height="60" Margin="566,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Neptunium" Content="93&#xA;Np" HorizontalAlignment="Left" Height="60" Margin="564,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Samarium" Content="62&#xA;Sm" HorizontalAlignment="Left" Height="60" Margin="626,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Plutonium" Content="942&#xA;Pu" HorizontalAlignment="Left" Height="60" Margin="624,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Europium" Content="63&#xA;Eu" HorizontalAlignment="Left" Height="60" Margin="684,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Americium" Content="95&#xA;Am" HorizontalAlignment="Left" Height="60" Margin="682,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Gadolinium" Content="64&#xA;Gd" HorizontalAlignment="Left" Height="60" Margin="744,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Curium" Content="96&#xA;Cm" HorizontalAlignment="Left" Height="60" Margin="742,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Terbium" Content="65&#xA;Tb" HorizontalAlignment="Left" Height="60" Margin="804,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Berkelium" Content="97&#xA;Bk" HorizontalAlignment="Left" Height="60" Margin="802,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Dysprosium" Content="66&#xA;Dy" HorizontalAlignment="Left" Height="60" Margin="864,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Californium" Content="97&#xA;Bk" HorizontalAlignment="Left" Height="60" Margin="862,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Holmium" Content="67&#xA;Ho" HorizontalAlignment="Left" Height="60" Margin="924,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Einsteinium" Content="99&#xA;Es" HorizontalAlignment="Left" Height="60" Margin="922,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Erbium" Content="68&#xA;Er" HorizontalAlignment="Left" Height="60" Margin="984,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Fermium" Content="100&#xA;Fm" HorizontalAlignment="Left" Height="60" Margin="982,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Thulium" Content="69&#xA;Tm" HorizontalAlignment="Left" Height="60" Margin="1044,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Mendelevium" Content="101&#xA;Md" HorizontalAlignment="Left" Height="60" Margin="1042,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Ytterbium" Content="70&#xA;Yb" HorizontalAlignment="Left" Height="60" Margin="1104,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Nobelium" Content="102&#xA;No" HorizontalAlignment="Left" Height="60" Margin="1102,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Lutetium" Content="71&#xA;Lu" HorizontalAlignment="Left" Height="60" Margin="1165,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Lawrencium" Content="103&#xA;Lr" HorizontalAlignment="Left" Height="60" Margin="1163,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             </Grid>
 
-            <Grid Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button x:Name="prazno1" Content="57-71" HorizontalAlignment="Left" Height="60" Margin="263,479,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Grid Margin="-106,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="1331" Height="826">
+                <Button x:Name="prazno1" Content="57-71" HorizontalAlignment="Left" Height="60" Margin="263,480,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="prazno2" Content="89-103" HorizontalAlignment="Left" Height="60" Margin="263,539,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
-                <Label Foreground="LightBlue" x:Name="label_group_period" Content="Group&#xA;Period" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0 20 0 0"/>
+                <Label Foreground="LightBlue" x:Name="label_group" Content="Group" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="62,23,0,0"/>
+                <Label Foreground="LightBlue" x:Name="label_period" Content="Period" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,92,0,0"/>
                 <Label Foreground="LightBlue" x:Name="label_group_period_Copy" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="143,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Label Foreground="LightBlue" x:Name="label_group_period_Copy1" Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="203,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Label Foreground="LightBlue" x:Name="label_group_period_Copy2" Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="263,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
@@ -185,13 +188,13 @@
                 <Label Foreground="LightBlue" x:Name="label_group_period_Copy22" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="24,419,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Label Foreground="LightBlue" x:Name="label_group_period_Copy23" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="24,479,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Label Foreground="LightBlue" x:Name="label_group_period_Copy24" Content="7" HorizontalAlignment="Left" FontSize="23" FontWeight="Bold" Margin="24,539,0,0" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="60" VerticalAlignment="Top"/>
-                <Label x:Name="label" Content="Lanthanides" FontWeight="Bold" FontSize="21.333" HorizontalAlignment="Left" Height="60" Margin="143,706,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue"/>
-                <Label x:Name="label_Copy" Content="Actinides" FontWeight="Bold" FontSize="21.333" HorizontalAlignment="Left" Height="60" Margin="143,766,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue"/>
-                <Label x:Name="label3" Content="Search an element:" HorizontalAlignment="Left" Height="31" Margin="130,92,0,0" VerticalAlignment="Top" Width="170" FontSize="18" FontWeight="Bold" Foreground="LightBlue"/>
+                <Label x:Name="label" Content="Lanthanides" FontWeight="Bold" FontSize="21.333" HorizontalAlignment="Left" Height="60" Margin="146,634,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue"/>
+                <Label x:Name="label_Copy" Content="Actinides" FontWeight="Bold" FontSize="21.333" HorizontalAlignment="Left" Height="60" Margin="142,693,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue"/>
+                <Label x:Name="label3" Content="Search an element:" HorizontalAlignment="Left" Height="31" Margin="142,92,0,0" VerticalAlignment="Top" Width="170" FontSize="18" FontWeight="Bold" Foreground="LightBlue"/>
 
 
 
-                <TextBox x:Name="textBox"  HorizontalAlignment="Left" Height="33" Margin="300,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
+                <TextBox x:Name="textBox"  HorizontalAlignment="Left" Height="33" Margin="319,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
                 <ListBox x:Name="listBox" SelectedIndex="0" HorizontalAlignment="Left" Height="Auto" Margin="301,130,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed" >
                     <ListBox.Resources>
                         <Style TargetType="ListBox">
@@ -209,20 +212,22 @@
                     </ListBox.Resources>
                 </ListBox>
 
-                <Grid Name="BackgroundZaGif" HorizontalAlignment="Left" Height="56" Margin="560,79,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="0.43,1.474" >
+                <Grid Name="BackgroundZaGif" HorizontalAlignment="Left" Height="56" Margin="377,179,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="0.43,1.474" >
                     <Grid.Background>
                         <SolidColorBrush Color="LightBlue" Opacity="0.2" />
                     </Grid.Background>
-                    <Image x:Name="image1" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill" MouseEnter="Did_you_know_hover" HorizontalAlignment="Center" Height="61" Margin="-2,0,0,-5" VerticalAlignment="Center" Width="70" RenderTransformOrigin="0.43,1.474">
+                    <Image x:Name="image1" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill" MouseEnter="Did_you_know_hover" HorizontalAlignment="Center" Height="61" Margin="-2,-5,0,0" VerticalAlignment="Bottom" Width="70" RenderTransformOrigin="0.43,1.474">
                         <Image.ToolTip>
-                            <ToolTip Background ="Transparent" BorderBrush="Transparent" Placement="Right">
-                                <TextBlock x:Name="fact_tip" TextWrapping="Wrap" Text="CINJENICA IDE OVDJE TREBA &#xA;PROGRAMSKI ODRADITI RANDOM &#xA;DODJELU CINJENICA U .CS-u...DODAO SAM MOUSE HOVER EVENT NA &#xA;OVO OSTALO JE U XAML-u" FontSize="18" FontWeight="SemiBold" Foreground="LightCoral" Background="{x:Null}"/>
+                            <ToolTip Background ="Transparent" BorderBrush="Transparent" Placement="Top">
+                                <TextBlock x:Name="fact_tip" TextWrapping="Wrap" FontSize="18" FontWeight="SemiBold" Foreground="LightCoral" Background="{x:Null}"/>
                             </ToolTip>
                         </Image.ToolTip>
                     </Image>
                 </Grid>
-                <Button x:Name="play_quiz" Content="Igraj" HorizontalAlignment="Left" Margin="684,101,0,0" VerticalAlignment="Top" Width="75" Click="play_quiz_Click"/>
-                <Button x:Name="show_scoreboard" Content="Top 10" HorizontalAlignment="Left" Margin="804,101,0,0" VerticalAlignment="Top" Width="75" Click="show_scoreboard_Click"/>
+                <Button x:Name="play_quiz" Content="Igraj" HorizontalAlignment="Left" Margin="1372,14,-116,0" VerticalAlignment="Top" Width="75" Click="play_quiz_Click"/>
+                <Button x:Name="show_scoreboard" Content="Top 10" HorizontalAlignment="Left" Margin="1372,39,-116,0" VerticalAlignment="Top" Width="75" Click="show_scoreboard_Click"/>
+                <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Margin="1372,733,-116,0" VerticalAlignment="Top" Width="75" Click="update_Click"/>
+                <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="0" X2="100" Y2="50" Height="59" Margin="29,51,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="108"/>
 
 
 

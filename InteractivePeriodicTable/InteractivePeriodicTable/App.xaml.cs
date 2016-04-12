@@ -65,7 +65,7 @@ namespace InteractivePeriodicTable
             MainWindow mainView = new MainWindow();
             mainView.Show();
         }
-        private void checkQuiz()
+        public void checkQuiz()
         {
             string path_to_quiz = Pathing.sysDir + "\\quiz.json";
 
@@ -77,7 +77,7 @@ namespace InteractivePeriodicTable
                 File.WriteAllText(path_to_quiz, quiz_json.ToString());
             }
         }
-        private void checkFacts()
+        public void checkFacts()
         {
             string path_to_facts = Pathing.sysDir + "\\facts.json";
 
@@ -203,6 +203,10 @@ namespace InteractivePeriodicTable
 
             return data.ToString();
         }
+        private void getQuizPicturesImages()
+        {
+            return;
+        }
         private string getFacts()
         {
             StringBuilder data = new StringBuilder();
@@ -235,6 +239,24 @@ namespace InteractivePeriodicTable
             data.Append("]");
 
             return data.ToString();
+        }
+        public void updateQuiz()
+        {
+            string path_to_quiz = Pathing.sysDir + "\\quiz.json";
+
+            StringBuilder quiz_json = new StringBuilder();
+            quiz_json.Append("{ \"QuizWith4Ans\":" + getQuizWith4Ans() + "," + "\"QuizYesNo\":" + getQuizYesNo() + "," + "\"QuizPictures\":" + getQuizPictures() + "}");
+
+            File.WriteAllText(path_to_quiz, quiz_json.ToString());
+        }
+        public void updateFacts()
+        {
+            string path_to_facts = Pathing.sysDir + "\\facts.json";
+
+            StringBuilder facts_json = new StringBuilder();
+            facts_json.Append("{ \"Facts\": " + getFacts() + "}");
+
+            File.WriteAllText(path_to_facts, facts_json.ToString());
         }
     }
 }

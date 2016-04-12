@@ -18,7 +18,7 @@ namespace InteractivePeriodicTable
         private AllFacts dyk = new AllFacts();
         public MainWindow()
         {
-            getFacts();
+            getFactsJSON();
             InitializeComponent();
             //listBox.PreviewKeyDown += new KeyEventHandler(listBox_KeyDownOrUp); //Marko-eventhandler za listbox navigiranje arrowsima
             //textBox.PreviewKeyDown += new KeyEventHandler(textBox_KeyDown); //Marko-eventhandler za arrow down
@@ -36,6 +36,8 @@ namespace InteractivePeriodicTable
 
         private void Did_you_know_hover(object sender, RoutedEventArgs e)
         {
+            ((App)Application.Current).checkFacts();
+
             Random rand = new Random();
             int no_of_facts = dyk.Facts.Count;
             int fact_no = rand.Next(0, no_of_facts);
@@ -43,7 +45,7 @@ namespace InteractivePeriodicTable
             fact_tip.Text = dyk.Facts[fact_no].Fact;
             return;
         }
-        private void getFacts()
+        private void getFactsJSON()
         {
             string json = "";
             using (StreamReader sr = new StreamReader(Pathing.sysDir+"\\facts.json"))
@@ -142,13 +144,6 @@ namespace InteractivePeriodicTable
             {
                 previousBackgroundColors.Add(buttonInForm.Name, buttonInForm.Background);
             }
-        }
-
-        private void Logout_Click(object sender, RoutedEventArgs e)
-        {
-            File.WriteAllText(Path.GetFullPath(@"sys\login.json"), "{ \"user_name\": \"\", \"password\": \"\", \"score\": 0 }");
-            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-            Application.Current.Shutdown();
         }
 
 
@@ -278,6 +273,21 @@ namespace InteractivePeriodicTable
         {
             ScoreBoard window = new ScoreBoard();
             window.ShowDialog();
+        }
+
+        private void update_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ((App)Application.Current).updateFacts();
+                ((App)Application.Current).updateQuiz();
+                MessageBox.Show("Quiz and Facts updated successfully !", "Information");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+            return;
         }
     }
 }

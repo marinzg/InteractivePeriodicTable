@@ -43,37 +43,32 @@ namespace InteractivePeriodicTable
                 MessageBox.Show("Please enter user name !", "Error");
                 return;
             }
+            if (username.Text.Length > 20)
+            {
+                MessageBox.Show("Please enter shorter user name !", "Error");
+                return;
+            }
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
             {
                 conn.Open();
 
-                using (SqlCommand cmnd = new SqlCommand("", conn))
+                using (SqlCommand cmnd = new SqlCommand("INSERT INTO UserScore (UserName, Score) VALUES (@user, @score);", conn))
                 {
-                    cmnd.CommandText = "SELECT COUNT(*) FROM UserScore WHERE UserName = @user";
                     cmnd.Parameters.AddWithValue("@user", username.Text);
-                    int no_of_users = (int)cmnd.ExecuteScalar();
+                    cmnd.Parameters.AddWithValue("@score", score);
 
-                    if(no_of_users == 0)
+                    try
                     {
-                        cmnd.CommandText = "INSERT INTO UserScore (UserName, Score) VALUES (@user, @score);";
-                        cmnd.Parameters.AddWithValue("@score", score);
-
-                        try
-                        {
-                            cmnd.ExecuteNonQuery();
-                        }
-                        catch(System.Data.SqlClient.SqlException)
-                        {
-                            MessageBox.Show("Please enter shorter username!");
-                            return;
-                        }
-
-                        this.Close();
+                        cmnd.ExecuteNonQuery();
+                        MessageBox.Show("Score was successfully submitted !", "Information");
                     }
-                    else
+                    catch(SqlException ex)
                     {
-                        MessageBox.Show("User name already exists !", "Error");
+                        MessageBox.Show(ex.Message, "Error");
+                        return;
                     }
+
+                    this.Close();
                 }
             }
 
