@@ -29,8 +29,6 @@ INSERT INTO QuizYesNo (Question, Answer, A1, A2) VALUES ('Magnesium (Mg) is a:',
 INSERT INTO QuizYesNo (Question, Answer, A1, A2) VALUES ('Chlorine (Cl) is a:', 2,'Metal', 'Non metal');
 INSERT INTO QuizYesNo (Question, Answer, A1, A2) VALUES ('Manganese (Mn) is a:',1 ,'Metal', 'Non metal');
 INSERT INTO QuizYesNo (Question, Answer, A1, A2) VALUES ('Elements in the same family have similar properties?',1, 'True', 'False');
-INSERT INTO QuizYesNo (Question, Answer, A1, A2) VALUES ('Oxygen (O) has a greater mass than chlorine (Cl)', 1, 'True', 'False');
-INSERT INTO QuizYesNo (Question, Answer, A1, A2) VALUES ('Oxygen (O) has a greater mass than chlorine (Cl)', 1, 'True', 'False');
 GO
 
 INSERT INTO QuizPictures (ImagePath, Answer, ImageFile) SELECT 'water.jpg', 'voda', * FROM OPENROWSET(BULK 'D:\water.jpg', SINGLE_BLOB) rs;
