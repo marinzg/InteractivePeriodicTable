@@ -353,6 +353,10 @@
     <Resource Include="Resources\Images\niEq56KiA.gif" />
     <Resource Include="Resources\Images\Pingvin_za_periodni.gif" />
     <Resource Include="Resources\Images\Quiz\water.jpg" />
+    <Resource Include="Resources\Images\Quiz\alcohol.jpg" />
+    <Resource Include="Resources\Images\Quiz\caffeine.jpg" />
+    <Resource Include="Resources\Images\Quiz\flask.jpg" />
+    <Resource Include="Resources\Images\Quiz\nitrogen.jpg" />
     <Content Include="SQLqueries\PPIJ_DB.sql" />
     <Content Include="SQLqueries\PPIJ_INSERT.sql" />
     <Resource Include="Resources\Materijali o elementima\wiki_linkovi.txt" />
