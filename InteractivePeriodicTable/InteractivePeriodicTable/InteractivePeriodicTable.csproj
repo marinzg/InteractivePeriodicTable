@@ -198,8 +198,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Ideje_TODO_spec\Formular_Ideja.docx" />
-    <None Include="Ideje_TODO_spec\TODO" />
+    <None Include="Resources\Ideje_TODO_spec\Formular_Ideja.docx" />
+    <None Include="Resources\Ideje_TODO_spec\TODO" />
     <None Include="Resources\Web_pages\Actinium - Wikipedia, the free encyclopedia.mht" />
     <None Include="Resources\Web_pages\Aluminium - Wikipedia, the free encyclopedia.mht" />
     <None Include="Resources\Web_pages\Americium - Wikipedia, the free encyclopedia.mht" />
@@ -341,10 +341,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Materijali o elementima\imena_elemenata.txt" />
-    <Resource Include="Materijali o elementima\broj_ime_simbol.txt" />
-    <Resource Include="Materijali o elementima\elementi.txt" />
-    <Resource Include="Ideje_TODO_spec\neke specifikacije.txt" />
+    <Resource Include="Resources\Materijali o elementima\imena_elemenata.txt" />
+    <Resource Include="Resources\Materijali o elementima\broj_ime_simbol.txt" />
+    <Resource Include="Resources\Materijali o elementima\elementi.txt" />
+    <Resource Include="Resources\Ideje_TODO_spec\neke specifikacije.txt" />
     <Resource Include="Resources\Images\Potion.jpg" />
     <Resource Include="Resources\Images\Chemistry.jpg" />
     <Resource Include="Resources\Images\space.jpg" />
@@ -355,7 +355,7 @@
     <Resource Include="Resources\Images\Quiz\water.jpg" />
     <Content Include="SQLqueries\PPIJ_DB.sql" />
     <Content Include="SQLqueries\PPIJ_INSERT.sql" />
-    <Resource Include="Materijali o elementima\wiki_linkovi.txt" />
+    <Resource Include="Resources\Materijali o elementima\wiki_linkovi.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Sys\" />
