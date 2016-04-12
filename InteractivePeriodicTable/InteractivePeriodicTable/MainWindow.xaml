@@ -124,7 +124,7 @@
                 <Button x:Name="Radon" Content="86&#xA;Rn" HorizontalAlignment="Left" Height="60" Margin="1165,479,0,0" VerticalAlignment="Top" Width="60" Background="#FF9FC8FF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="Ununoctium" Content="118&#xA;Uuo" HorizontalAlignment="Left" Height="60" Margin="1165,539,0,0" VerticalAlignment="Top" Width="60" Background="#FF9FC8FF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="Helium" Content="2&#xA;He" HorizontalAlignment="Left" Height="60" Margin="1165,179,0,0" VerticalAlignment="Top" Width="60" Background="#FF9FC8FF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Lanthanum" Content="57&#xA;La" HorizontalAlignment="Left" Height="60" Margin="325,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Lanthanum" Content="57&#xA;La" HorizontalAlignment="Left" Height="60" Margin="323,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="Actinium" Content="89&#xA;Ac" HorizontalAlignment="Left" Height="60" Margin="323,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="Cerium" Content="58&#xA;Ce" HorizontalAlignment="Left" Height="60" Margin="385,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="Thorium" Content="90&#xA;Th" HorizontalAlignment="Left" Height="60" Margin="383,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
@@ -152,7 +152,7 @@
                 <Button x:Name="Mendelevium" Content="101&#xA;Md" HorizontalAlignment="Left" Height="60" Margin="1042,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="Ytterbium" Content="70&#xA;Yb" HorizontalAlignment="Left" Height="60" Margin="1104,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="Nobelium" Content="102&#xA;No" HorizontalAlignment="Left" Height="60" Margin="1102,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="Lutetium" Content="71&#xA;Lu" HorizontalAlignment="Left" Height="60" Margin="1165,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="Lutetium" Content="71&#xA;Lu" HorizontalAlignment="Left" Height="60" Margin="1163,628,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="Lawrencium" Content="103&#xA;Lr" HorizontalAlignment="Left" Height="60" Margin="1163,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             </Grid>
 
@@ -226,7 +226,7 @@
             </Grid>
 
             <Grid Name="Buttoni_igre" Margin="0,5,0,-5">
-                <Button x:Name="play_quiz" Content="Play a game" HorizontalAlignment="Left" Margin="1339,14,-116,0" VerticalAlignment="Top" Width="108" Click="play_quiz_Click" Background="Transparent" >
+                <Button x:Name="play_quiz" Content="Play a game" HorizontalAlignment="Left" Margin="1223,24,0,0" VerticalAlignment="Top" Width="108" Click="play_quiz_Click" Background="Transparent" >
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Foreground" Value="LightBlue"/>
@@ -248,7 +248,7 @@
                     </Button.Style>
                 </Button>
 
-                <Button x:Name="show_scoreboard" Content="Top 10 users" HorizontalAlignment="Left" Margin="1339,45,-116,0" VerticalAlignment="Top" Width="108" Click="show_scoreboard_Click" Background="Transparent">
+                <Button x:Name="show_scoreboard" Content="Top 10 users" HorizontalAlignment="Left" Margin="1223,45,0,0" VerticalAlignment="Top" Width="108" Click="show_scoreboard_Click" Background="Transparent">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Foreground" Value="LightBlue"/>
@@ -272,7 +272,7 @@
 
 
 
-                <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Margin="1372,733,-116,0" VerticalAlignment="Top" Width="75" Click="update_Click" Background="Transparent">
+                <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Margin="1246,736,0,0" VerticalAlignment="Top" Width="75" Click="update_Click" Background="Transparent">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Foreground" Value="LightBlue"/>
