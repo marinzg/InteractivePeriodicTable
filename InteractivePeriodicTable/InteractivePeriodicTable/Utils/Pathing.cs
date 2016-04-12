@@ -2,7 +2,7 @@
 
 namespace InteractivePeriodicTable
 {
-    public static class PathingHelper
+    public static class Pathing
     {
         public static readonly string localDir = setLocalDir();
         public static readonly string resourcesDir = setResourcesDir(localDir);
