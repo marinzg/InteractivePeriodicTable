@@ -51,7 +51,7 @@ namespace InteractivePeriodicTable
                 json = sr.ReadToEnd();
             }
             dyk = JsonConvert.DeserializeObject<AllFacts>(json);
-            MessageBox.Show(dyk.Facts[0].Fact,"asd");
+
             return;
         }
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)

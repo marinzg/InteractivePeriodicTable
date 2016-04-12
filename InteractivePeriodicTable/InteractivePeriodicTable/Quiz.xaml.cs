@@ -22,12 +22,12 @@ namespace InteractivePeriodicTable
         private QuizQuestions questions = new QuizQuestions();
         private int score = 0;
         private DateTime start;
+        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         public Quiz()
         {
             getQuestions();
             InitializeComponent();
 
-            DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1);
 
@@ -188,10 +188,12 @@ namespace InteractivePeriodicTable
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             TimeSpan elapsed = DateTime.Now - start;
-            timer.Content = "Left: " + Convert.ToString(90 - elapsed.Seconds) + " s";
+            timer.Content = "Left: " + Convert.ToString(30 - elapsed.Seconds) + " s";
 
-            if (elapsed.Seconds >= 90)
+            if (elapsed.Seconds >= 30)
             {
+                dispatcherTimer.Stop();
+
                 SaveScorePrompt window = new SaveScorePrompt(score);
                 window.ShowDialog();
 
