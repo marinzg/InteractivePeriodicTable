@@ -36,8 +36,6 @@ namespace InteractivePeriodicTable
 
         private void Did_you_know_hover(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).checkFacts();
-
             Random rand = new Random();
             int no_of_facts = dyk.Facts.Count;
             int fact_no = rand.Next(0, no_of_facts);

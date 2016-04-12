@@ -28,8 +28,6 @@ namespace InteractivePeriodicTable
         {
             Closing += QuitQuiz;
 
-            ((App)Application.Current).checkQuiz();
-
             getQuestions();
             InitializeComponent();
 
