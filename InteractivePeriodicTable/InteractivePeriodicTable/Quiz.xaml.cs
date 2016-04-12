@@ -93,20 +93,29 @@ namespace InteractivePeriodicTable
 
             Label question_lbl = new Label();
             question_lbl.Content = picked_question.Question;
+            question_lbl.Foreground = Brushes.Blue;
 
             Button A1 = new Button();
             A1.Content = picked_question.A1;
+            A1.Background = Brushes.DeepSkyBlue;
+            A1.Foreground = Brushes.Blue;
 
             Button A2 = new Button();
             A2.Content = picked_question.A2;
+            A2.Background = Brushes.DeepSkyBlue;
+            A2.Foreground = Brushes.Blue;
 
             Button A3 = new Button();
             A3.Content = picked_question.A3;
+            A3.Background = Brushes.DeepSkyBlue;
+            A3.Foreground = Brushes.Blue;
 
             Button A4 = new Button();
             A4.Content = picked_question.A4;
+            A4.Background = Brushes.DeepSkyBlue;
+            A4.Foreground = Brushes.Blue;
 
-            if(picked_question.Answer == "1")
+            if (picked_question.Answer == "1")
             {
                 A1.Click += correctAns;
                 A2.Click += wrongAns;
@@ -149,12 +158,17 @@ namespace InteractivePeriodicTable
 
             Label question_lbl = new Label();
             question_lbl.Content = picked_question.Question;
+            question_lbl.Foreground = Brushes.Blue;
 
             Button A1 = new Button();
             A1.Content = picked_question.A1;
+            A1.Background = Brushes.DeepSkyBlue;
+            A1.Foreground = Brushes.Blue;
 
             Button A2 = new Button();
             A2.Content = picked_question.A2;
+            A2.Background = Brushes.DeepSkyBlue;
+            A2.Foreground = Brushes.Blue;
 
             if (picked_question.Answer == "1")
             {
@@ -196,6 +210,8 @@ namespace InteractivePeriodicTable
 
             Button btn = new Button();
             btn.Content = "OK";
+            btn.Background = Brushes.DeepSkyBlue;
+            btn.Foreground = Brushes.Blue;
             btn.Tag = picked_question.Answer;
             btn.Click += correctPicAns;
 
@@ -208,6 +224,8 @@ namespace InteractivePeriodicTable
         private void correctPicAns(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
+            btn.Background = Brushes.DeepSkyBlue;
+            btn.Foreground = Brushes.Blue;
             if (btn.Tag != null)
             {
                 TextBox txbx = (TextBox)this.sp.FindName("QuizPictures_txbx");
