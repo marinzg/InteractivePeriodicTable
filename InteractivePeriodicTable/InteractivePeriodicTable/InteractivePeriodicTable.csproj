@@ -354,13 +354,12 @@
     <Resource Include="Resources\Images\dyk.png" />
     <Resource Include="Resources\Images\niEq56KiA.gif" />
     <Resource Include="Resources\Images\Pingvin_za_periodni.gif" />
+    <Resource Include="Resources\Images\Quiz\water.jpg" />
     <Content Include="SQLqueries\PPIJ_DB.sql" />
     <Content Include="SQLqueries\PPIJ_INSERT.sql" />
     <Resource Include="Resources\Materijali o elementima\wiki_linkovi.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Images\Quiz\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
