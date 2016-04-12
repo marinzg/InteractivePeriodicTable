@@ -187,54 +187,6 @@ namespace InteractivePeriodicTable
             }
         }
 
-        //nes sto sam isprobavo ranije... gore je lijepsa funkcija
-        /*
-    //Keydown za searchbox -- Urh
-    //capture key-a i prebacivanje fokusa na listbox
-    private void textBox_KeyDown(object sender, KeyEventArgs e)
-    {
-
-        if (e.OriginalSource is TextBox && e.Key==Key.Down)
-        {
-            try
-            {
-                string text = listBox.SelectedItem.ToString();
-                HighLightSpecificElement(text);
-                DeSelectOtherElements(text);
-            }
-            catch{}
-            listBox.Focus();
-        }
-
-
-
-    }
-
-    //Navigacija po listboxu sa key-evima 
-    private void listBox_KeyDownOrUp(object sender, KeyEventArgs e)
-    {
-
-        if (e.Key==Key.Up && listBox.SelectedIndex==0)
-        {
-
-            textBox.Focus();
-        }
-        if (e.Key == Key.Down && (listBox.SelectedIndex < listBox.Items.Count - 1))
-        { 
-            string text = listBox.Items[listBox.SelectedIndex + 1].ToString();
-            HighLightSpecificElement(text);
-            DeSelectOtherElements(text);
-        }
-        if(e.Key==Key.Up && listBox.SelectedIndex>0)
-        {
-            string text = listBox.Items[listBox.SelectedIndex - 1].ToString();
-            HighLightSpecificElement(text);
-            DeSelectOtherElements(text);
-        }
-
-
-    }
-    */
 
         private void HighLightSpecificElement(string name)
         {
