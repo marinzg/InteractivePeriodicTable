@@ -27,13 +27,15 @@ CREATE TABLE QuizYesNo
 CREATE TABLE QuizPictures
 (
 	ID           INTEGER         PRIMARY KEY IDENTITY(1,1),
+	ImageFile    VARBINARY(MAX)  NOT NULL,
 	ImagePath    NVARCHAR(200)   NOT NULL,
 	Answer       NVARCHAR(100)   NOT NULL,
 );
 
 CREATE TABLE UserScore
 (
-	UserName    NVARCHAR(20)    PRIMARY KEY,
+	UserName    NVARCHAR(20)    NOT NULL,
 	Score       INTEGER         NOT NULL
 );
+CREATE INDEX IScore ON UserScore (Score);
 GO

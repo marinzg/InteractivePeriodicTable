@@ -23,9 +23,13 @@ namespace InteractivePeriodicTable
         private int score = 0;
         private DateTime start;
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        private Random rand = new Random();
         public Quiz()
         {
             Closing += QuitQuiz;
+
+            ((App)Application.Current).checkQuiz();
+
             getQuestions();
             InitializeComponent();
 
@@ -57,14 +61,13 @@ namespace InteractivePeriodicTable
 
             scr_lbl.Content = "Score: " + score.ToString();
 
-            Random rand = new Random();
-            byte question_type = (byte)rand.Next(0, 2); // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures
+            byte question_type = (byte)rand.Next(0, 3); // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures
 
             if( question_type == 0 )
             {
                 int no_QuizWith4Ans = questions.QuizWith4Ans.Count;
                 int question_no = rand.Next(0, no_QuizWith4Ans);
-
+                
                 renderQuizWith4Ans(question_no);
             }
             else if( question_type == 1 )
@@ -74,7 +77,7 @@ namespace InteractivePeriodicTable
 
                 renderQuizYesNo(question_no);
             }
-            else if (question_type == 2)
+            else if ( question_type == 2 )
             {
                 int no_QuizPictures = questions.QuizPictures.Count;
                 int question_no = rand.Next(0, no_QuizPictures);
@@ -172,6 +175,53 @@ namespace InteractivePeriodicTable
         }
         private void renderQuizPictures(int question_no)
         {
+            QuizPictures picked_question = questions.QuizPictures[question_no];
+
+            Image image = new Image();
+            
+            image.Width = 300;
+            image.Height = 300;
+
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.UriSource = new Uri(Pathing.imgDir + "\\" + picked_question.ImagePath, UriKind.Absolute);
+            bi.EndInit();
+
+            image.Source = bi;
+
+            TextBox txbx = new TextBox();
+            txbx.Name = "QuizPictures_txbx";
+
+            this.sp.RegisterName(txbx.Name, txbx);
+
+            Button btn = new Button();
+            btn.Content = "OK";
+            btn.Tag = picked_question.Answer;
+            btn.Click += correctPicAns;
+
+            this.sp.Children.Add(image);
+            this.sp.Children.Add(txbx);
+            this.sp.Children.Add(btn);
+
+            return;
+        }
+        private void correctPicAns(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn.Tag != null)
+            {
+                TextBox txbx = (TextBox)this.sp.FindName("QuizPictures_txbx");
+                this.sp.UnregisterName("QuizPictures_txbx");
+
+                if (txbx.Text == btn.Tag.ToString())
+                {
+                    correctAns(sender, e);
+                }
+                else
+                {
+                    wrongAns(sender, e);
+                }
+            }
             return;
         }
         private void correctAns(object sender, RoutedEventArgs e)
