@@ -46,7 +46,7 @@ namespace InteractivePeriodicTable
         private void getFacts()
         {
             string json = "";
-            using (StreamReader sr = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Sys/facts.json"))
+            using (StreamReader sr = new StreamReader(Pathing.sysDir+"\\facts.json"))
             {
                 json = sr.ReadToEnd();
             }

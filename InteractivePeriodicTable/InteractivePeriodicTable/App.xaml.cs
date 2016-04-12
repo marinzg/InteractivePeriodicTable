@@ -67,7 +67,7 @@ namespace InteractivePeriodicTable
         }
         private void checkQuiz()
         {
-            string path_to_quiz = AppDomain.CurrentDomain.BaseDirectory + "/Resources/Sys/quiz.json";
+            string path_to_quiz = Pathing.sysDir + "\\quiz.json";
 
             if (!File.Exists(path_to_quiz))
             {
@@ -79,7 +79,7 @@ namespace InteractivePeriodicTable
         }
         private void checkFacts()
         {
-            string path_to_facts = AppDomain.CurrentDomain.BaseDirectory + "/Resources/Sys/facts.json";
+            string path_to_facts = Pathing.sysDir + "\\facts.json";
 
             if (!File.Exists(path_to_facts))
             {
