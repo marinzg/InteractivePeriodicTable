@@ -25,6 +25,7 @@ namespace InteractivePeriodicTable
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         public Quiz()
         {
+            Closing += QuitQuiz;
             getQuestions();
             InitializeComponent();
 
@@ -201,6 +202,10 @@ namespace InteractivePeriodicTable
             }
 
             return;
+        }
+        public void QuitQuiz(object sender, EventArgs e)
+        {
+            dispatcherTimer.Stop();
         }
     }
 }
