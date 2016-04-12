@@ -22,7 +22,7 @@
 
 
     <Viewbox>
-        <Grid Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" >
+        <Grid Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="Sve_za_scaleanje" >
 
 
             <StackPanel VerticalAlignment="Top">
@@ -156,11 +156,9 @@
                 <Button x:Name="Lawrencium" Content="103&#xA;Lr" HorizontalAlignment="Left" Height="60" Margin="1163,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             </Grid>
 
-            <Grid Margin="-106,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="1331" Height="826">
+            <Grid Margin="-106,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="1331" Height="826" Name="Labeli_i_2_prazna_gumba">
                 <Button x:Name="prazno1" Content="57-71" HorizontalAlignment="Left" Height="60" Margin="263,480,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="prazno2" Content="89-103" HorizontalAlignment="Left" Height="60" Margin="263,539,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-
-
                 <Label Foreground="LightBlue" x:Name="label_group" Content="Group" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="62,23,0,0"/>
                 <Label Foreground="LightBlue" x:Name="label_period" Content="Period" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,92,0,0"/>
                 <Label Foreground="LightBlue" x:Name="label_group_period_Copy" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="23" FontWeight="Bold" Margin="143,14,0,0" Height="60" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
@@ -190,12 +188,13 @@
                 <Label Foreground="LightBlue" x:Name="label_group_period_Copy24" Content="7" HorizontalAlignment="Left" FontSize="23" FontWeight="Bold" Margin="24,539,0,0" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="60" VerticalAlignment="Top"/>
                 <Label x:Name="label" Content="Lanthanides" FontWeight="Bold" FontSize="21.333" HorizontalAlignment="Left" Height="60" Margin="146,634,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue"/>
                 <Label x:Name="label_Copy" Content="Actinides" FontWeight="Bold" FontSize="21.333" HorizontalAlignment="Left" Height="60" Margin="142,693,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue"/>
-                <Label x:Name="label3" Content="Search an element:" HorizontalAlignment="Left" Height="31" Margin="142,92,0,0" VerticalAlignment="Top" Width="170" FontSize="18" FontWeight="Bold" Foreground="LightBlue"/>
+                <Label x:Name="label3" Content="Search an element:" HorizontalAlignment="Left" Height="31" Margin="138,92,0,0" VerticalAlignment="Top" Width="177" FontSize="18" FontWeight="Bold" Foreground="LightBlue"/>
+            </Grid>
 
 
-
-                <TextBox x:Name="textBox"  HorizontalAlignment="Left" Height="33" Margin="319,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
-                <ListBox x:Name="listBox" SelectedIndex="0" HorizontalAlignment="Left" Height="Auto" Margin="301,130,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed" >
+            <Grid Name="Searchbox">
+                <TextBox x:Name="textBox"  HorizontalAlignment="Left" Height="33" Margin="268,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
+                <ListBox x:Name="listBox" SelectedIndex="0" HorizontalAlignment="Left" Height="Auto" Margin="268,130,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed" >
                     <ListBox.Resources>
                         <Style TargetType="ListBox">
                             <Setter Property="ItemContainerStyle">
@@ -211,102 +210,94 @@
                         </Style>
                     </ListBox.Resources>
                 </ListBox>
-
-                <Grid Name="BackgroundZaGif" HorizontalAlignment="Left" Height="56" Margin="595,85,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="0.43,1.474" >
-                    <Grid.Background>
-                        <SolidColorBrush Color="LightBlue" Opacity="0.2" />
-                    </Grid.Background>
-                    <Image x:Name="image1" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill" MouseEnter="Did_you_know_hover" HorizontalAlignment="Center" Height="61" Margin="-2,-5,0,0" VerticalAlignment="Bottom" Width="70" RenderTransformOrigin="0.43,1.474">
-                        <Image.ToolTip>
-                            <ToolTip Background ="Transparent" BorderBrush="Transparent" Placement="Right">
-                                <TextBlock x:Name="fact_tip" TextWrapping="Wrap" FontSize="18" FontWeight="SemiBold" Foreground="LightCoral" Background="{x:Null}"/>
-                            </ToolTip>
-                        </Image.ToolTip>
-                    </Image>
-                </Grid>
-
-                <Grid Name="Buttoni_igre">
-                    <Button x:Name="play_quiz" Content="Play a game" HorizontalAlignment="Left" Margin="1339,14,-116,0" VerticalAlignment="Top" Width="108" Click="play_quiz_Click" Background="Transparent" >
-                        <Button.Style>
-                            <Style TargetType="{x:Type Button}">
-                                <Setter Property="Foreground" Value="LightBlue"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type Button}">
-                                            <Border Background="{TemplateBinding Background}">
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Foreground" Value="Red"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-
-                    <Button x:Name="show_scoreboard" Content="Top 10 users" HorizontalAlignment="Left" Margin="1339,45,-116,0" VerticalAlignment="Top" Width="108" Click="show_scoreboard_Click" Background="Transparent">
-                        <Button.Style>
-                            <Style TargetType="{x:Type Button}">
-                                <Setter Property="Foreground" Value="LightBlue"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type Button}">
-                                            <Border Background="{TemplateBinding Background}">
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Foreground" Value="Red"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-
-
-
-                    <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Margin="1372,733,-116,0" VerticalAlignment="Top" Width="75" Click="update_Click" Background="Transparent">
-                        <Button.Style>
-                            <Style TargetType="{x:Type Button}">
-                                <Setter Property="Foreground" Value="LightBlue"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type Button}">
-                                            <Border Background="{TemplateBinding Background}">
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Foreground" Value="Red"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-
-
-                    <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="0" X2="100" Y2="50" Height="59" Margin="29,51,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="108"/>
-                </Grid>
-
-
-
-
-
-
-
-
-
             </Grid>
+
+            <Grid Name="BackgroundZaGif" HorizontalAlignment="Left" Height="56" Margin="510,81,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="0.43,1.474" >
+                <Grid.Background>
+                    <SolidColorBrush Color="LightBlue" Opacity="0.2" />
+                </Grid.Background>
+                <Image x:Name="image1" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill" MouseEnter="Did_you_know_hover" HorizontalAlignment="Center" Height="61" Margin="-2,-5,0,0" VerticalAlignment="Bottom" Width="70" RenderTransformOrigin="0.43,1.474">
+                    <Image.ToolTip>
+                        <ToolTip Background ="Transparent" BorderBrush="Transparent" Placement="Right">
+                            <TextBlock x:Name="fact_tip" TextWrapping="Wrap" FontSize="18" FontWeight="SemiBold" Foreground="LightCoral" Background="{x:Null}"/>
+                        </ToolTip>
+                    </Image.ToolTip>
+                </Image>
+            </Grid>
+
+            <Grid Name="Buttoni_igre" Margin="0,5,0,-5">
+                <Button x:Name="play_quiz" Content="Play a game" HorizontalAlignment="Left" Margin="1339,14,-116,0" VerticalAlignment="Top" Width="108" Click="play_quiz_Click" Background="Transparent" >
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Foreground" Value="LightBlue"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button x:Name="show_scoreboard" Content="Top 10 users" HorizontalAlignment="Left" Margin="1339,45,-116,0" VerticalAlignment="Top" Width="108" Click="show_scoreboard_Click" Background="Transparent">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Foreground" Value="LightBlue"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+
+
+                <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Margin="1372,733,-116,0" VerticalAlignment="Top" Width="75" Click="update_Click" Background="Transparent">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Foreground" Value="LightBlue"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+
+                <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="0" X2="100" Y2="50" Height="59" Margin="-40,45,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="108"/>
+            </Grid>
+
         </Grid>
     </Viewbox>
 
