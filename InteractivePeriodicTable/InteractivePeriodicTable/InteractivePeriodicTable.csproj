@@ -176,7 +176,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Utils\PathingHelper.cs" />
+    <Compile Include="Utils\Pathing.cs" />
     <Compile Include="PopupWebpage.xaml.cs">
       <DependentUpon>PopupWebpage.xaml</DependentUpon>
     </Compile>
