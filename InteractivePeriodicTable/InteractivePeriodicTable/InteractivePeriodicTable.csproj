@@ -64,6 +64,7 @@
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -134,14 +135,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="LoginPrompt.xaml.cs">
-      <DependentUpon>LoginPrompt.xaml</DependentUpon>
+    <Compile Include="Quiz.xaml.cs">
+      <DependentUpon>Quiz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaveScorePrompt.xaml.cs">
+      <DependentUpon>SaveScorePrompt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScoreBoard.xaml.cs">
+      <DependentUpon>ScoreBoard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\VisualChildren.cs" />
-    <Page Include="LoginPrompt.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -156,6 +159,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PopupWebpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Quiz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaveScorePrompt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScoreBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -308,9 +323,8 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="sys\dyk.json" />
-    <None Include="sys\login.json" />
-    <None Include="sys\quiz.json" />
+    <None Include="Resources\Sys\dyk.json" />
+    <None Include="Resources\Sys\quiz.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -339,8 +353,6 @@
     <Resource Include="Resources\Images\dyk.png" />
     <Resource Include="Resources\Images\niEq56KiA.gif" />
     <Resource Include="Resources\Images\Pingvin_za_periodni.gif" />
-    <Content Include="Resources\PPIJ_DB.sql" />
-    <Content Include="Resources\PPIJ_INSERT.sql" />
     <Content Include="SQLqueries\PPIJ_DB.sql" />
     <Content Include="SQLqueries\PPIJ_INSERT.sql" />
     <Resource Include="Resources\Materijali o elementima\wiki_linkovi.txt" />

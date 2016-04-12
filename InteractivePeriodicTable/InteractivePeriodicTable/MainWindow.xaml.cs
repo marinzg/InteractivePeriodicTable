@@ -7,8 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Input;
 using System.Windows.Controls.Primitives;
-
-
+using Newtonsoft.Json;
 
 namespace InteractivePeriodicTable
 {
@@ -16,12 +15,10 @@ namespace InteractivePeriodicTable
     {
         private Dictionary<string, Brush> previousBackgroundColors = new Dictionary<string, Brush>();
         private Dictionary<string, Brush> previousForegroundColors = new Dictionary<string, Brush>();
-       
-        public User usr;
-        
-
+        private AllFacts dyk = new AllFacts();
         public MainWindow()
         {
+            getFacts();
             InitializeComponent();
             //listBox.PreviewKeyDown += new KeyEventHandler(listBox_KeyDownOrUp); //Marko-eventhandler za listbox navigiranje arrowsima
             //textBox.PreviewKeyDown += new KeyEventHandler(textBox_KeyDown); //Marko-eventhandler za arrow down
@@ -39,13 +36,24 @@ namespace InteractivePeriodicTable
 
         private void Did_you_know_hover(object sender, RoutedEventArgs e)
         {
-            //did_you_know.ToolTip = "Cinjenica";
-            //ili
+            Random rand = new Random();
+            int no_of_facts = dyk.Facts.Count;
+            int fact_no = rand.Next(0, no_of_facts);
             
-            
-
+            fact_tip.Text = dyk.Facts[fact_no].Fact;
+            return;
         }
-
+        private void getFacts()
+        {
+            string json = "";
+            using (StreamReader sr = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Sys/facts.json"))
+            {
+                json = sr.ReadToEnd();
+            }
+            dyk = JsonConvert.DeserializeObject<AllFacts>(json);
+            MessageBox.Show(dyk.Facts[0].Fact,"asd");
+            return;
+        }
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -258,6 +266,18 @@ namespace InteractivePeriodicTable
             }
         }
 
+        private void play_quiz_Click(object sender, RoutedEventArgs e)
+        {
+            Quiz window = new Quiz();
+            window.ShowDialog();
 
+            return;
+        }
+
+        private void show_scoreboard_Click(object sender, RoutedEventArgs e)
+        {
+            ScoreBoard window = new ScoreBoard();
+            window.ShowDialog();
+        }
     }
 }

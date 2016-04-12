@@ -1,0 +1,52 @@
+﻿{
+  "QuizWith4Ans": [
+    {
+      "ID": 0,
+      "Question": "Who discovered phosphorus ?",
+      "Answer": "1",
+      "A1": "Hennig Brand",
+      "A2": "Marie Curie",
+      "A3": "Antoine Laurent de Lavoisier",
+      "A4": "Alfred Nobel"
+    },
+    {
+      "ID": 1,
+      "Question": "What is the first element in the periodic table ?",
+      "Answer": "2",
+      "A1": "Methane",
+      "A2": "Hydrogen",
+      "A3": "Calcium",
+      "A4": "Potassium"
+    }
+  ],
+
+  "QuizYesNo": [
+    {
+      "ID": 0,
+      "Question": "Water boils at 100 C.",
+      "Answer": "1",
+      "A1": "Yes",
+      "A2": "No"
+    },
+    {
+      "ID": 1,
+      "Question": "Water is liquid.",
+      "Answer": "2",
+      "A1": "No",
+      "A2": "Yes"
+    }
+  ],
+
+  "QuizPictures": [
+    {
+      "ID": 0,
+      "ImagePath": "",
+      "Answer": ""
+    },
+    {
+      "ID": 1,
+      "ImagePath": "",
+      "Answer": ""
+    }
+  ]
+}

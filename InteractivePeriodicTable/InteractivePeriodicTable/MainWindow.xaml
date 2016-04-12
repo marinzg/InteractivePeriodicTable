@@ -24,15 +24,7 @@
 
 
             <StackPanel VerticalAlignment="Top">
-                <Menu Width="Auto" Height="Auto" Background="{x:Null}">
-                    <MenuItem Header="_File" Background="LightBlue" >
-                        <MenuItem Header="E_xit" HorizontalAlignment="Left" Width="140" Background="LightBlue" />
-                    </MenuItem>
-                    <MenuItem Header="_Tools" Background="LightBlue">
-                        <MenuItem Header="_Options" HorizontalAlignment="Left" Width="140" Background="LightBlue"/>
-                    </MenuItem>
-                    <MenuItem x:Name="Logout" Header="_Odjava" Click="Logout_Click" Background="LightBlue" />
-                </Menu>
+                <Menu Width="Auto" Height="Auto" Background="{x:Null}"/>
             </StackPanel>
 
 
@@ -224,11 +216,13 @@
                     <Image x:Name="image1" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill" MouseEnter="Did_you_know_hover" HorizontalAlignment="Center" Height="61" Margin="-2,0,0,-5" VerticalAlignment="Center" Width="70" RenderTransformOrigin="0.43,1.474">
                         <Image.ToolTip>
                             <ToolTip Background ="Transparent" BorderBrush="Transparent" Placement="Right">
-                                <TextBlock TextWrapping="Wrap" Text="CINJENICA IDE OVDJE TREBA &#xA;PROGRAMSKI ODRADITI RANDOM &#xA;DODJELU CINJENICA U .CS-u...DODAO SAM MOUSE HOVER EVENT NA &#xA;OVO OSTALO JE U XAML-u" FontSize="18" FontWeight="SemiBold" Foreground="LightCoral" Background="{x:Null}"/>
+                                <TextBlock x:Name="fact_tip" TextWrapping="Wrap" Text="CINJENICA IDE OVDJE TREBA &#xA;PROGRAMSKI ODRADITI RANDOM &#xA;DODJELU CINJENICA U .CS-u...DODAO SAM MOUSE HOVER EVENT NA &#xA;OVO OSTALO JE U XAML-u" FontSize="18" FontWeight="SemiBold" Foreground="LightCoral" Background="{x:Null}"/>
                             </ToolTip>
                         </Image.ToolTip>
                     </Image>
                 </Grid>
+                <Button x:Name="play_quiz" Content="Igraj" HorizontalAlignment="Left" Margin="684,101,0,0" VerticalAlignment="Top" Width="75" Click="play_quiz_Click"/>
+                <Button x:Name="show_scoreboard" Content="Top 10" HorizontalAlignment="Left" Margin="804,101,0,0" VerticalAlignment="Top" Width="75" Click="show_scoreboard_Click"/>
 
 
 
