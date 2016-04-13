@@ -69,7 +69,6 @@ namespace InteractivePeriodicTable
         {
 
             listBox.Items.Clear();
-            
 
             if (textBox.Text.Trim() != "")
             {
