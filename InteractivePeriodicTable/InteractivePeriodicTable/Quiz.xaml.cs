@@ -6,6 +6,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Newtonsoft.Json;
 using System.IO;
+using System.Text;
+using System.Collections.Generic;
 using InteractivePeriodicTable.Utils;
 
 namespace InteractivePeriodicTable
@@ -14,18 +16,23 @@ namespace InteractivePeriodicTable
     {
         private QuizQuestions questions = new QuizQuestions();
         private int score = 0;
+        private bool hasImages = false;
         private DateTime start;
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        private DispatcherTimer colorChanger = new DispatcherTimer();
         private Random rand = new Random();
         public Quiz()
         {
             this.Closing += stopTimer;
 
             getQuestionsFromJSON();
+
+            hasImages = checkImages();
+
             InitializeComponent();
 
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 50);
 
             start = DateTime.Now;
             dispatcherTimer.Start();
@@ -52,7 +59,15 @@ namespace InteractivePeriodicTable
 
             scr_lbl.Content = "Score: " + score.ToString();
 
-            byte question_type = (byte)rand.Next(0, 3); // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures
+            byte question_type = 0;
+            if (hasImages == true)
+            {
+                question_type = (byte)rand.Next(0, 3); // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures
+            }
+            else
+            {
+                question_type = (byte)rand.Next(0, 2); // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures
+            }
 
             if( question_type == 0 )
             {
@@ -210,7 +225,35 @@ namespace InteractivePeriodicTable
             this.sp.Children.Add(txbx);
             this.sp.Children.Add(btn);
 
+            txbx.Focus();
+
             return;
+        }
+        private bool checkImages()
+        {
+            List<string> missingPictures = new List<string>();
+
+            foreach (QuizPictures qp in questions.QuizPictures)
+            {
+                if (File.Exists(Pathing.imgDir + "\\" + qp.ImagePath) == false)
+                {
+                    missingPictures.Add(qp.ImagePath);
+                }
+            }
+
+            if (missingPictures.Count > 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (string s in missingPictures)
+                {
+                    sb.AppendLine(s);
+                }
+                MessageBox.Show("You are missing these images:\n" + sb.ToString() + "\n You won't get questions with images in quiz game.", "Missing images !");
+
+                return false;
+            }
+
+            return true;
         }
 
         private void correctPicAns(object sender, RoutedEventArgs e)
@@ -237,29 +280,58 @@ namespace InteractivePeriodicTable
         private void correctAns(object sender, RoutedEventArgs e)
         {
             score += 1;
+
+            start = start.AddSeconds(5);
+
+            timer.Foreground = Brushes.Green;
+            
+            colorChanger.Interval = new TimeSpan(0,0,0,1);
+            colorChanger.Tick += colorChanger_Tick;
+            colorChanger.Start();
+
             pickQuestion();
+
             return;
         }
         private void wrongAns(object sender, RoutedEventArgs e)
         {
             score -= 1;
+
+            start = start.AddSeconds(-5);
+
+            timer.Foreground = Brushes.Red;
+
+            colorChanger.Interval = new TimeSpan(0, 0, 0, 1);
+            colorChanger.Tick += colorChanger_Tick;
+            colorChanger.Start();
+
             pickQuestion();
+
             return;
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             TimeSpan elapsed = DateTime.Now - start;
-            timer.Content = "Left: " + Convert.ToString(30 - elapsed.Seconds) + " s";
+            timer.Content = "Time left: " + Convert.ToString(30 - elapsed.Seconds) + " s";
 
             if (elapsed.Seconds >= 30)
             {
                 dispatcherTimer.Stop();
 
                 SaveScorePrompt window = new SaveScorePrompt(score);
-                window.ShowDialog();
 
                 this.Close();
+
+                window.ShowDialog();
             }
+
+            return;
+        }
+        private void colorChanger_Tick(object sender, EventArgs e)
+        {
+            colorChanger.Stop();
+
+            timer.Foreground = Brushes.Black;
 
             return;
         }
