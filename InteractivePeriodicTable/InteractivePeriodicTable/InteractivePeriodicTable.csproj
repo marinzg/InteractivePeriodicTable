@@ -136,6 +136,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DragAndDrop_Metali.xaml.cs">
+      <DependentUpon>DragAndDrop_Metali.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DragAndDrop_Skupine.xaml.cs">
+      <DependentUpon>DragAndDrop_Skupine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DragAndDrop_Stanje.xaml.cs">
+      <DependentUpon>DragAndDrop_Stanje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DragAndDrop_Struktura.xaml.cs">
+      <DependentUpon>DragAndDrop_Struktura.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\CrystalStructure.cs" />
     <Compile Include="Models\Element.cs" />
     <Compile Include="Models\ElementCategory.cs" />
@@ -154,6 +166,22 @@
       <DependentUpon>SortElements.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\VisualChildren.cs" />
+    <Page Include="DragAndDrop_Metali.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DragAndDrop_Skupine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DragAndDrop_Stanje.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DragAndDrop_Struktura.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
