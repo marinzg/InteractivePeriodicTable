@@ -17,8 +17,12 @@ Kviz:
 	
 	
 TODO :
-	1. ???
-	2. ??
+	1. Odgovore u kvizu random shuffleati
+	2. U kvizu upisati da se na sliku traži ime elementa / spoja (nije jasno na prvu)
+	3. Drag & Drop nejasan (petar)
+	4. Klik i hover na pingvina bi trebali biti jednaki
+	6. searchbox treba dovršiti
+	7. hover preko elementa u mainwindow treba prikazati elektronsku konfiguraciju (prijedlog: ima negdje na githubu)
 	
 	
 --------------------------------------------------------------------------------------------------------
