@@ -11,11 +11,9 @@ namespace InteractivePeriodicTable
     {
         public static string allElements = getAllElements(Pathing.localDir);
 
-
         private static string getAllElements(string path)
         {
-            StreamReader myFile =
-   new StreamReader(Pathing.resourcesDir + "\\Materijali o elementima\\imena_elemenata.txt");
+            StreamReader myFile = new StreamReader(Pathing.resourcesDir + "\\Materijali o elementima\\imena_elemenata.txt");
 
             string myString = myFile.ReadToEnd();
             myFile.Close();

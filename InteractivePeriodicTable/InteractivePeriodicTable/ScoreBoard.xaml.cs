@@ -16,9 +16,6 @@ using System.Configuration;
 
 namespace InteractivePeriodicTable
 {
-    /// <summary>
-    /// Interaction logic for ScoreBoard.xaml
-    /// </summary>
     public partial class ScoreBoard : Window
     {
         public ScoreBoard()
@@ -55,6 +52,8 @@ namespace InteractivePeriodicTable
         private void close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+
+            return;
         }
     }
 }

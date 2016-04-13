@@ -1,0 +1,23 @@
+﻿<Window x:Class="InteractivePeriodicTable.SortElements"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InteractivePeriodicTable"
+        mc:Ignorable="d"
+        Title="SortElements" Height="515.415" Width="855.813">
+
+   
+
+
+    <Grid>
+        <StackPanel>
+            <Button x:Name="Metali" Click="DragAndDropMetali"  Content="Metali" RenderTransformOrigin="0.948,3.01" Height="50" Margin="374,45,0,0" Width="100" HorizontalAlignment="Right"/>
+            <Button x:Name="Stanje" Click="DragAndDropStanje" Content="Stanje" RenderTransformOrigin="0.948,3.01" Height="50" Margin="374,45,0,0" Width="100" HorizontalAlignment="Right"/>
+            <Button x:Name="Struktura" Click="DragAndDropStruktura" Content="Struktura" RenderTransformOrigin="0.948,3.01" Height="50" Margin="374,45,0,0" Width="100" HorizontalAlignment="Right"/>
+            <Button x:Name="Skupine" Click="DragAndDropSkupine" Content="Skupine" RenderTransformOrigin="0.948,3.01" Height="50" Margin="374,45,0,0" Width="100" HorizontalAlignment="Right"/>
+        </StackPanel>
+
+        <Frame x:Name="Navigation" Height="484" Margin="748,0,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="1.028,0.505"/>
+    </Grid>
+</Window>

@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Newtonsoft.Json;
 using System.IO;
+using InteractivePeriodicTable.Utils;
 
 namespace InteractivePeriodicTable
 {
@@ -26,11 +19,9 @@ namespace InteractivePeriodicTable
         private Random rand = new Random();
         public Quiz()
         {
-            Closing += QuitQuiz;
+            this.Closing += stopTimer;
 
-            ((App)Application.Current).checkQuiz();
-
-            getQuestions();
+            getQuestionsFromJSON();
             InitializeComponent();
 
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
@@ -41,7 +32,7 @@ namespace InteractivePeriodicTable
 
             pickQuestion();
         }
-        private void getQuestions()
+        private void getQuestionsFromJSON()
         {
             string json = "";
             using (StreamReader sr = new StreamReader(Pathing.sysDir + "/quiz.json"))
@@ -221,6 +212,7 @@ namespace InteractivePeriodicTable
 
             return;
         }
+
         private void correctPicAns(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
@@ -271,9 +263,10 @@ namespace InteractivePeriodicTable
 
             return;
         }
-        public void QuitQuiz(object sender, EventArgs e)
+        private void stopTimer(object sender, EventArgs e)
         {
             dispatcherTimer.Stop();
+            return;
         }
     }
 }

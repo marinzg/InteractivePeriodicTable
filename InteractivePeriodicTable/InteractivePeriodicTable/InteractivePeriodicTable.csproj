@@ -136,6 +136,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DragAndDrop_Metali.xaml.cs">
+      <DependentUpon>DragAndDrop_Metali.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DragAndDrop_Skupine.xaml.cs">
+      <DependentUpon>DragAndDrop_Skupine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DragAndDrop_Stanje.xaml.cs">
+      <DependentUpon>DragAndDrop_Stanje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DragAndDrop_Struktura.xaml.cs">
+      <DependentUpon>DragAndDrop_Struktura.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CrystalStructure.cs" />
+    <Compile Include="Models\Element.cs" />
+    <Compile Include="Models\ElementCategory.cs" />
+    <Compile Include="Models\ElementSubcategory.cs" />
+    <Compile Include="Models\Phase.cs" />
     <Compile Include="Quiz.xaml.cs">
       <DependentUpon>Quiz.xaml</DependentUpon>
     </Compile>
@@ -145,7 +162,33 @@
     <Compile Include="ScoreBoard.xaml.cs">
       <DependentUpon>ScoreBoard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SortElements.xaml.cs">
+      <DependentUpon>SortElements.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\AllFacts.cs" />
+    <Compile Include="Utils\Facts.cs" />
+    <Compile Include="Utils\QuizPictures.cs" />
+    <Compile Include="Utils\QuizQuestions.cs" />
+    <Compile Include="Utils\QuizWith4Ans.cs" />
+    <Compile Include="Utils\QuizYesNo.cs" />
+    <Compile Include="Utils\Update.cs" />
     <Compile Include="Utils\VisualChildren.cs" />
+    <Page Include="DragAndDrop_Metali.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DragAndDrop_Skupine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DragAndDrop_Stanje.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DragAndDrop_Struktura.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -172,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ScoreBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SortElements.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

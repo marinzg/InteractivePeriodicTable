@@ -18,7 +18,7 @@ namespace InteractivePeriodicTable
 {
     public partial class SaveScorePrompt : Window
     {
-        public int score;
+        private int score;
         public SaveScorePrompt(int scr)
         {
             this.score = scr;
@@ -48,6 +48,7 @@ namespace InteractivePeriodicTable
                 MessageBox.Show("Please enter shorter user name !", "Error");
                 return;
             }
+
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
             {
                 conn.Open();
