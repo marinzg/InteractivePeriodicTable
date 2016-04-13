@@ -42,7 +42,7 @@ namespace InteractivePeriodicTable
 
         private void DragAndDropStanje(object sender, RoutedEventArgs e)
         {
-            Navigation.Content = new DragAndDrop_Stanje();
+            Navigation.Content = new DragAndDrop_Stanje(elements, phases);
         }
 
         private void DragAndDropStruktura(object sender, RoutedEventArgs e)
