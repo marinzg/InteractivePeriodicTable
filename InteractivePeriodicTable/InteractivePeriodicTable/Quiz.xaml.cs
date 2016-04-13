@@ -22,6 +22,7 @@ namespace InteractivePeriodicTable
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private DispatcherTimer colorChanger = new DispatcherTimer();
         private Random rand = new Random();
+        //asd
         public Quiz()
         {
             this.Closing += stopTimer;
