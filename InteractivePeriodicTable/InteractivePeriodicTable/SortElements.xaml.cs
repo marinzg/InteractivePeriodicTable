@@ -52,7 +52,7 @@ namespace InteractivePeriodicTable
 
         private void DragAndDropSkupine(object sender, RoutedEventArgs e)
         {
-            Navigation.Content = new DragAndDrop_Skupine();
+            Navigation.Content = new DragAndDrop_Skupine(elements, subcategories);
         }
 
         private void GetData()
@@ -208,7 +208,7 @@ namespace InteractivePeriodicTable
                 new ElementSubcategory() {id = 3, name = "lanthanoid" },
                 new ElementSubcategory() {id = 4, name = "actinoid" },
                 new ElementSubcategory() {id = 5, name = "transtition metal" },
-                new ElementSubcategory() {id = 6, name = "post-transition metal" },
+                new ElementSubcategory() {id = 6, name = "posttransition metal" },
                 new ElementSubcategory() {id = 7, name = "other nonmetal" },
                 new ElementSubcategory() {id = 8, name = "halogen" },
                 new ElementSubcategory() {id = 9, name = "neble gas" }
