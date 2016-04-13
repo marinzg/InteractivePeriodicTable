@@ -15,7 +15,6 @@ namespace InteractivePeriodicTable
     /// </summary>
     public partial class DragAndDrop_Stanje : Page
     {
-
         private Point startPoint;
         private List<Element> allElements;
         private List<Phase> phases;
@@ -189,21 +188,19 @@ namespace InteractivePeriodicTable
                     DisplayUpdatedPoints();
                     AutoScroll();
                 }
-
                 if (!DragList.HasItems) GameOver();
             }
         }
         #endregion
-
+        
         private void AutoScroll()
         {
             //auto scroll all the lists
-            if (DropListSolid.Items.Count > 0)
-                DropListSolid.ScrollIntoView(DropListSolid.Items[DropListSolid.Items.Count - 1]);
-            if (DropListGas.Items.Count > 0)
-                DropListGas.ScrollIntoView(DropListGas.Items[DropListGas.Items.Count - 1]);
-            if (DropListLiquid.Items.Count > 0)
-                DropListLiquid.ScrollIntoView(DropListLiquid.Items[DropListLiquid.Items.Count - 1]);
+            foreach (ListBox lb in Utils.VisualChildren.FindVisualChildren<ListBox>(this))
+            {
+                if (lb.Items.Count > 0)
+                    lb.ScrollIntoView(lb.Items[lb.Items.Count - 1]);
+            }
         }
 
         private void DisplayUpdatedPoints()
@@ -228,5 +225,4 @@ namespace InteractivePeriodicTable
                 correctGrouping.Add(phase, points);
         }
     }
-
 }
