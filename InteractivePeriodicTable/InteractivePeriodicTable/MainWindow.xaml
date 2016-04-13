@@ -193,7 +193,7 @@
 
 
             <Grid Name="Searchbox">
-                <TextBox x:Name="textBox"  HorizontalAlignment="Left" Height="33" Margin="268,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
+                <TextBox x:Name="textBox"  HorizontalAlignment="Left" Height="33" Margin="307,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
                 <ListBox x:Name="listBox" SelectedIndex="0" HorizontalAlignment="Left" Height="Auto" Margin="268,130,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed" >
                     <ListBox.Resources>
                         <Style TargetType="ListBox">
@@ -212,11 +212,9 @@
                 </ListBox>
             </Grid>
 
-            <Grid Name="BackgroundZaGif" HorizontalAlignment="Left" Height="56" Margin="510,81,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="0.43,1.474" >
-                <Grid.Background>
-                    <SolidColorBrush Color="LightBlue" Opacity="0.2" />
-                </Grid.Background>
-                <Image x:Name="image1" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill" MouseEnter="Did_you_know_hover" HorizontalAlignment="Center" Height="61" Margin="-2,-5,0,0" VerticalAlignment="Bottom" Width="70" RenderTransformOrigin="0.43,1.474">
+            <Grid Name="BackgroundZaGif" HorizontalAlignment="Left" Height="53" Margin="524,84,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.43,1.474" >
+
+                <Image x:Name="image1" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill" MouseEnter="Did_you_know_hover" HorizontalAlignment="Center" Height="61" Margin="-16,0,0,-48" VerticalAlignment="Bottom" Width="70" RenderTransformOrigin="0.43,1.474">
                     <Image.ToolTip>
                         <ToolTip Background ="Transparent" BorderBrush="Transparent" Placement="Right">
                             <TextBlock x:Name="fact_tip" TextWrapping="Wrap" FontSize="18" FontWeight="SemiBold" Foreground="LightCoral" Background="{x:Null}"/>
@@ -225,8 +223,12 @@
                 </Image>
             </Grid>
 
-            <Grid Name="Buttoni_igre" Margin="0,5,0,-5">
-                <Button x:Name="play_quiz" Content="Play a game" HorizontalAlignment="Left" Margin="1223,24,0,0" VerticalAlignment="Top" Width="108" Click="play_quiz_Click" Background="Transparent" >
+            <Grid Name="Buttoni_igre" Margin="0,5,0,-5" HorizontalAlignment="Left" Width="1331">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="87*"/>
+                    <RowDefinition Height="326*"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="play_quiz" Content="Play a quiz" HorizontalAlignment="Left" Margin="1226,24,0,0" VerticalAlignment="Top" Width="105" Click="play_quiz_Click" Background="Transparent" >
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Foreground" Value="LightBlue"/>
@@ -248,7 +250,7 @@
                     </Button.Style>
                 </Button>
 
-                <Button x:Name="show_scoreboard" Content="Top 10 users" HorizontalAlignment="Left" Margin="1223,45,0,0" VerticalAlignment="Top" Width="108" Click="show_scoreboard_Click" Background="Transparent">
+                <Button x:Name="show_scoreboard" Content="Top 10 players" HorizontalAlignment="Left" Margin="1246,45,0,0" VerticalAlignment="Top" Width="85" Click="show_scoreboard_Click" Background="Transparent">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Foreground" Value="LightBlue"/>
@@ -272,7 +274,7 @@
 
 
 
-                <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Margin="1246,736,0,0" VerticalAlignment="Top" Width="75" Click="update_Click" Background="Transparent">
+                <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Margin="1246,562.256,0,0" VerticalAlignment="Top" Width="75" Click="update_Click" Background="Transparent" Grid.Row="1">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Foreground" Value="LightBlue"/>
@@ -295,8 +297,8 @@
                 </Button>
 
 
-                <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="0" X2="100" Y2="50" Height="59" Margin="-40,45,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="108"/>
-                <Button x:Name="DragDropGames" Content="DragDropGame" HorizontalAlignment="Left" Margin="1223,66,0,0" VerticalAlignment="Top" Width="108" Click="play_DragDrop_Click" Background="Transparent">
+                <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="0" X2="100" Y2="50" Height="59" Margin="21,45,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="108"/>
+                <Button x:Name="DragDropGames" Content="Drag and Drop" HorizontalAlignment="Left" Margin="1246,66,0,0" VerticalAlignment="Top" Width="85" Click="play_DragDrop_Click" Background="Transparent">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Foreground" Value="LightBlue"/>
