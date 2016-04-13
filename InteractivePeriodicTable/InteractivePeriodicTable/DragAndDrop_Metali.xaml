@@ -7,7 +7,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="DragAndDrop_Metali" Height="515.415" Width="855.813">
-
     
     <Grid>
         <ListBox x:Name="DropListMetals" HorizontalAlignment="Left" Height="120" Margin="10,136,0,0" VerticalAlignment="Top" Width="150" Drop="DropList_Drop" DragEnter="DropList_DragEnter" AllowDrop="True"/>

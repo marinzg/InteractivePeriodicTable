@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InteractivePeriodicTable"
         mc:Ignorable="d"
-        Title="SortElements" Height="515.415" Width="855.813">
+        Title="SortElements" Height="515.415" Width="855.813" WindowStartupLocation="CenterScreen">
 
    
 
@@ -18,6 +18,6 @@
             <Button x:Name="Skupine" Click="DragAndDropSkupine" Content="Skupine" RenderTransformOrigin="0.948,3.01" Height="50" Margin="374,45,0,0" Width="100" HorizontalAlignment="Right"/>
         </StackPanel>
 
-        <Frame x:Name="Navigation" Height="484" Margin="748,0,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="1.028,0.505"/>
+        <Frame x:Name="Navigation" RenderTransformOrigin="1.028,0.505" NavigationUIVisibility="Hidden" Margin="0,0,103,0"/>
     </Grid>
 </Window>

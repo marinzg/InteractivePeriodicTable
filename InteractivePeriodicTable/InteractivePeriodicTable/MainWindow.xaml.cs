@@ -43,6 +43,17 @@ namespace InteractivePeriodicTable
             fact_tip.Text = facts.Facts[fact_no].Fact;
             return;
         }
+
+        private void Did_you_know_click(object sender, RoutedEventArgs e)
+        {
+            Random rand = new Random();
+            int no_of_facts = facts.Facts.Count;
+            int fact_no = rand.Next(0, no_of_facts);
+
+            fact_tip.Text = facts.Facts[fact_no].Fact;
+            
+        }
+
         private void getFactsFromJSON()
         {
             string json = "";
@@ -58,7 +69,6 @@ namespace InteractivePeriodicTable
         {
 
             listBox.Items.Clear();
-            
 
             if (textBox.Text.Trim() != "")
             {
@@ -123,11 +133,14 @@ namespace InteractivePeriodicTable
             
             foreach (Button otherButtonsInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
             {
-                if (listBox.Items.Contains(otherButtonsInForm.Name.ToString())==false)
+                if(otherButtonsInForm.Name.ToString()!= "play_quiz" && otherButtonsInForm.Name.ToString() != "show_scoreboard" && otherButtonsInForm.Name.ToString() != "update" && otherButtonsInForm.Name.ToString() != "DragDropGames")
                 {
-                    otherButtonsInForm.Background = Brushes.Gainsboro;
+                    if (listBox.Items.Contains(otherButtonsInForm.Name.ToString()) == false)
+                    {
+                        otherButtonsInForm.Background = Brushes.Gainsboro;
+                    }
                 }
-               
+
 
             }
         }
@@ -202,9 +215,12 @@ namespace InteractivePeriodicTable
         {
             foreach (Button otherButtonsInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
             {
-                if (name!=otherButtonsInForm.Name.ToString())
+                if(otherButtonsInForm.Name.ToString() != "play_quiz" && otherButtonsInForm.Name.ToString() != "show_scoreboard" && otherButtonsInForm.Name.ToString() != "update" && otherButtonsInForm.Name.ToString() != "DragDropGames")
                 {
-                    otherButtonsInForm.Background = Brushes.Gainsboro;
+                    if (name != otherButtonsInForm.Name.ToString())
+                    {
+                        otherButtonsInForm.Background = Brushes.Gainsboro;
+                    }
                 }
 
 
@@ -245,6 +261,11 @@ namespace InteractivePeriodicTable
         {
             SortElements window = new SortElements();
             window.ShowDialog();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Keyboard.ClearFocus();
         }
     }
 }

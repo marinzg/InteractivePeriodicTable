@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using InteractivePeriodicTable.Models;
 
 namespace InteractivePeriodicTable
 {
@@ -20,8 +21,11 @@ namespace InteractivePeriodicTable
     /// </summary>
     public partial class DragAndDrop_Struktura : Page
     {
-        public DragAndDrop_Struktura()
+        private List<CrystalStructure> crystalStructures;
+
+        public DragAndDrop_Struktura(List<CrystalStructure> argCrystalStructures)
         {
+            this.crystalStructures = argCrystalStructures;
             InitializeComponent();
         }
     }
