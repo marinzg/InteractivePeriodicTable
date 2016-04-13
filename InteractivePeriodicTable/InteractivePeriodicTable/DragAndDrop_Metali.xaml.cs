@@ -23,8 +23,10 @@ namespace InteractivePeriodicTable
     {
         Point startPoint;
         List<Element> elements;
-        public DragAndDrop_Metali()
+        
+        public DragAndDrop_Metali(List<Element> argElements)
         {
+            this.elements = argElements;
             InitializeComponent();
             HashSet<int> randomNumbers = new HashSet<int>();
             Random rand = new Random();
@@ -53,12 +55,6 @@ namespace InteractivePeriodicTable
                         break;
                 }
             }
-        }
-        
-        public DragAndDrop_Metali(List<Element> argElements)
-        {
-            InitializeComponent();
-            this.elements = argElements;
         }
         
 

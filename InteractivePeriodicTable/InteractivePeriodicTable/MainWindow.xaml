@@ -25,9 +25,9 @@
         <Grid Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="Sve_za_scaleanje" >
 
 
-            <StackPanel VerticalAlignment="Top">
+            <!--<StackPanel VerticalAlignment="Top">
                 <Menu Width="Auto" Height="Auto" Background="{x:Null}"/>
-            </StackPanel>
+            </StackPanel>-->
 
 
 
@@ -213,32 +213,32 @@
                 </ListBox>
             </Grid>
 
-            <Grid Name="BackgroundZaGif" HorizontalAlignment="Left" Height="58" Margin="524,80,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.43,1.474"  >
+            <Grid Name="BackgroundZaGif" MouseLeftButtonDown="Did_you_know_click" MouseEnter="Did_you_know_hover" MouseLeave="Did_you_know_leave" HorizontalAlignment="Left" Height="58" Margin="524,80,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.43,1.474"  >
                 <Grid.Background>
                     <SolidColorBrush Color="LightBlue" Opacity="0.2"></SolidColorBrush>
                 </Grid.Background>
-                <Image x:Name="image1" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill" MouseEnter="Did_you_know_hover" HorizontalAlignment="Center" Height="61" Margin="-8,-7,-8,0" VerticalAlignment="Bottom" Width="70" RenderTransformOrigin="0.43,1.474">
-                    <Image.ToolTip>
-                        <ToolTip Background ="Transparent" BorderBrush="Transparent" Placement="Right">
-                            <TextBlock x:Name="fact_tip" TextWrapping="Wrap" FontSize="18" FontWeight="SemiBold" Foreground="LightCoral" Background="{x:Null}"/>
-                        </ToolTip>
-                    </Image.ToolTip>
+
+                <TextBlock Name="fact_tip"  TextWrapping="WrapWithOverflow" Visibility="Hidden" Margin="67,-3,-527,-89" Background ="Transparent" FontSize="14" FontWeight="SemiBold" Foreground="LightCoral" RenderTransformOrigin="0.5,0.5"></TextBlock>
+
+                <Image x:Name="image1" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill"   HorizontalAlignment="Center" Height="61" Margin="-8,-7,-8,0" VerticalAlignment="Bottom" Width="70" RenderTransformOrigin="0.43,1.474" >
+
                 </Image>
             </Grid>
 
-            <Grid Name="Buttoni_igre" Margin="0,5,0,-5" HorizontalAlignment="Left" Width="1331">
+            <Grid Name="Buttoni_igre" Margin="0,10,-62,-10" HorizontalAlignment="Left" Width="1393">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="51*"/>
                     <RowDefinition Height="775*"/>
                 </Grid.RowDefinitions>
 
-                <Button x:Name="play_quiz" Content="Play a quiz" HorizontalAlignment="Left" Margin="1200,23,0,0" VerticalAlignment="Top" Width="117" Click="play_quiz_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
+
+                <Label x:Name="play_quiz" Content="Play a quiz" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="1200,23,0,0" VerticalAlignment="Top" Width="135" MouseLeftButtonDown="play_quiz_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
+                    <Label.Style>
+                        <Style TargetType="{x:Type Label}">
                             <Setter Property="Foreground" Value="LightBlue"/>
                             <Setter Property="Template">
                                 <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
+                                    <ControlTemplate TargetType="{x:Type Label}">
                                         <Border Background="{TemplateBinding Background}">
                                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </Border>
@@ -251,16 +251,16 @@
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
-                    </Button.Style>
-                </Button>
+                    </Label.Style>
+                </Label>
 
-                <Button x:Name="show_scoreboard" Content="Top 10 players" HorizontalAlignment="Left" Margin="1200,29.807,0,0" VerticalAlignment="Top" Width="117" Click="show_scoreboard_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
+                <Label x:Name="show_scoreboard" FontWeight="Bold" FontSize="18" Content="Top 10 players" HorizontalAlignment="Left" Margin="1200,30,0,0" VerticalAlignment="Top" Width="135" MouseLeftButtonDown="show_scoreboard_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1">
+                    <Label.Style>
+                        <Style TargetType="{x:Type Label}">
                             <Setter Property="Foreground" Value="LightBlue"/>
                             <Setter Property="Template">
                                 <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
+                                    <ControlTemplate TargetType="{x:Type Label}">
                                         <Border Background="{TemplateBinding Background}">
                                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </Border>
@@ -273,18 +273,17 @@
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
-                    </Button.Style>
-                </Button>
+                    </Label.Style>
+                </Label>
 
 
-
-                <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Margin="1200,671.807,0,0" VerticalAlignment="Top" Width="117" Click="update_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.169,-10.768" Grid.Row="1">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
+                <Label x:Name="DragDropGames" FontWeight="Bold" FontSize="18" Content="Drag and Drop" HorizontalAlignment="Left" Margin="1200,50,0,0" VerticalAlignment="Top" Width="135" MouseLeftButtonDown="play_DragDrop_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2">
+                    <Label.Style>
+                        <Style TargetType="{x:Type Label}">
                             <Setter Property="Foreground" Value="LightBlue"/>
                             <Setter Property="Template">
                                 <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
+                                    <ControlTemplate TargetType="{x:Type Label}">
                                         <Border Background="{TemplateBinding Background}">
                                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </Border>
@@ -297,29 +296,8 @@
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
-                    </Button.Style>
-                </Button>
-                <Button x:Name="DragDropGames" Content="Drag and Drop" HorizontalAlignment="Left" Margin="1200,50,0,0" VerticalAlignment="Top" Width="117" Click="play_DragDrop_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Foreground" Value="LightBlue"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border Background="{TemplateBinding Background}">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="Red"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
+                    </Label.Style>
+                </Label>
             </Grid>
 
 

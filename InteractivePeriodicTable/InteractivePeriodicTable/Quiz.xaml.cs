@@ -22,7 +22,6 @@ namespace InteractivePeriodicTable
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private DispatcherTimer colorChanger = new DispatcherTimer();
         private Random rand = new Random();
-        //asd
         public Quiz()
         {
             this.Closing += stopTimer;
@@ -102,6 +101,8 @@ namespace InteractivePeriodicTable
             Label question_lbl = new Label();
             question_lbl.Content = picked_question.Question;
             question_lbl.Foreground = Brushes.Blue;
+            question_lbl.FontSize = 14;
+            question_lbl.FontWeight = FontWeights.SemiBold;
 
             Button A1 = new Button();
             A1.Content = picked_question.A1;
@@ -161,6 +162,8 @@ namespace InteractivePeriodicTable
             Label question_lbl = new Label();
             question_lbl.Content = picked_question.Question;
             question_lbl.Foreground = Brushes.Blue;
+            question_lbl.FontSize = 14;
+            question_lbl.FontWeight = FontWeights.SemiBold;
 
             Button A1 = new Button();
             A1.Content = picked_question.A1;
@@ -192,6 +195,9 @@ namespace InteractivePeriodicTable
 
             Label lbl = new Label();
             lbl.Content = "Write what you see in this image";
+            lbl.FontSize = 14;
+            lbl.FontWeight = FontWeights.SemiBold;
+            lbl.Foreground = Brushes.Blue;
 
             Image image = new Image();
             image.Width = 300;
@@ -206,6 +212,8 @@ namespace InteractivePeriodicTable
             TextBox txbx = new TextBox();
             txbx.Name = "QuizPictures_txbx";
             txbx.TextAlignment = TextAlignment.Center;
+            txbx.Width = 120;
+            txbx.Margin = new Thickness(0, 5, 0, 5);
 
             this.sp.RegisterName(txbx.Name, txbx);
 

@@ -41,8 +41,28 @@ namespace InteractivePeriodicTable
             int fact_no = rand.Next(0, no_of_facts);
             
             fact_tip.Text = facts.Facts[fact_no].Fact;
-            return;
+            fact_tip.Visibility = Visibility.Visible;
+           
         }
+
+        private void Did_you_know_leave(object sender, RoutedEventArgs e)
+        {
+            
+            fact_tip.Visibility = Visibility.Hidden;
+
+        }
+
+        private void Did_you_know_click(object sender, RoutedEventArgs e)
+        {
+            Random rand = new Random();
+            int no_of_facts = facts.Facts.Count;
+            int fact_no = rand.Next(0, no_of_facts);
+
+            fact_tip.Text = facts.Facts[fact_no].Fact;
+            fact_tip.Visibility = Visibility.Visible;
+            
+        }
+
         private void getFactsFromJSON()
         {
             string json = "";
@@ -58,7 +78,6 @@ namespace InteractivePeriodicTable
         {
 
             listBox.Items.Clear();
-            
 
             if (textBox.Text.Trim() != "")
             {
@@ -231,22 +250,7 @@ namespace InteractivePeriodicTable
             window.ShowDialog();
         }
 
-        private void update_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Update up = new Update();
-                up.updateFacts();
-                up.updateQuiz();
-
-                MessageBox.Show("Quiz and Facts updated successfully !", "Information");
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-            }
-            return;
-        }
+        
         private void play_DragDrop_Click(object sender, RoutedEventArgs e)
         {
             SortElements window = new SortElements();

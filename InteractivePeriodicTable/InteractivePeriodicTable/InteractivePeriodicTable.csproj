@@ -154,6 +154,9 @@
     <Compile Include="Models\ElementCategory.cs" />
     <Compile Include="Models\ElementSubcategory.cs" />
     <Compile Include="Models\Phase.cs" />
+    <Compile Include="ProgressBarWindow.xaml.cs">
+      <DependentUpon>ProgressBarWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Quiz.xaml.cs">
       <DependentUpon>Quiz.xaml</DependentUpon>
     </Compile>
@@ -204,6 +207,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PopupWebpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgressBarWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
