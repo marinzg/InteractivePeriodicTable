@@ -41,7 +41,15 @@ namespace InteractivePeriodicTable
             int fact_no = rand.Next(0, no_of_facts);
             
             fact_tip.Text = facts.Facts[fact_no].Fact;
-            return;
+            fact_view.Visibility = Visibility.Visible;
+           
+        }
+
+        private void Did_you_know_leave(object sender, RoutedEventArgs e)
+        {
+            
+            fact_view.Visibility = Visibility.Hidden;
+
         }
 
         private void Did_you_know_click(object sender, RoutedEventArgs e)
@@ -51,6 +59,7 @@ namespace InteractivePeriodicTable
             int fact_no = rand.Next(0, no_of_facts);
 
             fact_tip.Text = facts.Facts[fact_no].Fact;
+            fact_view.Visibility = Visibility.Visible;
             
         }
 
