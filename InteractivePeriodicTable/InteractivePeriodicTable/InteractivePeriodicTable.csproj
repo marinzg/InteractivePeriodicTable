@@ -154,6 +154,9 @@
     <Compile Include="Models\ElementCategory.cs" />
     <Compile Include="Models\ElementSubcategory.cs" />
     <Compile Include="Models\Phase.cs" />
+    <Compile Include="ProgressBarWindow.xaml.cs">
+      <DependentUpon>ProgressBarWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Quiz.xaml.cs">
       <DependentUpon>Quiz.xaml</DependentUpon>
     </Compile>
@@ -168,6 +171,7 @@
     </Compile>
     <Compile Include="Utils\AllFacts.cs" />
     <Compile Include="Utils\Facts.cs" />
+    <Compile Include="Utils\ProgressBar.cs" />
     <Compile Include="Utils\QuizPictures.cs" />
     <Compile Include="Utils\QuizQuestions.cs" />
     <Compile Include="Utils\QuizWith4Ans.cs" />
@@ -204,6 +208,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PopupWebpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgressBarWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
