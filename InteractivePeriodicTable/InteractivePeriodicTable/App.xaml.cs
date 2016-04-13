@@ -25,8 +25,9 @@ namespace InteractivePeriodicTable
 
 
             progBar.ShowDialog();
-
+            //TODO @ petar: dovršiti logiku iza ovoga
             Thread.Sleep(700);
+            progBar.worker.CancelAsync();
             workerUpdateQuiz.CancelAsync();
             mainView.Show();
 
