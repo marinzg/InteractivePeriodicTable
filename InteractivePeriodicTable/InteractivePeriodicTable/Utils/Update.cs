@@ -97,7 +97,7 @@ namespace InteractivePeriodicTable.Utils
                 using (SqlCommand cmnd = new SqlCommand(
                                                         "SELECT '{' + '\"ID\":' + CAST(ID AS VARCHAR(4)) + ',' +" +
                                                                     "'\"ImagePath\":' + '\"' + ImagePath + '\",' +" +
-                                                                    "'\"Answer\":' + '\"' + CAST(Answer AS CHAR(1)) + '\"' +" +
+                                                                    "'\"Answer\":' + '\"' + CAST(Answer AS NVARCHAR(100)) + '\"' +" +
                                                                 "'},' AS data " +
                                                         "FROM QuizPictures"
                                                         , conn))

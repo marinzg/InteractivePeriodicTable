@@ -297,7 +297,7 @@
                 </Button>
 
 
-                <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="0" X2="100" Y2="50" Height="59" Margin="21,45,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="108"/>
+                <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="0" X2="100" Y2="50" Height="59" Margin="-33,45,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="108"/>
                 <Button x:Name="DragDropGames" Content="Drag and Drop" HorizontalAlignment="Left" Margin="1246,66,0,0" VerticalAlignment="Top" Width="85" Click="play_DragDrop_Click" Background="Transparent">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
