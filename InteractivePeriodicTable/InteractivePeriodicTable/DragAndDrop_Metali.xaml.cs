@@ -57,6 +57,7 @@ namespace InteractivePeriodicTable
         
         public DragAndDrop_Metali(List<Element> argElements)
         {
+            InitializeComponent();
             this.elements = argElements;
         }
         
