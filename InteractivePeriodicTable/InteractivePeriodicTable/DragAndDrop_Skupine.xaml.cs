@@ -91,6 +91,15 @@ namespace InteractivePeriodicTable
             //clear listboxes where elements were dropped
             foreach (ListBox l in Utils.VisualChildren.FindVisualChildren<ListBox>(this))
                 l.Items.Clear();
+            List<string> keys = new List<String>();
+            foreach (string key in correctGrouping.Keys)
+                keys.Add(key);
+            foreach (string s in keys)
+            {
+                correctGrouping[s] = 0;
+            }
+            DisplayUpdatedPoints();
+            correctGrouping.Clear();
         }
 
         private void GameOver()

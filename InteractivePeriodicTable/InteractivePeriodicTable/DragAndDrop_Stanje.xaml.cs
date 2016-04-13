@@ -65,14 +65,23 @@ namespace InteractivePeriodicTable
 
             return tmpElements;
         }
-        
+
         private void Clear()
         {
             //clear listboxes where elements were dropped
-            foreach(ListBox l in Utils.VisualChildren.FindVisualChildren<ListBox>(this))
+            foreach (ListBox l in Utils.VisualChildren.FindVisualChildren<ListBox>(this))
                 l.Items.Clear();
+            List<string> keys = new List<String>();
+            foreach (string key in correctGrouping.Keys)
+                keys.Add(key);
+            foreach(string s in keys)
+            {
+                correctGrouping[s] = 0;
+            }
+            DisplayUpdatedPoints();
+            correctGrouping.Clear();
         }
-        
+
         private void GameOver()
         {
             int score = 0;
@@ -158,7 +167,7 @@ namespace InteractivePeriodicTable
                 ListBox listView = sender as ListBox;
                 
                 //there was a bug that tried drop element twice
-                if (element.Parent.Equals(DragList))
+                if (element.Parent != null && element.Parent.Equals(DragList))
                 {
                     string phase = Regex.Replace(listView.Name, @"DropList", @"").ToLower();
                     int phaseId = phases.Where(p => p.name.Equals(phase)).ElementAt(0).id;
