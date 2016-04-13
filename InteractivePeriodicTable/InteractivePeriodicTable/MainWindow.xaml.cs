@@ -39,15 +39,15 @@ namespace InteractivePeriodicTable
             Random rand = new Random();
             int no_of_facts = facts.Facts.Count;
             int fact_no = rand.Next(0, no_of_facts);
-            
+
             fact_tip.Text = facts.Facts[fact_no].Fact;
             fact_tip.Visibility = Visibility.Visible;
-           
+
         }
 
         private void Did_you_know_leave(object sender, RoutedEventArgs e)
         {
-            
+
             fact_tip.Visibility = Visibility.Hidden;
 
         }
@@ -60,13 +60,13 @@ namespace InteractivePeriodicTable
 
             fact_tip.Text = facts.Facts[fact_no].Fact;
             fact_tip.Visibility = Visibility.Visible;
-            
+
         }
 
         private void getFactsFromJSON()
         {
             string json = "";
-            using (StreamReader sr = new StreamReader(Pathing.sysDir+"\\facts.json"))
+            using (StreamReader sr = new StreamReader(Pathing.sysDir + "\\facts.json"))
             {
                 json = sr.ReadToEnd();
             }
@@ -89,17 +89,18 @@ namespace InteractivePeriodicTable
                 {
                     listBox.Items.Add(match.Value.ToString());
                     listBox.Visibility = Visibility.Visible;
+                    listBox.IsEnabled = true;
 
                     match = match.NextMatch();
                 }
             }
 
-                if (listBox.Items.IsEmpty || listBox.Items.Count == 119)
-                {
-                    listBox.Visibility = Visibility.Collapsed;
-                    if (listBox.Items.Count == 119) listBox.Items.Clear();
-                }
-            
+            if (listBox.Items.IsEmpty || listBox.Items.Count == 119)
+            {
+                listBox.Visibility = Visibility.Collapsed;
+                if (listBox.Items.Count == 119) listBox.Items.Clear();
+            }
+
             HighlightElementsOnTable();
             OtherButtonsHighlight();
             BringBackColors();
@@ -121,7 +122,7 @@ namespace InteractivePeriodicTable
 
         private void HighlightElementsOnTable()
         {
-            
+
             foreach (Button buttonInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
             {
                 if (listBox.Items.Contains(buttonInForm.Name.ToString()))
@@ -139,10 +140,10 @@ namespace InteractivePeriodicTable
 
         private void OtherButtonsHighlight()
         {
-            
+
             foreach (Button otherButtonsInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
             {
-                if(otherButtonsInForm.Name.ToString()!= "play_quiz" && otherButtonsInForm.Name.ToString() != "show_scoreboard" && otherButtonsInForm.Name.ToString() != "update" && otherButtonsInForm.Name.ToString() != "DragDropGames")
+                if (otherButtonsInForm.Name.ToString() != "play_quiz" && otherButtonsInForm.Name.ToString() != "show_scoreboard" && otherButtonsInForm.Name.ToString() != "update" && otherButtonsInForm.Name.ToString() != "DragDropGames")
                 {
                     if (listBox.Items.Contains(otherButtonsInForm.Name.ToString()) == false)
                     {
@@ -176,7 +177,7 @@ namespace InteractivePeriodicTable
             {
                 if (listBox.SelectedIndex < (listBox.Items.Count - 1))
                 {
-                    
+
                     listBox.SelectedIndex++;
                     HighLightSpecificElement(listBox.SelectedItem.ToString());
                     DeSelectOtherElements(listBox.SelectedItem.ToString());
@@ -194,7 +195,7 @@ namespace InteractivePeriodicTable
                 }
                 e.Handled = true;
             }
-            else if (e.Key==Key.Enter)
+            else if (e.Key == Key.Enter)
             {
                 PopupWebpage popupWindow = new PopupWebpage(listBox.SelectedItem.ToString());
                 popupWindow.Show();
@@ -202,12 +203,12 @@ namespace InteractivePeriodicTable
             }
         }
 
-
+        #region Highlighting
         private void HighLightSpecificElement(string name)
         {
             foreach (Button buttonInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
             {
-                if (name==buttonInForm.Name.ToString())
+                if (name == buttonInForm.Name.ToString())
                 {
                     buttonInForm.Background = Brushes.DarkBlue;
                     buttonInForm.Foreground = Brushes.Gold;
@@ -224,7 +225,7 @@ namespace InteractivePeriodicTable
         {
             foreach (Button otherButtonsInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
             {
-                if(otherButtonsInForm.Name.ToString() != "play_quiz" && otherButtonsInForm.Name.ToString() != "show_scoreboard" && otherButtonsInForm.Name.ToString() != "update" && otherButtonsInForm.Name.ToString() != "DragDropGames")
+                if (otherButtonsInForm.Name.ToString() != "play_quiz" && otherButtonsInForm.Name.ToString() != "show_scoreboard" && otherButtonsInForm.Name.ToString() != "update" && otherButtonsInForm.Name.ToString() != "DragDropGames")
                 {
                     if (name != otherButtonsInForm.Name.ToString())
                     {
@@ -250,16 +251,48 @@ namespace InteractivePeriodicTable
             window.ShowDialog();
         }
 
-        
+
         private void play_DragDrop_Click(object sender, RoutedEventArgs e)
         {
             SortElements window = new SortElements();
             window.ShowDialog();
         }
+        #endregion
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Keyboard.ClearFocus();
         }
+
+
+        private void listBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            PopupWebpage popupWindow = new PopupWebpage(listBox.SelectedItem.ToString());
+            popupWindow.ShowDialog();
+        }
+
+        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox chosenItem = (e.Source as ListBox);
+            //NEMOJTE BRISATI,           
+            if (chosenItem.Items.Count != 0)
+            {
+                HighLightSpecificElement(chosenItem.SelectedValue.ToString());
+                DeSelectOtherElements(chosenItem.SelectedValue.ToString());
+            }
+            else
+            {
+                listBox.Visibility = Visibility.Collapsed;
+                listBox.Items.Clear();
+            }
+        }
+
+        private void listBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ListBox chosenItem = (e.Source as ListBox);
+            HighLightSpecificElement(chosenItem.SelectedValue.ToString());
+            DeSelectOtherElements(chosenItem.SelectedValue.ToString());
+        }
+
     }
 }

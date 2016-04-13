@@ -195,7 +195,7 @@
             <Grid Name="Searchbox">
                 <TextBox x:Name="textBox"  HorizontalAlignment="Left" Height="33" Margin="268
                          ,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
-                <ListBox x:Name="listBox" SelectedIndex="0" HorizontalAlignment="Left" Height="Auto" Margin="268,130,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed" IsEnabled="False" >
+                <ListBox x:Name="listBox" SelectedIndex="0" HorizontalAlignment="Left" Height="Auto" Margin="268,130,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed" IsEnabled="False" MouseDoubleClick="listBox_MouseDoubleClick" SelectionChanged="listBox_SelectionChanged" MouseDown="listBox_MouseDown" >
                     <ListBox.Resources>
                         <Style TargetType="ListBox">
                             <Setter Property="ItemContainerStyle">

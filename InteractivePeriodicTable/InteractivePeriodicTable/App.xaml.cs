@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using InteractivePeriodicTable.Utils;
 using System.Threading;
-using System.Windows;
 using System.ComponentModel;
 using System.Data.SqlClient;
 
