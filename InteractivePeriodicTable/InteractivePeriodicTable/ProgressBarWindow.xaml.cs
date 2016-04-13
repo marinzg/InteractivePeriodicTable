@@ -9,6 +9,7 @@ namespace InteractivePeriodicTable
     public partial class ProgressBarWindow : Window
     {
         public bool loadingFinished = false;
+        public BackgroundWorker worker;
 
         public ProgressBarWindow()
         {
@@ -18,7 +19,7 @@ namespace InteractivePeriodicTable
 
         private void Window_ContentRendered()
         {
-            public BackgroundWorker worker = new BackgroundWorker();
+            worker = new BackgroundWorker();
             worker.WorkerReportsProgress = true;
             worker.WorkerSupportsCancellation = true;
             worker.DoWork += worker_DoWork;
