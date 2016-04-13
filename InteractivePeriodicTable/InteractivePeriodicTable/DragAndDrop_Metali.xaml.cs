@@ -54,11 +54,12 @@ namespace InteractivePeriodicTable
                 }
             }
         }
-
-        public DragAndDrop_Metali(List<Element> elements)
+        
+        public DragAndDrop_Metali(List<Element> argElements)
         {
-            this.elements = elements;
+            this.elements = argElements;
         }
+        
 
         #region drag&drop implementation (from net)
         private void List_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
