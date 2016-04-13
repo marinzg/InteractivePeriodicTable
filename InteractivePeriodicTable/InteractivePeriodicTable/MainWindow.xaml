@@ -25,9 +25,9 @@
         <Grid Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="Sve_za_scaleanje" >
 
 
-            <StackPanel VerticalAlignment="Top">
+            <!--<StackPanel VerticalAlignment="Top">
                 <Menu Width="Auto" Height="Auto" Background="{x:Null}"/>
-            </StackPanel>
+            </StackPanel>-->
 
 
 
@@ -221,14 +221,6 @@
                 <TextBlock Name="fact_tip"  TextWrapping="WrapWithOverflow" Visibility="Hidden" Margin="67,-3,-527,-89" Background ="Transparent" FontSize="14" FontWeight="SemiBold" Foreground="LightCoral" RenderTransformOrigin="0.5,0.5"></TextBlock>
 
                 <Image x:Name="image1" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill"   HorizontalAlignment="Center" Height="61" Margin="-8,-7,-8,0" VerticalAlignment="Bottom" Width="70" RenderTransformOrigin="0.43,1.474" >
-
-
-                    <!--<Image.ToolTip>
-                        <ToolTip Background ="Transparent" BorderBrush="Transparent" Placement="Right">
-                            <TextBlock x:Name="fact_tip" TextWrapping="Wrap" FontSize="18" FontWeight="SemiBold" Foreground="LightCoral" Background="{x:Null}"/>
-                        </ToolTip>
-                    </Image.ToolTip>-->
-
 
                 </Image>
             </Grid>
