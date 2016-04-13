@@ -18,12 +18,11 @@
         WindowStartupLocation="Manual" 
         Left="auto"
         Top="80"
-        WindowState="Maximized" 
-        MouseLeftButtonDown="Viewbox_MouseLeftButtonDown">
-        
+        WindowState="Maximized">
 
-    <Viewbox >
-        <Grid  Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="Sve_za_scaleanje" >
+
+    <Viewbox>
+        <Grid Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="Sve_za_scaleanje" >
 
 
             <StackPanel VerticalAlignment="Top">
@@ -195,7 +194,7 @@
 
             <Grid Name="Searchbox">
                 <TextBox x:Name="textBox"  HorizontalAlignment="Left" Height="33" Margin="268,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
-                <ListBox x:Name="listBox" SelectedIndex="0" HorizontalAlignment="Left" Height="Auto" Margin="268,130,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed" IsEnabled="False" >
+                <ListBox x:Name="listBox" SelectedIndex="0" HorizontalAlignment="Left" Height="Auto" Margin="268,130,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed" >
                     <ListBox.Resources>
                         <Style TargetType="ListBox">
                             <Setter Property="ItemContainerStyle">
@@ -249,7 +248,7 @@
                     </Button.Style>
                 </Button>
 
-                <Button x:Name="show_scoreboard" Content="Top 10 users" HorizontalAlignment="Left" Margin="1223,50,0,0" VerticalAlignment="Top" Width="108" Click="show_scoreboard_Click" Background="Transparent">
+                <Button x:Name="show_scoreboard" Content="Top 10 users" HorizontalAlignment="Left" Margin="1223,45,0,0" VerticalAlignment="Top" Width="108" Click="show_scoreboard_Click" Background="Transparent">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Foreground" Value="LightBlue"/>
@@ -273,7 +272,7 @@
 
 
 
-                <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Margin="1246,725,0,0" VerticalAlignment="Top" Width="75" Click="update_Click" Background="Transparent">
+                <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Margin="1246,736,0,0" VerticalAlignment="Top" Width="75" Click="update_Click" Background="Transparent">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Foreground" Value="LightBlue"/>
@@ -303,12 +302,8 @@
     </Viewbox>
 
 
-        <Window.Background >
-            <ImageBrush ImageSource="/Resources/Images/space.jpg" />
-        </Window.Background>
-
-
-
-
+    <Window.Background>
+        <ImageBrush ImageSource="/Resources/Images/space.jpg" />
+    </Window.Background>
 
 </Window>
