@@ -43,6 +43,17 @@ namespace InteractivePeriodicTable
             fact_tip.Text = facts.Facts[fact_no].Fact;
             return;
         }
+
+        private void Did_you_know_click(object sender, RoutedEventArgs e)
+        {
+            Random rand = new Random();
+            int no_of_facts = facts.Facts.Count;
+            int fact_no = rand.Next(0, no_of_facts);
+
+            fact_tip.Text = facts.Facts[fact_no].Fact;
+            
+        }
+
         private void getFactsFromJSON()
         {
             string json = "";
@@ -58,7 +69,6 @@ namespace InteractivePeriodicTable
         {
 
             listBox.Items.Clear();
-            
 
             if (textBox.Text.Trim() != "")
             {
