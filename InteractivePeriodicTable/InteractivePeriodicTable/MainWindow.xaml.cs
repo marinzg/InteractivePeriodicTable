@@ -250,22 +250,7 @@ namespace InteractivePeriodicTable
             window.ShowDialog();
         }
 
-        private void update_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Update up = new Update();
-                up.updateFacts();
-                up.updateQuiz();
-
-                MessageBox.Show("Quiz and Facts updated successfully !", "Information");
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-            }
-            return;
-        }
+        
         private void play_DragDrop_Click(object sender, RoutedEventArgs e)
         {
             SortElements window = new SortElements();
