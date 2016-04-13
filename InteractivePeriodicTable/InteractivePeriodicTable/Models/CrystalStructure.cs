@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InteractivePeriodicTable.Models
 {
-    class CrystalStructure
+    public class CrystalStructure
     {
         public int id { get; set; }
         public string name { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InteractivePeriodicTable.Models
 {
-    class Phase
+    public class Phase
     {
         public int id { get; set; }
         public string name { get; set; }

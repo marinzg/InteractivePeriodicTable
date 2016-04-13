@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InteractivePeriodicTable.Models
 {
-    class ElementCategory
+    public class ElementCategory
     {
         public int id { get; set; }
         public string name { get; set; }
