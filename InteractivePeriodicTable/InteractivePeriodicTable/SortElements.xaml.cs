@@ -47,7 +47,7 @@ namespace InteractivePeriodicTable
 
         private void DragAndDropStruktura(object sender, RoutedEventArgs e)
         {
-            Navigation.Content = new DragAndDrop_Struktura();
+            Navigation.Content = new DragAndDrop_Struktura(crystalStructures);
         }
 
         private void DragAndDropSkupine(object sender, RoutedEventArgs e)
