@@ -274,10 +274,7 @@ namespace InteractivePeriodicTable
                     DataObject dragData = new DataObject("myFormat", contact);
                     DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
                 }
-                catch (Exception a)
-                {
-
-                }
+                catch {}
 
             }
         }

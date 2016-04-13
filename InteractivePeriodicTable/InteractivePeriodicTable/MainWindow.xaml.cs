@@ -123,11 +123,14 @@ namespace InteractivePeriodicTable
             
             foreach (Button otherButtonsInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
             {
-                if (listBox.Items.Contains(otherButtonsInForm.Name.ToString())==false)
+                if(otherButtonsInForm.Name.ToString()!= "play_quiz" && otherButtonsInForm.Name.ToString() != "show_scoreboard" && otherButtonsInForm.Name.ToString() != "update" && otherButtonsInForm.Name.ToString() != "DragDropGames")
                 {
-                    otherButtonsInForm.Background = Brushes.Gainsboro;
+                    if (listBox.Items.Contains(otherButtonsInForm.Name.ToString()) == false)
+                    {
+                        otherButtonsInForm.Background = Brushes.Gainsboro;
+                    }
                 }
-               
+
 
             }
         }
@@ -202,9 +205,12 @@ namespace InteractivePeriodicTable
         {
             foreach (Button otherButtonsInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
             {
-                if (name!=otherButtonsInForm.Name.ToString())
+                if(otherButtonsInForm.Name.ToString() != "play_quiz" && otherButtonsInForm.Name.ToString() != "show_scoreboard" && otherButtonsInForm.Name.ToString() != "update" && otherButtonsInForm.Name.ToString() != "DragDropGames")
                 {
-                    otherButtonsInForm.Background = Brushes.Gainsboro;
+                    if (name != otherButtonsInForm.Name.ToString())
+                    {
+                        otherButtonsInForm.Background = Brushes.Gainsboro;
+                    }
                 }
 
 
@@ -245,6 +251,11 @@ namespace InteractivePeriodicTable
         {
             SortElements window = new SortElements();
             window.ShowDialog();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Keyboard.ClearFocus();
         }
     }
 }
