@@ -40,7 +40,7 @@ namespace InteractivePeriodicTable
             int no_of_facts = facts.Facts.Count;
             int fact_no = rand.Next(0, no_of_facts);
             
-            fact_tip.Text = facts.Facts[fact_no].Fact;
+            fact_tip.Content = facts.Facts[fact_no].Fact;
             fact_view.Visibility = Visibility.Visible;
            
         }
@@ -58,7 +58,7 @@ namespace InteractivePeriodicTable
             int no_of_facts = facts.Facts.Count;
             int fact_no = rand.Next(0, no_of_facts);
 
-            fact_tip.Text = facts.Facts[fact_no].Fact;
+            fact_tip.Content = facts.Facts[fact_no].Fact;
             fact_view.Visibility = Visibility.Visible;
             
         }

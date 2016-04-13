@@ -218,7 +218,7 @@
                     <SolidColorBrush Color="LightBlue" Opacity="0.2"></SolidColorBrush>
                 </Grid.Background>
                 <Viewbox Name="fact_view" StretchDirection="DownOnly" Margin="55,-9,-526,-97" Visibility="Visible" >
-                <TextBlock Name="fact_tip"  Margin="55,-9,-526,-97" Background ="Transparent" FontSize="18" FontWeight="SemiBold" Foreground="LightCoral" RenderTransformOrigin="0.5,0.5"></TextBlock>
+                    <Label Name="fact_tip"  Margin="55,-9,-526,-97" Background ="Transparent" FontSize="18" FontWeight="SemiBold" Foreground="LightCoral" RenderTransformOrigin="0.5,0.5"></Label>
                 </Viewbox>
                 <Image x:Name="image1" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill"   HorizontalAlignment="Center" Height="61" Margin="-8,-7,-8,0" VerticalAlignment="Bottom" Width="70" RenderTransformOrigin="0.43,1.474" >
 
