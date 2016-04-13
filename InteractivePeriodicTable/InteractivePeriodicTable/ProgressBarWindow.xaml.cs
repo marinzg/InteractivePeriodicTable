@@ -24,6 +24,9 @@ namespace InteractivePeriodicTable
             worker.ProgressChanged += worker_ProgressChanged;
 
             worker.RunWorkerAsync();
+
+            //while (loadingFinished != true) Thread.Sleep(10);
+            //worker.CancelAsync();
         }
 
         void worker_DoWork(object sender, DoWorkEventArgs e)
@@ -48,7 +51,6 @@ namespace InteractivePeriodicTable
                 {
                     Thread.Sleep(100);
                     this.Close();
-                    
                 });
             }
 

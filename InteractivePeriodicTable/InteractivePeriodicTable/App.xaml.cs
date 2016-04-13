@@ -13,6 +13,7 @@ namespace InteractivePeriodicTable
         {
             BackgroundWorker workerUpdateQuiz = new BackgroundWorker();
             workerUpdateQuiz.WorkerReportsProgress = true;
+            workerUpdateQuiz.WorkerSupportsCancellation = true;
             workerUpdateQuiz.DoWork += worker_DoWork;
             workerUpdateQuiz.ProgressChanged += worker_ProgressChanged;
 
@@ -26,7 +27,7 @@ namespace InteractivePeriodicTable
             progBar.ShowDialog();
 
             Thread.Sleep(700);
-
+            workerUpdateQuiz.CancelAsync();
             mainView.Show();
 
         }

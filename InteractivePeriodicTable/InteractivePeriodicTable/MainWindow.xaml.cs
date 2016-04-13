@@ -274,7 +274,7 @@ namespace InteractivePeriodicTable
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBox chosenItem = (e.Source as ListBox);
-            //NEMOJTE BRISATI,           
+          
             if (chosenItem.Items.Count != 0)
             {
                 HighLightSpecificElement(chosenItem.SelectedValue.ToString());
