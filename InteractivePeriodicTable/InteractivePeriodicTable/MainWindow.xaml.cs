@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Controls.Primitives;
 using Newtonsoft.Json;
 
+
 namespace InteractivePeriodicTable
 {
     public partial class MainWindow : Window
@@ -20,9 +21,12 @@ namespace InteractivePeriodicTable
         {
             getFactsJSON();
             InitializeComponent();
-            //listBox.PreviewKeyDown += new KeyEventHandler(listBox_KeyDownOrUp); //Marko-eventhandler za listbox navigiranje arrowsima
-            //textBox.PreviewKeyDown += new KeyEventHandler(textBox_KeyDown); //Marko-eventhandler za arrow down
+
+
             textBox.PreviewKeyDown += new KeyEventHandler(txtSearchTerm_KeyDown);
+
+           
+
         }
 
         private void Element_klik(object sender, RoutedEventArgs e)
@@ -125,12 +129,13 @@ namespace InteractivePeriodicTable
             
             foreach (Button otherButtonsInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
             {
-                if (listBox.Items.Contains(otherButtonsInForm.Name.ToString())==false)
+                if (otherButtonsInForm.Name.ToString() != "play_quiz" && otherButtonsInForm.Name.ToString() != "show_scoreboard" && otherButtonsInForm.Name.ToString() != "update")
                 {
-                    otherButtonsInForm.Background = Brushes.Gainsboro;
+                    if (listBox.Items.Contains(otherButtonsInForm.Name.ToString()) == false)
+                    {
+                        otherButtonsInForm.Background = Brushes.Gainsboro;
+                    }
                 }
-               
-
             }
         }
 
@@ -177,10 +182,12 @@ namespace InteractivePeriodicTable
             else if (e.Key==Key.Enter)
             {
                 PopupWebpage popupWindow = new PopupWebpage(listBox.SelectedItem.ToString());
-                popupWindow.Show();
+                popupWindow.ShowDialog();
                 e.Handled = true;
             }
         }
+
+       
 
 
         private void HighLightSpecificElement(string name)
@@ -204,9 +211,12 @@ namespace InteractivePeriodicTable
         {
             foreach (Button otherButtonsInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
             {
-                if (name!=otherButtonsInForm.Name.ToString())
+                if(otherButtonsInForm.Name.ToString() != "play_quiz" && otherButtonsInForm.Name.ToString() != "show_scoreboard" && otherButtonsInForm.Name.ToString() != "update")
                 {
-                    otherButtonsInForm.Background = Brushes.Gainsboro;
+                    if (name != otherButtonsInForm.Name.ToString())
+                    {
+                        otherButtonsInForm.Background = Brushes.Gainsboro;
+                    }
                 }
 
 
@@ -240,6 +250,11 @@ namespace InteractivePeriodicTable
                 MessageBox.Show(ex.Message, "Error");
             }
             return;
+        }
+
+        private void Viewbox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Keyboard.ClearFocus();
         }
     }
 }
