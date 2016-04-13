@@ -46,9 +46,11 @@ namespace InteractivePeriodicTable
             {
                 Dispatcher.Invoke(() =>
                 {
-                    Thread.Sleep(100);
+                    pbStatus.Value = e.ProgressPercentage;
+                    Thread.Sleep(1000);
                     this.Close();
-                    
+                    (sender as BackgroundWorker).Dispose();
+
                 });
             }
 

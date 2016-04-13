@@ -15,7 +15,7 @@ namespace InteractivePeriodicTable
             BackgroundWorker workerUpdateQuiz = new BackgroundWorker();
             workerUpdateQuiz.WorkerReportsProgress = true;
             workerUpdateQuiz.DoWork += worker_DoWork;
-            workerUpdateQuiz.ProgressChanged += worker_ProgressChanged;
+            workerUpdateQuiz.RunWorkerCompleted += worker_RunWorkerCompleted;
 
             workerUpdateQuiz.RunWorkerAsync();
 
@@ -26,48 +26,36 @@ namespace InteractivePeriodicTable
 
             progBar.ShowDialog();
 
-            Thread.Sleep(700);
-
             mainView.Show();
 
         }
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            (sender as BackgroundWorker).ReportProgress(0);
             Update up = new Update();
-            try {
-                (sender as BackgroundWorker).ReportProgress(25);
+            try
+            {
                 up.updateFacts();
-                (sender as BackgroundWorker).ReportProgress(50);
                 up.updateQuiz();
-                (sender as BackgroundWorker).ReportProgress(100);
             }
-            catch(SqlException)
+            catch (SqlException)
             {
                 MessageBox.Show("Error connecting to database");
                 App.Current.Shutdown();
             }
         }
 
-        private void worker_ProgressChanged (object sender, ProgressChangedEventArgs e)
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (e.ProgressPercentage == 100)
             {
-                Dispatcher.Invoke(() => {
+                Dispatcher.Invoke(() =>
+                {
                     progBar.textBlock.Text = "Completed!";
                     progBar.loadingFinished = true;
                 });
             }
-            else
-            {
-                Dispatcher.Invoke(() => {
-                    progBar.textBlock.Text += ".";
-                });
-            }
-            Thread.Sleep(100);
+            (sender as BackgroundWorker).Dispose();
         }
-
 
     }
 }
