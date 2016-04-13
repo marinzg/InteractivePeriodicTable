@@ -227,6 +227,10 @@
             </Grid>
 
             <Grid Name="Buttoni_igre" Margin="0,5,0,-5" HorizontalAlignment="Left" Width="1331">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="51*"/>
+                    <RowDefinition Height="775*"/>
+                </Grid.RowDefinitions>
 
                 <Button x:Name="play_quiz" Content="Play a quiz" HorizontalAlignment="Left" Margin="1200,23,0,0" VerticalAlignment="Top" Width="117" Click="play_quiz_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
                     <Button.Style>
@@ -250,7 +254,7 @@
                     </Button.Style>
                 </Button>
 
-                <Button x:Name="show_scoreboard" Content="Top 10 players" HorizontalAlignment="Left" Margin="1200,81,0,0" VerticalAlignment="Top" Width="117" Click="show_scoreboard_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <Button x:Name="show_scoreboard" Content="Top 10 players" HorizontalAlignment="Left" Margin="1200,29.807,0,0" VerticalAlignment="Top" Width="117" Click="show_scoreboard_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Foreground" Value="LightBlue"/>
@@ -274,7 +278,7 @@
 
 
 
-                <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Margin="1200,723,0,0" VerticalAlignment="Top" Width="117" Click="update_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.169,-10.768">
+                <Button x:Name="update" Content="Update" HorizontalAlignment="Left" Margin="1200,671.807,0,0" VerticalAlignment="Top" Width="117" Click="update_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.169,-10.768" Grid.Row="1">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Foreground" Value="LightBlue"/>
@@ -295,7 +299,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="DragDropGames" Content="Drag and Drop" HorizontalAlignment="Left" Margin="1200,50,0,0" VerticalAlignment="Top" Width="117" Click="play_DragDrop_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <Button x:Name="DragDropGames" Content="Drag and Drop" HorizontalAlignment="Left" Margin="1200,50,0,0" VerticalAlignment="Top" Width="117" Click="play_DragDrop_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Foreground" Value="LightBlue"/>
@@ -319,7 +323,7 @@
             </Grid>
 
 
-            <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="0" X2="100" Y2="50" Height="59" Margin="-33,45,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="108"/>
+            <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="0" X2="100" Y2="50" Height="48" Margin="-34,55,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="85"/>
 
 
         </Grid>
