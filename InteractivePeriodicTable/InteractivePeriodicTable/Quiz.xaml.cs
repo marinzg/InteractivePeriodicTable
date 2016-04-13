@@ -22,6 +22,7 @@ namespace InteractivePeriodicTable
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private DispatcherTimer colorChanger = new DispatcherTimer();
         private Random rand = new Random();
+        //asd
         public Quiz()
         {
             this.Closing += stopTimer;
@@ -148,10 +149,8 @@ namespace InteractivePeriodicTable
             }
 
             this.sp.Children.Add(question_lbl);
-            this.sp.Children.Add(A1);
-            this.sp.Children.Add(A2);
-            this.sp.Children.Add(A3);
-            this.sp.Children.Add(A4);
+
+            addButtonsRandomly(new List<Button>() { A1,A2,A3,A4 });
 
             return;
         }
@@ -183,8 +182,7 @@ namespace InteractivePeriodicTable
             }
 
             this.sp.Children.Add(question_lbl);
-            this.sp.Children.Add(A1);
-            this.sp.Children.Add(A2);
+            addButtonsRandomly(new List<Button>() { A1, A2 });
 
             return;
         }
@@ -192,8 +190,10 @@ namespace InteractivePeriodicTable
         {
             QuizPictures picked_question = questions.QuizPictures[question_no];
 
+            Label lbl = new Label();
+            lbl.Content = "Write what you see in this image";
+
             Image image = new Image();
-            
             image.Width = 300;
 
             BitmapImage bi = new BitmapImage();
@@ -215,6 +215,7 @@ namespace InteractivePeriodicTable
             btn.Tag = picked_question.Answer;
             btn.Click += checkPicAns;
 
+            this.sp.Children.Add(lbl);
             this.sp.Children.Add(image);
             this.sp.Children.Add(txbx);
             this.sp.Children.Add(btn);
@@ -256,6 +257,27 @@ namespace InteractivePeriodicTable
             btn.Margin = new Thickness(0,5,0,5);
             btn.Background = Brushes.DeepSkyBlue;
             btn.Foreground = Brushes.Blue;
+            return;
+        }
+        private void addButtonsRandomly(List<Button> btns)
+        {
+            List<byte> order = new List<byte>();
+
+            while(order.Count < btns.Count)
+            {
+                byte order_no = (byte)rand.Next(0, btns.Count);
+
+                if (order.Exists(x => x == order_no) == false)
+                {
+                    order.Add(order_no);
+                }
+            }
+
+            foreach (byte b in order)
+            {
+                this.sp.Children.Add(btns[b]);
+            }
+
             return;
         }
 
