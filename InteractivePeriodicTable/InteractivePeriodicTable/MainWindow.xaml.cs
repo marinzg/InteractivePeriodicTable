@@ -6,8 +6,8 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Input;
-using System.Windows.Controls.Primitives;
 using Newtonsoft.Json;
+using InteractivePeriodicTable.Utils;
 
 namespace InteractivePeriodicTable
 {
@@ -15,10 +15,10 @@ namespace InteractivePeriodicTable
     {
         private Dictionary<string, Brush> previousBackgroundColors = new Dictionary<string, Brush>();
         private Dictionary<string, Brush> previousForegroundColors = new Dictionary<string, Brush>();
-        private AllFacts dyk = new AllFacts();
+        private AllFacts facts = new AllFacts();
         public MainWindow()
         {
-            getFactsJSON();
+            getFactsFromJSON();
             InitializeComponent();
             //listBox.PreviewKeyDown += new KeyEventHandler(listBox_KeyDownOrUp); //Marko-eventhandler za listbox navigiranje arrowsima
             //textBox.PreviewKeyDown += new KeyEventHandler(textBox_KeyDown); //Marko-eventhandler za arrow down
@@ -37,20 +37,20 @@ namespace InteractivePeriodicTable
         private void Did_you_know_hover(object sender, RoutedEventArgs e)
         {
             Random rand = new Random();
-            int no_of_facts = dyk.Facts.Count;
+            int no_of_facts = facts.Facts.Count;
             int fact_no = rand.Next(0, no_of_facts);
             
-            fact_tip.Text = dyk.Facts[fact_no].Fact;
+            fact_tip.Text = facts.Facts[fact_no].Fact;
             return;
         }
-        private void getFactsJSON()
+        private void getFactsFromJSON()
         {
             string json = "";
             using (StreamReader sr = new StreamReader(Pathing.sysDir+"\\facts.json"))
             {
                 json = sr.ReadToEnd();
             }
-            dyk = JsonConvert.DeserializeObject<AllFacts>(json);
+            facts = JsonConvert.DeserializeObject<AllFacts>(json);
 
             return;
         }
@@ -229,8 +229,10 @@ namespace InteractivePeriodicTable
         {
             try
             {
-                ((App)Application.Current).updateFacts();
-                ((App)Application.Current).updateQuiz();
+                Update up = new Update();
+                up.updateFacts();
+                up.updateQuiz();
+
                 MessageBox.Show("Quiz and Facts updated successfully !", "Information");
             }
             catch(Exception ex)

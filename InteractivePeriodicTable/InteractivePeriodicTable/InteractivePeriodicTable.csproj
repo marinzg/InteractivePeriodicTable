@@ -165,6 +165,13 @@
     <Compile Include="SortElements.xaml.cs">
       <DependentUpon>SortElements.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\AllFacts.cs" />
+    <Compile Include="Utils\Facts.cs" />
+    <Compile Include="Utils\QuizPictures.cs" />
+    <Compile Include="Utils\QuizQuestions.cs" />
+    <Compile Include="Utils\QuizWith4Ans.cs" />
+    <Compile Include="Utils\QuizYesNo.cs" />
+    <Compile Include="Utils\Update.cs" />
     <Compile Include="Utils\VisualChildren.cs" />
     <Page Include="DragAndDrop_Metali.xaml">
       <SubType>Designer</SubType>

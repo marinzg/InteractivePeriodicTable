@@ -48,7 +48,5 @@ namespace InteractivePeriodicTable
         {
             Navigation.Content = new DragAndDrop_Skupine();
         }
-
-      
     }
 }
