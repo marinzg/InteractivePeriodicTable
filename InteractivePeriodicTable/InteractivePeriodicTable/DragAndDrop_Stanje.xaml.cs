@@ -38,15 +38,13 @@ namespace InteractivePeriodicTable
             //create buttons to be dragged
             foreach(Element e in tmpElements)
             {
-                Button b = new Button()
-                {
-                    Content = e.symbol,
-                    FontSize = 18,
-                    Height = Width = 60,
-                    HorizontalContentAlignment = HorizontalAlignment.Center,
-                    VerticalContentAlignment = VerticalAlignment.Center,
-                    Background = Brushes.AliceBlue
-                };
+                Button b = new Button();
+                b.Content = e.symbol;
+                b.FontSize = 18;
+                b.Height = b.Width = 60;
+                b.HorizontalContentAlignment = HorizontalAlignment.Center;
+                b.VerticalContentAlignment = VerticalAlignment.Center;
+                b.Background = Brushes.AliceBlue;
                 DragList.Items.Add(b);
             }
         }
