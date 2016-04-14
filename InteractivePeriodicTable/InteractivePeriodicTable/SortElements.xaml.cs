@@ -37,7 +37,7 @@ namespace InteractivePeriodicTable
 
         private void DragAndDropMetali(object sender, RoutedEventArgs e)
         {
-            Navigation.Content = new DragAndDrop_Metali(elements);
+            Navigation.Content = new DragAndDrop_Metali(elements, categories);
         }
 
         private void DragAndDropStanje(object sender, RoutedEventArgs e)
@@ -180,10 +180,10 @@ namespace InteractivePeriodicTable
                 new Element(){ atomicNumber = 110, name = "Darmstadtium", symbol = "Ds", elementCategory = 1, elementSubcategory = 5, group = 10, block = "d", period = 7, phase = 1, crystalStructure = 2 },
                 new Element(){ atomicNumber = 111, name = "Roentgenium", symbol = "Rg", elementCategory = 1, elementSubcategory = 5, group = 11, block = "d", period = 7, phase = 1, crystalStructure = 2 },
                 new Element(){ atomicNumber = 112, name = "Copernicium", symbol = "Cn", elementCategory = 1, elementSubcategory = 5, group = 12, block = "d", period = 7, phase = 0, crystalStructure = 1 },
-                new Element(){ atomicNumber = 113, name = "Ununtrium", symbol = "Uut", elementCategory = 2, elementSubcategory = 0, group = 13, block = "p", period = 7, phase = 1, crystalStructure = 0 },
-                new Element(){ atomicNumber = 114, name = "Flerovium", symbol = "Fl", elementCategory = 2, elementSubcategory = 0, group = 14, block = "p", period = 7, phase = 1, crystalStructure = 0 },
-                new Element(){ atomicNumber = 115, name = "Ununpentium", symbol = "Uup", elementCategory = 2, elementSubcategory = 0, group = 15, block = "p", period = 7, phase = 1, crystalStructure = 0 },
-                new Element(){ atomicNumber = 116, name = "Livermorium", symbol = "Lv", elementCategory = 2, elementSubcategory = 0, group = 16, block = "p", period = 7, phase = 1, crystalStructure = 0 },
+                new Element(){ atomicNumber = 113, name = "Ununtrium", symbol = "Uut", elementCategory = 1, elementSubcategory = 0, group = 13, block = "p", period = 7, phase = 1, crystalStructure = 0 },
+                new Element(){ atomicNumber = 114, name = "Flerovium", symbol = "Fl", elementCategory = 1, elementSubcategory = 0, group = 14, block = "p", period = 7, phase = 1, crystalStructure = 0 },
+                new Element(){ atomicNumber = 115, name = "Ununpentium", symbol = "Uup", elementCategory = 1, elementSubcategory = 0, group = 15, block = "p", period = 7, phase = 1, crystalStructure = 0 },
+                new Element(){ atomicNumber = 116, name = "Livermorium", symbol = "Lv", elementCategory = 1, elementSubcategory = 0, group = 16, block = "p", period = 7, phase = 1, crystalStructure = 0 },
                 new Element(){ atomicNumber = 117, name = "Ununseptium", symbol = "Uus", elementCategory = 3, elementSubcategory = 8, group = 17, block = "p", period = 7, phase = 1, crystalStructure = 0 },
                 new Element(){ atomicNumber = 118, name = "Ununoctium", symbol = "Uuo", elementCategory = 3, elementSubcategory = 8, group = 18, block = "p", period = 7, phase = 1, crystalStructure = 0 }
             };
