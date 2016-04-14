@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InteractivePeriodicTable"
         mc:Ignorable="d"
-        Title="Quiz" Height="500" Width="500">
+        Title="Quiz" Height="500" Width="577.465">
     <Grid x:Name="g" Background="LightBlue">
-        <StackPanel x:Name="sp" Margin="0,41,0,0" />
+        <StackPanel x:Name="sp" Margin="15,41,68,0" />
 
         <Label x:Name="timer" Content="Time left:" HorizontalAlignment="Left" Margin="366,10,0,0" VerticalAlignment="Top" Foreground="Blue" FontSize="18" FontWeight="Bold"/>
         <Label x:Name="scr_lbl" Content="Score:" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" Foreground="Blue" FontSize="18" FontWeight="Bold"/>

@@ -100,9 +100,7 @@ namespace InteractivePeriodicTable
 
             Label question_lbl = new Label();
             question_lbl.Content = picked_question.Question;
-            question_lbl.Foreground = Brushes.Blue;
-            question_lbl.FontSize = 14;
-            question_lbl.FontWeight = FontWeights.SemiBold;
+            styleLabel(question_lbl);
 
             Button A1 = new Button();
             A1.Content = picked_question.A1;
@@ -161,9 +159,7 @@ namespace InteractivePeriodicTable
 
             Label question_lbl = new Label();
             question_lbl.Content = picked_question.Question;
-            question_lbl.Foreground = Brushes.Blue;
-            question_lbl.FontSize = 14;
-            question_lbl.FontWeight = FontWeights.SemiBold;
+            styleLabel(question_lbl);
 
             Button A1 = new Button();
             A1.Content = picked_question.A1;
@@ -195,9 +191,7 @@ namespace InteractivePeriodicTable
 
             Label lbl = new Label();
             lbl.Content = "Write what you see in this image";
-            lbl.FontSize = 14;
-            lbl.FontWeight = FontWeights.SemiBold;
-            lbl.Foreground = Brushes.Blue;
+            styleLabel(lbl);
 
             Image image = new Image();
             image.Width = 300;
@@ -260,11 +254,18 @@ namespace InteractivePeriodicTable
         }
         private void styleButton(Button btn)
         {
-            btn.Width = 120;
+            btn.Width = 250;
             btn.Height = 35;
             btn.Margin = new Thickness(0,5,0,5);
             btn.Background = Brushes.DeepSkyBlue;
             btn.Foreground = Brushes.Blue;
+            return;
+        }
+        private void styleLabel(Label lbl)
+        {
+            lbl.Foreground = Brushes.Blue;
+            lbl.FontSize = 18;
+            lbl.FontWeight = FontWeights.SemiBold;
             return;
         }
         private void addButtonsRandomly(List<Button> btns)
@@ -364,7 +365,7 @@ namespace InteractivePeriodicTable
         {
             colorChanger.Stop();
 
-            timer.Foreground = Brushes.Black;
+            styleLabel(timer);
 
             return;
         }
