@@ -1,0 +1,64 @@
+Periodni 
+	-prikaz informacija o elementu - dovršeno
+	-pretraživanje - dovršeno
+	-did you know - funfacts about elements - gumb - izbaci random fact o random elementu
+	-kviz
+	-drag and drop - klasifikacija elemenata - metali, polumetali i nemetali, blokovi (sfdp)
+
+*za one koji žele znati više
+--------------------------------------------------------------------------------------------------------
+Kviz:
+	- se sastoji od nekoliko pitanja (koliko? kakvih?)
+	- bodovi se dobivaju iskljuèivo na toène odgovore ovisno o vremenu koje je prošlo od uèitavanja pitanja
+	- na kraju kviza, ako je korisnik napravio top 5 (globalni) rezultat, može upisati neko ime i upisati se na leaderboard
+		- taj rezultat se sprema u bazu
+		
+--------------------------------------------------------------------------------------------------------
+TODO :
+	0. RANDOM
+		- Pocrniti text u HTML-u
+		- Nekakav globalni login da se ne mora nakon svake igre upisat ime (možda bi bilo sjebano za napravit)
+
+	1. MAIN WINDOW
+		- Hover preko elementa u padajucoj listi mora oznaciti jedan (tocno taj) element
+		- Searchbox treba dovršiti
+		- Hover preko elementa u mainwindow treba prikazati elektronsku konfiguraciju (prijedlog: ima negdje na githubu)
+
+	2. QUIZ
+		- Odgovore u kvizu random shuffleati
+		- Nakon što se unese odgovor i pritisne enter, prikaže se sljedeæe pitanje
+		- Promijenit ikonu
+
+	3. SAVE SCORE
+		- Promijenit ime prozora
+		- Promijenit ikonu
+		- Nakon što se unese ime i pritisne enter - score se spremi
+
+	4. DRAG&DROP
+		- Drag & Drop nejasan (petar)
+		- Dodati sortiranje po blokovima (sfdp)
+		- Promijenit ime prozora
+		- Promijenit ikonu
+		- Napisat neki tekst na poèetni ekran (možda i neki GIF kak se igra il tak neš)
+		- Dodat vremensko ogranièenje?
+
+		*D&D napravit s Behaviourom	
+	
+--------------------------------------------------------------------------------------------------------
+Baza:
+	- hostana na Microsoft Azure, 32MB upper limit
+	- dijagram baze se nalazi u ovom repozitoriju pod "DijagramBaze"
+	
+server name: interactiveperiodictable.database.windows.net
+port: 1433
+Server admin login: PPiJ
+password : botickijeveliki001.
+Resource group: FERPPiJ
+
+Dozvoljen je pristup IP adresama u rasponu  70.0.0.0-255.255.255.254 (dakle, svima)
+
+Zbog toga svaki upit kojeg æete izvršiti u bazi spremite u neki SQL fajl pod SQLQueries u projektu, da 
+imamo spremljeno u sluèaju da nam neko skrši bazu.
+
+Npr. sve insertove napišete/izvršite u management studiju i onda C/P u PPIJ_INSERT u ovom repozitoriju.
+--------------------------------------------------------------------------------------------------------
