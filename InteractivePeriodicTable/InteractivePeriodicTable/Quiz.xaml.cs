@@ -24,6 +24,7 @@ namespace InteractivePeriodicTable
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private DispatcherTimer colorChanger = new DispatcherTimer();
         private Random rand = new Random();
+
         public Quiz()
         {
             this.Closing += stopTimer;
@@ -42,6 +43,7 @@ namespace InteractivePeriodicTable
 
             pickQuestion();
         }
+
         private void getQuestionsFromJSON()
         {
             string json = string.Empty;
