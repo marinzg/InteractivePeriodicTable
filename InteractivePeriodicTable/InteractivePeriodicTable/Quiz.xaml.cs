@@ -10,6 +10,7 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using InteractivePeriodicTable.Utils;
+using InteractivePeriodicTable.Data;
 using System.Windows.Controls.Primitives;
 
 namespace InteractivePeriodicTable
@@ -46,7 +47,7 @@ namespace InteractivePeriodicTable
             string json = string.Empty;
             try
             {
-                using (StreamReader sr = new StreamReader(Pathing.sysDir + "/quiz.json"))
+                using (StreamReader sr = new StreamReader(Pathing.SysDir + "/quiz.json"))
                 {
                     json = sr.ReadToEnd();
                 }
@@ -58,7 +59,7 @@ namespace InteractivePeriodicTable
             }
             catch (DirectoryNotFoundException dnfe)
             {
-                dnfe.ErrorMessageBox("Nije pronađen direktorij " + Pathing.sysDir);
+                dnfe.ErrorMessageBox("Nije pronađen direktorij " + Pathing.SysDir);
             }
             catch (IOException ioe)
             {
@@ -240,7 +241,7 @@ namespace InteractivePeriodicTable
 
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
-            bi.UriSource = new Uri(Pathing.imgDir + "\\" + picked_question.ImagePath, UriKind.Absolute);
+            bi.UriSource = new Uri(Pathing.ImgDir + "\\" + picked_question.ImagePath, UriKind.Absolute);
             bi.EndInit();
 
             image.Source = bi;
@@ -300,7 +301,7 @@ namespace InteractivePeriodicTable
 
             foreach (QuizPictures qp in questions.QuizPictures)
             {
-                if (File.Exists(Pathing.imgDir + "\\" + qp.ImagePath) == false)
+                if (File.Exists(Pathing.ImgDir + "\\" + qp.ImagePath) == false)
                 {
                     missingPictures.Add(qp.ImagePath);
                 }

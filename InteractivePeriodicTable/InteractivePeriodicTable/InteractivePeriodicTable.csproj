@@ -149,11 +149,7 @@
     <Compile Include="DragAndDrop_Struktura.xaml.cs">
       <DependentUpon>DragAndDrop_Struktura.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\CrystalStructure.cs" />
-    <Compile Include="Models\Element.cs" />
-    <Compile Include="Models\ElementCategory.cs" />
-    <Compile Include="Models\ElementSubcategory.cs" />
-    <Compile Include="Models\Phase.cs" />
+    <Compile Include="Classes\Models.cs" />
     <Compile Include="ProgressBarWindow.xaml.cs">
       <DependentUpon>ProgressBarWindow.xaml</DependentUpon>
     </Compile>
@@ -169,12 +165,10 @@
     <Compile Include="SortElements.xaml.cs">
       <DependentUpon>SortElements.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utils\AllFacts.cs" />
-    <Compile Include="Utils\ErrorHandle.cs" />
-    <Compile Include="Utils\Facts.cs" />
-    <Compile Include="Utils\Quiz.cs" />
+    <Compile Include="Classes\Facts.cs" />
+    <Compile Include="Classes\Quiz.cs" />
     <Compile Include="Utils\Update.cs" />
-    <Compile Include="Utils\VisualChildren.cs" />
+    <Compile Include="Utils\Utils.cs" />
     <Page Include="DragAndDrop_Metali.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,7 +193,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Utils\ElementNames.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -230,7 +223,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Utils\Pathing.cs" />
     <Compile Include="PopupWebpage.xaml.cs">
       <DependentUpon>PopupWebpage.xaml</DependentUpon>
     </Compile>

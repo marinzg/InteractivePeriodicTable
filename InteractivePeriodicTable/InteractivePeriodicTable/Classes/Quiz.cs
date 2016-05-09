@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace InteractivePeriodicTable.Utils
+namespace InteractivePeriodicTable.Data
 {
     [Serializable]
     public class QuizYesNo

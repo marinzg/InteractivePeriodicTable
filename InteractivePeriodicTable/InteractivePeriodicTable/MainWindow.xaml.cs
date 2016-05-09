@@ -8,6 +8,7 @@ using System.IO;
 using System.Windows.Input;
 using Newtonsoft.Json;
 using InteractivePeriodicTable.Utils;
+using InteractivePeriodicTable.Data;
 
 namespace InteractivePeriodicTable
 {
@@ -66,7 +67,7 @@ namespace InteractivePeriodicTable
         private void getFactsFromJSON()
         {
             string json = "";
-            using (StreamReader sr = new StreamReader(Pathing.sysDir + "\\facts.json"))
+            using (StreamReader sr = new StreamReader(Pathing.SysDir + "\\facts.json"))
             {
                 json = sr.ReadToEnd();
             }

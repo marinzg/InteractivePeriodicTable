@@ -12,7 +12,7 @@ namespace InteractivePeriodicTable
         List<Element> elements;
         List<ElementCategory> categories;
         List<ElementSubcategory> subcategories;
-        List<Phase> phases;
+        List<Models.Models> phases;
         List<CrystalStructure> crystalStructures;
 
         public SortElements()
@@ -202,12 +202,12 @@ namespace InteractivePeriodicTable
         }
         private void PopulatePhases()
         {
-            phases = new List<Phase>()
+            phases = new List<Models.Models>()
             {
-                new Phase() {id = 0, name = "unknown" },
-                new Phase() {id = 1, name = "solid" },
-                new Phase() {id = 2, name = "gas" },
-                new Phase() {id = 3, name = "liquid" }
+                new Models.Models() {id = 0, name = "unknown" },
+                new Models.Models() {id = 1, name = "solid" },
+                new Models.Models() {id = 2, name = "gas" },
+                new Models.Models() {id = 3, name = "liquid" }
             };
         }
         private void PopulateCrystalStructure()

@@ -1,5 +1,10 @@
 ﻿namespace InteractivePeriodicTable.Models
 {
+    public class Models
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+    }
     public class Element
     {
         public int atomicNumber { get; set; }
@@ -13,5 +18,19 @@
         public int phase { get; set; }
         public int crystalStructure { get; set; }
     }
-
+    public class ElementCategory
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+    }
+    public class ElementSubcategory
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+    }
+    public class CrystalStructure
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+    }
 }

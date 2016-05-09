@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Navigation;
+using InteractivePeriodicTable.Utils;
 
 namespace InteractivePeriodicTable
 {
@@ -15,7 +16,7 @@ namespace InteractivePeriodicTable
             InitializeComponent();
             this.Title = elementName;
             browser1.LoadCompleted += browser1_LoadCompleted;
-            string uri = Pathing.resourcesDir + "\\Web_pages\\" + elementName + " - Wikipedia, the free encyclopedia.mht";
+            string uri = Pathing.ResourcesDir + "\\Web_pages\\" + elementName + " - Wikipedia, the free encyclopedia.mht";
 
 
             //Navigiranje na stranicu

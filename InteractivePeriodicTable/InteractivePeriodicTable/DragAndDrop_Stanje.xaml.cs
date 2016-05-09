@@ -17,11 +17,11 @@ namespace InteractivePeriodicTable
     {
         private Point startPoint;
         private List<Element> allElements;
-        private List<Phase> phases;
+        private List<Models.Models> phases;
         private Dictionary<string, int> correctGrouping = new Dictionary<string, int>();
 
         
-        public DragAndDrop_Stanje(List<Element> argElements, List<Phase> argPhases)
+        public DragAndDrop_Stanje(List<Element> argElements, List<Models.Models> argPhases)
         {
             InitializeComponent();
             

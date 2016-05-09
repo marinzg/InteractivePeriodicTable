@@ -202,21 +202,49 @@ namespace InteractivePeriodicTable.Utils
 
         public void updateQuiz()
         {
-            string pathToQuiz = Pathing.sysDir + "\\quiz.json";
+            string pathToQuiz = Pathing.SysDir + "\\quiz.json";
             string jsonQuiz = "{ \"QuizWith4Ans\":" + getQuizWith4Ans() + "," +
                                 "\"QuizYesNo\":" + getQuizYesNo() + "," +
                                 "\"QuizPictures\":" + getQuizPictures() + "}";
-
-            File.WriteAllText(pathToQuiz, jsonQuiz);
-
+            try
+            {
+                File.WriteAllText(pathToQuiz, jsonQuiz);
+            }
+            catch (FileNotFoundException fnfe)
+            {
+                fnfe.ErrorMessageBox("Nije pronađena datoteka quiz.json !");
+            }
+            catch (DirectoryNotFoundException dnfe)
+            {
+                dnfe.ErrorMessageBox("Nije pronađen direktorij " + Pathing.SysDir);
+            }
+            catch (IOException ioe)
+            {
+                ioe.ErrorMessageBox("Greška prilikom čitanja iz datoteke.");
+            }
+            
             return;
         }
         public void updateFacts()
         {
-            string pathToFacts = Pathing.sysDir + "\\facts.json";
+            string pathToFacts = Pathing.SysDir + "\\facts.json";
             string jsonFacts = "{ \"Facts\": " + getFacts() + "}";
-
-            File.WriteAllText(pathToFacts, jsonFacts);
+            try
+            {
+                File.WriteAllText(pathToFacts, jsonFacts);
+            }
+            catch (FileNotFoundException fnfe)
+            {
+                fnfe.ErrorMessageBox("Nije pronađena datoteka quiz.json !");
+            }
+            catch (DirectoryNotFoundException dnfe)
+            {
+                dnfe.ErrorMessageBox("Nije pronađen direktorij " + Pathing.SysDir);
+            }
+            catch (IOException ioe)
+            {
+                ioe.ErrorMessageBox("Greška prilikom čitanja iz datoteke.");
+            }
 
             return;
         }
