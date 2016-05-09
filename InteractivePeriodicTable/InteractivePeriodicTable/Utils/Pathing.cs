@@ -9,7 +9,6 @@ namespace InteractivePeriodicTable
         public static readonly string sysDir = resourcesDir+"\\Sys\\";
         public static readonly string imgDir = resourcesDir + "\\Images\\Quiz\\";
 
-
         private static string setResourcesDir(string path)
         {
             path = path + "\\Resources";

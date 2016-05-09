@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Configuration;
+using InteractivePeriodicTable.Utils;
 
 namespace InteractivePeriodicTable
 {
@@ -21,28 +11,42 @@ namespace InteractivePeriodicTable
         public ScoreBoard()
         {
             InitializeComponent();
-            getTop10();
+            getTop10Players();
         }
-        private void getTop10()
+
+        private void getTop10Players()
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
             {
-                conn.Open();
-
-                using (SqlCommand cmnd = new SqlCommand("SELECT TOP(10) UserName, Score FROM UserScore ORDER BY Score DESC;", conn))
+                try
                 {
-                    using (SqlDataReader rdr = cmnd.ExecuteReader())
+                    conn.Open();
+                }
+                catch (SqlException ex)
+                {
+                    ex.ErrorMessageBox("Dogodila se pogreška prilikom otvaranje veze na bazu.");
+                }
+                try
+                {
+                    using (SqlCommand cmnd = new SqlCommand("SELECT TOP(10) UserName, Score FROM UserScore ORDER BY Score DESC;", conn))
                     {
-                        byte i = 1;
-                        while (rdr.Read())
+                        using (SqlDataReader rdr = cmnd.ExecuteReader())
                         {
-                            Label row = new Label();
-                            row.Content = i.ToString() +"." + rdr["UserName"].ToString() + ": " + rdr["Score"].ToString();
+                            byte i = 1;
+                            while (rdr.Read())
+                            {
+                                Label row = new Label();
+                                row.Content = i.ToString() + "." + rdr["UserName"].ToString() + ": " + rdr["Score"].ToString();
 
-                            this.scoreboard.Children.Add(row);
-                            i++;
+                                this.scoreboard.Children.Add(row);
+                                i++;
+                            }
                         }
                     }
+                }
+                catch (SqlException ex)
+                {
+                    ex.ErrorMessageBox("Dogodila se pogreška prilikom dohvaćanja podataka iz baze.");
                 }
             }
 

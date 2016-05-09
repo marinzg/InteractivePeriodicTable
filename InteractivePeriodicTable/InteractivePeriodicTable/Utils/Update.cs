@@ -14,10 +14,17 @@ namespace InteractivePeriodicTable.Utils
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
             {
-                conn.Open();
-
-                using (SqlCommand cmnd = new SqlCommand(
-                                                        "SELECT '{' + '\"ID\":' + CAST(ID AS VARCHAR(4)) + ',' +" +
+                try
+                {
+                    conn.Open();
+                }
+                catch (SqlException ex)
+                {
+                    ex.ErrorMessageBox("Dogodila se pogreška prilikom otvaranje veze na bazu.");
+                }
+                try
+                {
+                    using (SqlCommand cmnd = new SqlCommand("SELECT '{' + '\"ID\":' + CAST(ID AS VARCHAR(4)) + ',' +" +
                                                                      "'\"Question\":' + '\"' + Question + '\",' +" +
                                                                      "'\"Answer\":' + '\"' + CAST(Answer AS CHAR(1)) + '\",' +" +
                                                                      "'\"A1\":' + '\"' + A1 + '\", ' +" +
@@ -25,20 +32,24 @@ namespace InteractivePeriodicTable.Utils
                                                                      "'\"A3\":' + '\"' + A3 + '\", ' +" +
                                                                      "'\"A4\":' + '\"' + A4 + '\"' +" +
                                                                "'},' AS data " +
-                                                        "FROM QuizWith4Ans"
-                                                        , conn))
-                {
-                    using (SqlDataReader rdr = cmnd.ExecuteReader())
+                                                            "FROM QuizWith4Ans", conn))
                     {
-                        if (rdr.HasRows == false)
+                        using (SqlDataReader rdr = cmnd.ExecuteReader())
                         {
-                            return "[]";
-                        }
-                        while (rdr.Read())
-                        {
-                            data.Append(rdr["data"].ToString());
+                            if (rdr.HasRows == false)
+                            {
+                                return "[]";
+                            }
+                            while (rdr.Read())
+                            {
+                                data.Append(rdr["data"].ToString());
+                            }
                         }
                     }
+                }
+                catch (SqlException ex)
+                {
+                    ex.ErrorMessageBox("Dogodila se pogreška prilikom dohvaćanja podataka iz baze.");
                 }
             }
 
@@ -54,9 +65,17 @@ namespace InteractivePeriodicTable.Utils
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
             {
-                conn.Open();
-
-                using (SqlCommand cmnd = new SqlCommand(
+                try
+                {
+                    conn.Open();
+                }
+                catch (SqlException ex)
+                {
+                    ex.ErrorMessageBox("Dogodila se pogreška prilikom otvaranje veze na bazu.");
+                }
+                try
+                {
+                    using (SqlCommand cmnd = new SqlCommand(
                                                         "SELECT '{' + '\"ID\":' + CAST(ID AS VARCHAR(4)) + ',' +" +
                                                                     "'\"Question\":' + '\"' + Question + '\",' +" +
                                                                     "'\"Answer\":' + '\"' + CAST(Answer AS CHAR(1)) + '\",' +" +
@@ -65,18 +84,23 @@ namespace InteractivePeriodicTable.Utils
                                                                 "'},' AS data " +
                                                         "FROM QuizYesNo"
                                                         , conn))
-                {
-                    using (SqlDataReader rdr = cmnd.ExecuteReader())
                     {
-                        if (rdr.HasRows == false)
+                        using (SqlDataReader rdr = cmnd.ExecuteReader())
                         {
-                            return "[]";
-                        }
-                        while (rdr.Read())
-                        {
-                            data.Append(rdr["data"].ToString());
+                            if (rdr.HasRows == false)
+                            {
+                                return "[]";
+                            }
+                            while (rdr.Read())
+                            {
+                                data.Append(rdr["data"].ToString());
+                            }
                         }
                     }
+                }
+                catch (SqlException ex)
+                {
+                    ex.ErrorMessageBox("Dogodila se pogreška prilikom dohvaćanja podataka iz baze.");
                 }
             }
 
@@ -92,27 +116,38 @@ namespace InteractivePeriodicTable.Utils
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
             {
-                conn.Open();
-
-                using (SqlCommand cmnd = new SqlCommand(
-                                                        "SELECT '{' + '\"ID\":' + CAST(ID AS VARCHAR(4)) + ',' +" +
+                try
+                {
+                    conn.Open();
+                }
+                catch (SqlException ex)
+                {
+                    ex.ErrorMessageBox("Dogodila se pogreška prilikom otvaranje veze na bazu.");
+                }
+                try
+                {
+                    using (SqlCommand cmnd = new SqlCommand("SELECT '{' + '\"ID\":' + CAST(ID AS VARCHAR(4)) + ',' +" +
                                                                     "'\"ImagePath\":' + '\"' + ImagePath + '\",' +" +
                                                                     "'\"Answer\":' + '\"' + CAST(Answer AS NVARCHAR(100)) + '\"' +" +
                                                                 "'},' AS data " +
-                                                        "FROM QuizPictures"
-                                                        , conn))
-                {
-                    using (SqlDataReader rdr = cmnd.ExecuteReader())
+                                                        "FROM QuizPictures", conn))
                     {
-                        if (rdr.HasRows == false)
+                        using (SqlDataReader rdr = cmnd.ExecuteReader())
                         {
-                            return "[]";
-                        }
-                        while (rdr.Read())
-                        {
-                            data.Append(rdr["data"].ToString());
+                            if (rdr.HasRows == false)
+                            {
+                                return "[]";
+                            }
+                            while (rdr.Read())
+                            {
+                                data.Append(rdr["data"].ToString());
+                            }
                         }
                     }
+                }
+                catch (SqlException ex)
+                {
+                    ex.ErrorMessageBox("Dogodila se pogreška prilikom dohvaćanja podataka iz baze.");
                 }
             }
 
@@ -128,24 +163,34 @@ namespace InteractivePeriodicTable.Utils
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
             {
-                conn.Open();
-
-                using (SqlCommand cmnd = new SqlCommand(
-                                                        "SELECT '{ \"Fact\":' + '\"' + Fact + '\"},' AS data " +
-                                                        "FROM DidYouKnow"
-                                                        , conn))
+                try
                 {
-                    using (SqlDataReader rdr = cmnd.ExecuteReader())
+                    conn.Open();
+                }
+                catch(SqlException ex)
+                {
+                    ex.ErrorMessageBox("Dogodila se pogreška prilikom otvaranje veze na bazu.");
+                }
+                try
+                {
+                    using (SqlCommand cmnd = new SqlCommand("SELECT '{ \"Fact\":' + '\"' + Fact + '\"},' AS data " + "FROM DidYouKnow", conn))
                     {
-                        if (rdr.HasRows == false)
+                        using (SqlDataReader rdr = cmnd.ExecuteReader())
                         {
-                            return "[]";
-                        }
-                        while (rdr.Read())
-                        {
-                            data.Append(rdr["data"].ToString());
+                            if (rdr.HasRows == false)
+                            {
+                                return "[]";
+                            }
+                            while (rdr.Read())
+                            {
+                                data.Append(rdr["data"].ToString());
+                            }
                         }
                     }
+                }
+                catch(SqlException ex)
+                {
+                    ex.ErrorMessageBox("Dogodila se pogreška prilikom dohvaćanja podataka iz baze.");
                 }
             }
 
@@ -154,23 +199,26 @@ namespace InteractivePeriodicTable.Utils
 
             return data.ToString();
         }
+
         public void updateQuiz()
         {
-            string path_to_quiz = Pathing.sysDir + "\\quiz.json";
+            string pathToQuiz = Pathing.sysDir + "\\quiz.json";
+            string jsonQuiz = "{ \"QuizWith4Ans\":" + getQuizWith4Ans() + "," +
+                                "\"QuizYesNo\":" + getQuizYesNo() + "," +
+                                "\"QuizPictures\":" + getQuizPictures() + "}";
 
-            StringBuilder quiz_json = new StringBuilder();
-            quiz_json.Append("{ \"QuizWith4Ans\":" + getQuizWith4Ans() + "," + "\"QuizYesNo\":" + getQuizYesNo() + "," + "\"QuizPictures\":" + getQuizPictures() + "}");
+            File.WriteAllText(pathToQuiz, jsonQuiz);
 
-            File.WriteAllText(path_to_quiz, quiz_json.ToString());
+            return;
         }
         public void updateFacts()
         {
-            string path_to_facts = Pathing.sysDir + "\\facts.json";
+            string pathToFacts = Pathing.sysDir + "\\facts.json";
+            string jsonFacts = "{ \"Facts\": " + getFacts() + "}";
 
-            StringBuilder facts_json = new StringBuilder();
-            facts_json.Append("{ \"Facts\": " + getFacts() + "}");
+            File.WriteAllText(pathToFacts, jsonFacts);
 
-            File.WriteAllText(path_to_facts, facts_json.ToString());
+            return;
         }
     }
 }

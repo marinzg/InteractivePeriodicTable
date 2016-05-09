@@ -10,6 +10,7 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using InteractivePeriodicTable.Utils;
+using System.Windows.Controls.Primitives;
 
 namespace InteractivePeriodicTable
 {
@@ -42,12 +43,27 @@ namespace InteractivePeriodicTable
         }
         private void getQuestionsFromJSON()
         {
-            string json = "";
-            using (StreamReader sr = new StreamReader(Pathing.sysDir + "/quiz.json"))
+            string json = string.Empty;
+            try
             {
-                json = sr.ReadToEnd();
+                using (StreamReader sr = new StreamReader(Pathing.sysDir + "/quiz.json"))
+                {
+                    json = sr.ReadToEnd();
+                }
+                questions = JsonConvert.DeserializeObject<QuizQuestions>(json);
             }
-            questions = JsonConvert.DeserializeObject<QuizQuestions>(json);
+            catch (FileNotFoundException fnfe)
+            {
+                fnfe.ErrorMessageBox("Nije pronađena datoteka quiz.json !");
+            }
+            catch (DirectoryNotFoundException dnfe)
+            {
+                dnfe.ErrorMessageBox("Nije pronađen direktorij " + Pathing.sysDir);
+            }
+            catch (IOException ioe)
+            {
+                ioe.ErrorMessageBox("Greška prilikom čitanja iz datoteke.");
+            }
 
             return;
         }
@@ -60,14 +76,14 @@ namespace InteractivePeriodicTable
 
             scr_lbl.Content = "Score: " + score.ToString();
 
-            byte question_type = 0;
+            byte question_type = 0; // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures
             if (hasImages == true)
             {
-                question_type = (byte)rand.Next(0, 3); // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures
+                question_type = (byte)rand.Next(0, 3);
             }
             else
             {
-                question_type = (byte)rand.Next(0, 2); // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures
+                question_type = (byte)rand.Next(0, 2);
             }
 
             if( question_type == 0 )
@@ -91,9 +107,35 @@ namespace InteractivePeriodicTable
 
                 renderQuizPictures(question_no);
             }
+            else
+            {
+                ErrorHandle.ErrorMessageBox(null, "Nije odabrana niti jedna vrsta pitanja.");
+            }
 
             return;
         }
+        private void addButtonsRandomly(List<Button> btns)
+        {
+            List<byte> order = new List<byte>();
+
+            while (order.Count < btns.Count)
+            {
+                byte order_no = (byte)rand.Next(0, btns.Count);
+
+                if (order.Exists(x => x == order_no) == false)
+                {
+                    order.Add(order_no);
+                }
+            }
+
+            foreach (byte b in order)
+            {
+                this.sp.Children.Add(btns[b]);
+            }
+
+            return;
+        }
+
         private void renderQuizWith4Ans(int question_no)
         {
             QuizWith4Ans picked_question = questions.QuizWith4Ans[question_no];
@@ -213,9 +255,13 @@ namespace InteractivePeriodicTable
 
             Button btn = new Button();
             btn.Content = "OK";
+            btn.Name = "QuizPictures_btn";
             styleButton(btn);
             btn.Tag = picked_question.Answer;
             btn.Click += checkPicAns;
+
+            this.sp.RegisterName(btn.Name, btn);
+            this.KeyDown += Quiz_KeyDown;
 
             this.sp.Children.Add(lbl);
             this.sp.Children.Add(image);
@@ -226,6 +272,28 @@ namespace InteractivePeriodicTable
 
             return;
         }
+
+        private void Quiz_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+
+            if(e.Key == Key.Enter)
+            {
+                this.KeyDown -= Quiz_KeyDown;
+
+                Button btn = (Button)this.sp.FindName("QuizPictures_btn");
+                this.sp.UnregisterName("QuizPictures_btn");
+
+                btn.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
+            else
+            {
+                e.Handled = false;
+            }
+
+            return;
+        }
+
         private bool checkImages()
         {
             List<string> missingPictures = new List<string>();
@@ -252,6 +320,7 @@ namespace InteractivePeriodicTable
 
             return true;
         }
+
         private void styleButton(Button btn)
         {
             btn.Width = 250;
@@ -259,6 +328,7 @@ namespace InteractivePeriodicTable
             btn.Margin = new Thickness(0,5,0,5);
             btn.Background = Brushes.DeepSkyBlue;
             btn.Foreground = Brushes.Blue;
+
             return;
         }
         private void styleLabel(Label lbl)
@@ -266,29 +336,9 @@ namespace InteractivePeriodicTable
             lbl.Foreground = Brushes.Blue;
             lbl.FontSize = 18;
             lbl.FontWeight = FontWeights.SemiBold;
-            return;
-        }
-        private void addButtonsRandomly(List<Button> btns)
-        {
-            List<byte> order = new List<byte>();
-
-            while(order.Count < btns.Count)
-            {
-                byte order_no = (byte)rand.Next(0, btns.Count);
-
-                if (order.Exists(x => x == order_no) == false)
-                {
-                    order.Add(order_no);
-                }
-            }
-
-            foreach (byte b in order)
-            {
-                this.sp.Children.Add(btns[b]);
-            }
 
             return;
-        }
+        }     
 
         private void checkPicAns(object sender, RoutedEventArgs e)
         {
@@ -309,6 +359,7 @@ namespace InteractivePeriodicTable
                     wrongAns(sender, e);
                 }
             }
+
             return;
         }
         private void correctAns(object sender, RoutedEventArgs e)

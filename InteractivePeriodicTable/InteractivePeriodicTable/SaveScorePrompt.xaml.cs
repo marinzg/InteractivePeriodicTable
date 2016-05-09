@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Windows.Input;
+using InteractivePeriodicTable.Utils;
 
 namespace InteractivePeriodicTable
 {
@@ -31,12 +21,7 @@ namespace InteractivePeriodicTable
             score_lbl.Content = "Score: " + score.ToString();
             return;
         }
-        private void cancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            return;
-        }
-        private void save_Click(object sender, RoutedEventArgs e)
+        private void saveScore()
         {
             if (string.IsNullOrWhiteSpace(username.Text))
             {
@@ -51,29 +36,61 @@ namespace InteractivePeriodicTable
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
             {
-                conn.Open();
-
-                using (SqlCommand cmnd = new SqlCommand("INSERT INTO UserScore (UserName, Score) VALUES (@user, @score);", conn))
+                try
                 {
-                    cmnd.Parameters.AddWithValue("@user", username.Text);
-                    cmnd.Parameters.AddWithValue("@score", score);
-
-                    try
+                    conn.Open();
+                }
+                catch (SqlException ex)
+                {
+                    ex.ErrorMessageBox("Dogodila se pogreška prilikom otvaranje veze na bazu.");
+                }
+                try
+                {
+                    using (SqlCommand cmnd = new SqlCommand("INSERT INTO UserScore (UserName, Score) VALUES (@user, @score);", conn))
                     {
+                        cmnd.Parameters.AddWithValue("@user", username.Text);
+                        cmnd.Parameters.AddWithValue("@score", score);
+
                         cmnd.ExecuteNonQuery();
                         MessageBox.Show("Score was successfully submitted !", "Information");
                     }
-                    catch(SqlException ex)
-                    {
-                        MessageBox.Show(ex.Message, "Error");
-                        return;
-                    }
-
-                    this.Close();
                 }
+                catch (SqlException ex)
+                {
+                    ex.ErrorMessageBox("Dogodila se pogreška prilikom spremanja podataka u bazu.");
+                }
+            }
+
+            this.Close();
+            return;
+        }
+
+        #region EVENTI
+        private void cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            return;
+        }
+        private void save_Click(object sender, RoutedEventArgs e)
+        {
+            saveScore();
+            return;
+        }
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+
+            if (e.Key == Key.Enter)
+            {
+                saveScore();
+            }
+            else
+            {
+                e.Handled = false;
             }
 
             return;
         }
+        #endregion
     }
 }
