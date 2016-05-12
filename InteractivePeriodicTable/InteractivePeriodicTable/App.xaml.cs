@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using InteractivePeriodicTable.Utils;
 using System.Threading;
 using System.ComponentModel;
+using System.Data.SqlClient;
 
 namespace InteractivePeriodicTable
 {
@@ -37,12 +37,18 @@ namespace InteractivePeriodicTable
         {
             (sender as BackgroundWorker).ReportProgress(0);
             Update up = new Update();
-
-            (sender as BackgroundWorker).ReportProgress(25);
-            up.updateFacts();
-            (sender as BackgroundWorker).ReportProgress(50);
-            up.updateQuiz();
-            (sender as BackgroundWorker).ReportProgress(100);
+            try {
+                (sender as BackgroundWorker).ReportProgress(25);
+                up.updateFacts();
+                (sender as BackgroundWorker).ReportProgress(50);
+                up.updateQuiz();
+                (sender as BackgroundWorker).ReportProgress(100);
+            }
+            catch(SqlException)
+            {
+                MessageBox.Show("Error connecting to database");
+                App.Current.Shutdown();
+            }
         }
 
         private void worker_ProgressChanged (object sender, ProgressChangedEventArgs e)
