@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InteractivePeriodicTable"
         mc:Ignorable="d"
-        Title="Quiz" Height="500" Width="577.465" Icon="/Resources/Images/Ikona.ico">
+        Title="Quiz" Height="500" Width="577.465" Icon="/Resources/Images/Ikona.ico" WindowStartupLocation="CenterScreen">
     <Grid x:Name="g" Background="LightBlue">
         <StackPanel x:Name="sp" Margin="15,41,68,0" />
 

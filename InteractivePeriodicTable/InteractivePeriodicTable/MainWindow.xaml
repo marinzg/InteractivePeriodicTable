@@ -21,14 +21,10 @@
         WindowState="Maximized" MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
 
+
+
     <Viewbox>
         <Grid Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="Sve_za_scaleanje" >
-
-
-            <!--<StackPanel VerticalAlignment="Top">
-                <Menu Width="Auto" Height="Auto" Background="{x:Null}"/>
-            </StackPanel>-->
-
 
 
             <WebBrowser x:Name="browser" Visibility="hidden" />
@@ -302,6 +298,7 @@
 
 
             <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="0" X2="100" Y2="50" Height="48" Margin="-34,55,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="85"/>
+           
 
 
         </Grid>
@@ -311,5 +308,6 @@
     <Window.Background>
         <ImageBrush ImageSource="/Resources/Images/space.jpg" />
     </Window.Background>
+
 
 </Window>
