@@ -24,6 +24,7 @@ namespace InteractivePeriodicTable
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private DispatcherTimer colorChanger = new DispatcherTimer();
         private Random rand = new Random();
+
         public Quiz()
         {
             this.Closing += stopTimer;
@@ -42,6 +43,7 @@ namespace InteractivePeriodicTable
 
             pickQuestion();
         }
+
         private void getQuestionsFromJSON()
         {
             string json = string.Empty;
@@ -141,9 +143,7 @@ namespace InteractivePeriodicTable
         {
             QuizWith4Ans picked_question = questions.QuizWith4Ans[question_no];
 
-            Label question_lbl = new Label();
-            question_lbl.Content = picked_question.Question;
-            styleLabel(question_lbl);
+            question.Content = picked_question.Question;
 
             Button A1 = new Button();
             A1.Content = picked_question.A1;
@@ -190,8 +190,6 @@ namespace InteractivePeriodicTable
                 A4.Click += correctAns;
             }
 
-            this.sp.Children.Add(question_lbl);
-
             addButtonsRandomly(new List<Button>() { A1,A2,A3,A4 });
 
             return;
@@ -200,9 +198,7 @@ namespace InteractivePeriodicTable
         {
             QuizYesNo picked_question = questions.QuizYesNo[question_no];
 
-            Label question_lbl = new Label();
-            question_lbl.Content = picked_question.Question;
-            styleLabel(question_lbl);
+            question.Content = picked_question.Question;
 
             Button A1 = new Button();
             A1.Content = picked_question.A1;
@@ -223,7 +219,6 @@ namespace InteractivePeriodicTable
                 A2.Click += correctAns;
             }
 
-            this.sp.Children.Add(question_lbl);
             addButtonsRandomly(new List<Button>() { A1, A2 });
 
             return;
@@ -232,9 +227,7 @@ namespace InteractivePeriodicTable
         {
             QuizPictures picked_question = questions.QuizPictures[question_no];
 
-            Label lbl = new Label();
-            lbl.Content = "Write what you see in this image";
-            styleLabel(lbl);
+            question.Content = "Write what you see in this image";
 
             Image image = new Image();
             image.Width = 300;
@@ -264,7 +257,6 @@ namespace InteractivePeriodicTable
             this.sp.RegisterName(btn.Name, btn);
             this.KeyDown += Quiz_KeyDown;
 
-            this.sp.Children.Add(lbl);
             this.sp.Children.Add(image);
             this.sp.Children.Add(txbx);
             this.sp.Children.Add(btn);
@@ -283,7 +275,6 @@ namespace InteractivePeriodicTable
                 this.KeyDown -= Quiz_KeyDown;
 
                 Button btn = (Button)this.sp.FindName("QuizPictures_btn");
-                this.sp.UnregisterName("QuizPictures_btn");
 
                 btn.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
             }
@@ -344,7 +335,8 @@ namespace InteractivePeriodicTable
         private void checkPicAns(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            styleButton(btn);
+            this.sp.UnregisterName("QuizPictures_btn");
+            //styleButton(btn);
 
             if (btn.Tag != null)
             {

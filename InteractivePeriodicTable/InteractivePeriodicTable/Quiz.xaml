@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InteractivePeriodicTable"
         mc:Ignorable="d"
-        Title="Quiz" Height="500" Width="577.465" Icon="/Resources/Images/Ikona.ico">
-    <Grid x:Name="g" Background="LightBlue">
-        <StackPanel x:Name="sp" Margin="15,41,68,0" />
+        Title="Quiz" Height="631.489" Width="577.465" Icon="/Resources/Images/Ikona.ico" ResizeMode="NoResize" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="g" Background="LightBlue" Margin="0,0,0,-31">
+        <StackPanel x:Name="sp" Margin="10,103,0,0" Height="520" Width="549" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
-        <Label x:Name="timer" Content="Time left:" HorizontalAlignment="Left" Margin="366,10,0,0" VerticalAlignment="Top" Foreground="Blue" FontSize="18" FontWeight="Bold"/>
-        <Label x:Name="scr_lbl" Content="Score:" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" Foreground="Blue" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="timer" Content="Time left:" Margin="356,10,0,0" Foreground="Blue" FontSize="18" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label x:Name="scr_lbl" Content="Score:" Margin="15,10,0,0" Foreground="Blue" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label x:Name="question" Content="q" Margin="10,56,10,0" Foreground="Blue" FontSize="18" FontWeight="Bold" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
 
     </Grid>
 </Window>
