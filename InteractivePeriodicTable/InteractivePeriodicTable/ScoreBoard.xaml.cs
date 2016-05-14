@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Data.SqlClient;
 using System.Configuration;
-using InteractivePeriodicTable.Utils;
+using InteractivePeriodicTable.ExtensionMethods;
 
 namespace InteractivePeriodicTable
 {
@@ -11,16 +11,20 @@ namespace InteractivePeriodicTable
         public ScoreBoard()
         {
             InitializeComponent();
+
             getTop10Players();
         }
 
         private void getTop10Players()
         {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
+            SqlConnection dbConnection = new SqlConnection();
+            dbConnection.ConnectionString = ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString;
+
+            using (dbConnection)
             {
                 try
                 {
-                    conn.Open();
+                    dbConnection.Open();
                 }
                 catch (SqlException ex)
                 {
@@ -28,17 +32,21 @@ namespace InteractivePeriodicTable
                 }
                 try
                 {
-                    using (SqlCommand cmnd = new SqlCommand("SELECT TOP(10) UserName, Score FROM UserScore ORDER BY Score DESC;", conn))
+                    SqlCommand dbCommand = new SqlCommand();
+                    dbCommand.CommandText = "SELECT TOP(10) UserName, Score FROM UserScore ORDER BY Score DESC;";
+                    dbCommand.Connection = dbConnection;
+
+                    using (dbCommand)
                     {
-                        using (SqlDataReader rdr = cmnd.ExecuteReader())
+                        using (SqlDataReader dataReader = dbCommand.ExecuteReader())
                         {
                             byte i = 1;
-                            while (rdr.Read())
+                            while (dataReader.Read())
                             {
-                                Label row = new Label();
-                                row.Content = i.ToString() + "." + rdr["UserName"].ToString() + ": " + rdr["Score"].ToString();
+                                Label userNameScore = new Label();
+                                userNameScore.Content = i.ToString() + "." + dataReader["UserName"].ToString() + ": " + dataReader["Score"].ToString();
 
-                                this.scoreboard.Children.Add(row);
+                                this.scoreboard.Children.Add(userNameScore);
                                 i++;
                             }
                         }

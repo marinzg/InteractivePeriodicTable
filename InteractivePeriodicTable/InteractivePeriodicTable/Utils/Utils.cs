@@ -1,38 +1,12 @@
 ﻿using System;
 using System.IO;
-using System.Windows.Forms;
+using System.Windows.Controls;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 
 namespace InteractivePeriodicTable.Utils
 {
-    /// <summary>
-    ///     Klasa za centralizirano upravljanje pogreškama.
-    /// </summary>
-    public static class ErrorHandle
-    {
-        public static void ErrorMessageBox(this Exception exception, string message)
-        {
-            if (exception != null)
-            {
-                using (StreamWriter writer = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\log.txt", true))
-                {
-                    writer.WriteLine("Pogreška: " + exception.Message + Environment.NewLine +
-                                     "Datum:    " + DateTime.Now.ToString());
-
-                    writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
-                }
-            }
-
-            System.Windows.Forms.MessageBox.Show(message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            Environment.Exit(0);
-
-            return;
-        }
-    }
-
     /// <summary>
     ///     Klasa za pretraživanje kontrola na formi.
     /// </summary>

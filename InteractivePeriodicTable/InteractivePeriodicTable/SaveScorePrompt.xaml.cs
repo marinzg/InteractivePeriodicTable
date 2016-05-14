@@ -2,25 +2,25 @@
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Input;
-using InteractivePeriodicTable.Utils;
+using InteractivePeriodicTable.ExtensionMethods;
 
 namespace InteractivePeriodicTable
 {
     public partial class SaveScorePrompt : Window
     {
+        #region ČLANSKE VARIJABLE
         private int score;
+        #endregion
+
         public SaveScorePrompt(int scr)
         {
             this.score = scr;
+
             InitializeComponent();
-            renderScore();
+
+            score_lbl.Content = "Score: " + score.ToString();
         }
 
-        private void renderScore()
-        {
-            score_lbl.Content = "Score: " + score.ToString();
-            return;
-        }
         private void saveScore()
         {
             if (string.IsNullOrWhiteSpace(username.Text))
@@ -30,15 +30,18 @@ namespace InteractivePeriodicTable
             }
             if (username.Text.Length > 20)
             {
-                MessageBox.Show("Please enter shorter user name !", "Error");
+                MessageBox.Show("Username can be max. 20 characters long !", "Error");
                 return;
             }
 
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
+            SqlConnection dbConnection = new SqlConnection();
+            dbConnection.ConnectionString = ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString;
+
+            using (dbConnection)
             {
                 try
                 {
-                    conn.Open();
+                    dbConnection.Open();
                 }
                 catch (SqlException ex)
                 {
@@ -46,12 +49,16 @@ namespace InteractivePeriodicTable
                 }
                 try
                 {
-                    using (SqlCommand cmnd = new SqlCommand("INSERT INTO UserScore (UserName, Score) VALUES (@user, @score);", conn))
-                    {
-                        cmnd.Parameters.AddWithValue("@user", username.Text);
-                        cmnd.Parameters.AddWithValue("@score", score);
+                    SqlCommand dbCommand = new SqlCommand();
+                    dbCommand.CommandText = "INSERT INTO UserScore (UserName, Score) VALUES (@user, @score);";
+                    dbCommand.Connection = dbConnection;
 
-                        cmnd.ExecuteNonQuery();
+                    using (dbCommand)
+                    {
+                        dbCommand.Parameters.AddWithValue("@user", username.Text);
+                        dbCommand.Parameters.AddWithValue("@score", score);
+
+                        dbCommand.ExecuteNonQuery();
                         MessageBox.Show("Score was successfully submitted !", "Information");
                     }
                 }

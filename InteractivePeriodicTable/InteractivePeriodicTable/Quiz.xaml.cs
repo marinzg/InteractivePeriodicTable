@@ -11,25 +11,29 @@ using System.Text;
 using System.Collections.Generic;
 using InteractivePeriodicTable.Utils;
 using InteractivePeriodicTable.Data;
+using InteractivePeriodicTable.ExtensionMethods;
 using System.Windows.Controls.Primitives;
 
 namespace InteractivePeriodicTable
 {
     public partial class Quiz : Window
     {
+        #region ČLANSKE VARIJABLE
         private QuizQuestions questions = new QuizQuestions();
-        private int score = 0;
-        private bool hasImages = false;
         private DateTime start;
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private DispatcherTimer colorChanger = new DispatcherTimer();
         private Random rand = new Random();
+        private int score = 0;
+        private bool hasImages = false;
+        private string quizPath = Pathing.SysDir + "/quiz.json";
+        #endregion
 
         public Quiz()
         {
             this.Closing += stopTimer;
 
-            getQuestionsFromJSON();
+            loadQuizQuestionsFromJSON();
 
             hasImages = checkImages();
 
@@ -41,19 +45,31 @@ namespace InteractivePeriodicTable
             start = DateTime.Now;
             dispatcherTimer.Start();
 
-            pickQuestion();
+            renderNextQuestion();
         }
 
-        private void getQuestionsFromJSON()
+        /// <summary>
+        ///     Čita pitanja za kviz iz datoteke quiz.json te ih deserijalizira u klasu QuizQuestions.
+        ///     Obrađuje moguće iznimke.
+        /// </summary>
+        private void loadQuizQuestionsFromJSON()
         {
-            string json = string.Empty;
             try
             {
-                using (StreamReader sr = new StreamReader(Pathing.SysDir + "/quiz.json"))
+                string jsonQuizQuestions = string.Empty;
+                using (StreamReader sr = new StreamReader( quizPath ))
                 {
-                    json = sr.ReadToEnd();
+                    jsonQuizQuestions = sr.ReadToEnd();
                 }
-                questions = JsonConvert.DeserializeObject<QuizQuestions>(json);
+
+                questions = JsonConvert.DeserializeObject<QuizQuestions>(jsonQuizQuestions);
+
+                int questionsCount = questions.QuizPictures.Count + questions.QuizWith4Ans.Count + questions.QuizYesNo.Count;
+                if (questionsCount == 0)
+                {
+                    MessageBox.Show("Ne posotji niti jedno pitanje.");
+                    this.Close();
+                }
             }
             catch (FileNotFoundException fnfe)
             {
@@ -67,122 +83,153 @@ namespace InteractivePeriodicTable
             {
                 ioe.ErrorMessageBox("Greška prilikom čitanja iz datoteke.");
             }
+            catch(Exception ex)
+            {
+                ex.ErrorMessageBox("Dogodila se pogreška !");
+            }
 
             return;
         }
-        private void pickQuestion()
+
+        #region ODABIR PITANJA
+        /// <summary>
+        ///     Nasumično prikazuje slijedeće pitanje na ekran.
+        /// </summary>
+        private void renderNextQuestion()
         {
-            if (this.sp.Children.Count > 0)
+            clearPreviousQuestion();
+            refreshScore();
+
+            byte questionType = pickQuestionType();
+
+            if (questionType == 3)
             {
-                this.sp.Children.Clear();
+                ErrorHandle.ErrorMessageBox(null, "Dogodila se pogreška prilikom odabira vrste sljedećeg pitanja !");
             }
 
-            scr_lbl.Content = "Score: " + score.ToString();
+            int questionID = pickQuestionID(questionType);
 
-            byte question_type = 0; // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures
+            if (questionType == 0)
+            {
+                renderQuizWith4Ans(questionID);
+            }
+            else if (questionType == 1)
+            {
+                renderQuizYesNo(questionID);
+            }
+            else
+            {
+                renderQuizPictures(questionID);
+            }
+
+            return;
+        }
+
+        /// <summary>
+        ///     Odabire ID pitanja za prikaz.
+        /// </summary>
+        /// <param name="questionType">
+        ///     Vrsta pitanja čiji ID metoda vraća.
+        /// </param>
+        /// <returns></returns>
+        private int pickQuestionID(byte questionType)
+        {
+            int numberOfQuestions = -1;
+            int questionID = -1;
+
+            if (questionType == 0)
+            {
+                numberOfQuestions = questions.QuizWith4Ans.Count;
+                questionID = rand.Next(0, numberOfQuestions);
+            }
+            else if (questionType == 1)
+            {
+                numberOfQuestions = questions.QuizYesNo.Count;
+                questionID = rand.Next(0, numberOfQuestions);
+            }
+            else
+            {
+                numberOfQuestions = questions.QuizPictures.Count;
+                questionID = rand.Next(0, numberOfQuestions);
+            }
+
+            return questionID;
+        }
+
+        /// <summary>
+        ///     Metoda nasumično odabire vrstu pitanja za prikaz.
+        /// </summary>
+        /// <returns>
+        ///     Vrsta pitanja.
+        /// </returns>
+        private byte pickQuestionType()
+        {
+            byte questionType = 3; // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures, 3->Pogreška
+
             if (hasImages == true)
             {
-                question_type = (byte)rand.Next(0, 3);
+                questionType = (byte)rand.Next(0, 3);
             }
             else
             {
-                question_type = (byte)rand.Next(0, 2);
+                questionType = (byte)rand.Next(0, 2);
             }
 
-            if( question_type == 0 )
-            {
-                int no_QuizWith4Ans = questions.QuizWith4Ans.Count;
-                int question_no = rand.Next(0, no_QuizWith4Ans);
-                
-                renderQuizWith4Ans(question_no);
-            }
-            else if( question_type == 1 )
-            {
-                int no_QuizYesNo = questions.QuizYesNo.Count;
-                int question_no = rand.Next(0, no_QuizYesNo);
-
-                renderQuizYesNo(question_no);
-            }
-            else if ( question_type == 2 )
-            {
-                int no_QuizPictures = questions.QuizPictures.Count;
-                int question_no = rand.Next(0, no_QuizPictures);
-
-                renderQuizPictures(question_no);
-            }
-            else
-            {
-                ErrorHandle.ErrorMessageBox(null, "Nije odabrana niti jedna vrsta pitanja.");
-            }
-
-            return;
+            return questionType;
         }
-        private void addButtonsRandomly(List<Button> btns)
+        #endregion
+
+        #region PRIKAZ PITANJA
+        /// <summary>
+        ///     Metoda dinamički prikazuje pitanje sa 4 moguća odgovora na ekranu.
+        /// </summary>
+        /// <param name="questionID">
+        ///     ID pitanja za prikaz.
+        /// </param>
+        private void renderQuizWith4Ans(int questionID)
         {
-            List<byte> order = new List<byte>();
+            QuizWith4Ans pickedQuestion = questions.QuizWith4Ans[questionID];
 
-            while (order.Count < btns.Count)
-            {
-                byte order_no = (byte)rand.Next(0, btns.Count);
-
-                if (order.Exists(x => x == order_no) == false)
-                {
-                    order.Add(order_no);
-                }
-            }
-
-            foreach (byte b in order)
-            {
-                this.sp.Children.Add(btns[b]);
-            }
-
-            return;
-        }
-
-        private void renderQuizWith4Ans(int question_no)
-        {
-            QuizWith4Ans picked_question = questions.QuizWith4Ans[question_no];
-
-            question.Content = picked_question.Question;
+            question.Content = pickedQuestion.Question;
 
             Button A1 = new Button();
-            A1.Content = picked_question.A1;
-            styleButton(A1);
+            A1.Content = pickedQuestion.A1;
+            A1.styleButton();
 
             Button A2 = new Button();
-            A2.Content = picked_question.A2;
-            styleButton(A2);
+            A2.Content = pickedQuestion.A2;
+            A2.styleButton();
 
             Button A3 = new Button();
-            A3.Content = picked_question.A3;
-            styleButton(A3);
+            A3.Content = pickedQuestion.A3;
+            A3.styleButton();
 
             Button A4 = new Button();
-            A4.Content = picked_question.A4;
-            styleButton(A4);
+            A4.Content = pickedQuestion.A4;
+            A4.styleButton();
 
-            if (picked_question.Answer == "1")
+            if (pickedQuestion.Answer == "1")
             {
                 A1.Click += correctAns;
                 A2.Click += wrongAns;
                 A3.Click += wrongAns;
                 A4.Click += wrongAns;
             }
-            else if (picked_question.Answer == "2")
+            else if (pickedQuestion.Answer == "2")
             {
                 A1.Click += wrongAns;
                 A2.Click += correctAns;
                 A3.Click += wrongAns;
                 A4.Click += wrongAns;
             }
-            else if (picked_question.Answer == "3")
+            else if (pickedQuestion.Answer == "3")
             {
                 A1.Click += wrongAns;
                 A2.Click += wrongAns;
                 A3.Click += correctAns;
                 A4.Click += wrongAns;
             }
-            else if (picked_question.Answer == "4")
+            else if (pickedQuestion.Answer == "4")
             {
                 A1.Click += wrongAns;
                 A2.Click += wrongAns;
@@ -190,87 +237,192 @@ namespace InteractivePeriodicTable
                 A4.Click += correctAns;
             }
 
-            addButtonsRandomly(new List<Button>() { A1,A2,A3,A4 });
+            placeButtonsRandomly(new List<Button>() { A1, A2, A3, A4 });
 
             return;
         }
-        private void renderQuizYesNo(int question_no)
-        {
-            QuizYesNo picked_question = questions.QuizYesNo[question_no];
 
-            question.Content = picked_question.Question;
+        /// <summary>
+        ///     Metoda dinamički prikazuje pitanje sa Da/Ne odgovorima na ekranu.
+        /// </summary>
+        /// <param name="questionID">
+        ///     ID pitanja za prikaz.
+        /// </param>
+        private void renderQuizYesNo(int questionID)
+        {
+            QuizYesNo pickedQuestion = questions.QuizYesNo[questionID];
+
+            question.Content = pickedQuestion.Question;
 
             Button A1 = new Button();
-            A1.Content = picked_question.A1;
-            styleButton(A1);
+            A1.Content = pickedQuestion.A1;
+            A1.styleButton();
 
             Button A2 = new Button();
-            A2.Content = picked_question.A2;
-            styleButton(A2);
+            A2.Content = pickedQuestion.A2;
+            A2.styleButton();
 
-            if (picked_question.Answer == "1")
+            if (pickedQuestion.Answer == "1")
             {
                 A1.Click += correctAns;
                 A2.Click += wrongAns;
             }
-            else if (picked_question.Answer == "2")
+            else if (pickedQuestion.Answer == "2")
             {
                 A1.Click += wrongAns;
                 A2.Click += correctAns;
             }
 
-            addButtonsRandomly(new List<Button>() { A1, A2 });
+            placeButtonsRandomly(new List<Button>() { A1, A2 });
 
             return;
         }
-        private void renderQuizPictures(int question_no)
-        {
-            QuizPictures picked_question = questions.QuizPictures[question_no];
 
+        /// <summary>
+        ///     Metoda dinamički prikazuje pitanje sa slikom na ekranu.
+        ///     Registrira KeyDown događaj kako bi korisnik mogao sa Enter gumbom potvrditi napisano rješenje.
+        /// </summary>
+        /// <param name="questionID">
+        ///     ID pitanja za prikaz.
+        /// </param>
+        private void renderQuizPictures(int questionID)
+        {
             question.Content = "Write what you see in this image";
+
+            QuizPictures pickedQuestion = questions.QuizPictures[questionID];
+
+            BitmapImage imageData = new BitmapImage();
+            imageData.BeginInit();
+            imageData.UriSource = new Uri(Pathing.ImgDir + "\\" + pickedQuestion.ImagePath, UriKind.Absolute);
+            imageData.EndInit();
 
             Image image = new Image();
             image.Width = 300;
-
-            BitmapImage bi = new BitmapImage();
-            bi.BeginInit();
-            bi.UriSource = new Uri(Pathing.ImgDir + "\\" + picked_question.ImagePath, UriKind.Absolute);
-            bi.EndInit();
-
-            image.Source = bi;
-
-            TextBox txbx = new TextBox();
-            txbx.Name = "QuizPictures_txbx";
-            txbx.TextAlignment = TextAlignment.Center;
-            txbx.Width = 120;
-            txbx.Margin = new Thickness(0, 5, 0, 5);
-
-            this.sp.RegisterName(txbx.Name, txbx);
-
-            Button btn = new Button();
-            btn.Content = "OK";
-            btn.Name = "QuizPictures_btn";
-            styleButton(btn);
-            btn.Tag = picked_question.Answer;
-            btn.Click += checkPicAns;
-
-            this.sp.RegisterName(btn.Name, btn);
-            this.KeyDown += Quiz_KeyDown;
+            image.Source = imageData;
 
             this.sp.Children.Add(image);
-            this.sp.Children.Add(txbx);
-            this.sp.Children.Add(btn);
 
-            txbx.Focus();
+            TextBox answerTextBox = new TextBox();
+            answerTextBox.Name = "QuizPictures_txbx";
+            answerTextBox.styleTextBox();
+
+            this.sp.RegisterName(answerTextBox.Name, answerTextBox);
+            this.sp.Children.Add(answerTextBox);
+
+            answerTextBox.Focus();
+
+            Button checkButton = new Button();
+            checkButton.Content = "OK";
+            checkButton.Name = "QuizPictures_btn";
+            checkButton.styleButton();
+            checkButton.Tag = pickedQuestion.Answer;
+            checkButton.Click += checkPicAns;
+
+            this.sp.RegisterName(checkButton.Name, checkButton);
+            this.sp.Children.Add(checkButton);
+
+            this.KeyDown += Quiz_KeyDown;
+
+            return;
+        }
+        #endregion
+
+        #region POMOĆNE METODE
+        /// <summary>
+        ///     Metoda provjerava da li na disku postoje slike potrebene za kviz.
+        ///     Ako neke slike nedostaju, javlja poruku i otvara kviz bez pitanja sa slikama.
+        /// </summary>
+        /// <returns>
+        ///     Postavlja vrijedonst varijable ovisno o tome da li postoje slike na disku.
+        /// </returns>
+        private bool checkImages()
+        {
+            List<string> missingPictures = new List<string>();
+
+            foreach (QuizPictures pictureQuestion in questions.QuizPictures)
+            {
+                if (File.Exists(Pathing.ImgDir + "\\" + pictureQuestion.ImagePath) == false)
+                {
+                    missingPictures.Add(pictureQuestion.ImagePath);
+                }
+            }
+
+            if (missingPictures.Count > 0)
+            {
+                StringBuilder missingPicturesText = new StringBuilder();
+                foreach (string imageName in missingPictures)
+                {
+                    missingPicturesText.AppendLine(imageName);
+                }
+
+                MessageBox.Show("You are missing these images:\n" + missingPicturesText.ToString() +
+                                "\n You won't get questions with images in quiz game.", "Missing images !");
+
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        ///     Čisti StackPanel od svih kontrola.
+        /// </summary>
+        private void clearPreviousQuestion()
+        {
+            if (this.sp.Children.Count > 0)
+            {
+                this.sp.Children.Clear();
+            }
 
             return;
         }
 
+        /// <summary>
+        ///     Osvježava prikaz rezultata na ekranu.
+        /// </summary>
+        private void refreshScore()
+        {
+            scr_lbl.Content = "Score: " + score.ToString();
+
+            return;
+        }
+
+        /// <summary>
+        ///     Nasumično prikazuje gumbe za odgovore.
+        /// </summary>
+        /// <param name="buttonsToPlace">
+        ///     Lista gumbiju koje moramo nasumično posložiti na ekranu.
+        /// </param>
+        private void placeButtonsRandomly(List<Button> buttonsToPlace)
+        {
+            List<byte> orderedButtons = new List<byte>();
+            int numberOfButtons = buttonsToPlace.Count;
+
+            while (orderedButtons.Count < numberOfButtons)
+            {
+                byte orderNumber = (byte)rand.Next(0, numberOfButtons);
+
+                if (orderedButtons.Exists(x => x == orderNumber) == false)
+                {
+                    orderedButtons.Add(orderNumber);
+                }
+            }
+
+            foreach (byte buttonNumber in orderedButtons)
+            {
+                this.sp.Children.Add(buttonsToPlace[buttonNumber]);
+            }
+
+            return;
+        }
+        #endregion
+
+        #region DOGAĐAJI
         private void Quiz_KeyDown(object sender, KeyEventArgs e)
         {
             e.Handled = true;
 
-            if(e.Key == Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 this.KeyDown -= Quiz_KeyDown;
 
@@ -285,58 +437,10 @@ namespace InteractivePeriodicTable
 
             return;
         }
-
-        private bool checkImages()
-        {
-            List<string> missingPictures = new List<string>();
-
-            foreach (QuizPictures qp in questions.QuizPictures)
-            {
-                if (File.Exists(Pathing.ImgDir + "\\" + qp.ImagePath) == false)
-                {
-                    missingPictures.Add(qp.ImagePath);
-                }
-            }
-
-            if (missingPictures.Count > 0)
-            {
-                StringBuilder sb = new StringBuilder();
-                foreach (string s in missingPictures)
-                {
-                    sb.AppendLine(s);
-                }
-                MessageBox.Show("You are missing these images:\n" + sb.ToString() + "\n You won't get questions with images in quiz game.", "Missing images !");
-
-                return false;
-            }
-
-            return true;
-        }
-
-        private void styleButton(Button btn)
-        {
-            btn.Width = 250;
-            btn.Height = 35;
-            btn.Margin = new Thickness(0,5,0,5);
-            btn.Background = Brushes.DeepSkyBlue;
-            btn.Foreground = Brushes.Blue;
-
-            return;
-        }
-        private void styleLabel(Label lbl)
-        {
-            lbl.Foreground = Brushes.Blue;
-            lbl.FontSize = 18;
-            lbl.FontWeight = FontWeights.SemiBold;
-
-            return;
-        }     
-
         private void checkPicAns(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
             this.sp.UnregisterName("QuizPictures_btn");
-            //styleButton(btn);
 
             if (btn.Tag != null)
             {
@@ -362,12 +466,12 @@ namespace InteractivePeriodicTable
             start = start.AddSeconds(5);
 
             timer.Foreground = Brushes.Green;
-            
-            colorChanger.Interval = new TimeSpan(0,0,0,1);
+
+            colorChanger.Interval = new TimeSpan(0, 0, 0, 1);
             colorChanger.Tick += colorChanger_Tick;
             colorChanger.Start();
 
-            pickQuestion();
+            renderNextQuestion();
 
             return;
         }
@@ -383,7 +487,7 @@ namespace InteractivePeriodicTable
             colorChanger.Tick += colorChanger_Tick;
             colorChanger.Start();
 
-            pickQuestion();
+            renderNextQuestion();
 
             return;
         }
@@ -409,7 +513,7 @@ namespace InteractivePeriodicTable
         {
             colorChanger.Stop();
 
-            styleLabel(timer);
+            timer.styleLabel();
 
             return;
         }
@@ -418,5 +522,6 @@ namespace InteractivePeriodicTable
             dispatcherTimer.Stop();
             return;
         }
+        #endregion
     }
 }
