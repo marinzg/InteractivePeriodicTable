@@ -45,8 +45,9 @@ namespace InteractivePeriodicTable.ExtensionMethods
             button.Width = 250;
             button.Height = 35;
             button.Margin = new Thickness(0, 5, 0, 5);
-            button.Background = Brushes.DeepSkyBlue;
-            button.Foreground = Brushes.Blue;
+            button.Background = Brushes.DarkTurquoise;
+            button.Foreground = Brushes.MidnightBlue;
+            button.FontWeight = FontWeights.Bold;
 
             
 
@@ -58,7 +59,7 @@ namespace InteractivePeriodicTable.ExtensionMethods
         /// </summary>
         public static void styleLabel(this System.Windows.Controls.Label label)
         {
-            label.Foreground = Brushes.Blue;
+            label.Foreground = Brushes.DarkTurquoise;
             label.FontSize = 18;
             label.FontWeight = FontWeights.SemiBold;
 

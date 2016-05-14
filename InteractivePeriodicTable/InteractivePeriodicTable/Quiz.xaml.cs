@@ -563,7 +563,7 @@ namespace InteractivePeriodicTable
 
             start = start.AddSeconds(5);
 
-            timer.Foreground = Brushes.Green;
+            timer.Foreground = Brushes.ForestGreen;
 
             colorChanger.Interval = new TimeSpan(0, 0, 0, 1);
             colorChanger.Tick += colorChanger_Tick;
@@ -591,7 +591,7 @@ namespace InteractivePeriodicTable
 
             start = start.AddSeconds(-5);
 
-            timer.Foreground = Brushes.Red;
+            timer.Foreground = Brushes.Firebrick;
 
             colorChanger.Interval = new TimeSpan(0, 0, 0, 1);
             colorChanger.Tick += colorChanger_Tick;

@@ -19,14 +19,17 @@
 
 
 
-    <Grid x:Name="g" Background="LightBlue" Margin="0,0,0,-31" >
+    <Grid x:Name="g" Margin="0,0,0,-31" Opacity="0.9" >
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/Images/q1.png" Stretch="UniformToFill" Opacity="0.9"/>
+        </Grid.Background>
         <StackPanel x:Name="sp" Margin="10,139,0,0" Height="484" Width="549" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
-        <Label x:Name="timer" Content="Time left:" Margin="356,10,0,0" Foreground="Blue" FontSize="18" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label x:Name="scr_lbl" Content="Score:" Margin="15,10,0,0" Foreground="Blue" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label x:Name="timer" Content="Time left:" Margin="356,10,0,0" Foreground="DarkTurquoise" FontSize="18" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label x:Name="scr_lbl" Content="Score:" Margin="15,10,0,0" Foreground="DarkTurquoise" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <!--<Label x:Name="question" Content="q" Margin="10,56,10,0" Foreground="Blue" FontSize="18" FontWeight="Bold" VerticalAlignment="Top" HorizontalContentAlignment="Center" />-->
         <Grid Width="572" Margin="0,49,-0.5,28.5">
-            <TextBlock x:Name="question"  Margin="10,10,9,0" Foreground="Blue" FontSize="18" FontWeight="Bold" VerticalAlignment="Top" TextWrapping="Wrap" TextAlignment="Center" />
+            <TextBlock x:Name="question"  Margin="10,10,9,0" Foreground="DarkTurquoise" FontSize="18" FontWeight="Bold" VerticalAlignment="Top" TextWrapping="Wrap" TextAlignment="Center" />
         </Grid>
 
     </Grid>
