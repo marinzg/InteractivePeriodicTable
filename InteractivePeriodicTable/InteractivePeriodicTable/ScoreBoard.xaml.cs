@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using InteractivePeriodicTable.ExtensionMethods;
 using InteractivePeriodicTable.Utils;
+using System.Data;
 
 namespace InteractivePeriodicTable
 {
@@ -16,6 +17,10 @@ namespace InteractivePeriodicTable
             getTop10Players();
         }
 
+        /// <summary>
+        ///     Dohvaća 10 najboljih rezultata sa servera.
+        ///     Prikazuje ih.
+        /// </summary>
         private void getTop10Players()
         {
             SqlConnection dbConnection = new SqlConnection();
@@ -34,23 +39,19 @@ namespace InteractivePeriodicTable
                 try
                 {
                     SqlCommand dbCommand = new SqlCommand();
-                    dbCommand.CommandText = "SELECT TOP(10) UserName, Score FROM UserScore ORDER BY Score DESC;";
+                    dbCommand.CommandText = "SELECT TOP(10) ROW_NUMBER() OVER (ORDER BY Score DESC) AS Position, UserName AS Username, Score FROM UserScore ORDER BY Score DESC;";
                     dbCommand.Connection = dbConnection;
 
                     using (dbCommand)
                     {
-                        using (SqlDataReader dataReader = dbCommand.ExecuteReader())
-                        {
-                            byte i = 1;
-                            while (dataReader.Read())
-                            {
-                                Label userNameScore = new Label();
-                                userNameScore.Content = i.ToString() + "." + dataReader["UserName"].ToString() + ": " + dataReader["Score"].ToString();
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter(dbCommand);
+                        DataTable userScoreDataTable = new DataTable("UserScore");
 
-                                this.scoreboard.Children.Add(userNameScore);
-                                i++;
-                            }
-                        }
+                        dataAdapter.Fill(userScoreDataTable);
+
+                        scoreBoard.ItemsSource = userScoreDataTable.DefaultView;
+
+                        dataAdapter.Update(userScoreDataTable);
                     }
                 }
                 catch (SqlException ex)
@@ -62,6 +63,11 @@ namespace InteractivePeriodicTable
             return;
         }
 
+        /// <summary>
+        ///     Gasi prozor.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
