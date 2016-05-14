@@ -7,12 +7,17 @@ namespace InteractivePeriodicTable.Utils
 {
     public class Update
     {
-        private string getQuizWith4Ans()
-        {
-            StringBuilder data = new StringBuilder();
-            data.Append("[");
+        private SqlConnection conn;
+        private SqlCommand cmnd;
+        private SqlDataReader rdr;
+        private string connectionString = ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString;
 
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
+        private string getDataInJson( string quizSelect )
+        {
+            StringBuilder quizData = new StringBuilder();
+            quizData.Append("[");
+
+            using (conn = new SqlConnection( connectionString ))
             {
                 try
                 {
@@ -24,17 +29,13 @@ namespace InteractivePeriodicTable.Utils
                 }
                 try
                 {
-                    using (SqlCommand cmnd = new SqlCommand("SELECT '{' + '\"ID\":' + CAST(ID AS VARCHAR(4)) + ',' +" +
-                                                                     "'\"Question\":' + '\"' + Question + '\",' +" +
-                                                                     "'\"Answer\":' + '\"' + CAST(Answer AS CHAR(1)) + '\",' +" +
-                                                                     "'\"A1\":' + '\"' + A1 + '\", ' +" +
-                                                                     "'\"A2\":' + '\"' + A2 + '\", ' +" +
-                                                                     "'\"A3\":' + '\"' + A3 + '\", ' +" +
-                                                                     "'\"A4\":' + '\"' + A4 + '\"' +" +
-                                                               "'},' AS data " +
-                                                            "FROM QuizWith4Ans", conn))
+                    cmnd = new SqlCommand();
+                    cmnd.Connection = conn;
+                    cmnd.CommandText = quizSelect;
+
+                    using (cmnd)
                     {
-                        using (SqlDataReader rdr = cmnd.ExecuteReader())
+                        using (rdr = cmnd.ExecuteReader())
                         {
                             if (rdr.HasRows == false)
                             {
@@ -42,7 +43,7 @@ namespace InteractivePeriodicTable.Utils
                             }
                             while (rdr.Read())
                             {
-                                data.Append(rdr["data"].ToString());
+                                quizData.Append(rdr["data"].ToString());
                             }
                         }
                     }
@@ -53,159 +54,75 @@ namespace InteractivePeriodicTable.Utils
                 }
             }
 
-            data.Remove(data.Length - 1, 1);
-            data.Append("]");
+            quizData.Remove(quizData.Length - 1, 1);
+            quizData.Append("]");
 
-            return data.ToString();
+            return quizData.ToString();
+        }
+
+        private string getQuizWith4Ans()
+        {
+            string quizSelect = "SELECT '{' + '\"ID\":' + CAST(ID AS VARCHAR(4)) + ',' +" +
+                                            "'\"Question\":' + '\"' + Question + '\",' +" +
+                                            "'\"Answer\":' + '\"' + CAST(Answer AS CHAR(1)) + '\",' +" +
+                                            "'\"A1\":' + '\"' + A1 + '\", ' +" +
+                                            "'\"A2\":' + '\"' + A2 + '\", ' +" +
+                                            "'\"A3\":' + '\"' + A3 + '\", ' +" +
+                                            "'\"A4\":' + '\"' + A4 + '\"' +" +
+                                    "'},' AS data " +
+                                "FROM QuizWith4Ans";
+
+            string quizData = getDataInJson( quizSelect );
+
+            return quizData;
         }
         private string getQuizYesNo()
         {
-            StringBuilder data = new StringBuilder();
-            data.Append("[");
+            string quizSelect = "SELECT '{' + '\"ID\":' + CAST(ID AS VARCHAR(4)) + ',' +" +
+                                            "'\"Question\":' + '\"' + Question + '\",' +" +
+                                            "'\"Answer\":' + '\"' + CAST(Answer AS CHAR(1)) + '\",' +" +
+                                            "'\"A1\":' + '\"' + A1 + '\",' +" +
+                                            "'\"A2\":' + '\"' + A2 + '\"' +" +
+                                        "'},' AS data " +
+                                "FROM QuizYesNo";
 
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
-            {
-                try
-                {
-                    conn.Open();
-                }
-                catch (SqlException ex)
-                {
-                    ex.ErrorMessageBox("Dogodila se pogreška prilikom otvaranje veze na bazu.");
-                }
-                try
-                {
-                    using (SqlCommand cmnd = new SqlCommand(
-                                                        "SELECT '{' + '\"ID\":' + CAST(ID AS VARCHAR(4)) + ',' +" +
-                                                                    "'\"Question\":' + '\"' + Question + '\",' +" +
-                                                                    "'\"Answer\":' + '\"' + CAST(Answer AS CHAR(1)) + '\",' +" +
-                                                                    "'\"A1\":' + '\"' + A1 + '\",' +" +
-                                                                    "'\"A2\":' + '\"' + A2 + '\"' +" +
-                                                                "'},' AS data " +
-                                                        "FROM QuizYesNo"
-                                                        , conn))
-                    {
-                        using (SqlDataReader rdr = cmnd.ExecuteReader())
-                        {
-                            if (rdr.HasRows == false)
-                            {
-                                return "[]";
-                            }
-                            while (rdr.Read())
-                            {
-                                data.Append(rdr["data"].ToString());
-                            }
-                        }
-                    }
-                }
-                catch (SqlException ex)
-                {
-                    ex.ErrorMessageBox("Dogodila se pogreška prilikom dohvaćanja podataka iz baze.");
-                }
-            }
+            string quizData = getDataInJson( quizSelect );
 
-            data.Remove(data.Length - 1, 1);
-            data.Append("]");
-
-            return data.ToString();
+            return quizData;
         }
         private string getQuizPictures()
         {
-            StringBuilder data = new StringBuilder();
-            data.Append("[");
+            string quizSelect = "SELECT '{' + '\"ID\":' + CAST(ID AS VARCHAR(4)) + ',' +" +
+                                            "'\"ImagePath\":' + '\"' + ImagePath + '\",' +" +
+                                            "'\"Answer\":' + '\"' + CAST(Answer AS NVARCHAR(100)) + '\"' +" +
+                                        "'},' AS data " +
+                                "FROM QuizPictures";
 
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
-            {
-                try
-                {
-                    conn.Open();
-                }
-                catch (SqlException ex)
-                {
-                    ex.ErrorMessageBox("Dogodila se pogreška prilikom otvaranje veze na bazu.");
-                }
-                try
-                {
-                    using (SqlCommand cmnd = new SqlCommand("SELECT '{' + '\"ID\":' + CAST(ID AS VARCHAR(4)) + ',' +" +
-                                                                    "'\"ImagePath\":' + '\"' + ImagePath + '\",' +" +
-                                                                    "'\"Answer\":' + '\"' + CAST(Answer AS NVARCHAR(100)) + '\"' +" +
-                                                                "'},' AS data " +
-                                                        "FROM QuizPictures", conn))
-                    {
-                        using (SqlDataReader rdr = cmnd.ExecuteReader())
-                        {
-                            if (rdr.HasRows == false)
-                            {
-                                return "[]";
-                            }
-                            while (rdr.Read())
-                            {
-                                data.Append(rdr["data"].ToString());
-                            }
-                        }
-                    }
-                }
-                catch (SqlException ex)
-                {
-                    ex.ErrorMessageBox("Dogodila se pogreška prilikom dohvaćanja podataka iz baze.");
-                }
-            }
+            string quizData = getDataInJson( quizSelect );
 
-            data.Remove(data.Length - 1, 1);
-            data.Append("]");
-
-            return data.ToString();
+            return quizData;
         }
         private string getFacts()
         {
-            StringBuilder data = new StringBuilder();
-            data.Append("[");
+            string factsSelect = "SELECT '{ \"Fact\":' + '\"' + Fact + '\"},' AS data " +
+                                "FROM DidYouKnow";
 
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString))
-            {
-                try
-                {
-                    conn.Open();
-                }
-                catch(SqlException ex)
-                {
-                    ex.ErrorMessageBox("Dogodila se pogreška prilikom otvaranje veze na bazu.");
-                }
-                try
-                {
-                    using (SqlCommand cmnd = new SqlCommand("SELECT '{ \"Fact\":' + '\"' + Fact + '\"},' AS data " + "FROM DidYouKnow", conn))
-                    {
-                        using (SqlDataReader rdr = cmnd.ExecuteReader())
-                        {
-                            if (rdr.HasRows == false)
-                            {
-                                return "[]";
-                            }
-                            while (rdr.Read())
-                            {
-                                data.Append(rdr["data"].ToString());
-                            }
-                        }
-                    }
-                }
-                catch(SqlException ex)
-                {
-                    ex.ErrorMessageBox("Dogodila se pogreška prilikom dohvaćanja podataka iz baze.");
-                }
-            }
+            string factsData = getDataInJson( factsSelect );
 
-            data.Remove(data.Length - 1, 1);
-            data.Append("]");
-
-            return data.ToString();
+            return factsData;
         }
 
         public void updateQuiz()
         {
             string pathToQuiz = Pathing.SysDir + "\\quiz.json";
-            string jsonQuiz = "{ \"QuizWith4Ans\":" + getQuizWith4Ans() + "," +
-                                "\"QuizYesNo\":" + getQuizYesNo() + "," +
-                                "\"QuizPictures\":" + getQuizPictures() + "}";
+
+            string quizWith4Ans = getQuizWith4Ans();
+            string quizYesNo = getQuizYesNo();
+            string quizPictures = getQuizPictures();
+
+            string jsonQuiz = "{ \"QuizWith4Ans\":" + quizWith4Ans + "," +
+                                "\"QuizYesNo\":" + quizYesNo + "," +
+                                "\"QuizPictures\":" + quizPictures + "}";
             try
             {
                 File.WriteAllText(pathToQuiz, jsonQuiz);
