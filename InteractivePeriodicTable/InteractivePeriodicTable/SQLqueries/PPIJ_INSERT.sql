@@ -16,12 +16,12 @@ INSERT INTO QuizWith4Ans (Question, Answer, A1, A2, A3, A4) VALUES ('Symbol for 
 INSERT INTO QuizWith4Ans (Question, Answer, A1, A2, A3, A4) VALUES ('Symbol for Bismuth', 2 , 'B', 'Bi', 'Be', 'Ba');
 INSERT INTO QuizWith4Ans (Question, Answer, A1, A2, A3, A4) VALUES ('Symbol for Polonium',4 , 'Pt', 'Pb', 'P', 'Po');
 INSERT INTO QuizWith4Ans (Question, Answer, A1, A2, A3, A4) VALUES ('Symbol for Ununseptium', 4, 'Uut', 'Uup', 'Uuo', 'Uus');
-INSERT INTO QuizWith4Ans (Question, Answer, A1, A2, A3, A4) VALUES ('Under ordinary, room temperature conditions, the greatest number of elements are',3 , 'gases', 'liquids', ' metallic solids. ', 'nonmetallic plasmas. ');
+INSERT INTO QuizWith4Ans (Question, Answer, A1, A2, A3, A4) VALUES ('Under ordinary, room temperature conditions, the greatest\nnumber of elements are',3 , 'gases', 'liquids', ' metallic solids. ', 'nonmetallic plasmas. ');
 INSERT INTO QuizWith4Ans (Question, Answer, A1, A2, A3, A4) VALUES ('A solution of sugar dissolved in water is?', 2, 'a heterogeneous mixture. ', ' a homogeneous mixture. ', 'an alloy. ', ' a pure substance. ');
 INSERT INTO QuizWith4Ans (Question, Answer, A1, A2, A3, A4) VALUES ('Which of the following represents a physical change?',3 , 'Electricity is used to generate oxygen and hydrogen from water. ', ' Calcium carbonate is dissolved by stomach acid.', '. Solid ice is melted into liquid water. ', ' Natural gas is burned as a heat source. ');
-INSERT INTO QuizWith4Ans (Question, Answer, A1, A2, A3, A4) VALUES ('Carbon cannot be broken down into anything simpler by chemical means, so carbon must be', 3 , 'a heterogeneous mixture. ', ' a homogeneous mixture. ', ' an element. ', 'a compound. ');
+INSERT INTO QuizWith4Ans (Question, Answer, A1, A2, A3, A4) VALUES ('Carbon cannot be broken down into anything simpler\nby chemical means, so carbon must be', 3 , 'a heterogeneous mixture. ', ' a homogeneous mixture. ', ' an element. ', 'a compound. ');
 INSERT INTO QuizWith4Ans (Question, Answer, A1, A2, A3, A4) VALUES ('Compared to metals, nonmetals are', 4, ' better conductors of heat. ', 'more ductile as a solid', 'better electrical conductors. ', 'more brittle as a solid. ');
-INSERT INTO QuizWith4Ans (Question, Answer, A1, A2, A3, A4) VALUES ('How many naturally occurring elements are found on the earth in significant quantities?',3 , '112 ', '92 ', '89 ', '32 ');
+INSERT INTO QuizWith4Ans (Question, Answer, A1, A2, A3, A4) VALUES ('How many naturally occurring elements\nare found on the earth in significant quantities?',3 , '112 ', '92 ', '89 ', '32 ');
 GO
 
 INSERT INTO QuizYesNo (Question, Answer, A1, A2) VALUES ('Oxygen (O) has a greater mass than chlorine (Cl)', 1, 'True', 'False');

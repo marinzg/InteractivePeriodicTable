@@ -9,6 +9,8 @@ namespace InteractivePeriodicTable.Utils
 {
     public class Update
     {
+
+
         #region METODA VRAĆA REZULTAT UPITA KAO JSON NIZ
         /// <summary>
         ///     Metoda vrši upit nad bazom podataka.
@@ -71,6 +73,9 @@ namespace InteractivePeriodicTable.Utils
             return data.ToString();
         }
         #endregion
+
+
+
 
         #region KVIZ & ZANIMLJIVOSTI
         /// <summary>
@@ -153,6 +158,8 @@ namespace InteractivePeriodicTable.Utils
         }
         #endregion
 
+
+
         #region JAVNE METODE ZA OSVJEŽAVANJE KVIZA I ZANIMLJIVOSTI
         /// <summary>
         ///     Zapisuje na disk sva pitanja za kviz u formatu .json
@@ -223,5 +230,7 @@ namespace InteractivePeriodicTable.Utils
             return;
         }
         #endregion
+
+
     }
 }

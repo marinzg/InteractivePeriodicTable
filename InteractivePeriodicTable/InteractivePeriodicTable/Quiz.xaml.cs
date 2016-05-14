@@ -18,6 +18,9 @@ namespace InteractivePeriodicTable
 {
     public partial class Quiz : Window
     {
+
+
+
         #region ČLANSKE VARIJABLE
         /// <summary>
         ///     Sprema sva pitanja za kviz.
@@ -80,6 +83,8 @@ namespace InteractivePeriodicTable
         ///     Pokreče timer za odborjavanje vremena za igru.
         ///     Prikazuje prvo pitanje.
         /// </summary>
+        /// 
+
         public Quiz()
         {
             this.Closing += stopTimer;
@@ -98,6 +103,8 @@ namespace InteractivePeriodicTable
 
             renderNextQuestion();
         }
+
+
 
         #region DOHVAT PITANJA
         /// <summary>
@@ -143,6 +150,7 @@ namespace InteractivePeriodicTable
             return;
         }
         #endregion
+
 
         #region ODABIR PITANJA
         /// <summary>
@@ -232,6 +240,7 @@ namespace InteractivePeriodicTable
         }
         #endregion
 
+
         #region PRIKAZ PITANJA
         /// <summary>
         ///     Metoda dinamički prikazuje pitanje sa 4 moguća odgovora na ekranu.
@@ -243,7 +252,8 @@ namespace InteractivePeriodicTable
         {
             QuizWith4Ans pickedQuestion = questions.QuizWith4Ans[questionID];
 
-            question.Content = pickedQuestion.Question;
+            //question.Content = pickedQuestion.Question;
+            question.Text = pickedQuestion.Question;
 
             Button A1 = new Button();
             A1.Content = pickedQuestion.A1;
@@ -305,7 +315,8 @@ namespace InteractivePeriodicTable
         {
             QuizYesNo pickedQuestion = questions.QuizYesNo[questionID];
 
-            question.Content = pickedQuestion.Question;
+            //question.Content = pickedQuestion.Question;
+            question.Text = pickedQuestion.Question;
 
             Button A1 = new Button();
             A1.Content = pickedQuestion.A1;
@@ -340,7 +351,8 @@ namespace InteractivePeriodicTable
         /// </param>
         private void renderQuizPictures(int questionID)
         {
-            question.Content = "Write what you see in this image";
+            //question.Content = "Write what you see in this image";
+            question.Text = "Write what you see in this image";
 
             QuizPictures pickedQuestion = questions.QuizPictures[questionID];
 
@@ -379,6 +391,7 @@ namespace InteractivePeriodicTable
             return;
         }
         #endregion
+
 
         #region POMOĆNE METODE
         /// <summary>
@@ -469,6 +482,7 @@ namespace InteractivePeriodicTable
             return;
         }
         #endregion
+
 
         #region DOGAĐAJI
         /// <summary>
@@ -645,5 +659,7 @@ namespace InteractivePeriodicTable
             return;
         }
         #endregion
+
+
     }
 }

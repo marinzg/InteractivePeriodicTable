@@ -41,11 +41,14 @@ namespace InteractivePeriodicTable.ExtensionMethods
         /// </summary>
         public static void styleButton(this System.Windows.Controls.Button button)
         {
+            
             button.Width = 250;
             button.Height = 35;
             button.Margin = new Thickness(0, 5, 0, 5);
             button.Background = Brushes.DeepSkyBlue;
             button.Foreground = Brushes.Blue;
+
+            
 
             return;
         }
