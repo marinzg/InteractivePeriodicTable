@@ -27,6 +27,8 @@ namespace InteractivePeriodicTable
             textBox.PreviewKeyDown += new KeyEventHandler(txtSearchTerm_KeyDown);
         }
 
+
+
         #region FACTS
         /// <summary>
         ///     Dohvaća zanimljivosti iz datoteke i serijalizira ih u objekt facts.
@@ -106,6 +108,11 @@ namespace InteractivePeriodicTable
         }
         #endregion
 
+
+
+
+        #region Click eventi
+
         /// <summary>
         ///     Poziva se kada netko hoće update-ati kviz i zanimljivosti.
         ///     Ako ima veze s internetom, skidaju se kviz i zanimljivosti.
@@ -170,6 +177,11 @@ namespace InteractivePeriodicTable
             return;
         }
 
+        /// <summary>
+        /// Ako je kliknut button koji fire-a event Element_klik. Otvara se nova forma (popup window) koja loada informacije o elementu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Element_klik(object sender, RoutedEventArgs e)
         {
             Button element = (e.Source as Button);
@@ -180,6 +192,51 @@ namespace InteractivePeriodicTable
            popupWindow.ShowDialog();
         }
 
+        /// <summary>
+        /// micanje fokusa iz textboxa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Keyboard.ClearFocus();
+        }
+
+        /// <summary>
+        /// omoguceno je otvaranje popup windowa ako double clickamo unutar searchbox rezultata
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            PopupWebpage popupWindow = new PopupWebpage(listBox.SelectedItem.ToString());
+            popupWindow.ShowDialog();
+        }
+
+        /// <summary>
+        /// ukoliko mišem označimo određeni element highlightat će se
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ListBox chosenItem = (e.Source as ListBox);
+            HighLightSpecificElement(chosenItem.SelectedValue.ToString());
+            DeSelectOtherElements(chosenItem.SelectedValue.ToString());
+        }
+
+        #endregion
+
+
+
+
+        #region Highlighting i searchbox funkcionalnost
+
+        /// <summary>
+        /// Mimic "searchboxa" koristenjem listbox+textbox pošto wpf nema textbox sa autocomplete ko u Winform... Textchanged event se fire-a kako upisujemo text pretrazuje listu sa svim elementima i izdvaja match-eve
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -212,6 +269,9 @@ namespace InteractivePeriodicTable
             BringBackColors();
         }
 
+        /// <summary>
+        /// vraca stare boje buttonima
+        /// </summary>
         private void BringBackColors()
         {
             if (listBox.Items.IsEmpty)
@@ -226,6 +286,9 @@ namespace InteractivePeriodicTable
             }
         }
 
+        /// <summary>
+        /// highlighta buttone iz searchboxa
+        /// </summary>
         private void HighlightElementsOnTable()
         {
 
@@ -244,6 +307,10 @@ namespace InteractivePeriodicTable
             }
         }
 
+
+        /// <summary>
+        /// ostali buttoni su "gray-ed out"
+        /// </summary>
         private void OtherButtonsHighlight()
         {
 
@@ -261,6 +328,7 @@ namespace InteractivePeriodicTable
             }
         }
 
+
         private void textBox_Loaded(object sender, RoutedEventArgs e)
         {
             foreach (Button buttonInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
@@ -273,10 +341,13 @@ namespace InteractivePeriodicTable
             }
         }
 
+        
 
-        /*Key down event...prebacuje sada sa textboxa na listbox i selecta lijepo mislim da je ok sada malo se poigrajte -- Urh*/
-
-
+        /// <summary>
+        /// Navigacija unutar listboxa sa key-up down... Moguc prelazak iz listboxa unutar textboxa sa key up i nastavak ubacivanja inputa te izlazak iz textboxa i prelazak u listbox sa keydown eventom
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtSearchTerm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Down)
@@ -309,7 +380,10 @@ namespace InteractivePeriodicTable
             }
         }
 
-        #region Highlighting
+        /// <summary>
+        /// highlighta tocno odabrani element
+        /// </summary>
+        /// <param name="name"></param>
         private void HighLightSpecificElement(string name)
         {
             foreach (Button buttonInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
@@ -327,6 +401,10 @@ namespace InteractivePeriodicTable
             }
         }
 
+        /// <summary>
+        /// de selekcija ostlaih elemenata kada je odredjeni odabran "gray out"
+        /// </summary>
+        /// <param name="name"></param>
         private void DeSelectOtherElements(string name)
         {
             foreach (Button otherButtonsInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
@@ -343,25 +421,15 @@ namespace InteractivePeriodicTable
             }
         }
 
+
         private void play_DragDrop_Click(object sender, RoutedEventArgs e)
         {
             SortElements window = new SortElements();
             window.ShowDialog();
         }
-        #endregion
-
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Keyboard.ClearFocus();
-        }
 
 
-        private void listBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            PopupWebpage popupWindow = new PopupWebpage(listBox.SelectedItem.ToString());
-            popupWindow.ShowDialog();
-        }
-
+       
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBox chosenItem = (e.Source as ListBox);
@@ -378,12 +446,9 @@ namespace InteractivePeriodicTable
             }
         }
 
-        private void listBox_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            ListBox chosenItem = (e.Source as ListBox);
-            HighLightSpecificElement(chosenItem.SelectedValue.ToString());
-            DeSelectOtherElements(chosenItem.SelectedValue.ToString());
-        }
+        #endregion
+
+
 
     }
 }
