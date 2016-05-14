@@ -30,9 +30,10 @@ namespace InteractivePeriodicTable
         {
             Button element = (e.Source as Button);
 
+            //frame.Content = new PopupWebpage(element.Name.ToString());
             //Otvori popup_window za webpage-eve
-            PopupWebpage popupWindow = new PopupWebpage(element.Name.ToString());
-            popupWindow.ShowDialog();
+           PopupWebpage popupWindow = new PopupWebpage(element.Name.ToString());
+           popupWindow.ShowDialog();
         }
 
         private void Did_you_know_hover(object sender, RoutedEventArgs e)

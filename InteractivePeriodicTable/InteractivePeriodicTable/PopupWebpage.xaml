@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Popup_webpage" Height="913.622" Width="1296.428"
         Icon="/Resources/Images/Ikona.ico"
-        WindowStartupLocation="Manual" 
+        WindowStartupLocation="CenterScreen" 
         Left="100" Top="50">
     <Grid>
         <WebBrowser Name="browser1" Margin="-180,-98,-24.5,0.5" />
