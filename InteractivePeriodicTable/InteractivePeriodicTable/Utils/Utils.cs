@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
+using InteractivePeriodicTable.ExtensionMethods;
 
 namespace InteractivePeriodicTable.Utils
 {
