@@ -21,17 +21,14 @@
         WindowState="Maximized" MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
 
-
-
     <Viewbox>
         <Grid Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Name="Sve_za_scaleanje" >
 
 
             <WebBrowser x:Name="browser" Visibility="hidden" />
 
-
+            <!-- Grid sa sadržajem svih buttona koji su elementi. Ujedinjuje ih jedan click event...Elementi_klik-->
             <Grid ButtonBase.Click = "Element_klik" VerticalAlignment="Center" HorizontalAlignment="Center" Height="826" Margin="-106,0,0,0" Width="1331">
-
                 <Button x:Name="Hydrogen" HorizontalAlignment="Left" Height="60" Margin="143,179,0,0" VerticalAlignment="Top" Width="60" Content="1&#xA;H" Background="#FFAEF59C" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="Lithium" Content="3&#xA;Li" HorizontalAlignment="Left" Height="60" Margin="143,239,0,0" VerticalAlignment="Top" Width="60" Background="#FFFBB35D" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="Sodium" Content="11&#xA;Na" HorizontalAlignment="Left" Height="60" Margin="143,299,0,0" VerticalAlignment="Top" Width="60" Background="#FFFBB35D" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
@@ -152,6 +149,7 @@
                 <Button x:Name="Lawrencium" Content="103&#xA;Lr" HorizontalAlignment="Left" Height="60" Margin="1163,693,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             </Grid>
 
+            <!-- Svi ostali labeli unutar forme -->
             <Grid Margin="-106,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="1331" Height="826" Name="Labeli_i_2_prazna_gumba">
                 <Button x:Name="prazno1" Content="57-71" HorizontalAlignment="Left" Height="60" Margin="263,480,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="prazno2" Content="89-103" HorizontalAlignment="Left" Height="60" Margin="263,539,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
@@ -187,7 +185,7 @@
                 <Label x:Name="label3" Content="Search an element:" HorizontalAlignment="Left" Height="31" Margin="130,92,0,0" VerticalAlignment="Top" Width="177" FontSize="18" FontWeight="Bold" Foreground="LightBlue"/>
             </Grid>
 
-
+            <!-- Searchbox -->
             <Grid Name="Searchbox">
                 <TextBox x:Name="textBox"  HorizontalAlignment="Left" Height="33" Margin="268
                          ,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
@@ -208,7 +206,8 @@
                     </ListBox.Resources>
                 </ListBox>
             </Grid>
-
+            
+            <!--Blagi background za Dr. Pengu-a kako bi se lakse vidio na tamnoj pozadini :) -->
             <Grid Name="BackgroundZaGif" MouseLeftButtonDown="Fact_ShowFact" MouseEnter="Fact_ShowFact" MouseLeave="Fact_Leave" HorizontalAlignment="Left" Height="58" Margin="524,80,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.43,1.474"  >
                 <Grid.Background>
                     <SolidColorBrush Color="LightBlue" Opacity="0.2"></SolidColorBrush>
@@ -221,13 +220,14 @@
                 </Image>
             </Grid>
 
+            
+            <!-- Grid koji sadrži sve buttone za igre -->
             <Grid Name="Buttoni_igre" Margin="0,10,-62,-10" HorizontalAlignment="Left" Width="1393">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="51*"/>
                     <RowDefinition Height="775*"/>
                 </Grid.RowDefinitions>
-
-
+                
                 <Label x:Name="play_quiz" Content="Play a quiz" MouseLeftButtonDown="playQuiz_Click" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="1200,23,0,0" VerticalAlignment="Top" Width="135" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
                     <Label.Style>
                         <Style TargetType="{x:Type Label}">
@@ -272,8 +272,7 @@
                     </Label.Style>
                 </Label>
 
-
-                <Label x:Name="DragDropGames" FontWeight="Bold" FontSize="18" Content="Drag and Drop" HorizontalAlignment="Left" Margin="1200,50,0,0" VerticalAlignment="Top" Width="135" MouseLeftButtonDown="play_DragDrop_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2">
+               <Label x:Name="DragDropGames" FontWeight="Bold" FontSize="18" Content="Drag and Drop" HorizontalAlignment="Left" Margin="1200,50,0,0" VerticalAlignment="Top" Width="135" MouseLeftButtonDown="play_DragDrop_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2">
                     <Label.Style>
                         <Style TargetType="{x:Type Label}">
                             <Setter Property="Foreground" Value="LightBlue"/>
@@ -294,6 +293,7 @@
                         </Style>
                     </Label.Style>
                 </Label>
+                
                 <Label x:Name="update" FontWeight="Bold" FontSize="18" Content="Update" HorizontalAlignment="Left" Margin="1200,668,0,0" VerticalAlignment="Top" Width="135" MouseLeftButtonDown="update_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1">
                     <Label.Style>
                         <Style TargetType="{x:Type Label}">
@@ -320,8 +320,6 @@
 
             <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="0" X2="100" Y2="50" Height="48" Margin="-34,55,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="85"/>
            
-
-
         </Grid>
     </Viewbox>
 
