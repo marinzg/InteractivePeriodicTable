@@ -122,16 +122,19 @@ namespace InteractivePeriodicTable
         /// <param name="e"></param>
         private void update_Click(object sender, RoutedEventArgs e)
         {
-            if(InternetConnection.IsConnected() == true)
+            try
             {
-                Update up = new Update();
-                up.updateQuiz();
-                up.updateFacts();
-                MessageBox.Show("Kviz pitanja i zanimljivosti uspiješno update-ana !", "Obavijest");
+                if (InternetConnection.IsConnected() == true)
+                {
+                    Update up = new Update();
+                    up.updateQuiz();
+                    up.updateFacts();
+                    MessageBox.Show("Quiz questions and answers were succesfully updated!", "Successful update");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Nemogu se spojiti na server !", "Pogreška");
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return;
@@ -146,7 +149,7 @@ namespace InteractivePeriodicTable
         {
             if (File.Exists(Pathing.SysDir + "\\quiz.json") == false)
             {
-                MessageBox.Show("Ne postoje pitanja na disku ! Probajte napraviti Update !");
+                MessageBox.Show("Questions do not exist, try to do an Update!", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;
             }
 
@@ -164,14 +167,17 @@ namespace InteractivePeriodicTable
         /// <param name="e"></param>
         private void showScoreBoard_Click(object sender, RoutedEventArgs e)
         {
-            if (InternetConnection.IsConnected() == true)
+            try
             {
-                ScoreBoard window = new ScoreBoard();
-                window.ShowDialog();
+                if (InternetConnection.IsConnected() == true)
+                {
+                    ScoreBoard window = new ScoreBoard();
+                    window.ShowDialog();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Nemogu se spojiti na server !", "Pogreška");
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return;
@@ -188,8 +194,15 @@ namespace InteractivePeriodicTable
 
             //frame.Content = new PopupWebpage(element.Name.ToString());
             //Otvori popup_window za webpage-eve
-           PopupWebpage popupWindow = new PopupWebpage(element.Name.ToString());
-           popupWindow.ShowDialog();
+            try
+            {
+                PopupWebpage popupWindow = new PopupWebpage(element.Name.ToString());
+                popupWindow.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         /// <summary>
@@ -209,8 +222,15 @@ namespace InteractivePeriodicTable
         /// <param name="e"></param>
         private void listBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            PopupWebpage popupWindow = new PopupWebpage(listBox.SelectedItem.ToString());
-            popupWindow.ShowDialog();
+            try
+            {
+                PopupWebpage popupWindow = new PopupWebpage(listBox.SelectedItem.ToString());
+                popupWindow.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         /// <summary>
