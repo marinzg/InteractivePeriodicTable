@@ -3,6 +3,7 @@ using System.IO;
 using System.Data.SqlClient;
 using System.Configuration;
 using InteractivePeriodicTable.ExtensionMethods;
+using System;
 
 namespace InteractivePeriodicTable.Utils
 {
@@ -182,6 +183,10 @@ namespace InteractivePeriodicTable.Utils
             catch (IOException ioe)
             {
                 ioe.ErrorMessageBox("Greška prilikom čitanja iz datoteke.");
+            }
+            catch(Exception ex)
+            {
+                ex.ErrorMessageBox("Dogodila se pogreška prilikom skidanja kviza sa servera.");
             }
 
             return;

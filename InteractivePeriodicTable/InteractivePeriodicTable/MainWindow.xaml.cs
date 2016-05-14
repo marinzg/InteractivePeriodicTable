@@ -9,6 +9,7 @@ using System.Windows.Input;
 using Newtonsoft.Json;
 using InteractivePeriodicTable.Utils;
 using InteractivePeriodicTable.Data;
+using InteractivePeriodicTable.ExtensionMethods;
 
 namespace InteractivePeriodicTable
 {
@@ -17,13 +18,156 @@ namespace InteractivePeriodicTable
         private Dictionary<string, Brush> previousBackgroundColors = new Dictionary<string, Brush>();
         private Dictionary<string, Brush> previousForegroundColors = new Dictionary<string, Brush>();
         private AllFacts facts = new AllFacts();
+
         public MainWindow()
         {
-            getFactsFromJSON();
             InitializeComponent();
             //listBox.PreviewKeyDown += new KeyEventHandler(listBox_KeyDownOrUp); //Marko-eventhandler za listbox navigiranje arrowsima
             //textBox.PreviewKeyDown += new KeyEventHandler(textBox_KeyDown); //Marko-eventhandler za arrow down
             textBox.PreviewKeyDown += new KeyEventHandler(txtSearchTerm_KeyDown);
+        }
+
+        #region FACTS
+        /// <summary>
+        ///     Dohvaća zanimljivosti iz datoteke i serijalizira ih u objekt facts.
+        /// </summary>
+        private void getFactsFromJSON()
+        {
+            try
+            {
+                string json = "";
+                using (StreamReader sr = new StreamReader(Pathing.SysDir + "\\facts.json"))
+                {
+                    json = sr.ReadToEnd();
+                }
+                facts = JsonConvert.DeserializeObject<AllFacts>(json);
+            }
+            catch (FileNotFoundException fnfe)
+            {
+                fnfe.ErrorMessageBox("Nije pronađena datoteka quiz.json !");
+            }
+            catch (DirectoryNotFoundException dnfe)
+            {
+                dnfe.ErrorMessageBox("Nije pronađen direktorij " + Pathing.SysDir);
+            }
+            catch (IOException ioe)
+            {
+                ioe.ErrorMessageBox("Greška prilikom čitanja iz datoteke.");
+            }
+            catch (Exception ex)
+            {
+                ex.ErrorMessageBox("Dogodila se pogreška !");
+            }
+
+            return;
+        }
+
+        /// <summary>
+        ///     Prikazuje nasumičnu zanimljivost.
+        ///     Poziva se na klik i hover.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Fact_ShowFact(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists(Pathing.SysDir + "\\facts.json") == false)
+            {
+                MessageBox.Show("Nemate zanimljivosti na disku ! Probajte Update !");
+                return;
+            }
+            else
+            {
+                if(facts.Facts.Count == 0)
+                {
+                    getFactsFromJSON();
+                }
+
+                Random rand = new Random();
+                int no_of_facts = facts.Facts.Count;
+                int fact_no = rand.Next(0, no_of_facts);
+
+                fact_tip.Text = facts.Facts[fact_no].Fact;
+                fact_tip.Visibility = Visibility.Visible;
+            }
+
+            return;
+        }
+
+        /// <summary>
+        ///     Sakriva trenutnu zanimljivost.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Fact_Leave(object sender, RoutedEventArgs e)
+        {
+            fact_tip.Visibility = Visibility.Hidden;
+
+            return;
+        }
+        #endregion
+
+        /// <summary>
+        ///     Poziva se kada netko hoće update-ati kviz i zanimljivosti.
+        ///     Ako ima veze s internetom, skidaju se kviz i zanimljivosti.
+        ///     Ako nema veze s internetom javlja se poruka o pogrešci.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void update_Click(object sender, RoutedEventArgs e)
+        {
+            if(InternetConnection.IsConnected() == true)
+            {
+                Update up = new Update();
+                up.updateQuiz();
+                up.updateFacts();
+                MessageBox.Show("Kviz pitanja i zanimljivosti uspiješno update-ana !", "Obavijest");
+            }
+            else
+            {
+                MessageBox.Show("Nemogu se spojiti na server !", "Pogreška");
+            }
+
+            return;
+        }
+
+        /// <summary>
+        ///     Provjerava da li postoji quiz.json na disku.
+        ///     Ako ne postoji, zabranjuje igranje kviza.
+        ///     Ako postoji, omogućuje igranje kviza.
+        /// </summary>
+        private void playQuiz_Click(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists(Pathing.SysDir + "\\quiz.json") == false)
+            {
+                MessageBox.Show("Ne postoje pitanja na disku ! Probajte napraviti Update !");
+                return;
+            }
+
+            Quiz window = new Quiz();
+            window.ShowDialog();
+
+            return;
+        }
+
+        /// <summary>
+        ///     Ako postoji internet veza prikazuje Scoreboard.
+        ///     Inače javlja obavijest.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void showScoreBoard_Click(object sender, RoutedEventArgs e)
+        {
+            if (InternetConnection.IsConnected() == true)
+            {
+                ScoreBoard window = new ScoreBoard();
+                window.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nemogu se spojiti na server !", "Pogreška");
+            }
+
+            return;
         }
 
         private void Element_klik(object sender, RoutedEventArgs e)
@@ -36,46 +180,6 @@ namespace InteractivePeriodicTable
            popupWindow.ShowDialog();
         }
 
-        private void Did_you_know_hover(object sender, RoutedEventArgs e)
-        {
-            Random rand = new Random();
-            int no_of_facts = facts.Facts.Count;
-            int fact_no = rand.Next(0, no_of_facts);
-
-            fact_tip.Text = facts.Facts[fact_no].Fact;
-            fact_tip.Visibility = Visibility.Visible;
-
-        }
-
-        private void Did_you_know_leave(object sender, RoutedEventArgs e)
-        {
-
-            fact_tip.Visibility = Visibility.Hidden;
-
-        }
-
-        private void Did_you_know_click(object sender, RoutedEventArgs e)
-        {
-            Random rand = new Random();
-            int no_of_facts = facts.Facts.Count;
-            int fact_no = rand.Next(0, no_of_facts);
-
-            fact_tip.Text = facts.Facts[fact_no].Fact;
-            fact_tip.Visibility = Visibility.Visible;
-
-        }
-
-        private void getFactsFromJSON()
-        {
-            string json = "";
-            using (StreamReader sr = new StreamReader(Pathing.SysDir + "\\facts.json"))
-            {
-                json = sr.ReadToEnd();
-            }
-            facts = JsonConvert.DeserializeObject<AllFacts>(json);
-
-            return;
-        }
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -238,21 +342,6 @@ namespace InteractivePeriodicTable
 
             }
         }
-
-        private void play_quiz_Click(object sender, RoutedEventArgs e)
-        {
-            Quiz window = new Quiz();
-            window.ShowDialog();
-
-            return;
-        }
-
-        private void show_scoreboard_Click(object sender, RoutedEventArgs e)
-        {
-            ScoreBoard window = new ScoreBoard();
-            window.ShowDialog();
-        }
-
 
         private void play_DragDrop_Click(object sender, RoutedEventArgs e)
         {

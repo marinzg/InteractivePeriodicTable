@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 using InteractivePeriodicTable.ExtensionMethods;
+using System.Net;
 
 namespace InteractivePeriodicTable.Utils
 {
@@ -48,7 +49,7 @@ namespace InteractivePeriodicTable.Utils
         {
             string tmp = Directory.GetCurrentDirectory();
 
-            tmp = tmp.Remove(tmp.IndexOf("\\bin"));
+            //tmp = tmp.Remove(tmp.IndexOf("\\bin"));
 
             return tmp;
         }
@@ -85,6 +86,35 @@ namespace InteractivePeriodicTable.Utils
             }
 
             return myString;
+        }
+    }
+
+    /// <summary>
+    ///     Sadrži metode za provjeru internet veze.
+    /// </summary>
+    public static class InternetConnection
+    {
+        /// <summary>
+        ///     Metoda provjerava da li je kompjuter spojen na internet.
+        /// </summary>
+        /// <returns>
+        ///     true -> spojen je na internet
+        ///     false -> nije spojen na internet
+        /// </returns>
+        public static bool IsConnected()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (var stream = client.OpenRead("http://www.google.com"))
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -19,16 +19,67 @@ namespace InteractivePeriodicTable
     public partial class Quiz : Window
     {
         #region ČLANSKE VARIJABLE
+        /// <summary>
+        ///     Sprema sva pitanja za kviz.
+        /// </summary>
         private QuizQuestions questions = new QuizQuestions();
+
+        /// <summary>
+        ///     Služi kako bi znali kada je počeo kviz.
+        /// </summary>
         private DateTime start;
+
+        /// <summary>
+        ///     Brojač koji služi kako bi znali koliko je vremena prošlo od početka igre.
+        ///     Također služi kako bi svakih 50ms osvježavali prikaz preostalog vremena na ekranu.
+        /// </summary>
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
+
+        /// <summary>
+        ///     Brojač služi kako bi znali kada je prošla 1s od promijene boje Label-e koja prikazuje preostalo vrijeme za igru.
+        /// </summary>
         private DispatcherTimer colorChanger = new DispatcherTimer();
+
+        /// <summary>
+        ///     Služi kako bi mogli "nasumično" odabirati vrstu i ID pitanja.
+        /// </summary>
         private Random rand = new Random();
+
+        /// <summary>
+        ///     Sprema trenutni rezultat igrača.
+        /// </summary>
         private int score = 0;
+
+        /// <summary>
+        ///     Služi kako bi znali da li postoje slike na disku.
+        ///     Ako je false, u kvizu se neće pojavljivati pitanja sa slikama.
+        ///     Ako je true, u kvizu će se pojavljivati pitanja sa slikama.
+        /// </summary>
         private bool hasImages = false;
+
+        /// <summary>
+        ///     Služi da imamo put do datoteke sa pitanjima kviza.
+        ///     Tako moramo mjenjati put do datoteke samo na jednom mjestu.
+        /// </summary>
         private string quizPath = Pathing.SysDir + "/quiz.json";
+
+        /// <summary>
+        ///     Ovdje se upiseuje koliko vremena traje jedna igra.
+        /// </summary>
+        private const int PLAY_TIME = 30;
         #endregion
 
+        /// <summary>
+        ///     Registrira događaj gašenja prozora kako bi zaustavili brojač preostalog vremena za igru.
+        ///     Učitava pitanja iz quiz.json datoteke u varijablu questions.
+        ///     Provjerava da li ima slika na disku te postavlja vrijednost zastavice hasImages.
+        ///     Prikazuje prozor.
+        ///     Registrira događaj za odbrojavanje proteklog vremena.
+        ///     Postavlja da se svakih 50ms osvježava Label-a koja prikazuje preostalo vrijeme za igru.
+        ///     Sprema trenutno vrijeme kako bi znali koliko je vremena proteklo od početka.
+        ///     Pokreče timer za odborjavanje vremena za igru.
+        ///     Prikazuje prvo pitanje.
+        /// </summary>
         public Quiz()
         {
             this.Closing += stopTimer;
@@ -48,6 +99,7 @@ namespace InteractivePeriodicTable
             renderNextQuestion();
         }
 
+        #region DOHVAT PITANJA
         /// <summary>
         ///     Čita pitanja za kviz iz datoteke quiz.json te ih deserijalizira u klasu QuizQuestions.
         ///     Obrađuje moguće iznimke.
@@ -57,7 +109,7 @@ namespace InteractivePeriodicTable
             try
             {
                 string jsonQuizQuestions = string.Empty;
-                using (StreamReader sr = new StreamReader( quizPath ))
+                using (StreamReader sr = new StreamReader(quizPath))
                 {
                     jsonQuizQuestions = sr.ReadToEnd();
                 }
@@ -67,7 +119,7 @@ namespace InteractivePeriodicTable
                 int questionsCount = questions.QuizPictures.Count + questions.QuizWith4Ans.Count + questions.QuizYesNo.Count;
                 if (questionsCount == 0)
                 {
-                    MessageBox.Show("Ne posotji niti jedno pitanje.");
+                    MessageBox.Show("Ne postoji niti jedno pitanje.");
                     this.Close();
                 }
             }
@@ -83,13 +135,14 @@ namespace InteractivePeriodicTable
             {
                 ioe.ErrorMessageBox("Greška prilikom čitanja iz datoteke.");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.ErrorMessageBox("Dogodila se pogreška !");
             }
 
             return;
         }
+        #endregion
 
         #region ODABIR PITANJA
         /// <summary>
@@ -418,6 +471,12 @@ namespace InteractivePeriodicTable
         #endregion
 
         #region DOGAĐAJI
+        /// <summary>
+        ///     Poziva se kada se pritisne tipka na tipkovnici.
+        ///     Ako je pritisnut Enter: uklanja se KeyDown događaj i simulira se pritisak gumba.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Quiz_KeyDown(object sender, KeyEventArgs e)
         {
             e.Handled = true;
@@ -426,9 +485,9 @@ namespace InteractivePeriodicTable
             {
                 this.KeyDown -= Quiz_KeyDown;
 
-                Button btn = (Button)this.sp.FindName("QuizPictures_btn");
+                Button pictureQuestionButton = (Button)this.sp.FindName("QuizPictures_btn");
 
-                btn.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+                pictureQuestionButton.RaiseEvent( new RoutedEventArgs( ButtonBase.ClickEvent ) );
             }
             else
             {
@@ -437,17 +496,30 @@ namespace InteractivePeriodicTable
 
             return;
         }
+
+        /// <summary>
+        ///     Poziva se kod pritiska na gumb QuizPictures_btn ili Enter.
+        ///     Uzima se vrijednost upisana u QuizPictures_txbx i uspoređuje sa QuizPictures_btn.Tag atributom.
+        ///     Ako su vrijednosti iste, poziva se correctAns metoda, inače se poziva wrongAns metoda.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkPicAns(object sender, RoutedEventArgs e)
         {
-            Button btn = (Button)sender;
+            this.KeyDown -= Quiz_KeyDown;
+            
+            Button pictureQuestionButton = (Button)sender;
             this.sp.UnregisterName("QuizPictures_btn");
 
-            if (btn.Tag != null)
+            if (pictureQuestionButton.Tag != null)
             {
-                TextBox txbx = (TextBox)this.sp.FindName("QuizPictures_txbx");
+                TextBox pictureQuestionTextBox = (TextBox)this.sp.FindName("QuizPictures_txbx");
                 this.sp.UnregisterName("QuizPictures_txbx");
 
-                if (txbx.Text.ToUpper() == btn.Tag.ToString().ToUpper())
+                string userAnswer = pictureQuestionTextBox.Text.ToUpper();
+                string correctAnswer = pictureQuestionButton.Tag.ToString().ToUpper();
+
+                if ( userAnswer == correctAnswer )
                 {
                     correctAns(sender, e);
                 }
@@ -459,6 +531,18 @@ namespace InteractivePeriodicTable
 
             return;
         }
+
+        /// <summary>
+        ///     Poziva se ako je pritisnut gumb sa TOČNIM odgovorom.
+        ///     Također se poziva ako je upisana vrijednost jednaka TOČNOJ vrijednosti u slučaju pitanja sa slikama.
+        ///     Dodaje 1 bod.
+        ///     Dodaje 5 sekundi više za igranje.
+        ///     Boja preostalo vrijeme u zeleno.
+        ///     Registrira da nakon 1 sekunde se boja preostalog vremena vrati u normalno.
+        ///     Prikazuje slijedeće pitanje.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void correctAns(object sender, RoutedEventArgs e)
         {
             score += 1;
@@ -475,6 +559,18 @@ namespace InteractivePeriodicTable
 
             return;
         }
+
+        /// <summary>
+        ///     Poziva se ako je pritisnut gumb sa KRIVIM odgovorom.
+        ///     Također se poziva ako je upisana vrijednost jednaka KRIVOJ vrijednosti u slučaju pitanja sa slikama.
+        ///     Skida 1 bod.
+        ///     Skida 5 sekundi od preostalog vremena za igranje.
+        ///     Boja preostalo vrijeme u crveno.
+        ///     Registrira da nakon 1 sekunde se boja preostalog vremena vrati u normalno.
+        ///     Prikazuje slijedeće pitanje.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void wrongAns(object sender, RoutedEventArgs e)
         {
             score -= 1;
@@ -491,12 +587,23 @@ namespace InteractivePeriodicTable
 
             return;
         }
+
+        /// <summary>
+        ///     Poziva se svakih 50ms proteklog vremena tijekom igranja kviza.
+        ///     Osvježava prikaz preostalog vremena.
+        ///     Provjerava da li je prošlo vrijeme dozbvoljeno za igranje.
+        ///     Ako je prošlo vrijeme za igru, poziva formu za upis rezultat na server.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            TimeSpan elapsed = DateTime.Now - start;
-            timer.Content = "Time left: " + Convert.ToString(30 - elapsed.Seconds) + " s";
+            TimeSpan elapsedTime = DateTime.Now - start;
 
-            if (elapsed.Seconds >= 30)
+            string remainingTime = Convert.ToString(PLAY_TIME - elapsedTime.Seconds);
+            timer.Content = "Time left: " + remainingTime + " s";
+
+            if (elapsedTime.Seconds >= PLAY_TIME)
             {
                 dispatcherTimer.Stop();
 
@@ -509,6 +616,14 @@ namespace InteractivePeriodicTable
 
             return;
         }
+
+        /// <summary>
+        ///     Poziva se nakon što je prošla jedna sekunda od promijene boje Label-e za prikaz preostalog vremena.
+        ///     Zaustavlja brojač vremena.
+        ///     Vraća boju Label-e u staro.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void colorChanger_Tick(object sender, EventArgs e)
         {
             colorChanger.Stop();
@@ -517,6 +632,13 @@ namespace InteractivePeriodicTable
 
             return;
         }
+
+        /// <summary>
+        ///     Poziva se prilikom gašenja prozora.
+        ///     Služi kako bi zaustavili brojač vremena prilikom izlaska iz kviza.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void stopTimer(object sender, EventArgs e)
         {
             dispatcherTimer.Stop();

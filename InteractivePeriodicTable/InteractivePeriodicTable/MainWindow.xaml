@@ -209,7 +209,7 @@
                 </ListBox>
             </Grid>
 
-            <Grid Name="BackgroundZaGif" MouseLeftButtonDown="Did_you_know_click" MouseEnter="Did_you_know_hover" MouseLeave="Did_you_know_leave" HorizontalAlignment="Left" Height="58" Margin="524,80,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.43,1.474"  >
+            <Grid Name="BackgroundZaGif" MouseLeftButtonDown="Fact_ShowFact" MouseEnter="Fact_ShowFact" MouseLeave="Fact_Leave" HorizontalAlignment="Left" Height="58" Margin="524,80,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.43,1.474"  >
                 <Grid.Background>
                     <SolidColorBrush Color="LightBlue" Opacity="0.2"></SolidColorBrush>
                 </Grid.Background>
@@ -228,7 +228,7 @@
                 </Grid.RowDefinitions>
 
 
-                <Label x:Name="play_quiz" Content="Play a quiz" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="1200,23,0,0" VerticalAlignment="Top" Width="135" MouseLeftButtonDown="play_quiz_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
+                <Label x:Name="play_quiz" Content="Play a quiz" MouseLeftButtonDown="playQuiz_Click" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="1200,23,0,0" VerticalAlignment="Top" Width="135" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
                     <Label.Style>
                         <Style TargetType="{x:Type Label}">
                             <Setter Property="Foreground" Value="LightBlue"/>
@@ -250,7 +250,7 @@
                     </Label.Style>
                 </Label>
 
-                <Label x:Name="show_scoreboard" FontWeight="Bold" FontSize="18" Content="Top 10 players" HorizontalAlignment="Left" Margin="1200,30,0,0" VerticalAlignment="Top" Width="135" MouseLeftButtonDown="show_scoreboard_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1">
+                <Label x:Name="showScoreBoard" FontWeight="Bold" FontSize="18" Content="Top 10 players" HorizontalAlignment="Left" Margin="1200,30,0,0" VerticalAlignment="Top" Width="135" MouseLeftButtonDown="showScoreBoard_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1">
                     <Label.Style>
                         <Style TargetType="{x:Type Label}">
                             <Setter Property="Foreground" Value="LightBlue"/>
@@ -274,6 +274,27 @@
 
 
                 <Label x:Name="DragDropGames" FontWeight="Bold" FontSize="18" Content="Drag and Drop" HorizontalAlignment="Left" Margin="1200,50,0,0" VerticalAlignment="Top" Width="135" MouseLeftButtonDown="play_DragDrop_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2">
+                    <Label.Style>
+                        <Style TargetType="{x:Type Label}">
+                            <Setter Property="Foreground" Value="LightBlue"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Label}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Label.Style>
+                </Label>
+                <Label x:Name="update" FontWeight="Bold" FontSize="18" Content="Update" HorizontalAlignment="Left" Margin="1200,668,0,0" VerticalAlignment="Top" Width="135" MouseLeftButtonDown="update_Click" Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1">
                     <Label.Style>
                         <Style TargetType="{x:Type Label}">
                             <Setter Property="Foreground" Value="LightBlue"/>

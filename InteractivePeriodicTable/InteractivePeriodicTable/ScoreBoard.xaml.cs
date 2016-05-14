@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Data.SqlClient;
 using System.Configuration;
 using InteractivePeriodicTable.ExtensionMethods;
+using InteractivePeriodicTable.Utils;
 
 namespace InteractivePeriodicTable
 {

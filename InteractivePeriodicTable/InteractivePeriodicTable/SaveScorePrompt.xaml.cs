@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Input;
 using InteractivePeriodicTable.ExtensionMethods;
+using InteractivePeriodicTable.Utils;
 
 namespace InteractivePeriodicTable
 {
@@ -23,6 +24,12 @@ namespace InteractivePeriodicTable
 
         private void saveScore()
         {
+            if(InternetConnection.IsConnected() == false)
+            {
+                MessageBox.Show("Nemogu se spojiti na server !", "Pogreška");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(username.Text))
             {
                 MessageBox.Show("Please enter user name !", "Error");
