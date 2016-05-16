@@ -178,6 +178,10 @@ namespace InteractivePeriodicTable
                     ScoreBoard window = new ScoreBoard();
                     window.ShowDialog();
                 }
+                else
+                {
+                    "You are not connected to internet!".Alert();
+                }
             }
             catch (Exception ex)
             {

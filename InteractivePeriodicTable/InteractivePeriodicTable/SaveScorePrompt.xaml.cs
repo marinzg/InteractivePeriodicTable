@@ -26,7 +26,7 @@ namespace InteractivePeriodicTable
         {
             if(InternetConnection.IsConnected() == false)
             {
-                "Connection to server could not be established!".Alert();
+                "You are not connected to internet!".Alert();
                 return;
             }
 
