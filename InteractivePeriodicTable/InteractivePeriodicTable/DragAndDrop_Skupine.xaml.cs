@@ -95,7 +95,9 @@ namespace InteractivePeriodicTable
                 b.Height = b.Width = 60;
                 b.HorizontalContentAlignment = HorizontalAlignment.Center;
                 b.VerticalContentAlignment = VerticalAlignment.Center;
-                b.Background = Brushes.AliceBlue;
+                b.Background = Brushes.DarkTurquoise;
+                b.FontWeight = FontWeights.SemiBold;
+                b.Foreground = Brushes.MidnightBlue;
                 DragList.Items.Add(b);
             }
 
