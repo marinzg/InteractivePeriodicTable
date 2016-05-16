@@ -188,9 +188,9 @@ namespace InteractivePeriodicTable
         {
             categories = new List<ElementCategory>()
             {
-                new ElementCategory() {id = 1, name = "Metal" },
-                new ElementCategory() {id = 2, name = "Metalloid" },
-                new ElementCategory() {id = 3, name = "Nonmetal" }
+                new ElementCategory() {id = 1, name = "metal" },
+                new ElementCategory() {id = 2, name = "metalloid" },
+                new ElementCategory() {id = 3, name = "nonmetal" }
             };
 
             return;
@@ -203,16 +203,16 @@ namespace InteractivePeriodicTable
         {
             subcategories = new List<ElementSubcategory>()
             {
-                new ElementSubcategory() {id = 0, name = "None" },
-                new ElementSubcategory() {id = 1, name = "Alkali metal" },
-                new ElementSubcategory() {id = 2, name = "Alkaline earth metal" },
-                new ElementSubcategory() {id = 3, name = "Lanthanoid" },
-                new ElementSubcategory() {id = 4, name = "Actinoid" },
-                new ElementSubcategory() {id = 5, name = "Transtition metal" },
-                new ElementSubcategory() {id = 6, name = "Posttransition metal" },
-                new ElementSubcategory() {id = 7, name = "Other nonmetal" },
-                new ElementSubcategory() {id = 8, name = "Halogen" },
-                new ElementSubcategory() {id = 9, name = "Noble gas" }
+                new ElementSubcategory() {id = 0, name = "none" },
+                new ElementSubcategory() {id = 1, name = "alkali metal" },
+                new ElementSubcategory() {id = 2, name = "alkaline earth metal" },
+                new ElementSubcategory() {id = 3, name = "lanthanoid" },
+                new ElementSubcategory() {id = 4, name = "actinoid" },
+                new ElementSubcategory() {id = 5, name = "transtition metal" },
+                new ElementSubcategory() {id = 6, name = "posttransition metal" },
+                new ElementSubcategory() {id = 7, name = "other nonmetal" },
+                new ElementSubcategory() {id = 8, name = "halogen" },
+                new ElementSubcategory() {id = 9, name = "noble gas" }
             };
         }
 
@@ -223,10 +223,10 @@ namespace InteractivePeriodicTable
         {
             phases = new List<Phase>()
             {
-                new Phase() {id = 0, name = "Unknown" },
-                new Phase() {id = 1, name = "Solid" },
-                new Phase() {id = 2, name = "Gas" },
-                new Phase() {id = 3, name = "Liquid" }
+                new Phase() {id = 0, name = "unknown" },
+                new Phase() {id = 1, name = "solid" },
+                new Phase() {id = 2, name = "gas" },
+                new Phase() {id = 3, name = "liquid" }
             };
         }
 
@@ -237,13 +237,13 @@ namespace InteractivePeriodicTable
         {
             crystalStructures = new List<CrystalStructure>()
             {
-                new CrystalStructure() {id = 0, name = "Unknown" },
-                new CrystalStructure() {id = 1, name = "Hexagonal" },
-                new CrystalStructure() {id = 2, name = "Cubic" },
-                new CrystalStructure() {id = 3, name = "Rhombohedral" },
-                new CrystalStructure() {id = 4, name = "Orthothombic" },
-                new CrystalStructure() {id = 5, name = "Tetragonal" },
-                new CrystalStructure() {id = 6, name = "Monoclinic" }
+                new CrystalStructure() {id = 0, name = "unknown" },
+                new CrystalStructure() {id = 1, name = "hexagonal" },
+                new CrystalStructure() {id = 2, name = "cubic" },
+                new CrystalStructure() {id = 3, name = "rhombohedral" },
+                new CrystalStructure() {id = 4, name = "orthothombic" },
+                new CrystalStructure() {id = 5, name = "tetragonal" },
+                new CrystalStructure() {id = 6, name = "monoclinic" }
             };
         }
         #endregion
