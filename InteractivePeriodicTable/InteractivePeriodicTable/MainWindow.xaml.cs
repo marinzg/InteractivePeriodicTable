@@ -46,19 +46,19 @@ namespace InteractivePeriodicTable
             }
             catch (FileNotFoundException fnfe)
             {
-                fnfe.ErrorMessageBox("Nije pronađena datoteka quiz.json !");
+                fnfe.ErrorMessageBox("Quiz.json file not found !");
             }
             catch (DirectoryNotFoundException dnfe)
             {
-                dnfe.ErrorMessageBox("Nije pronađen direktorij " + Pathing.SysDir);
+                dnfe.ErrorMessageBox("Directory not found " + Pathing.SysDir);
             }
             catch (IOException ioe)
             {
-                ioe.ErrorMessageBox("Greška prilikom čitanja iz datoteke.");
+                ioe.ErrorMessageBox("File reading error");
             }
             catch (Exception ex)
             {
-                ex.ErrorMessageBox("Dogodila se pogreška !");
+                ex.ErrorMessageBox("Unknown error !");
             }
 
             return;
@@ -74,7 +74,7 @@ namespace InteractivePeriodicTable
         {
             if (File.Exists(Pathing.SysDir + "\\facts.json") == false)
             {
-                MessageBox.Show("Nemate zanimljivosti na disku ! Probajte Update !");
+                MessageBox.Show("There's no facts! Try to do an update!", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;
             }
             else
@@ -134,7 +134,7 @@ namespace InteractivePeriodicTable
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ErrorHandle.ErrorMessageBox(ex, "Error while trying to update quiz and facts questions");
             }
 
             return;
@@ -201,7 +201,7 @@ namespace InteractivePeriodicTable
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ErrorHandle.ErrorMessageBox(ex, "Error while trying to open element information");
             }
         }
 
@@ -229,7 +229,7 @@ namespace InteractivePeriodicTable
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ErrorHandle.ErrorMessageBox(ex, "Error while trying to open element information");
             }
         }
 
@@ -394,9 +394,16 @@ namespace InteractivePeriodicTable
             }
             else if (e.Key == Key.Enter)
             {
-                PopupWebpage popupWindow = new PopupWebpage(listBox.SelectedItem.ToString());
-                popupWindow.Show();
-                e.Handled = true;
+                try
+                {
+                    PopupWebpage popupWindow = new PopupWebpage(listBox.SelectedItem.ToString());
+                    popupWindow.Show();
+                    e.Handled = true;
+                }
+                catch (Exception ex)
+                {
+                    ErrorHandle.ErrorMessageBox(ex, "Error while trying to open element information");
+                }
             }
         }
 
@@ -444,8 +451,15 @@ namespace InteractivePeriodicTable
 
         private void play_DragDrop_Click(object sender, RoutedEventArgs e)
         {
-            SortElements window = new SortElements();
-            window.ShowDialog();
+            try
+            {
+                SortElements window = new SortElements();
+                window.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandle.ErrorMessageBox(ex, "Can not open Sort elements game");
+            }
         }
 
 

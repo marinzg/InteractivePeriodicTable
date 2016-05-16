@@ -19,14 +19,14 @@ namespace InteractivePeriodicTable.ExtensionMethods
             {
                 using (StreamWriter writer = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\log.txt", true))
                 {
-                    writer.WriteLine("Pogreška: " + exception.Message + Environment.NewLine +
-                                     "Datum:    " + DateTime.Now.ToString());
+                    writer.WriteLine("Error: " + exception.Message + Environment.NewLine +
+                                     "Date:    " + DateTime.Now.ToString());
 
                     writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
                 }
             }
 
-            System.Windows.Forms.MessageBox.Show(message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            System.Windows.Forms.MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             Environment.Exit(0);
 
