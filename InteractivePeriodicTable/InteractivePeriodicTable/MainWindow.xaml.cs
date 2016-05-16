@@ -15,9 +15,11 @@ namespace InteractivePeriodicTable
 {
     public partial class MainWindow : Window
     {
+        #region ČLANSKE VARIJABLE
         private Dictionary<string, Brush> previousBackgroundColors = new Dictionary<string, Brush>();
         private Dictionary<string, Brush> previousForegroundColors = new Dictionary<string, Brush>();
         private AllFacts facts = new AllFacts();
+        #endregion
 
         public MainWindow()
         {
@@ -111,8 +113,7 @@ namespace InteractivePeriodicTable
 
 
 
-        #region Click eventi
-
+        #region DOGAĐAJI
         /// <summary>
         ///     Poziva se kada netko hoće update-ati kviz i zanimljivosti.
         ///     Ako ima veze s internetom, skidaju se kviz i zanimljivosti.
@@ -192,7 +193,8 @@ namespace InteractivePeriodicTable
         }
 
         /// <summary>
-        /// Ako je kliknut button koji fire-a event Element_klik. Otvara se nova forma (popup window) koja loada informacije o elementu
+        ///     Ako je kliknut button koji fire-a event Element_klik.
+        ///     Otvara se nova forma (popup window) koja loada informacije o elementu
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -200,8 +202,6 @@ namespace InteractivePeriodicTable
         {
             Button element = (e.Source as Button);
 
-            //frame.Content = new PopupWebpage(element.Name.ToString());
-            //Otvori popup_window za webpage-eve
             try
             {
                 PopupWebpage popupWindow = new PopupWebpage(element.Name.ToString());
@@ -211,20 +211,24 @@ namespace InteractivePeriodicTable
             {
                 ex.ErrorMessageBox("Error while trying to open element information");
             }
+
+            return;
         }
 
         /// <summary>
-        /// micanje fokusa iz textboxa
+        ///     Uklanja fokus sa search textbox-a
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Keyboard.ClearFocus();
+
+            return;
         }
 
         /// <summary>
-        /// omoguceno je otvaranje popup windowa ako double clickamo unutar searchbox rezultata
+        ///     Poziva se ako dvaput kliknemo na element prikazan u DropDownListi iz searchbox-a.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -239,24 +243,26 @@ namespace InteractivePeriodicTable
             {
                 ex.ErrorMessageBox("Error while trying to open element information!");
             }
+
+            return;
         }
 
         /// <summary>
-        /// ukoliko mišem označimo određeni element highlightat će se
+        ///     Ukoliko prijeđemo mišem određeni element, označiti će se.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void listBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ListBox chosenItem = (e.Source as ListBox);
-            HighLightSpecificElement(chosenItem.SelectedValue.ToString());
-            DeSelectOtherElements(chosenItem.SelectedValue.ToString());
+            string elementName = chosenItem.SelectedValue.ToString();
+
+            HighLightSpecificElement(elementName);
+            DeSelectOtherElements(elementName);
+
+            return;
         }
-
         #endregion
-
-
-
 
         #region Highlighting i searchbox funkcionalnost
 
@@ -267,7 +273,6 @@ namespace InteractivePeriodicTable
         /// <param name="e"></param>
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
             listBox.Items.Clear();
 
             if (textBox.Text.Trim() != "")
