@@ -6,14 +6,17 @@
         xmlns:local="clr-namespace:InteractivePeriodicTable"
         mc:Ignorable="d"
         Title="Save score" Height="300" Width="300" KeyDown="Window_KeyDown" Icon="/Resources/Images/Ikona.ico" WindowStartupLocation="CenterScreen">
-    <Grid Background="LightBlue">
-        <Label x:Name="score_lbl" Content="" HorizontalAlignment="Left" Margin="90,54,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.225,0.536" Foreground="Blue"/>
+    <Grid Opacity="0.9">
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/Images/q1.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Label x:Name="score_lbl" Content="" HorizontalAlignment="Left" Margin="114,54,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.225,0.536" Foreground="DarkTurquoise"/>
         <TextBox x:Name="username" HorizontalAlignment="Left" Height="24" Margin="127,104,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="label" Content="User name:" HorizontalAlignment="left" Margin="23,90,0,0" VerticalAlignment="Top" FontSize="16" Height="51" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Blue" />
-        
-        <Button x:Name="save" Content="Save" HorizontalAlignment="Left" Margin="172,186,0,0" VerticalAlignment="Top" Width="75" Click="save_Click" Background="DeepSkyBlue" Foreground="Blue"/>
+        <Label x:Name="label" Content="User name:" HorizontalAlignment="left" Margin="23,90,0,0" VerticalAlignment="Top" FontSize="16" Height="51" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="DarkTurquoise" />
 
-        <Button x:Name="cancel" Content="Cancel" HorizontalAlignment="Left" Margin="49,186,0,0" VerticalAlignment="Top" Width="75" Click="cancel_Click" Background="DeepSkyBlue" Foreground="Blue"/>
+        <Button x:Name="save" Content="Save" HorizontalAlignment="Left" Margin="172,186,0,0" VerticalAlignment="Top" Width="75" Click="save_Click" Background="DarkTurquoise" Foreground="MidnightBlue"/>
+
+        <Button x:Name="cancel" Content="Cancel" HorizontalAlignment="Left" Margin="49,186,0,0" VerticalAlignment="Top" Width="75" Click="cancel_Click" Background="DarkTurquoise" Foreground="MidnightBlue"/>
 
     </Grid>
 </Window>

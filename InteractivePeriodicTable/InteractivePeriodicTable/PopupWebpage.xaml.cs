@@ -14,13 +14,19 @@ namespace InteractivePeriodicTable
         public PopupWebpage(string elementName)
         {
             InitializeComponent();
+
             this.Title = elementName;
             browser1.LoadCompleted += browser1_LoadCompleted;
             string uri = Pathing.ResourcesDir + "\\Web_pages\\" + elementName + " - Wikipedia, the free encyclopedia.mht";
 
-
+            try { 
             //Navigiranje na stranicu
             browser1.Navigate(new Uri(uri, UriKind.Absolute));
+            }
+            catch(Exception ex)
+            {
+                ExtensionMethods.ErrorHandle.ErrorMessageBox(ex, "Nije moguće otvoriti informacije o elementu");
+            }
         }
 
 
