@@ -32,7 +32,7 @@
         <GroupBox x:Name="groupBoxSolid"  Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold" Header="Solid" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
         <GroupBox x:Name="groupBoxGas"  Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold" Header="Gas" HorizontalAlignment="Left" Margin="271,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
         <GroupBox x:Name="groupBoxLiquid"  Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold" Header="Liquid" HorizontalAlignment="Left" Margin="514,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
-        <Label x:Name="labelPhase" Content="In what state are these elements at 20 degrees Celsius?" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Height="45" Width="616" FontSize="24"/>
+        <Label x:Name="labelPhase" Content="In what state are these elements at 20 degrees Celsius?" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Height="45" Width="616" FontSize="20" Foreground="DarkTurquoise" FontWeight="ExtraBold"/>
         <Label x:Name="labelSolidPoints" Content="0" HorizontalAlignment="Left" Margin="61,264,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelGasPoints" Content="0" HorizontalAlignment="Left" Margin="325,264,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelLiquidPoints" Content="0

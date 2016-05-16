@@ -33,7 +33,7 @@
         <GroupBox x:Name="groupBoxOne" Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold" Header="Cat1" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
         <GroupBox x:Name="groupBoxTwo" Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold" Header="Cat2" HorizontalAlignment="Left" Margin="271,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
         <GroupBox x:Name="groupBoxThree" Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold" Header="Cat3" HorizontalAlignment="Left" Margin="514,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
-        <Label x:Name="labelSubcategory" Content="Place the elements in the right category." HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Height="45" Width="616" FontSize="24"/>
+        <Label x:Name="labelSubcategory" Content="Place the elements in the right category." HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Height="45" Width="616" FontSize="20" Foreground="DarkTurquoise" FontWeight="ExtraBold"/>
         <Label x:Name="labelOnePoints" Content="0" HorizontalAlignment="Left" Margin="61,264,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelTwoPoints" Content="0" HorizontalAlignment="Left" Margin="325,264,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelThreePoints" Content="0
