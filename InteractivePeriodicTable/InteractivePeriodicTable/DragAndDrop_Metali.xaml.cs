@@ -53,7 +53,9 @@ namespace InteractivePeriodicTable
                 elementButton.Width = 60;
                 elementButton.HorizontalContentAlignment = HorizontalAlignment.Center;
                 elementButton.VerticalContentAlignment = VerticalAlignment.Center;
-                elementButton.Background = Brushes.AliceBlue;
+                elementButton.Background = Brushes.DarkTurquoise;
+                elementButton.FontWeight = FontWeights.SemiBold;
+                elementButton.Foreground = Brushes.MidnightBlue;
 
                 DragList.Items.Add(elementButton);
             }
