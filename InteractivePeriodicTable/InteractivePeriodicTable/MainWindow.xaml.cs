@@ -462,7 +462,7 @@ namespace InteractivePeriodicTable
             }
             catch (Exception ex)
             {
-                ErrorHandle.ErrorMessageBox(ex, "Can not open Sort elements game");
+                ex.ErrorMessageBox("Can not open Sort elements game!");
             }
         }
 

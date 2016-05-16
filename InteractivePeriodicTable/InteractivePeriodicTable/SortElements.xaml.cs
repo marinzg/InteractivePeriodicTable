@@ -9,11 +9,13 @@ namespace InteractivePeriodicTable
     /// </summary>
     public partial class SortElements : Window
     {
-        List<Element> elements;
-        List<ElementCategory> categories;
-        List<ElementSubcategory> subcategories;
-        List<Models.Models> phases;
-        List<CrystalStructure> crystalStructures;
+        #region ČLANSKE VARIJABLE
+        private List<Element> elements;
+        private List<ElementCategory> categories;
+        private List<ElementSubcategory> subcategories;
+        private List<Models.Models> phases;
+        private List<CrystalStructure> crystalStructures;
+        #endregion
 
         public SortElements()
         {

@@ -11,14 +11,16 @@ using System.Windows.Media;
 namespace InteractivePeriodicTable
 {
     /// <summary>
-    /// Interaction logic for DragAndDrop_Metali.xaml
+    ///Interaction logic for DragAndDrop_Metali.xaml
     /// </summary>
     public partial class DragAndDrop_Metali : Page
     {
-        Point startPoint;
-        List<Element> elements;
-        List<ElementCategory> categories;
+        #region ČLANSKE VARIJABLE
+        private Point startPoint;
+        private List<Element> elements;
+        private List<ElementCategory> categories;
         private Dictionary<string, int> correctGrouping = new Dictionary<string, int>();
+        #endregion
 
         public DragAndDrop_Metali(List<Element> argElements, List<ElementCategory> argCategories)
         {
@@ -29,6 +31,10 @@ namespace InteractivePeriodicTable
             StartGame();
         }
 
+        /// <summary>
+        ///     Metoda nasumično generira 18 brojeva.
+        ///     Za svaki genereirani broj stvara se gumb sa imenom elementa i dodaje se u listu.
+        /// </summary>
         private void StartGame()
         {
             HashSet<int> randomNumbers;
@@ -39,26 +45,52 @@ namespace InteractivePeriodicTable
             foreach (int i in randomNumbers)
             {
                 //elementsToShow.Add(tmpElements.ElementAt(i));
-                Button b = new Button();
-                b.Content = elements.ElementAt(i).symbol;
-                b.FontSize = 18;
-                b.Height = b.Width = 60;
-                b.HorizontalContentAlignment = HorizontalAlignment.Center;
-                b.VerticalContentAlignment = VerticalAlignment.Center;
-                b.Background = Brushes.AliceBlue;
-                DragList.Items.Add(b);
+                Button elementButton = new Button();
+                elementButton.Content = elements.ElementAt(i).symbol;
+                elementButton.FontSize = 18;
+                elementButton.Height = 60;
+                elementButton.Width = 60;
+                elementButton.HorizontalContentAlignment = HorizontalAlignment.Center;
+                elementButton.VerticalContentAlignment = VerticalAlignment.Center;
+                elementButton.Background = Brushes.AliceBlue;
+
+                DragList.Items.Add(elementButton);
             }
+
+            return;
         }
 
+        /// <summary>
+        ///     Metoda generira određen broj nasumičnih brojeva.
+        /// </summary>
+        /// <param name="howMany">
+        ///     Koliko nasumičnih brojeva treba generirati.
+        /// </param>
+        /// <param name="max">
+        ///     Najveći dopušteni generirani broj.
+        /// </param>
+        /// <param name="min">
+        ///     Najmanji dopušteni generirani broj.
+        /// </param>
+        /// <returns>
+        ///     HashSet nasumičnih brojeva.
+        /// </returns>
         private HashSet<int> GetRandomNumbers(int howMany, int max, int min = 1)
         {
             HashSet<int> randomNumbers = new HashSet<int>();
-            Random r = new Random();
-            //get howMany (arg) numbers from min to max
+            Random randomGenerator = new Random();
+
             do
             {
-                if (randomNumbers.Add(r.Next(min, max))) howMany--;
-            } while (howMany > 0);
+                int randomNumber = randomGenerator.Next(min, max);
+                if (randomNumbers.Add(randomNumber) == true)
+                {
+                    howMany--;
+                }
+
+            }
+            while (howMany > 0);
+
             return randomNumbers;
         }
 
