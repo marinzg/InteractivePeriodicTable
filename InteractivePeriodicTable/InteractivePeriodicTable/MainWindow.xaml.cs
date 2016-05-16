@@ -74,7 +74,7 @@ namespace InteractivePeriodicTable
         {
             if (File.Exists(Pathing.SysDir + "\\facts.json") == false)
             {
-                "There's no facts! Try to do an update!".Alert();
+                "There are no facts on your local drive! Try to do an update!".Alert();
                 return;
             }
             else
@@ -129,12 +129,12 @@ namespace InteractivePeriodicTable
                     Update up = new Update();
                     up.updateQuiz();
                     up.updateFacts();
-                    MessageBox.Show("Quiz questions and answers were succesfully updated!", "Successful update");
+                    "Quiz questions and answers were succesfully updated!".Notify();
                 }
             }
             catch (Exception ex)
             {
-                ErrorHandle.ErrorMessageBox(ex, "Error while trying to update quiz and facts questions");
+                ex.ErrorMessageBox("Error while trying to update quiz and facts questions");
             }
 
             return;
@@ -149,7 +149,7 @@ namespace InteractivePeriodicTable
         {
             if (File.Exists(Pathing.SysDir + "\\quiz.json") == false)
             {
-                MessageBox.Show("Questions do not exist, try to do an Update!", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                "Questions do not exist on your local drive, try to do an Update!".Alert();
                 return;
             }
 
@@ -177,7 +177,7 @@ namespace InteractivePeriodicTable
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ex.ErrorMessageBox("Error trying to open scoreboard!");
             }
 
             return;
@@ -201,7 +201,7 @@ namespace InteractivePeriodicTable
             }
             catch (Exception ex)
             {
-                ErrorHandle.ErrorMessageBox(ex, "Error while trying to open element information");
+                ex.ErrorMessageBox("Error while trying to open element information");
             }
         }
 
@@ -229,7 +229,7 @@ namespace InteractivePeriodicTable
             }
             catch (Exception ex)
             {
-                ErrorHandle.ErrorMessageBox(ex, "Error while trying to open element information");
+                ex.ErrorMessageBox("Error while trying to open element information!");
             }
         }
 
