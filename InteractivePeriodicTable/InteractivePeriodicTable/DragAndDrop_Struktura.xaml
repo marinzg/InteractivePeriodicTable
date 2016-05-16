@@ -9,14 +9,30 @@
       Title="DragAndDrop_Struktura" Height="515.415" Width="855.813">
 
     <Grid>
-        <ListBox x:Name="DropListOne" HorizontalAlignment="Left" Height="123" Margin="10,136,0,0" VerticalAlignment="Top" Width="150" Drop="DropList_Drop" DragEnter="DropList_DragEnter" AllowDrop="True" BorderBrush="White" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
-        <ListBox x:Name="DropListTwo" HorizontalAlignment="Left" Height="123" Margin="271,136,0,0" VerticalAlignment="Top" Width="150" Drop="DropList_Drop" DragEnter="DropList_DragEnter" AllowDrop="True" BorderBrush="White" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
-        <ListBox x:Name="DropListThree" HorizontalAlignment="Left" Height="123" Margin="514,136,0,0" VerticalAlignment="Top" Width="150" Drop="DropList_Drop" DragEnter="DropList_DragEnter" AllowDrop="True" BorderBrush="White" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
 
-        <ListBox x:Name="DragList" HorizontalAlignment="Left" Margin="10,324.958,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonDown="List_PreviewMouseLeftButtonDown" PreviewMouseMove="List_MouseMove"  UseLayoutRounding="False" Height="132" Width="654"/>
-        <GroupBox x:Name="groupBoxOne" Header="Cat1" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
-        <GroupBox x:Name="groupBoxTwo" Header="Cat2" HorizontalAlignment="Left" Margin="271,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
-        <GroupBox x:Name="groupBoxThree" Header="Cat3" HorizontalAlignment="Left" Margin="514,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
+            <ListBox x:Name="DropListOne"  BorderThickness="5"  HorizontalAlignment="Left" Height="123" Margin="10,136,0,0" VerticalAlignment="Top" Width="150" Drop="DropList_Drop" DragEnter="DropList_DragEnter" AllowDrop="True" BorderBrush="DarkTurquoise" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <ListBox.Background>
+                <SolidColorBrush Color="DarkTurquoise" Opacity="0.2"/>
+            </ListBox.Background>
+            </ListBox>
+
+
+        <ListBox x:Name="DropListTwo" BorderThickness="5"  HorizontalAlignment="Left" Height="123" Margin="271,136,0,0" VerticalAlignment="Top" Width="150" Drop="DropList_Drop" DragEnter="DropList_DragEnter" AllowDrop="True" BorderBrush="DarkTurquoise" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+        <ListBox.Background>
+            <SolidColorBrush Color="DarkTurquoise" Opacity="0.2"/>
+        </ListBox.Background>
+        </ListBox>
+    
+        <ListBox x:Name="DropListThree"   BorderThickness="5"  HorizontalAlignment="Left" Height="123" Margin="514,136,0,0" VerticalAlignment="Top" Width="150" Drop="DropList_Drop" DragEnter="DropList_DragEnter" AllowDrop="True" BorderBrush="DarkTurquoise" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+        <ListBox.Background>
+            <SolidColorBrush Color="DarkTurquoise" Opacity="0.2"/>
+        </ListBox.Background>
+        </ListBox>
+
+        <ListBox x:Name="DragList" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Margin="10,324.958,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonDown="List_PreviewMouseLeftButtonDown" PreviewMouseMove="List_MouseMove"  UseLayoutRounding="False" Height="132" Width="654"/>
+        <GroupBox x:Name="groupBoxOne" Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold" Header="Cat1" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
+        <GroupBox x:Name="groupBoxTwo" Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold" Header="Cat2" HorizontalAlignment="Left" Margin="271,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
+        <GroupBox x:Name="groupBoxThree" Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold" Header="Cat3" HorizontalAlignment="Left" Margin="514,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
         <Label x:Name="labelSubcategory" Content="Place the elements in the right category." HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Height="45" Width="616" FontSize="24"/>
         <Label x:Name="labelOnePoints" Content="0" HorizontalAlignment="Left" Margin="61,264,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelTwoPoints" Content="0" HorizontalAlignment="Left" Margin="325,264,0,0" VerticalAlignment="Top"/>

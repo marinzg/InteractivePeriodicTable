@@ -7,15 +7,18 @@
         mc:Ignorable="d"
         Title="Sort elements" Height="515.415" Width="855.813" WindowStartupLocation="CenterScreen" Icon="/Resources/Images/Ikona.ico">
 
-   
 
 
-    <Grid>
-        <StackPanel>
-            <Button x:Name="Metali" Click="DragAndDropMetali"  Content="Metali" RenderTransformOrigin="0.948,3.01" Height="50" Margin="374,45,0,0" Width="100" HorizontalAlignment="Right"/>
-            <Button x:Name="Stanje" Click="DragAndDropStanje" Content="Stanje" RenderTransformOrigin="0.948,3.01" Height="50" Margin="374,45,0,0" Width="100" HorizontalAlignment="Right"/>
-            <Button x:Name="Struktura" Click="DragAndDropStruktura" Content="Struktura" RenderTransformOrigin="0.948,3.01" Height="50" Margin="374,45,0,0" Width="100" HorizontalAlignment="Right"/>
-            <Button x:Name="Skupine" Click="DragAndDropSkupine" Content="Skupine" RenderTransformOrigin="0.948,3.01" Height="50" Margin="374,45,0,0" Width="100" HorizontalAlignment="Right"/>
+
+    <Grid Opacity="0.9">
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/Images/q1.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <StackPanel Margin="0,27,24,0.5">
+            <Button x:Name="Stanje" Click="DragAndDropStanje" Content="State" RenderTransformOrigin="0.948,3.01" Height="50" Margin="0,45,0,0" Width="100" HorizontalAlignment="Right" Background="DarkTurquoise" FontWeight="SemiBold" Foreground="MidnightBlue"/>
+            <Button x:Name="Struktura" Click="DragAndDropStruktura" Content="Structure" RenderTransformOrigin="0.948,3.01" Height="50" Margin="0,45,0,0" Width="100" HorizontalAlignment="Right" Background="DarkTurquoise" FontWeight="SemiBold" Foreground="MidnightBlue"/>
+            <Button x:Name="Metali" Click="DragAndDropMetali"  Content="Metals" RenderTransformOrigin="0.948,3.01" Height="50" Margin="0,45,0,0" Width="100" HorizontalAlignment="Right" Background="DarkTurquoise" FontWeight="SemiBold" Foreground="MidnightBlue"/>
+            <Button x:Name="Skupine" Click="DragAndDropSkupine" Content="Groups" RenderTransformOrigin="0.948,3.01" Height="50" Margin="0,45,0,0" Width="100" HorizontalAlignment="Right" Background="DarkTurquoise" FontWeight="SemiBold" Foreground="MidnightBlue"/>
         </StackPanel>
 
         <Frame x:Name="Navigation" RenderTransformOrigin="1.028,0.505" NavigationUIVisibility="Hidden" Margin="0,0,103,0"/>
