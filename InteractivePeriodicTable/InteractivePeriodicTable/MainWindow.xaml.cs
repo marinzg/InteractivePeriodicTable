@@ -131,6 +131,10 @@ namespace InteractivePeriodicTable
                     up.updateFacts();
                     "Quiz questions and answers were succesfully updated!".Notify();
                 }
+                else
+                {
+                    "You are not connected to internet!".Alert();
+                }
             }
             catch (Exception ex)
             {
