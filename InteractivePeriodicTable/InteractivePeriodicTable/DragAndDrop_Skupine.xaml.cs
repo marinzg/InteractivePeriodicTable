@@ -41,50 +41,23 @@ namespace InteractivePeriodicTable
             HashSet<int> randomNumbers = GetRandomNumbers(3, allSubcategories.Count - 1);
 
             int firstRandomNumber = randomNumbers.ElementAt(0);
-            int secondRandomNumber = randomNumbers.ElementAt(1);
-            int thirdRandomNumber = randomNumbers.ElementAt(2);
-
-            //display name of each subcategory
-            this.groupBoxOne.Header = allSubcategories.Where(sc => sc.id == firstRandomNumber)
-                                                      .ElementAt(0)
-                                                      .name;
-
-            this.groupBoxTwo.Header = allSubcategories.Where(sc => sc.id == secondRandomNumber)
-                                                      .ElementAt(0)
-                                                      .name;
-
-            this.groupBoxThree.Header = allSubcategories.Where(sc => sc.id == thirdRandomNumber)
-                                                        .ElementAt(0)
-                                                        .name;
-
-            //rename drop lists so furher evaluation could be possible
-            this.DropListOne.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == firstRandomNumber)
-                                         .ElementAt(0)
-                                         .name, @" ", @"_");
-
-            this.DropListTwo.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == secondRandomNumber)
-                                         .ElementAt(0)
-                                         .name, @" ", @"_");
-
-            this.DropListThree.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == thirdRandomNumber)
-                                           .ElementAt(0)
-                                           .name, @" ", @"_");
-
-            //rename labels so you know which label represents which subcategory
-            this.labelOnePoints.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == firstRandomNumber)
-                                            .ElementAt(0)
-                                            .name, @" ", @"_");
-            this.labelTwoPoints.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == secondRandomNumber)
-                                            .ElementAt(0)
-                                            .name, @" ", @"_");
-            this.labelThreePoints.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == thirdRandomNumber)
-                                              .ElementAt(0)
-                                              .name, @" ", @"_");
-
-            //add elements only from these 3 subcategories
             tmpElements.AddRange(allElements.Where(el => el.elementSubcategory == firstRandomNumber));
+            string firstSubcategoryName = allSubcategories.Where(sc => sc.id == firstRandomNumber).ElementAt(0).name;
+            this.groupBoxOne.Header = firstSubcategoryName;
+            this.DropListOne.Name = this.labelOnePoints.Name = Regex.Replace(firstSubcategoryName, @" ", @"_");
+
+            int secondRandomNumber = randomNumbers.ElementAt(1);
             tmpElements.AddRange(allElements.Where(el => el.elementSubcategory == secondRandomNumber));
+            string secondSubcategoryName = allSubcategories.Where(sc => sc.id == secondRandomNumber).ElementAt(0).name;
+            this.groupBoxTwo.Header = secondSubcategoryName;
+            this.DropListTwo.Name = this.labelTwoPoints.Name = Regex.Replace(secondSubcategoryName, @" ", @"_");
+
+
+            int thirdRandomNumber = randomNumbers.ElementAt(2);
             tmpElements.AddRange(allElements.Where(el => el.elementSubcategory == thirdRandomNumber));
+            string thirdSubcategoryName = allSubcategories.Where(sc => sc.id == thirdRandomNumber).ElementAt(0).name;
+            this.groupBoxThree.Header = thirdSubcategoryName;
+            this.DropListThree.Name = this.labelThreePoints.Name = Regex.Replace(thirdSubcategoryName, @" ", @"_");
 
             //select 18 random elements
             randomNumbers = GetRandomNumbers(18, tmpElements.Count - 1, 0);
@@ -92,29 +65,53 @@ namespace InteractivePeriodicTable
             foreach (int i in randomNumbers)
             {
                 //elementsToShow.Add(tmpElements.ElementAt(i));
-                Button b = new Button();
-                b.Content = tmpElements.ElementAt(i).symbol;
-                b.FontSize = 18;
-                b.Height = b.Width = 60;
-                b.HorizontalContentAlignment = HorizontalAlignment.Center;
-                b.VerticalContentAlignment = VerticalAlignment.Center;
-                b.Background = Brushes.DarkTurquoise;
-                b.FontWeight = FontWeights.SemiBold;
-                b.Foreground = Brushes.MidnightBlue;
-                DragList.Items.Add(b);
+                Button elementButton = new Button();
+                elementButton.Content = tmpElements.ElementAt(i).symbol;
+                elementButton.FontSize = 18;
+                elementButton.Height = 60;
+                elementButton.Width = 60;
+                elementButton.HorizontalContentAlignment = HorizontalAlignment.Center;
+                elementButton.VerticalContentAlignment = VerticalAlignment.Center;
+                elementButton.Background = Brushes.DarkTurquoise;
+                elementButton.FontWeight = FontWeights.SemiBold;
+                elementButton.Foreground = Brushes.MidnightBlue;
+                DragList.Items.Add(elementButton);
             }
 
             return;
         }
 
+        /// <summary>
+        ///     Metoda generira određen broj nasumičnih brojeva.
+        /// </summary>
+        /// <param name="howMany">
+        ///     Koliko nasumičnih brojeva treba generirati.
+        /// </param>
+        /// <param name="max">
+        ///     Najveći dopušteni generirani broj.
+        /// </param>
+        /// <param name="min">
+        ///     Najmanji dopušteni generirani broj.
+        /// </param>
+        /// <returns>
+        ///     HashSet nasumičnih brojeva.
+        /// </returns>
         private HashSet<int> GetRandomNumbers(int howMany, int max, int min = 1)
         {
             HashSet<int> randomNumbers = new HashSet<int>();
-            Random r = new Random();
-            //get howMany (arg) numbers from min to max
-            do{
-                if (randomNumbers.Add(r.Next(min, max))) howMany--;
-            } while (howMany > 0);
+            Random randomGenerator = new Random();
+
+            do
+            {
+                int randomNumber = randomGenerator.Next(min, max);
+                if (randomNumbers.Add(randomNumber) == true)
+                {
+                    howMany--;
+                }
+
+            }
+            while (howMany > 0);
+
             return randomNumbers;
         }
 
