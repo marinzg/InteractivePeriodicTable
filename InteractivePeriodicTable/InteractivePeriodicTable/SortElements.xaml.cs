@@ -51,6 +51,9 @@ namespace InteractivePeriodicTable
         #endregion
 
         #region PUNJENJE PODACIMA
+        /// <summary>
+        ///     Metoda stvara listu svih elemenata za korištenje u igri.
+        /// </summary>
         private void populateElements()
         {
             elements = new List<Element>()
@@ -177,6 +180,10 @@ namespace InteractivePeriodicTable
 
             return;
         }
+
+        /// <summary>
+        ///     Metoda stvara listu svih kategorija elemenata u igri.
+        /// </summary>
         private void populateElementCategories()
         {
             categories = new List<ElementCategory>()
@@ -188,6 +195,10 @@ namespace InteractivePeriodicTable
 
             return;
         }
+
+        /// <summary>
+        ///     Metoda stvara listu svih podjela elemenata u igri.
+        /// </summary>
         private void populateElementSubcategories()
         {
             subcategories = new List<ElementSubcategory>()
@@ -204,6 +215,10 @@ namespace InteractivePeriodicTable
                 new ElementSubcategory() {id = 9, name = "Noble gas" }
             };
         }
+
+        /// <summary>
+        ///     Metoda stvara listu agregatnih stanja.
+        /// </summary>
         private void populatePhases()
         {
             phases = new List<Phase>()
@@ -214,6 +229,10 @@ namespace InteractivePeriodicTable
                 new Phase() {id = 3, name = "Liquid" }
             };
         }
+
+        /// <summary>
+        ///     Metoda stvara listu svih mogućih kristalnih rešetki elemenata.
+        /// </summary>
         private void populateCrystalStructure()
         {
             crystalStructures = new List<CrystalStructure>()
