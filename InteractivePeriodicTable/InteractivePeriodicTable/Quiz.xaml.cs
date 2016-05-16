@@ -18,9 +18,6 @@ namespace InteractivePeriodicTable
 {
     public partial class Quiz : Window
     {
-
-
-
         #region ČLANSKE VARIJABLE
         /// <summary>
         ///     Sprema sva pitanja za kviz.
@@ -104,8 +101,6 @@ namespace InteractivePeriodicTable
             renderNextQuestion();
         }
 
-
-
         #region DOHVAT PITANJA
         /// <summary>
         ///     Čita pitanja za kviz iz datoteke quiz.json te ih deserijalizira u klasu QuizQuestions.
@@ -126,7 +121,7 @@ namespace InteractivePeriodicTable
                 int questionsCount = questions.QuizPictures.Count + questions.QuizWith4Ans.Count + questions.QuizYesNo.Count;
                 if (questionsCount == 0)
                 {
-                    MessageBox.Show("Ne postoji niti jedno pitanje.");
+                    "There are no quiestions in quiz.json!".Alert();
                     this.Close();
                 }
             }
@@ -150,7 +145,6 @@ namespace InteractivePeriodicTable
             return;
         }
         #endregion
-
 
         #region ODABIR PITANJA
         /// <summary>
@@ -240,7 +234,6 @@ namespace InteractivePeriodicTable
         }
         #endregion
 
-
         #region PRIKAZ PITANJA
         /// <summary>
         ///     Metoda dinamički prikazuje pitanje sa 4 moguća odgovora na ekranu.
@@ -255,20 +248,36 @@ namespace InteractivePeriodicTable
             //question.Content = pickedQuestion.Question;
             question.Text = pickedQuestion.Question;
 
+            TextBlock a1QuestionTextBlock = new TextBlock();
+            a1QuestionTextBlock.Text = pickedQuestion.A1;
+            a1QuestionTextBlock.styleTextBlock();
+
             Button A1 = new Button();
-            A1.Content = pickedQuestion.A1;
+            A1.Content = a1QuestionTextBlock;
             A1.styleButton();
 
+            TextBlock a2QuestionTextBlock = new TextBlock();
+            a2QuestionTextBlock.Text = pickedQuestion.A2;
+            a2QuestionTextBlock.styleTextBlock();
+
             Button A2 = new Button();
-            A2.Content = pickedQuestion.A2;
+            A2.Content = a2QuestionTextBlock;
             A2.styleButton();
 
+            TextBlock a3QuestionTextBlock = new TextBlock();
+            a3QuestionTextBlock.Text = pickedQuestion.A3;
+            a3QuestionTextBlock.styleTextBlock();
+
             Button A3 = new Button();
-            A3.Content = pickedQuestion.A3;
+            A3.Content = a3QuestionTextBlock;
             A3.styleButton();
 
+            TextBlock a4QuestionTextBlock = new TextBlock();
+            a4QuestionTextBlock.Text = pickedQuestion.A4;
+            a4QuestionTextBlock.styleTextBlock();
+
             Button A4 = new Button();
-            A4.Content = pickedQuestion.A4;
+            A4.Content = a4QuestionTextBlock;
             A4.styleButton();
 
             if (pickedQuestion.Answer == "1")
@@ -318,12 +327,20 @@ namespace InteractivePeriodicTable
             //question.Content = pickedQuestion.Question;
             question.Text = pickedQuestion.Question;
 
+            TextBlock a1QuestionTextBlock = new TextBlock();
+            a1QuestionTextBlock.Text = pickedQuestion.A1;
+            a1QuestionTextBlock.styleTextBlock();
+
             Button A1 = new Button();
-            A1.Content = pickedQuestion.A1;
+            A1.Content = a1QuestionTextBlock;
             A1.styleButton();
 
+            TextBlock a2QuestionTextBlock = new TextBlock();
+            a2QuestionTextBlock.Text = pickedQuestion.A2;
+            a2QuestionTextBlock.styleTextBlock();
+
             Button A2 = new Button();
-            A2.Content = pickedQuestion.A2;
+            A2.Content = a2QuestionTextBlock;
             A2.styleButton();
 
             if (pickedQuestion.Answer == "1")
@@ -392,7 +409,6 @@ namespace InteractivePeriodicTable
         }
         #endregion
 
-
         #region POMOĆNE METODE
         /// <summary>
         ///     Metoda provjerava da li na disku postoje slike potrebene za kviz.
@@ -421,8 +437,8 @@ namespace InteractivePeriodicTable
                     missingPicturesText.AppendLine(imageName);
                 }
 
-                MessageBox.Show("You are missing these images:\n" + missingPicturesText.ToString() +
-                                "\n You won't get questions with images in quiz game.", "Missing images !");
+                string infoText = "You are missing these images:\n" + missingPicturesText.ToString() + "\n You won't get questions with images in quiz game.";
+                infoText.Notify();
 
                 return false;
             }
@@ -482,7 +498,6 @@ namespace InteractivePeriodicTable
             return;
         }
         #endregion
-
 
         #region DOGAĐAJI
         /// <summary>
@@ -659,7 +674,5 @@ namespace InteractivePeriodicTable
             return;
         }
         #endregion
-
-
     }
 }

@@ -26,18 +26,18 @@ namespace InteractivePeriodicTable
         {
             if(InternetConnection.IsConnected() == false)
             {
-                MessageBox.Show("Nemogu se spojiti na server !", "Pogreška");
+                "Connection to server could not be established!".Alert();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(username.Text))
             {
-                MessageBox.Show("Please enter user name !", "Error");
+                "Please enter user name!".Alert();
                 return;
             }
             if (username.Text.Length > 20)
             {
-                MessageBox.Show("Username can be max. 20 characters long !", "Error");
+                "Username can be max. 20 characters long!".Alert();
                 return;
             }
 
@@ -66,7 +66,7 @@ namespace InteractivePeriodicTable
                         dbCommand.Parameters.AddWithValue("@score", score);
 
                         dbCommand.ExecuteNonQuery();
-                        MessageBox.Show("Score was successfully submitted !", "Information");
+                        "Score was successfully submitted!".Notify();
                     }
                 }
                 catch (SqlException ex)

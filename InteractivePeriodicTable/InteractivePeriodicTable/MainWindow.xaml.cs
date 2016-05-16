@@ -74,7 +74,7 @@ namespace InteractivePeriodicTable
         {
             if (File.Exists(Pathing.SysDir + "\\facts.json") == false)
             {
-                MessageBox.Show("Nemate zanimljivosti na disku ! Probajte Update !");
+                "You do not have facts on your local drive! Try to do an Update!".Alert();
                 return;
             }
             else
@@ -129,12 +129,12 @@ namespace InteractivePeriodicTable
                     Update up = new Update();
                     up.updateQuiz();
                     up.updateFacts();
-                    MessageBox.Show("Quiz questions and answers were succesfully updated!", "Successful update");
+                    "Quiz questions and answers were succesfully updated!".Notify();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ex.ErrorMessageBox("There was an exception trying to update quiz and facts!");
             }
 
             return;
@@ -149,7 +149,7 @@ namespace InteractivePeriodicTable
         {
             if (File.Exists(Pathing.SysDir + "\\quiz.json") == false)
             {
-                MessageBox.Show("Questions do not exist, try to do an Update!", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                "Questions do not exist, try to do an Update!".Alert();
                 return;
             }
 
@@ -177,7 +177,7 @@ namespace InteractivePeriodicTable
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ex.ErrorMessageBox("There was an exception trying to show scoreboard!");
             }
 
             return;
@@ -201,7 +201,7 @@ namespace InteractivePeriodicTable
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ex.ErrorMessageBox("There was an exception trying to show element info!");
             }
         }
 
@@ -229,7 +229,7 @@ namespace InteractivePeriodicTable
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ex.ErrorMessageBox("There was an exception trying to show element info!");
             }
         }
 
