@@ -34,6 +34,7 @@ namespace InteractivePeriodicTable
 
         private void StartGame()
         {
+
             List<Element> tmpElements = new List<Element>();
             //List<Element> elementsToShow = new List<Element>();
 
