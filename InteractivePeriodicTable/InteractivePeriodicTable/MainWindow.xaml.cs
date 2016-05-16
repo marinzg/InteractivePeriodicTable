@@ -74,7 +74,7 @@ namespace InteractivePeriodicTable
         {
             if (File.Exists(Pathing.SysDir + "\\facts.json") == false)
             {
-                MessageBox.Show("There's no facts! Try to do an update!", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                "There's no facts! Try to do an update!".Alert();
                 return;
             }
             else
