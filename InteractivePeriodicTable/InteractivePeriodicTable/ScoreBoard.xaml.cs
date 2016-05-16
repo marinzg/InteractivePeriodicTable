@@ -13,7 +13,6 @@ namespace InteractivePeriodicTable
         public ScoreBoard()
         {
             InitializeComponent();
-
             getTop10Players();
         }
 
