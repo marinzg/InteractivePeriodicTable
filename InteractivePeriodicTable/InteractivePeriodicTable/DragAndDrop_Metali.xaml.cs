@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using InteractivePeriodicTable.Utils;
 
 namespace InteractivePeriodicTable
 {
@@ -94,35 +95,53 @@ namespace InteractivePeriodicTable
             return randomNumbers;
         }
 
+        /// <summary>
+        ///     Metoda uklanja elemente dodane u ListBox-ove i liste koje sadržavaju elemente.
+        /// </summary>
         private void Clear()
         {
-            //clear listboxes where elements were dropped
-            foreach (ListBox l in Utils.VisualChildren.FindVisualChildren<ListBox>(this))
+            foreach (ListBox l in VisualChildren.FindVisualChildren<ListBox>(this))
+            {
                 l.Items.Clear();
-            List<string> keys = new List<String>();
+            }
+                
+            List<string> keyList = new List<string>();
+
             foreach (string key in correctGrouping.Keys)
-                keys.Add(key);
-            foreach (string s in keys)
+            {
+                keyList.Add(key);
+            }
+                
+            foreach (string s in keyList)
             {
                 correctGrouping[s] = 0;
             }
-            DisplayUpdatedPoints();
+
+            displayUpdatedPoints();
+
             correctGrouping.Clear();
+
+            return;
         }
 
-        private void GameOver()
+        private void gameOver()
         {
             int score = 0;
 
             //sum score from all categories
             foreach (string key in correctGrouping.Keys)
+            {
                 score += correctGrouping[key];
+            }
 
             SaveScorePrompt window = new SaveScorePrompt(score);
             window.ShowDialog();
 
             Clear();
+
             StartGame();
+
+            return;
         }
 
         #region drag&drop implementation (from net)
@@ -203,13 +222,13 @@ namespace InteractivePeriodicTable
                     if (subcategoryId == elementSubcategory)
                     {
                         element.Background = Brushes.LightGreen;
-                        UpdatePoints(subcategory, 1);
+                        updatePoints(subcategory, 1);
                     }
                     //user sorted incorrectly
                     else
                     {
                         element.Background = Brushes.MediumVioletRed;
-                        UpdatePoints(subcategory, -1);
+                        updatePoints(subcategory, -1);
                     }
 
                     //resize button 
@@ -220,46 +239,58 @@ namespace InteractivePeriodicTable
                     DragList.Items.Remove(element as Button);
                     listView.Items.Add(element);
 
-                    DisplayUpdatedPoints();
-                    AutoScroll();
+                    displayUpdatedPoints();
 
+                    foreach (ListBox lb in VisualChildren.FindVisualChildren<ListBox>(this))
+                    {
+                        if (lb.Items.Count > 0)
+                        {
+                            lb.ScrollIntoView(lb.Items[lb.Items.Count - 1]);
+                        }
+                    }
                 }
-                if (!DragList.HasItems) GameOver();
+
+                if (DragList.HasItems == false)
+                {
+                    gameOver();
+                }
             }
+
+            return;
         }
         #endregion
 
-        private void AutoScroll()
+        private void displayUpdatedPoints()
         {
-            foreach (ListBox lb in Utils.VisualChildren.FindVisualChildren<ListBox>(this))
-            {
-                if (lb.Items.Count > 0)
-                    lb.ScrollIntoView(lb.Items[lb.Items.Count - 1]);
-            }
-        }
+            string s = string.Empty;
 
-        private void DisplayUpdatedPoints()
-        {
-            string s = "";
             foreach (string myString in correctGrouping.Keys)
             {
                 s = Regex.Replace(myString, @" ", @"_");
-                foreach (Label l in Utils.VisualChildren.FindVisualChildren<Label>(this))
+                foreach (Label l in VisualChildren.FindVisualChildren<Label>(this))
                 {
-                    if (l.Name.ToLower().Contains(s))
+                    if (l.Name.ToLower().Contains(s) == true)
                     {
                         l.Content = correctGrouping[myString];
                     }
                 }
             }
+
+            return;
         }
 
-        private void UpdatePoints(string subcategory, int points)
+        private void updatePoints(string subCategory, int points)
         {
-            if (correctGrouping.ContainsKey(subcategory))
-                correctGrouping[subcategory] += points;
+            if (correctGrouping.ContainsKey(subCategory) == true)
+            {
+                correctGrouping[subCategory] += points;
+            }
             else
-                correctGrouping.Add(subcategory, points);
+            {
+                correctGrouping.Add(subCategory, points);
+            }
+
+            return;
         }
     }
 }

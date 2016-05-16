@@ -13,16 +13,22 @@ namespace InteractivePeriodicTable
         private List<Element> elements;
         private List<ElementCategory> categories;
         private List<ElementSubcategory> subcategories;
-        private List<Models.Models> phases;
+        private List<Phase> phases;
         private List<CrystalStructure> crystalStructures;
         #endregion
 
         public SortElements()
         {
             InitializeComponent();
-            GetData();
+
+            populateElements();
+            populateElementCategories();
+            populateElementSubcategories();
+            populatePhases();
+            populateCrystalStructure();
         }
 
+        #region DOGAĐAJI
         private void DragAndDropMetali(object sender, RoutedEventArgs e)
         {
             Navigation.Content = new DragAndDrop_Metali(elements, categories);
@@ -42,17 +48,10 @@ namespace InteractivePeriodicTable
         {
             Navigation.Content = new DragAndDrop_Skupine(elements, subcategories);
         }
+        #endregion
 
-        private void GetData()
-        {
-            PopulateElements();
-            PopulateElementCategories();
-            PopulateElementSubcategories();
-            PopulatePhases();
-            PopulateCrystalStructure();
-        }
-
-        private void PopulateElements()
+        #region PUNJENJE PODACIMA
+        private void populateElements()
         {
             elements = new List<Element>()
             {
@@ -175,55 +174,60 @@ namespace InteractivePeriodicTable
                 new Element(){ atomicNumber = 117, name = "Ununseptium", symbol = "Uus", elementCategory = 3, elementSubcategory = 8, group = 17, block = "p", period = 7, phase = 1, crystalStructure = 0 },
                 new Element(){ atomicNumber = 118, name = "Ununoctium", symbol = "Uuo", elementCategory = 3, elementSubcategory = 8, group = 18, block = "p", period = 7, phase = 1, crystalStructure = 0 }
             };
-        }
 
-        private void PopulateElementCategories()
+            return;
+        }
+        private void populateElementCategories()
         {
             categories = new List<ElementCategory>()
             {
-                new ElementCategory() {id = 1, name = "metal" },
-                new ElementCategory() {id = 2, name = "metalloid" },
-                new ElementCategory() {id = 3, name = "nonmetal" }
+                new ElementCategory() {id = 1, name = "Metal" },
+                new ElementCategory() {id = 2, name = "Metalloid" },
+                new ElementCategory() {id = 3, name = "Nonmetal" }
             };
+
+            return;
         }
-        private void PopulateElementSubcategories()
+        private void populateElementSubcategories()
         {
             subcategories = new List<ElementSubcategory>()
             {
-                new ElementSubcategory() {id = 0, name = "none" },
-                new ElementSubcategory() {id = 1, name = "alkali metal" },
-                new ElementSubcategory() {id = 2, name = "alkaline earth metal" },
-                new ElementSubcategory() {id = 3, name = "lanthanoid" },
-                new ElementSubcategory() {id = 4, name = "actinoid" },
-                new ElementSubcategory() {id = 5, name = "transtition metal" },
-                new ElementSubcategory() {id = 6, name = "posttransition metal" },
-                new ElementSubcategory() {id = 7, name = "other nonmetal" },
-                new ElementSubcategory() {id = 8, name = "halogen" },
-                new ElementSubcategory() {id = 9, name = "neble gas" }
+                new ElementSubcategory() {id = 0, name = "None" },
+                new ElementSubcategory() {id = 1, name = "Alkali metal" },
+                new ElementSubcategory() {id = 2, name = "Alkaline earth metal" },
+                new ElementSubcategory() {id = 3, name = "Lanthanoid" },
+                new ElementSubcategory() {id = 4, name = "Actinoid" },
+                new ElementSubcategory() {id = 5, name = "Transtition metal" },
+                new ElementSubcategory() {id = 6, name = "Posttransition metal" },
+                new ElementSubcategory() {id = 7, name = "Other nonmetal" },
+                new ElementSubcategory() {id = 8, name = "Halogen" },
+                new ElementSubcategory() {id = 9, name = "Noble gas" }
             };
         }
-        private void PopulatePhases()
+        private void populatePhases()
         {
-            phases = new List<Models.Models>()
+            phases = new List<Phase>()
             {
-                new Models.Models() {id = 0, name = "unknown" },
-                new Models.Models() {id = 1, name = "solid" },
-                new Models.Models() {id = 2, name = "gas" },
-                new Models.Models() {id = 3, name = "liquid" }
+                new Phase() {id = 0, name = "Unknown" },
+                new Phase() {id = 1, name = "Solid" },
+                new Phase() {id = 2, name = "Gas" },
+                new Phase() {id = 3, name = "Liquid" }
             };
         }
-        private void PopulateCrystalStructure()
+        private void populateCrystalStructure()
         {
             crystalStructures = new List<CrystalStructure>()
             {
-                new CrystalStructure() {id = 0, name = "unknown" },
-                new CrystalStructure() {id = 1, name = "hexagonal" },
-                new CrystalStructure() {id = 2, name = "cubic" },
-                new CrystalStructure() {id = 3, name = "rhombohedral" },
-                new CrystalStructure() {id = 4, name = "orthothombic" },
-                new CrystalStructure() {id = 5, name = "tetragonal" },
-                new CrystalStructure() {id = 6, name = "monoclinic" }
+                new CrystalStructure() {id = 0, name = "Unknown" },
+                new CrystalStructure() {id = 1, name = "Hexagonal" },
+                new CrystalStructure() {id = 2, name = "Cubic" },
+                new CrystalStructure() {id = 3, name = "Rhombohedral" },
+                new CrystalStructure() {id = 4, name = "Orthothombic" },
+                new CrystalStructure() {id = 5, name = "Tetragonal" },
+                new CrystalStructure() {id = 6, name = "Monoclinic" }
             };
         }
+        #endregion
+
     }
 }
