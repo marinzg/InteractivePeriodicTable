@@ -15,18 +15,20 @@ namespace InteractivePeriodicTable
     /// </summary>
     public partial class DragAndDrop_Skupine : Page
     {
+        #region ČLANSKE VARIJABLE
         private Point startPoint;
         private List<Element> allElements;
         private List<ElementSubcategory> allSubcategories;
         private Dictionary<string, int> correctGrouping = new Dictionary<string, int>();
-
-
+        #endregion
+        
         public DragAndDrop_Skupine(List<Element> argElements, List<ElementSubcategory> argSubcategories)
         {
             InitializeComponent();
 
             this.allElements = argElements;
             this.allSubcategories = argSubcategories;
+
             StartGame();
         }
 
@@ -39,19 +41,41 @@ namespace InteractivePeriodicTable
             HashSet<int> randomNumbers = GetRandomNumbers(3, allSubcategories.Count - 1);
 
             //display name of each subcategory
-            this.groupBoxOne.Header = allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(0)).ElementAt(0).name;
-            this.groupBoxTwo.Header = allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(1)).ElementAt(0).name;
-            this.groupBoxThree.Header = allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(2)).ElementAt(0).name;
+            this.groupBoxOne.Header = allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(0))
+                                                      .ElementAt(0)
+                                                      .name;
+
+            this.groupBoxTwo.Header = allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(1))
+                                                      .ElementAt(0)
+                                                      .name;
+
+            this.groupBoxThree.Header = allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(2))
+                                                        .ElementAt(0)
+                                                        .name;
 
             //rename drop lists so furher evaluation could be possible
-            this.DropListOne.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(0)).ElementAt(0).name, @" ", @"_");
-            this.DropListTwo.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(1)).ElementAt(0).name, @" ", @"_");
-            this.DropListThree.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(2)).ElementAt(0).name, @" ", @"_");
+            this.DropListOne.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(0))
+                                         .ElementAt(0)
+                                         .name, @" ", @"_");
+
+            this.DropListTwo.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(1))
+                                         .ElementAt(0)
+                                         .name, @" ", @"_");
+
+            this.DropListThree.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(2))
+                                           .ElementAt(0)
+                                           .name, @" ", @"_");
 
             //rename labels so you know which label represents which subcategory
-            this.labelOnePoints.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(0)).ElementAt(0).name, @" ", @"_");
-            this.labelTwoPoints.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(1)).ElementAt(0).name, @" ", @"_");
-            this.labelThreePoints.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(2)).ElementAt(0).name, @" ", @"_");
+            this.labelOnePoints.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(0))
+                                            .ElementAt(0)
+                                            .name, @" ", @"_");
+            this.labelTwoPoints.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(1))
+                                            .ElementAt(0)
+                                            .name, @" ", @"_");
+            this.labelThreePoints.Name = Regex.Replace(allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(2))
+                                              .ElementAt(0)
+                                              .name, @" ", @"_");
 
             //add elements only from these 3 subcategories
             tmpElements.AddRange(allElements.Where(el => el.elementSubcategory == randomNumbers.ElementAt(0)));
@@ -73,6 +97,8 @@ namespace InteractivePeriodicTable
                 b.Background = Brushes.AliceBlue;
                 DragList.Items.Add(b);
             }
+
+            return;
         }
 
         private HashSet<int> GetRandomNumbers(int howMany, int max, int min = 1)
