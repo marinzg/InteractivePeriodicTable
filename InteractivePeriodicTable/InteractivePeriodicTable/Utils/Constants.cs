@@ -5,7 +5,7 @@
         /// <summary>
         ///     Koliko sekundi početno traje kviz.
         /// </summary>
-        private const int QUIZ_PLAY_TIME = 30;
+        public const int QUIZ_PLAY_TIME = 30;
 
         /// <summary>
         ///     Koliko se bodova dodaje za točan odgovor.

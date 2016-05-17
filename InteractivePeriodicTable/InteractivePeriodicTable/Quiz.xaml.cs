@@ -621,10 +621,10 @@ namespace InteractivePeriodicTable
         {
             TimeSpan elapsedTime = DateTime.Now - start;
 
-            string remainingTime = Convert.ToString(QUIZ_PLAY_TIME - elapsedTime.Seconds);
+            string remainingTime = Convert.ToString(Constants.QUIZ_PLAY_TIME - elapsedTime.Seconds);
             timer.Content = "Time left: " + remainingTime + " s";
 
-            if (elapsedTime.Seconds >= QUIZ_PLAY_TIME)
+            if (elapsedTime.Seconds >= Constants.QUIZ_PLAY_TIME)
             {
                 dispatcherTimer.Stop();
 
