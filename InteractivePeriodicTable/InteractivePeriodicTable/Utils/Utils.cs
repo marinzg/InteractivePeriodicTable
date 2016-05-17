@@ -44,10 +44,10 @@ namespace InteractivePeriodicTable.Utils
     public static class Pathing
     {
         public static readonly string LocalDir = setLocalDir();
-        public static readonly string ResourcesDir = LocalDir + "\\Resources";
-        public static readonly string SysDir = ResourcesDir + "\\Sys\\";
-        public static readonly string ImgDir = ResourcesDir + "\\Images\\Quiz\\";
-
+        public static readonly string ResourcesDir = LocalDir + @"\Resources";
+        public static readonly string SysDir = ResourcesDir + @"\Sys";
+        public static readonly string QuizImgDir = ResourcesDir + @"\QuizImages";
+        
         private static string setLocalDir()
         {
             string tmp = Directory.GetCurrentDirectory();

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.IO;
 using InteractivePeriodicTable.Utils;
 using System.Threading;
 using System.ComponentModel;
@@ -14,7 +15,15 @@ namespace InteractivePeriodicTable
         //ProgressBarWindow progBar;
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-
+            try
+            {
+                Directory.CreateDirectory(Pathing.ResourcesDir);
+            }
+            catch (Exception ex)
+            {
+                "Please reinstall the app.".Alert();
+                Environment.Exit(0);
+            }
 
             MainWindow mainView = new MainWindow();
             mainView.Show();

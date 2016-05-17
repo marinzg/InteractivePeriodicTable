@@ -121,7 +121,7 @@ namespace InteractivePeriodicTable
                 int questionsCount = questions.QuizPictures.Count + questions.QuizWith4Ans.Count + questions.QuizYesNo.Count;
                 if (questionsCount == 0)
                 {
-                    "There are no quiestions in quiz.json!".Alert();
+                    "There are no questions in quiz.json!".Alert();
                     this.Close();
                 }
             }
@@ -375,7 +375,7 @@ namespace InteractivePeriodicTable
 
             BitmapImage imageData = new BitmapImage();
             imageData.BeginInit();
-            imageData.UriSource = new Uri(Pathing.ImgDir + "\\" + pickedQuestion.ImagePath, UriKind.Absolute);
+            imageData.UriSource = new Uri(Pathing.QuizImgDir + "\\" + pickedQuestion.ImagePath, UriKind.Absolute);
             imageData.EndInit();
 
             Image image = new Image();
@@ -419,11 +419,17 @@ namespace InteractivePeriodicTable
         /// </returns>
         private bool checkImages()
         {
+            if ( Directory.Exists(Pathing.QuizImgDir) == false )
+            {
+                "You are missing quiz images.\nYou won't get questions with images in quiz game.".Notify();
+                return false;
+            }
+
             List<string> missingPictures = new List<string>();
 
             foreach (QuizPictures pictureQuestion in questions.QuizPictures)
             {
-                if (File.Exists(Pathing.ImgDir + "\\" + pictureQuestion.ImagePath) == false)
+                if (File.Exists(Pathing.QuizImgDir + "\\" + pictureQuestion.ImagePath) == false)
                 {
                     missingPictures.Add(pictureQuestion.ImagePath);
                 }
@@ -437,7 +443,7 @@ namespace InteractivePeriodicTable
                     missingPicturesText.AppendLine(imageName);
                 }
 
-                string infoText = "You are missing these images:\n" + missingPicturesText.ToString() + "\n You won't get questions with images in quiz game.";
+                string infoText = "You are missing these images:\n" + missingPicturesText.ToString() + "\nYou won't get questions with images in quiz game.";
                 infoText.Notify();
 
                 return false;
