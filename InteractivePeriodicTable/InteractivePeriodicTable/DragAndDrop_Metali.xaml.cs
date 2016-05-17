@@ -22,6 +22,8 @@ namespace InteractivePeriodicTable
         private Dictionary<string, int> correctGrouping = new Dictionary<string, int>();
         private List<Button> allButtons = new List<Button>();
 
+
+
         public DragAndDrop_Metali(List<Element> argElements, List<ElementCategory> argCategories)
         {
             this.allElements = argElements;
@@ -75,14 +77,24 @@ namespace InteractivePeriodicTable
                     Button element = (Button)listView.ItemContainerGenerator.
                     ItemFromContainer(listViewItem);
 
+                   
+
                     // Initialize the drag & drop operation
                     DataObject dragData = new DataObject("myFormat", element);
+                    if(element.IsPressed)
+                    { 
                     DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
+                    }
                 }
                 catch { }
 
             }
         }
+
+
+   
+
+
         // Helper to search up the VisualTree
         private static T FindAnchestor<T>(DependencyObject current)
             where T : DependencyObject
