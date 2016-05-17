@@ -6,6 +6,9 @@ using System.Windows;
 using System.Windows.Media;
 using InteractivePeriodicTable.ExtensionMethods;
 using System.Net;
+using InteractivePeriodicTable.Models;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace InteractivePeriodicTable.Utils
 {
@@ -115,6 +118,110 @@ namespace InteractivePeriodicTable.Utils
             {
                 return false;
             }
+        }
+    }
+
+    public static class RandomSetGenerator
+    {
+        /// <summary>
+        /// Generira skup veličine howMany međusobno različitih brojeva
+        /// iz intervala [min, max]
+        /// </summary>
+        /// <param name="howMany">Veličina traženog skupa</param>
+        /// <param name="max">Gornja granica - uključivo</param>
+        /// <param name="min">Donja granica - uključivo</param>
+        /// <returns>Prazan skup ako se traženi broj brojeva ne nalazi u
+        ///             intervalu [min,max], traženi broj različitih brojeva inače.</returns>
+        public static HashSet<int> Generate(int howMany, int max, int min = 1)
+        {
+            HashSet<int> randomNumbers = new HashSet<int>();
+            if (max - min < howMany)
+                return randomNumbers;
+            Random r = new Random();
+            //get howMany (arg) numbers from min to max
+            do
+            {
+                if (randomNumbers.Add(r.Next(min, max))) howMany--;
+            } while (howMany > 0);
+            return randomNumbers;
+        }
+    }
+
+    public static class DragAndDropDisplay
+    {
+        public static void AddButtons(List<Element> tmpElements, ListBox dragList)
+        {
+            HashSet<int> randomNumbers = RandomSetGenerator.Generate(Constants.DRAG_CONTAINER_COUNT, tmpElements.Count - 1, 0);
+            foreach (int i in randomNumbers)
+            {
+                Button b = new Button();
+                b.Content = tmpElements.ElementAt(i).symbol;
+                b.FontSize = 18;
+                b.Height = b.Width = 60;
+                b.HorizontalContentAlignment = HorizontalAlignment.Center;
+                b.VerticalContentAlignment = VerticalAlignment.Center;
+                b.Background = Brushes.DarkTurquoise;
+                b.FontWeight = FontWeights.SemiBold;
+                b.Foreground = Brushes.MidnightBlue;
+                dragList.Items.Add(b);
+            }
+        }
+        public static void DisplayUpdatedPoints(Dictionary<string, int> correctGrouping, Page thisPage)
+        {
+            String s = "";
+            foreach (string tmpString in correctGrouping.Keys)
+            {
+                s = Regex.Replace(tmpString, @" ", @"_");
+                foreach (Label l in Utils.VisualChildren.FindVisualChildren<Label>(thisPage))
+                {
+                    if (l.Name.ToLower().Contains(s))
+                    {
+                        l.Content = correctGrouping[tmpString];
+                    }
+                }
+            }
+            AutoScroll(thisPage);
+        }
+        public static void UpdatePoints(Dictionary<string,int> correctGrouping, string box, int points)
+        {
+            if (correctGrouping.ContainsKey(box))
+                correctGrouping[box] += points;
+            else
+                correctGrouping.Add(box, points);
+        }
+        private static void AutoScroll(Page thisPage)
+        {
+            foreach (ListBox lb in VisualChildren.FindVisualChildren<ListBox>(thisPage))
+            {
+                if (lb.Items.Count > 0)
+                    lb.ScrollIntoView(lb.Items[lb.Items.Count - 1]);
+            }
+        }
+        public static void Clear(Page thisPage, Dictionary<string,int> correctGrouping)
+        {
+            //clear listboxes where elements were dropped
+            foreach (ListBox l in VisualChildren.FindVisualChildren<ListBox>(thisPage))
+                l.Items.Clear();
+
+            List<string> keys = new List<String>();
+            foreach (string key in correctGrouping.Keys)
+                keys.Add(key);
+            foreach (string s in keys)
+            {
+                correctGrouping[s] = 0;
+            }
+            DisplayUpdatedPoints(correctGrouping, thisPage);
+            correctGrouping.Clear();
+        }
+        public static int GetScore(Dictionary<string, int> correctGrouping)
+        {
+            int score = 0;
+
+            //sum score from all categories
+            foreach (string key in correctGrouping.Keys)
+                score += correctGrouping[key];
+
+            return score;
         }
     }
 }

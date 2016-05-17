@@ -167,6 +167,7 @@
     </Compile>
     <Compile Include="Classes\Facts.cs" />
     <Compile Include="Classes\Quiz.cs" />
+    <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\ExtensionMethods.cs" />
     <Compile Include="Utils\Update.cs" />
     <Compile Include="Utils\Utils.cs" />

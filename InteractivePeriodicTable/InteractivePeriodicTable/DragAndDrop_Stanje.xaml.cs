@@ -5,8 +5,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using InteractivePeriodicTable.Models;
 using System.Text.RegularExpressions;
+using InteractivePeriodicTable.Models;
+using InteractivePeriodicTable.Utils;
 
 namespace InteractivePeriodicTable
 {
@@ -19,7 +20,6 @@ namespace InteractivePeriodicTable
         private List<Element> allElements;
         private List<Phase> phases;
         private Dictionary<string, int> correctGrouping = new Dictionary<string, int>();
-
         
         public DragAndDrop_Stanje(List<Element> argElements, List<Phase> argPhases)
         {
@@ -32,70 +32,18 @@ namespace InteractivePeriodicTable
         
         private void StartGame()
         {
-            List<Element> tmpElements = GetElements();
-
             //create buttons to be dragged
-            foreach(Element e in tmpElements)
-            {
-                Button b = new Button();
-                b.Content = e.symbol;
-                b.FontSize = 18;
-                b.Height = b.Width = 60;
-                b.HorizontalContentAlignment = HorizontalAlignment.Center;
-                b.VerticalContentAlignment = VerticalAlignment.Center;
-                b.Background = Brushes.DarkTurquoise;
-                b.FontWeight = FontWeights.SemiBold;
-                b.Foreground = Brushes.MidnightBlue;
-                DragList.Items.Add(b);
-            }
+            DragAndDropDisplay.AddButtons(allElements, DragList);
         }
         
-        private List<Element> GetElements()
-        {
-            List<Element> tmpElements = new List<Element>();
-            HashSet<int> indexes = new HashSet<int>();          //set can only hold unique elements
-            Random r = new Random();            
-            int numberOfElements = 18;
-
-            //get 18 unique numbers
-            do {
-                if (indexes.Add(r.Next(allElements.Count - 1))) numberOfElements--;
-            } while (numberOfElements != 0);
-
-            foreach (int i in indexes)
-                tmpElements.Add(allElements.ElementAt(i));
-
-            return tmpElements;
-        }
-
-        private void Clear()
-        {
-            //clear listboxes where elements were dropped
-            foreach (ListBox l in Utils.VisualChildren.FindVisualChildren<ListBox>(this))
-                l.Items.Clear();
-            List<string> keys = new List<String>();
-            foreach (string key in correctGrouping.Keys)
-                keys.Add(key);
-            foreach(string s in keys)
-            {
-                correctGrouping[s] = 0;
-            }
-            DisplayUpdatedPoints();
-            correctGrouping.Clear();
-        }
-
         private void GameOver()
         {
-            int score = 0;
-
-            //sum score from all categories
-            foreach(string key in correctGrouping.Keys)
-                score += correctGrouping[key];
+            int score = DragAndDropDisplay.GetScore(correctGrouping);
 
             SaveScorePrompt window = new SaveScorePrompt(score);
             window.ShowDialog();
 
-            Clear();
+            DragAndDropDisplay.Clear(this, correctGrouping);
             StartGame();
         }
         
@@ -173,19 +121,20 @@ namespace InteractivePeriodicTable
                 {
                     string phase = Regex.Replace(listView.Name, @"DropList", @"").ToLower();
                     int phaseId = phases.Where(p => p.name.Equals(phase)).ElementAt(0).id;
+                    
                     int elementPhase = allElements.Where(el => el.symbol.Equals(element.Content)).ElementAt(0).phase;
 
                     //if user sorted correctly
                     if (phaseId == elementPhase)
                     {
                         element.Background = Brushes.LightGreen;
-                        UpdatePoints(phase, +1);
+                        DragAndDropDisplay.UpdatePoints(correctGrouping, phase, Constants.POSITIVE_POINT);
                     }
                     //user sorted incorrectly
                     else
                     {
                         element.Background = Brushes.MediumVioletRed;
-                        UpdatePoints(phase, -1);
+                        DragAndDropDisplay.UpdatePoints(correctGrouping, phase, Constants.NEGATIVE_POINT);
                     }
 
                     //resize button  
@@ -196,44 +145,11 @@ namespace InteractivePeriodicTable
                     DragList.Items.Remove(element as Button);
                     listView.Items.Add(element);
 
-                    DisplayUpdatedPoints();
-                    AutoScroll();
+                    DragAndDropDisplay.DisplayUpdatedPoints(correctGrouping, this);
                 }
                 if (!DragList.HasItems) GameOver();
             }
         }
         #endregion
-        
-        private void AutoScroll()
-        {
-            //auto scroll all the lists
-            foreach (ListBox lb in Utils.VisualChildren.FindVisualChildren<ListBox>(this))
-            {
-                if (lb.Items.Count > 0)
-                    lb.ScrollIntoView(lb.Items[lb.Items.Count - 1]);
-            }
-        }
-
-        private void DisplayUpdatedPoints()
-        {
-            foreach (string s in correctGrouping.Keys)
-            {
-                foreach (Label l in Utils.VisualChildren.FindVisualChildren<Label>(this))
-                {
-                    if (l.Name.ToLower().Contains(s))
-                    {
-                        l.Content = correctGrouping[s];
-                    }
-                }
-            }
-        }
-
-        private void UpdatePoints(string phase, int points)
-        {
-            if (correctGrouping.ContainsKey(phase))
-                correctGrouping[phase] += points;
-            else
-                correctGrouping.Add(phase, points);
-        }
     }
 }

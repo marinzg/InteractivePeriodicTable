@@ -1,12 +1,12 @@
-﻿using InteractivePeriodicTable.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
+using InteractivePeriodicTable.Models;
 using InteractivePeriodicTable.Utils;
 
 namespace InteractivePeriodicTable
@@ -16,134 +16,35 @@ namespace InteractivePeriodicTable
     /// </summary>
     public partial class DragAndDrop_Metali : Page
     {
-        #region ČLANSKE VARIJABLE
         private Point startPoint;
-        private List<Element> elements;
+        private List<Element> allElements;
         private List<ElementCategory> categories;
         private Dictionary<string, int> correctGrouping = new Dictionary<string, int>();
-        #endregion
 
         public DragAndDrop_Metali(List<Element> argElements, List<ElementCategory> argCategories)
         {
-            this.elements = argElements;
+            this.allElements = argElements;
             this.categories = argCategories;
 
             InitializeComponent();
             StartGame();
         }
-
-        /// <summary>
-        ///     Metoda nasumično generira 18 brojeva.
-        ///     Za svaki genereirani broj stvara se gumb sa imenom elementa i dodaje se u listu.
-        /// </summary>
+        
         private void StartGame()
         {
-            HashSet<int> randomNumbers;
-
-            //select 18 random elements
-            randomNumbers = GetRandomNumbers(18, elements.Count - 1, 0);
             //create buttons to be dragged
-            foreach (int i in randomNumbers)
-            {
-                //elementsToShow.Add(tmpElements.ElementAt(i));
-                Button elementButton = new Button();
-                elementButton.Content = elements.ElementAt(i).symbol;
-                elementButton.FontSize = 18;
-                elementButton.Height = 60;
-                elementButton.Width = 60;
-                elementButton.HorizontalContentAlignment = HorizontalAlignment.Center;
-                elementButton.VerticalContentAlignment = VerticalAlignment.Center;
-                elementButton.Background = Brushes.DarkTurquoise;
-                elementButton.FontWeight = FontWeights.SemiBold;
-                elementButton.Foreground = Brushes.MidnightBlue;
-
-                DragList.Items.Add(elementButton);
-            }
-
-            return;
+            DragAndDropDisplay.AddButtons(allElements, DragList);
         }
-
-        /// <summary>
-        ///     Metoda generira određen broj nasumičnih brojeva.
-        /// </summary>
-        /// <param name="howMany">
-        ///     Koliko nasumičnih brojeva treba generirati.
-        /// </param>
-        /// <param name="max">
-        ///     Najveći dopušteni generirani broj.
-        /// </param>
-        /// <param name="min">
-        ///     Najmanji dopušteni generirani broj.
-        /// </param>
-        /// <returns>
-        ///     HashSet nasumičnih brojeva.
-        /// </returns>
-        private HashSet<int> GetRandomNumbers(int howMany, int max, int min = 1)
+        
+        private void GameOver()
         {
-            HashSet<int> randomNumbers = new HashSet<int>();
-            Random randomGenerator = new Random();
-
-            do
-            {
-                int randomNumber = randomGenerator.Next(min, max);
-                if (randomNumbers.Add(randomNumber) == true)
-                {
-                    howMany--;
-                }
-
-            }
-            while (howMany > 0);
-
-            return randomNumbers;
-        }
-
-        /// <summary>
-        ///     Metoda uklanja elemente dodane u ListBox-ove i liste koje sadržavaju elemente.
-        /// </summary>
-        private void Clear()
-        {
-            foreach (ListBox l in VisualChildren.FindVisualChildren<ListBox>(this))
-            {
-                l.Items.Clear();
-            }
-                
-            List<string> keyList = new List<string>();
-
-            foreach (string key in correctGrouping.Keys)
-            {
-                keyList.Add(key);
-            }
-                
-            foreach (string s in keyList)
-            {
-                correctGrouping[s] = 0;
-            }
-
-            displayUpdatedPoints();
-
-            correctGrouping.Clear();
-
-            return;
-        }
-
-        private void gameOver()
-        {
-            int score = 0;
-
-            //sum score from all categories
-            foreach (string key in correctGrouping.Keys)
-            {
-                score += correctGrouping[key];
-            }
+            int score = DragAndDropDisplay.GetScore(correctGrouping);
 
             SaveScorePrompt window = new SaveScorePrompt(score);
             window.ShowDialog();
 
-            Clear();
-
+            DragAndDropDisplay.Clear(this, correctGrouping);
             StartGame();
-
-            return;
         }
 
         #region drag&drop implementation (from net)
@@ -218,19 +119,19 @@ namespace InteractivePeriodicTable
                 {
                     string subcategory = Regex.Replace(Regex.Replace(listView.Name, @"DropList", @"").ToLower(), @"_", @" ");
                     int subcategoryId = categories.Where(sc => sc.name.Equals(subcategory)).ElementAt(0).id;
-                    int elementSubcategory = elements.Where(el => el.symbol.Equals(element.Content)).ElementAt(0).elementCategory;
+                    int elementSubcategory = allElements.Where(el => el.symbol.Equals(element.Content)).ElementAt(0).elementCategory;
 
                     //if user sorted correctly
                     if (subcategoryId == elementSubcategory)
                     {
                         element.Background = Brushes.LightGreen;
-                        updatePoints(subcategory, 1);
+                        DragAndDropDisplay.UpdatePoints(correctGrouping, subcategory, Constants.POSITIVE_POINT);
                     }
                     //user sorted incorrectly
                     else
                     {
                         element.Background = Brushes.MediumVioletRed;
-                        updatePoints(subcategory, -1);
+                        DragAndDropDisplay.UpdatePoints(correctGrouping, subcategory, Constants.NEGATIVE_POINT);
                     }
 
                     //resize button 
@@ -241,58 +142,17 @@ namespace InteractivePeriodicTable
                     DragList.Items.Remove(element as Button);
                     listView.Items.Add(element);
 
-                    displayUpdatedPoints();
-
-                    foreach (ListBox lb in VisualChildren.FindVisualChildren<ListBox>(this))
-                    {
-                        if (lb.Items.Count > 0)
-                        {
-                            lb.ScrollIntoView(lb.Items[lb.Items.Count - 1]);
-                        }
-                    }
+                    DragAndDropDisplay.DisplayUpdatedPoints(correctGrouping, this);
                 }
 
                 if (DragList.HasItems == false)
                 {
-                    gameOver();
+                    GameOver();
                 }
             }
 
             return;
         }
         #endregion
-
-        private void displayUpdatedPoints()
-        {
-            string s = string.Empty;
-
-            foreach (string myString in correctGrouping.Keys)
-            {
-                s = Regex.Replace(myString, @" ", @"_");
-                foreach (Label l in VisualChildren.FindVisualChildren<Label>(this))
-                {
-                    if (l.Name.ToLower().Contains(s) == true)
-                    {
-                        l.Content = correctGrouping[myString];
-                    }
-                }
-            }
-
-            return;
-        }
-
-        private void updatePoints(string subCategory, int points)
-        {
-            if (correctGrouping.ContainsKey(subCategory) == true)
-            {
-                correctGrouping[subCategory] += points;
-            }
-            else
-            {
-                correctGrouping.Add(subCategory, points);
-            }
-
-            return;
-        }
     }
 }

@@ -15,7 +15,7 @@
             </ListBox.Background>
         </ListBox>
         
-        <ListBox x:Name="DropListTwo" HorizontalAlignment="Left" Height="123" Margin="271,136,0,0" VerticalAlignment="Top" Width="150" Drop="DropList_Drop" DragEnter="DropList_DragEnter" AllowDrop="True" BorderBrush="DarkTurquoise" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden"  BorderThickness="5">
+        <ListBox x:Name="DropListTwo" HorizontalAlignment="Left" Height="123" Margin="257,136,0,0" VerticalAlignment="Top" Width="150" Drop="DropList_Drop" DragEnter="DropList_DragEnter" AllowDrop="True" BorderBrush="DarkTurquoise" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden"  BorderThickness="5">
             <ListBox.Background>
                 <SolidColorBrush Color="DarkTurquoise" Opacity="0.2"/>
             </ListBox.Background>
@@ -29,13 +29,12 @@
 
         <ListBox x:Name="DragList" HorizontalAlignment="Left" Margin="10,324.958,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonDown="List_PreviewMouseLeftButtonDown" PreviewMouseMove="List_MouseMove"  UseLayoutRounding="False" Height="132" Width="654" Background="Transparent" BorderThickness="0"/>
         <GroupBox x:Name="groupBoxOne" Header="Cat1" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" Height="146" Width="150" Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold"/>
-        <GroupBox x:Name="groupBoxTwo" Header="Cat2" HorizontalAlignment="Left" Margin="271,113,0,0" VerticalAlignment="Top" Height="146" Width="150" Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold"/>
+        <GroupBox x:Name="groupBoxTwo" Header="Cat2" HorizontalAlignment="Left" Margin="257,113,0,0" VerticalAlignment="Top" Height="146" Width="150" Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold"/>
         <GroupBox x:Name="groupBoxThree" Header="Cat3" HorizontalAlignment="Left" Margin="514,113,0,0" VerticalAlignment="Top" Height="146" Width="150" Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold"/>
         <Label x:Name="labelSubcategory" Content="Place the elements in the right category." HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Height="45" Width="616" FontSize="20" Foreground="DarkTurquoise" FontWeight="ExtraBold"/>
-        <Label x:Name="labelOnePoints" Content="0" HorizontalAlignment="Left" Margin="61,264,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelTwoPoints" Content="0" HorizontalAlignment="Left" Margin="325,264,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelThreePoints" Content="0
-" HorizontalAlignment="Left" Margin="565,264,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelOnePoints" Content="0" HorizontalAlignment="Left" Margin="76,264,0,0" VerticalAlignment="Top" Foreground="LightBlue" FontWeight="Bold"/>
+        <Label x:Name="labelTwoPoints" Content="0" HorizontalAlignment="Left" Margin="323,264,0,0" VerticalAlignment="Top" Foreground="LightBlue" FontWeight="Bold"/>
+        <Label x:Name="labelThreePoints" Content="0" HorizontalAlignment="Left" Margin="580,264,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="LightBlue"/>
     </Grid>
 
     <Page.Resources>
