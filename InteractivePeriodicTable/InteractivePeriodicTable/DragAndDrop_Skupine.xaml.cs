@@ -20,7 +20,8 @@ namespace InteractivePeriodicTable
         private List<Element> allElements;
         private List<ElementSubcategory> allSubcategories;
         private Dictionary<string, int> correctGrouping = new Dictionary<string, int>();
-        
+        private List<Button> allButtons = new List<Button>();
+
         public DragAndDrop_Skupine(List<Element> argElements, List<ElementSubcategory> argSubcategories)
         {
             InitializeComponent();
@@ -57,7 +58,7 @@ namespace InteractivePeriodicTable
             this.DropListThree.Name = this.labelThreePoints.Name = Regex.Replace(thirdSubcategoryName, @" ", @"_");
             
             //create buttons to be dragged
-            DragAndDropDisplay.AddButtons(tmpElements, DragList);
+            DragAndDropDisplay.AddButtons(tmpElements, DragList, allButtons);
         }
         
         private void GameOver()

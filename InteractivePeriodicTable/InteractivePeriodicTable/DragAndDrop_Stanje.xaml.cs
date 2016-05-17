@@ -20,7 +20,8 @@ namespace InteractivePeriodicTable
         private List<Element> allElements;
         private List<Phase> phases;
         private Dictionary<string, int> correctGrouping = new Dictionary<string, int>();
-        
+        private List<Button> allButtons = new List<Button>();
+
         public DragAndDrop_Stanje(List<Element> argElements, List<Phase> argPhases)
         {
             InitializeComponent();
@@ -33,7 +34,7 @@ namespace InteractivePeriodicTable
         private void StartGame()
         {
             //create buttons to be dragged
-            DragAndDropDisplay.AddButtons(allElements, DragList);
+            DragAndDropDisplay.AddButtons(allElements, DragList, allButtons);
         }
         
         private void GameOver()
