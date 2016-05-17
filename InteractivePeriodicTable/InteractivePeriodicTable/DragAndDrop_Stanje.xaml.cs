@@ -26,7 +26,7 @@ namespace InteractivePeriodicTable
             InitializeComponent();
             
             this.allElements = argElements;
-            this.phases = argPhases;
+            //this.phases = argPhases;
             StartGame();
         }
         

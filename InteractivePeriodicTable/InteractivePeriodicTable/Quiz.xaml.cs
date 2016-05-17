@@ -56,17 +56,6 @@ namespace InteractivePeriodicTable
         ///     Ako je true, u kvizu će se pojavljivati pitanja sa slikama.
         /// </summary>
         private bool hasImages = false;
-
-        /// <summary>
-        ///     Služi da imamo put do datoteke sa pitanjima kviza.
-        ///     Tako moramo mjenjati put do datoteke samo na jednom mjestu.
-        /// </summary>
-        private string quizPath = Pathing.SysDir + "/quiz.json";
-
-        /// <summary>
-        ///     Ovdje se upiseuje koliko vremena traje jedna igra.
-        /// </summary>
-        private const int PLAY_TIME = 30;
         #endregion
 
         /// <summary>
@@ -81,7 +70,6 @@ namespace InteractivePeriodicTable
         ///     Prikazuje prvo pitanje.
         /// </summary>
         /// 
-
         public Quiz()
         {
             this.Closing += stopTimer;
@@ -111,7 +99,7 @@ namespace InteractivePeriodicTable
             try
             {
                 string jsonQuizQuestions = string.Empty;
-                using (StreamReader sr = new StreamReader(quizPath))
+                using (StreamReader sr = new StreamReader(Pathing.SysDir + "\\quiz.json"))
                 {
                     jsonQuizQuestions = sr.ReadToEnd();
                 }
@@ -159,7 +147,8 @@ namespace InteractivePeriodicTable
 
             if (questionType == 3)
             {
-                ErrorHandle.ErrorMessageBox(null, "Dogodila se pogreška prilikom odabira vrste sljedećeg pitanja !");
+                "Dogodila se pogreška prilikom odabira vrste sljedećeg pitanja !".Alert();
+                this.Close();
             }
 
             int questionID = pickQuestionID(questionType);
@@ -245,7 +234,6 @@ namespace InteractivePeriodicTable
         {
             QuizWith4Ans pickedQuestion = questions.QuizWith4Ans[questionID];
 
-            //question.Content = pickedQuestion.Question;
             question.Text = pickedQuestion.Question;
 
             TextBlock a1QuestionTextBlock = new TextBlock();
@@ -324,7 +312,6 @@ namespace InteractivePeriodicTable
         {
             QuizYesNo pickedQuestion = questions.QuizYesNo[questionID];
 
-            //question.Content = pickedQuestion.Question;
             question.Text = pickedQuestion.Question;
 
             TextBlock a1QuestionTextBlock = new TextBlock();
@@ -368,14 +355,13 @@ namespace InteractivePeriodicTable
         /// </param>
         private void renderQuizPictures(int questionID)
         {
-            //question.Content = "Write what you see in this image";
             question.Text = "Write what you see in this image";
 
             QuizPictures pickedQuestion = questions.QuizPictures[questionID];
 
             BitmapImage imageData = new BitmapImage();
             imageData.BeginInit();
-            imageData.UriSource = new Uri(Pathing.QuizImgDir + "\\" + pickedQuestion.ImagePath, UriKind.Absolute);
+                imageData.UriSource = new Uri(Pathing.QuizImgDir + "\\" + pickedQuestion.ImagePath, UriKind.Absolute);
             imageData.EndInit();
 
             Image image = new Image();
@@ -415,7 +401,7 @@ namespace InteractivePeriodicTable
         ///     Ako neke slike nedostaju, javlja poruku i otvara kviz bez pitanja sa slikama.
         /// </summary>
         /// <returns>
-        ///     Postavlja vrijedonst varijable ovisno o tome da li postoje slike na disku.
+        ///     Postavlja vrijednost varijable ovisno o tome da li postoje slike na disku.
         /// </returns>
         private bool checkImages()
         {
@@ -580,7 +566,7 @@ namespace InteractivePeriodicTable
         /// <param name="e"></param>
         private void correctAns(object sender, RoutedEventArgs e)
         {
-            score += 1;
+            score += Constants.POSITIVE_POINT;
 
             start = start.AddSeconds(5);
 
@@ -608,7 +594,7 @@ namespace InteractivePeriodicTable
         /// <param name="e"></param>
         private void wrongAns(object sender, RoutedEventArgs e)
         {
-            score -= 1;
+            score += Constants.NEGATIVE_POINT;
 
             start = start.AddSeconds(-5);
 
@@ -635,10 +621,10 @@ namespace InteractivePeriodicTable
         {
             TimeSpan elapsedTime = DateTime.Now - start;
 
-            string remainingTime = Convert.ToString(PLAY_TIME - elapsedTime.Seconds);
+            string remainingTime = Convert.ToString(QUIZ_PLAY_TIME - elapsedTime.Seconds);
             timer.Content = "Time left: " + remainingTime + " s";
 
-            if (elapsedTime.Seconds >= PLAY_TIME)
+            if (elapsedTime.Seconds >= QUIZ_PLAY_TIME)
             {
                 dispatcherTimer.Stop();
 
