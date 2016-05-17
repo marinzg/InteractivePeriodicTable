@@ -19,7 +19,7 @@ namespace InteractivePeriodicTable
             {
                 Directory.CreateDirectory(Pathing.ResourcesDir);
             }
-            catch (Exception ex)
+            catch
             {
                 "Please reinstall the app.".Alert();
                 Environment.Exit(0);

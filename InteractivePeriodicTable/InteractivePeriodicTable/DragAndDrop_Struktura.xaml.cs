@@ -103,7 +103,10 @@ namespace InteractivePeriodicTable
 
                     // Initialize the drag & drop operation
                     DataObject dragData = new DataObject("myFormat", element);
-                    DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
+                    if (element.IsPressed)
+                    {
+                        DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
+                    }
                 }
                 catch { }
 
