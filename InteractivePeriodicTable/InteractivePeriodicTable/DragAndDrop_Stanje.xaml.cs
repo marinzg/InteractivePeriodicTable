@@ -20,7 +20,7 @@ namespace InteractivePeriodicTable
         private List<Element> allElements;
         private List<Phase> phases;
         private Dictionary<string, int> correctGrouping = new Dictionary<string, int>();
-        private List<Button> allButtons;
+        private List<Button> allButtons = new List<Button>();
 
         public DragAndDrop_Stanje(List<Element> argElements, List<Phase> argPhases)
         {
