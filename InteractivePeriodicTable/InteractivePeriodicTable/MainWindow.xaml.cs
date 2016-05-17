@@ -76,8 +76,8 @@ namespace InteractivePeriodicTable
         {
             if (File.Exists(Pathing.SysDir + "\\facts.json") == false)
             {
-                "There are no facts on your local drive! Try to do an update!".Alert();
-                return;
+                fact_tip.Text = "There are no facts on your local drive! Try to do an update!";
+                fact_tip.Visibility = Visibility.Visible;
             }
             else
             {
