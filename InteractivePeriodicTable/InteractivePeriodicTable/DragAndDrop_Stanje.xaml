@@ -16,7 +16,7 @@
             </ListBox.Background>
         </ListBox>
 
-        <ListBox x:Name="DropListGas"  BorderThickness="5" HorizontalAlignment="Left" Height="123" Margin="271,136,0,0" VerticalAlignment="Top" Width="150" Drop="DropList_Drop" DragEnter="DropList_DragEnter" AllowDrop="True" BorderBrush="DarkTurquoise" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+        <ListBox x:Name="DropListGas"  BorderThickness="5" HorizontalAlignment="Left" Height="123" Margin="257,136,0,0" VerticalAlignment="Top" Width="150" Drop="DropList_Drop" DragEnter="DropList_DragEnter" AllowDrop="True" BorderBrush="DarkTurquoise" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
             <ListBox.Background>
                 <SolidColorBrush Color="DarkTurquoise" Opacity="0.2"/>
             </ListBox.Background>
@@ -30,13 +30,12 @@
 
         <ListBox x:Name="DragList" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Margin="10,324.958,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonDown="List_PreviewMouseLeftButtonDown" PreviewMouseMove="List_MouseMove"  UseLayoutRounding="False" Height="132" Width="654"/>
         <GroupBox x:Name="groupBoxSolid"  Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold" Header="Solid" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
-        <GroupBox x:Name="groupBoxGas"  Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold" Header="Gas" HorizontalAlignment="Left" Margin="271,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
+        <GroupBox x:Name="groupBoxGas"  Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold" Header="Gas" HorizontalAlignment="Left" Margin="257,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
         <GroupBox x:Name="groupBoxLiquid"  Visibility="Visible" BorderThickness="0" BorderBrush="Transparent" Foreground="DarkTurquoise" FontWeight="ExtraBold" Header="Liquid" HorizontalAlignment="Left" Margin="514,113,0,0" VerticalAlignment="Top" Height="146" Width="150"/>
         <Label x:Name="labelPhase" Content="In what state are these elements at 20 degrees Celsius?" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Height="45" Width="616" FontSize="20" Foreground="DarkTurquoise" FontWeight="ExtraBold"/>
-        <Label x:Name="labelSolidPoints" Content="0" HorizontalAlignment="Left" Margin="61,264,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelGasPoints" Content="0" HorizontalAlignment="Left" Margin="325,264,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelLiquidPoints" Content="0
-" HorizontalAlignment="Left" Margin="565,264,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelSolidPoints" Content="0" HorizontalAlignment="Left" Margin="76,264,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="LightBlue"/>
+        <Label x:Name="labelGasPoints" Content="0" HorizontalAlignment="Left" Margin="323,264,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FFADD8EB"/>
+        <Label x:Name="labelLiquidPoints" Content="0" HorizontalAlignment="Left" Margin="580,264,0,0" VerticalAlignment="Top" Foreground="LightBlue" FontWeight="Bold"/>
     </Grid>
 
     <Page.Resources>

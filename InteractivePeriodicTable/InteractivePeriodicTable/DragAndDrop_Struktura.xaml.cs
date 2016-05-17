@@ -5,8 +5,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using InteractivePeriodicTable.Models;
 using System.Text.RegularExpressions;
+using InteractivePeriodicTable.Models;
+using InteractivePeriodicTable.Utils;
 
 namespace InteractivePeriodicTable
 {
@@ -19,8 +20,7 @@ namespace InteractivePeriodicTable
         private List<Element> allElements;
         private List<CrystalStructure> allSubcategories;
         private Dictionary<string, int> correctGrouping = new Dictionary<string, int>();
-
-
+        
         public DragAndDrop_Struktura(List<Element> argElements, List<CrystalStructure> argSubcategories)
         {
             InitializeComponent();
@@ -33,10 +33,9 @@ namespace InteractivePeriodicTable
         private void StartGame()
         {
             List<Element> tmpElements = new List<Element>();
-            //List<Element> elementsToShow = new List<Element>();
 
             //get 3 random numbers which represent 3 subcategories
-            HashSet<int> randomNumbers = GetRandomNumbers(3, allSubcategories.Count - 1);
+            HashSet<int> randomNumbers = Utils.RandomSetGenerator.Generate(3, allSubcategories.Count - 1);
 
             //display name of each subcategory
             this.groupBoxOne.Header = allSubcategories.Where(sc => sc.id == randomNumbers.ElementAt(0)).ElementAt(0).name;
@@ -58,65 +57,19 @@ namespace InteractivePeriodicTable
             tmpElements.AddRange(allElements.Where(el => el.elementSubcategory == randomNumbers.ElementAt(1)));
             tmpElements.AddRange(allElements.Where(el => el.elementSubcategory == randomNumbers.ElementAt(2)));
 
-            //select 18 random elements
-            randomNumbers = GetRandomNumbers(18, tmpElements.Count - 1, 0);
+            
             //create buttons to be dragged
-            foreach (int i in randomNumbers)
-            {
-                //elementsToShow.Add(tmpElements.ElementAt(i));
-                Button b = new Button();
-                b.Content = tmpElements.ElementAt(i).symbol;
-                b.FontSize = 18;
-                b.Height = b.Width = 60;
-                b.HorizontalContentAlignment = HorizontalAlignment.Center;
-                b.VerticalContentAlignment = VerticalAlignment.Center;
-                b.Background = Brushes.DarkTurquoise;
-                b.FontWeight = FontWeights.SemiBold;
-                b.Foreground = Brushes.MidnightBlue;
-                DragList.Items.Add(b);
-            }
-        }
-
-        private HashSet<int> GetRandomNumbers(int howMany, int max, int min = 1)
-        {
-            HashSet<int> randomNumbers = new HashSet<int>();
-            Random r = new Random();
-            //get howMany (arg) numbers from min to max
-            do
-            {
-                if (randomNumbers.Add(r.Next(min, max))) howMany--;
-            } while (howMany > 0);
-            return randomNumbers;
-        }
-
-        private void Clear()
-        {
-            //clear listboxes where elements were dropped
-            foreach (ListBox l in Utils.VisualChildren.FindVisualChildren<ListBox>(this))
-                l.Items.Clear();
-            List<string> keys = new List<String>();
-            foreach (string key in correctGrouping.Keys)
-                keys.Add(key);
-            foreach (string s in keys)
-            {
-                correctGrouping[s] = 0;
-            }
-            DisplayUpdatedPoints();
-            correctGrouping.Clear();
+            DragAndDropDisplay.AddButtons(tmpElements, DragList);
         }
 
         private void GameOver()
         {
-            int score = 0;
-
-            //sum score from all categories
-            foreach (string key in correctGrouping.Keys)
-                score += correctGrouping[key];
+            int score = DragAndDropDisplay.GetScore(correctGrouping);
 
             SaveScorePrompt window = new SaveScorePrompt(score);
             window.ShowDialog();
 
-            Clear();
+            DragAndDropDisplay.Clear(this, correctGrouping);
             StartGame();
         }
 
@@ -198,13 +151,15 @@ namespace InteractivePeriodicTable
                     if (subcategoryId == elementSubcategory)
                     {
                         element.Background = Brushes.LightGreen;
-                        UpdatePoints(subcategory, 1);
+                        //UpdatePoints(subcategory, 1);
+                        DragAndDropDisplay.UpdatePoints(correctGrouping, subcategory, Constants.POSITIVE_POINT);
                     }
                     //user sorted incorrectly
                     else
                     {
                         element.Background = Brushes.MediumVioletRed;
-                        UpdatePoints(subcategory, -1);
+                        //UpdatePoints(subcategory, -1);
+                        DragAndDropDisplay.UpdatePoints(correctGrouping, subcategory, Constants.NEGATIVE_POINT);
                     }
 
                     //resize button 
@@ -215,46 +170,14 @@ namespace InteractivePeriodicTable
                     DragList.Items.Remove(element as Button);
                     listView.Items.Add(element);
 
-                    DisplayUpdatedPoints();
-                    AutoScroll();
+                    //DisplayUpdatedPoints();
+                    DragAndDropDisplay.DisplayUpdatedPoints(correctGrouping, this);
+                    //AutoScroll();
 
                 }
                 if (!DragList.HasItems) GameOver();
             }
         }
         #endregion
-
-        private void AutoScroll()
-        {
-            foreach (ListBox lb in Utils.VisualChildren.FindVisualChildren<ListBox>(this))
-            {
-                if (lb.Items.Count > 0)
-                    lb.ScrollIntoView(lb.Items[lb.Items.Count - 1]);
-            }
-        }
-
-        private void DisplayUpdatedPoints()
-        {
-            string s = "";
-            foreach (string myString in correctGrouping.Keys)
-            {
-                s = Regex.Replace(myString, @" ", @"_");
-                foreach (Label l in Utils.VisualChildren.FindVisualChildren<Label>(this))
-                {
-                    if (l.Name.ToLower().Contains(s))
-                    {
-                        l.Content = correctGrouping[myString];
-                    }
-                }
-            }
-        }
-
-        private void UpdatePoints(string subcategory, int points)
-        {
-            if (correctGrouping.ContainsKey(subcategory))
-                correctGrouping[subcategory] += points;
-            else
-                correctGrouping.Add(subcategory, points);
-        }
     }
 }

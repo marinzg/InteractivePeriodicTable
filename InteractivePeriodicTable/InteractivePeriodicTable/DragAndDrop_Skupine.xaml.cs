@@ -5,8 +5,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using InteractivePeriodicTable.Models;
 using System.Text.RegularExpressions;
+using InteractivePeriodicTable.Models;
+using InteractivePeriodicTable.Utils;
 
 namespace InteractivePeriodicTable
 {
@@ -15,12 +16,10 @@ namespace InteractivePeriodicTable
     /// </summary>
     public partial class DragAndDrop_Skupine : Page
     {
-        #region ČLANSKE VARIJABLE
         private Point startPoint;
         private List<Element> allElements;
         private List<ElementSubcategory> allSubcategories;
         private Dictionary<string, int> correctGrouping = new Dictionary<string, int>();
-        #endregion
         
         public DragAndDrop_Skupine(List<Element> argElements, List<ElementSubcategory> argSubcategories)
         {
@@ -35,10 +34,9 @@ namespace InteractivePeriodicTable
         private void StartGame()
         {
             List<Element> tmpElements = new List<Element>();
-            //List<Element> elementsToShow = new List<Element>();
 
             //get 3 random numbers which represent 3 subcategories
-            HashSet<int> randomNumbers = GetRandomNumbers(3, allSubcategories.Count - 1);
+            HashSet<int> randomNumbers = RandomSetGenerator.Generate(3, allSubcategories.Count - 1);
 
             int firstRandomNumber = randomNumbers.ElementAt(0);
             tmpElements.AddRange(allElements.Where(el => el.elementSubcategory == firstRandomNumber));
@@ -51,98 +49,25 @@ namespace InteractivePeriodicTable
             string secondSubcategoryName = allSubcategories.Where(sc => sc.id == secondRandomNumber).ElementAt(0).name;
             this.groupBoxTwo.Header = secondSubcategoryName;
             this.DropListTwo.Name = this.labelTwoPoints.Name = Regex.Replace(secondSubcategoryName, @" ", @"_");
-
-
+            
             int thirdRandomNumber = randomNumbers.ElementAt(2);
             tmpElements.AddRange(allElements.Where(el => el.elementSubcategory == thirdRandomNumber));
             string thirdSubcategoryName = allSubcategories.Where(sc => sc.id == thirdRandomNumber).ElementAt(0).name;
             this.groupBoxThree.Header = thirdSubcategoryName;
             this.DropListThree.Name = this.labelThreePoints.Name = Regex.Replace(thirdSubcategoryName, @" ", @"_");
-
-            //select 18 random elements
-            randomNumbers = GetRandomNumbers(18, tmpElements.Count - 1, 0);
+            
             //create buttons to be dragged
-            foreach (int i in randomNumbers)
-            {
-                //elementsToShow.Add(tmpElements.ElementAt(i));
-                Button elementButton = new Button();
-                elementButton.Content = tmpElements.ElementAt(i).symbol;
-                elementButton.FontSize = 18;
-                elementButton.Height = 60;
-                elementButton.Width = 60;
-                elementButton.HorizontalContentAlignment = HorizontalAlignment.Center;
-                elementButton.VerticalContentAlignment = VerticalAlignment.Center;
-                elementButton.Background = Brushes.DarkTurquoise;
-                elementButton.FontWeight = FontWeights.SemiBold;
-                elementButton.Foreground = Brushes.MidnightBlue;
-                DragList.Items.Add(elementButton);
-            }
-
-            return;
+            DragAndDropDisplay.AddButtons(tmpElements, DragList);
         }
-
-        /// <summary>
-        ///     Metoda generira određen broj nasumičnih brojeva.
-        /// </summary>
-        /// <param name="howMany">
-        ///     Koliko nasumičnih brojeva treba generirati.
-        /// </param>
-        /// <param name="max">
-        ///     Najveći dopušteni generirani broj.
-        /// </param>
-        /// <param name="min">
-        ///     Najmanji dopušteni generirani broj.
-        /// </param>
-        /// <returns>
-        ///     HashSet nasumičnih brojeva.
-        /// </returns>
-        private HashSet<int> GetRandomNumbers(int howMany, int max, int min = 1)
-        {
-            HashSet<int> randomNumbers = new HashSet<int>();
-            Random randomGenerator = new Random();
-
-            do
-            {
-                int randomNumber = randomGenerator.Next(min, max);
-                if (randomNumbers.Add(randomNumber) == true)
-                {
-                    howMany--;
-                }
-
-            }
-            while (howMany > 0);
-
-            return randomNumbers;
-        }
-
-        private void Clear()
-        {
-            //clear listboxes where elements were dropped
-            foreach (ListBox l in Utils.VisualChildren.FindVisualChildren<ListBox>(this))
-                l.Items.Clear();
-            List<string> keys = new List<String>();
-            foreach (string key in correctGrouping.Keys)
-                keys.Add(key);
-            foreach (string s in keys)
-            {
-                correctGrouping[s] = 0;
-            }
-            DisplayUpdatedPoints();
-            correctGrouping.Clear();
-        }
-
+        
         private void GameOver()
         {
-            int score = 0;
-
-            //sum score from all categories
-            foreach (string key in correctGrouping.Keys)
-                score += correctGrouping[key];
+            int score = DragAndDropDisplay.GetScore(correctGrouping);
 
             SaveScorePrompt window = new SaveScorePrompt(score);
             window.ShowDialog();
 
-            Clear();
+            DragAndDropDisplay.Clear(this, correctGrouping);
             StartGame();
         }
 
@@ -224,13 +149,13 @@ namespace InteractivePeriodicTable
                     if(subcategoryId == elementSubcategory)
                     {
                         element.Background = Brushes.LightGreen;
-                        UpdatePoints(subcategory, 1);
+                        DragAndDropDisplay.UpdatePoints(correctGrouping, subcategory, Constants.POSITIVE_POINT);
                     }
                     //user sorted incorrectly
                     else
                     {
                         element.Background = Brushes.MediumVioletRed;
-                        UpdatePoints(subcategory, -1);
+                        DragAndDropDisplay.UpdatePoints(correctGrouping, subcategory, Constants.NEGATIVE_POINT);
                     }
 
                     //resize button 
@@ -240,47 +165,15 @@ namespace InteractivePeriodicTable
                     //move button
                     DragList.Items.Remove(element as Button);
                     listView.Items.Add(element);
-                    
-                    DisplayUpdatedPoints();
-                    AutoScroll();
+
+                    DragAndDropDisplay.DisplayUpdatedPoints(correctGrouping, this);
+                    //DisplayUpdatedPoints();
+                    //AutoScroll();
                     
                 }
                 if (!DragList.HasItems) GameOver();
             }
         }
         #endregion
-
-        private void AutoScroll()
-        {
-            foreach (ListBox lb in Utils.VisualChildren.FindVisualChildren<ListBox>(this))
-            {
-                if (lb.Items.Count > 0)
-                    lb.ScrollIntoView(lb.Items[lb.Items.Count - 1]);
-            }
-        }
-
-        private void DisplayUpdatedPoints()
-        {
-            string s = "";
-            foreach (string myString in correctGrouping.Keys)
-            {
-                s = Regex.Replace(myString, @" ", @"_");
-                foreach (Label l in Utils.VisualChildren.FindVisualChildren<Label>(this))
-                {
-                    if (l.Name.ToLower().Contains(s))
-                    {
-                        l.Content = correctGrouping[myString];
-                    }
-                }
-            }
-        }
-
-        private void UpdatePoints(string subcategory, int points)
-        {
-            if (correctGrouping.ContainsKey(subcategory))
-                correctGrouping[subcategory] += points;
-            else
-                correctGrouping.Add(subcategory, points);
-        }
     }
 }
