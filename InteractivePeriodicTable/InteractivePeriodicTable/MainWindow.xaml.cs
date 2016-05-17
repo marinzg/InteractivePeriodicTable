@@ -18,7 +18,7 @@ namespace InteractivePeriodicTable
         #region ČLANSKE VARIJABLE
         private Dictionary<string, Brush> previousBackgroundColors = new Dictionary<string, Brush>();
         private Dictionary<string, Brush> previousForegroundColors = new Dictionary<string, Brush>();
-        private AllFacts facts = new AllFacts();
+        private AllFacts factCollection = new AllFacts();
         #endregion
 
         public MainWindow()
@@ -44,7 +44,7 @@ namespace InteractivePeriodicTable
                 {
                     json = sr.ReadToEnd();
                 }
-                facts = JsonConvert.DeserializeObject<AllFacts>(json);
+                factCollection = JsonConvert.DeserializeObject<AllFacts>(json);
             }
             catch (FileNotFoundException fnfe)
             {
@@ -81,16 +81,16 @@ namespace InteractivePeriodicTable
             }
             else
             {
-                if(facts.Facts.Count == 0)
+                if(factCollection.Facts.Count == 0)
                 {
                     getFactsFromJSON();
                 }
 
                 Random rand = new Random();
-                int no_of_facts = facts.Facts.Count;
+                int no_of_facts = factCollection.Facts.Count;
                 int fact_no = rand.Next(0, no_of_facts);
 
-                fact_tip.Text = facts.Facts[fact_no].Fact;
+                fact_tip.Text = factCollection.Facts[fact_no].Fact;
                 fact_tip.Visibility = Visibility.Visible;
             }
 

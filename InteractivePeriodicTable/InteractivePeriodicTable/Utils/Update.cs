@@ -38,7 +38,7 @@ namespace InteractivePeriodicTable.Utils
                 }
                 catch (SqlException ex)
                 {
-                    ex.ErrorMessageBox("Dogodila se pogreška prilikom otvaranje veze na bazu.");
+                    ex.ErrorMessageBox("There was an unexpected error trying to connect to server!");
                 }
                 try
                 {
@@ -63,7 +63,7 @@ namespace InteractivePeriodicTable.Utils
                 }
                 catch (SqlException ex)
                 {
-                    ex.ErrorMessageBox("Dogodila se pogreška prilikom dohvaćanja podataka iz baze.");
+                    ex.ErrorMessageBox("There was an unexpected error trying to fetch data from server!");
                 }
             }
 
@@ -166,8 +166,6 @@ namespace InteractivePeriodicTable.Utils
         /// </summary>
         public void updateQuiz()
         {
-            string pathToQuiz = Pathing.SysDir + "\\quiz.json";
-
             string quizWith4Ans = getQuizWith4Ans();
             string quizYesNo = getQuizYesNo();
             string quizPictures = getQuizPictures();
@@ -177,23 +175,26 @@ namespace InteractivePeriodicTable.Utils
                                 "\"QuizPictures\":" + quizPictures + "}";
             try
             {
+                Directory.CreateDirectory(Pathing.SysDir);
+
+                string pathToQuiz = Pathing.SysDir + "\\quiz.json";
                 File.WriteAllText(pathToQuiz, jsonQuiz);
             }
             catch (FileNotFoundException fnfe)
             {
-                fnfe.ErrorMessageBox("Nije pronađena datoteka quiz.json !");
+                fnfe.ErrorMessageBox("File not found: quiz.json !");
             }
             catch (DirectoryNotFoundException dnfe)
             {
-                dnfe.ErrorMessageBox("Nije pronađen direktorij " + Pathing.SysDir);
+                dnfe.ErrorMessageBox("Directory not found: " + Pathing.SysDir + "!");
             }
             catch (IOException ioe)
             {
-                ioe.ErrorMessageBox("Greška prilikom čitanja iz datoteke.");
+                ioe.ErrorMessageBox("Error trying to read/write from quiz.json file!");
             }
             catch(Exception ex)
             {
-                ex.ErrorMessageBox("Dogodila se pogreška prilikom skidanja kviza sa servera.");
+                ex.ErrorMessageBox("There was an unexpected error trying to update quiz!");
             }
 
             return;
@@ -204,27 +205,32 @@ namespace InteractivePeriodicTable.Utils
         /// </summary>
         public void updateFacts()
         {
-            string pathToFacts = Pathing.SysDir + "\\facts.json";
-
             string facts = getFacts();
 
             string jsonFacts = "{ \"Facts\": " + facts + "}";
 
             try
             {
+                Directory.CreateDirectory(Pathing.SysDir);
+
+                string pathToFacts = Pathing.SysDir + "\\facts.json";
                 File.WriteAllText(pathToFacts, jsonFacts);
             }
             catch (FileNotFoundException fnfe)
             {
-                fnfe.ErrorMessageBox("Nije pronađena datoteka quiz.json !");
+                fnfe.ErrorMessageBox("File not found: facts.json !");
             }
             catch (DirectoryNotFoundException dnfe)
             {
-                dnfe.ErrorMessageBox("Nije pronađen direktorij " + Pathing.SysDir);
+                dnfe.ErrorMessageBox("Directory not found: " + Pathing.SysDir + "!");
             }
             catch (IOException ioe)
             {
-                ioe.ErrorMessageBox("Greška prilikom čitanja iz datoteke.");
+                ioe.ErrorMessageBox("Error trying to read/write from facts.json file!");
+            }
+            catch (Exception ex)
+            {
+                ex.ErrorMessageBox("There was an unexpected error trying to update facts!");
             }
 
             return;

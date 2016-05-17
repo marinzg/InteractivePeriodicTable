@@ -36,7 +36,7 @@ namespace InteractivePeriodicTable.ExtensionMethods
 
             System.Windows.Forms.MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            Environment.Exit(0);
+            //Environment.Exit(0);
 
             return;
         }
