@@ -20,7 +20,8 @@ namespace InteractivePeriodicTable
         private List<Element> allElements;
         private List<CrystalStructure> allSubcategories;
         private Dictionary<string, int> correctGrouping = new Dictionary<string, int>();
-        
+        private List<Button> allButtons;
+
         public DragAndDrop_Struktura(List<Element> argElements, List<CrystalStructure> argSubcategories)
         {
             InitializeComponent();
@@ -59,7 +60,7 @@ namespace InteractivePeriodicTable
 
             
             //create buttons to be dragged
-            DragAndDropDisplay.AddButtons(tmpElements, DragList);
+            DragAndDropDisplay.AddButtons(tmpElements, DragList, allButtons);
         }
 
         private void GameOver()

@@ -149,7 +149,7 @@ namespace InteractivePeriodicTable.Utils
 
     public static class DragAndDropDisplay
     {
-        public static void AddButtons(List<Element> tmpElements, ListBox dragList)
+        public static void AddButtons(List<Element> tmpElements, ListBox dragList, List<Button> allButtons)
         {
             HashSet<int> randomNumbers = RandomSetGenerator.Generate(Constants.DRAG_CONTAINER_COUNT, tmpElements.Count - 1, 0);
             foreach (int i in randomNumbers)
@@ -163,6 +163,7 @@ namespace InteractivePeriodicTable.Utils
                 b.Background = Brushes.DarkTurquoise;
                 b.FontWeight = FontWeights.SemiBold;
                 b.Foreground = Brushes.MidnightBlue;
+                allButtons.Add(b);
                 dragList.Items.Add(b);
             }
         }
