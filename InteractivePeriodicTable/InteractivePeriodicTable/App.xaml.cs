@@ -14,6 +14,12 @@ namespace InteractivePeriodicTable
         //ProgressBarWindow progBar;
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+
+
+            MainWindow mainView = new MainWindow();
+            mainView.Show();
+
+            return;
             //try
             //{
             //    BackgroundWorker workerUpdateQuiz = new BackgroundWorker();
@@ -24,9 +30,6 @@ namespace InteractivePeriodicTable
 
             //    workerUpdateQuiz.RunWorkerAsync();
 
-
-            MainWindow mainView = new MainWindow();
-            mainView.Show();
             //    progBar = new ProgressBarWindow();
 
 

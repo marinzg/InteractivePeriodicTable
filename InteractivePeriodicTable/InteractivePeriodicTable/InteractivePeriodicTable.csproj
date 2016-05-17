@@ -245,124 +245,366 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Resources\Ideje_TODO_spec\Formular_Ideja.docx" />
-    <None Include="Resources\Web_pages\Actinium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Aluminium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Americium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Antimony - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Argon - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Arsenic - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Astatine - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Barium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Berkelium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Beryllium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Bismuth - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Bohrium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Boron - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Bromine - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Cadmium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Caesium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Calcium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Californium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Carbon - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Cerium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Chlorine - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Chromium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Cobalt - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Copernicium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Copper - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Curium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Darmstadtium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Dubnium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Dysprosium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Einsteinium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Erbium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Europium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Fermium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Flerovium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Fluorine - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Francium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Gadolinium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Gallium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Germanium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Gold - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Hafnium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Hassium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Helium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Holmium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Hydrogen - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Indium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Iodine - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Iridium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Iron - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Krypton - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Lanthanum - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Lawrencium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Lead - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Lithium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Livermorium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Lutetium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Magnesium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Manganese - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Meitnerium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Mendelevium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Mercury - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Molybdenum - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Neodymium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Neon - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Neptunium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Nickel - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Niobium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Nitrogen - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Nobelium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Osmium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Oxygen - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Palladium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Phosphorus - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Platinum - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Plutonium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Polonium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Potassium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Praseodymium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Promethium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Protactinium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Radium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Radon - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Rhenium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Rhodium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Roentgenium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Rubidium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Ruthenium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Rutherfordium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Samarium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Scandium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Seaborgium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Selenium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Silicon - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Silver - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Sodium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Strontium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Sulfur - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Tantalum - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Technetium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Tellurium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Terbium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Thallium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Thorium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Thulium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Tin - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Titanium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Tungsten - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Ununoctium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Ununpentium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Ununseptium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Ununtrium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Uranium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Vanadium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Xenon - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Ytterbium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Yttrium - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Zinc - Wikipedia, the free encyclopedia.mht" />
-    <None Include="Resources\Web_pages\Zirconium - Wikipedia, the free encyclopedia.mht" />
+    <Content Include="Resources\Sys\facts.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sys\quiz.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Actinium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Aluminium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Americium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Antimony - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Argon - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Arsenic - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Astatine - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Barium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Berkelium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Beryllium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Bismuth - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Bohrium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Boron - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Bromine - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Cadmium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Caesium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Calcium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Californium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Carbon - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Cerium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Chlorine - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Chromium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Cobalt - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Copernicium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Copper - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Curium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Darmstadtium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Dubnium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Dysprosium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Einsteinium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Erbium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Europium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Fermium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Flerovium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Fluorine - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Francium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Gadolinium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Gallium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Germanium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Gold - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Hafnium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Hassium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Helium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Holmium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Hydrogen - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Indium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Iodine - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Iridium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Iron - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Krypton - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Lanthanum - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Lawrencium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Lead - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Lithium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Livermorium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Lutetium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Magnesium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Manganese - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Meitnerium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Mendelevium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Mercury - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Molybdenum - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Neodymium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Neon - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Neptunium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Nickel - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Niobium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Nitrogen - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Nobelium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Osmium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Oxygen - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Palladium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Phosphorus - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Platinum - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Plutonium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Polonium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Potassium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Praseodymium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Promethium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Protactinium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Radium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Radon - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Rhenium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Rhodium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Roentgenium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Rubidium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Ruthenium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Rutherfordium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Samarium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Scandium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Seaborgium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Selenium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Silicon - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Silver - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Sodium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Strontium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Sulfur - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Tantalum - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Technetium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Tellurium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Terbium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Thallium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Thorium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Thulium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Tin - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Titanium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Tungsten - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Ununoctium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Ununpentium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Ununseptium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Ununtrium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Uranium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Vanadium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Xenon - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Ytterbium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Yttrium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Zinc - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Web_pages\Zirconium - Wikipedia, the free encyclopedia.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -386,34 +628,72 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Materijali o elementima\imena_elemenata.txt" />
-    <Resource Include="Resources\Materijali o elementima\broj_ime_simbol.txt" />
-    <Resource Include="Resources\Materijali o elementima\elementi.txt" />
+    <Content Include="Resources\Materijali o elementima\imena_elemenata.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Materijali o elementima\broj_ime_simbol.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Materijali o elementima\elementi.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\Ideje_TODO_spec\Specifikacije.txt" />
-    <Resource Include="Resources\Images\Potion.jpg" />
-    <Resource Include="Resources\Images\Chemistry.jpg" />
-    <Resource Include="Resources\Images\space.jpg" />
-    <Resource Include="Resources\Images\Ikona.ico" />
-    <Resource Include="Resources\Images\dyk.png" />
-    <Resource Include="Resources\Images\niEq56KiA.gif" />
-    <Resource Include="Resources\Images\Pingvin_za_periodni.gif" />
-    <Resource Include="Resources\Images\Quiz\water.jpg" />
-    <Resource Include="Resources\Images\Quiz\alcohol.jpg" />
-    <Resource Include="Resources\Images\Quiz\caffeine.jpg" />
-    <Resource Include="Resources\Images\Quiz\flask.jpg" />
-    <Resource Include="Resources\Images\Quiz\nitrogen.jpg" />
+    <Content Include="Resources\Images\Potion.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Chemistry.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\space.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Ikona.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\dyk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\niEq56KiA.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Pingvin_za_periodni.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Quiz\water.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Quiz\alcohol.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Quiz\caffeine.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Quiz\flask.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\Quiz\nitrogen.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\Ideje_TODO_spec\BazaPPiJ.PNG" />
-    <Resource Include="Resources\Images\download.jpg" />
-    <Resource Include="Resources\Images\14632659158463.jpg" />
-    <Resource Include="Resources\Images\q1.png" />
-    <Resource Include="Resources\Images\q2.png" />
+    <Content Include="Resources\Images\download.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\14632659158463.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\q1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\q2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="SQLqueries\PPIJ_DB.sql" />
     <Content Include="SQLqueries\PPIJ_INSERT.sql" />
-    <Resource Include="Resources\Materijali o elementima\wiki_linkovi.txt" />
+    <Content Include="Resources\Materijali o elementima\wiki_linkovi.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Sys\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
