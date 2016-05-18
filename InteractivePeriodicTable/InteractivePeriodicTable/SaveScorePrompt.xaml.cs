@@ -13,7 +13,6 @@ namespace InteractivePeriodicTable
         #region ČLANSKE VARIJABLE
         private Game gameType;
         private int scoreToSave;
-
         private SqlConnection dbConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString);
         private SqlCommand dbCommand = new SqlCommand();
         #endregion

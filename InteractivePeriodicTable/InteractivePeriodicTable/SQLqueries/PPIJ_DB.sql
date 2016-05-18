@@ -45,5 +45,3 @@ CREATE TABLE UserScoreDnD
 );
 CREATE INDEX IDnDScore ON UserScoreDnD (Score);
 GO
-
-drop table UserScore

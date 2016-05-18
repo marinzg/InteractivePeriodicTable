@@ -250,6 +250,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Resources\Ideje_TODO_spec\Formular_Ideja.docx" />
+    <Content Include="Resources\Sys\facts.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sys\quiz.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\Images\a1.gif" />
     <Resource Include="Resources\Images\a2.gif" />
     <Content Include="Resources\QuizImages\alcohol.jpg">
@@ -266,12 +272,6 @@
     </Content>
     <Content Include="Resources\QuizImages\water.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Sys\facts.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Sys\quiz.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\Web_pages\Actinium - Wikipedia, the free encyclopedia.mht" />
     <Resource Include="Resources\Web_pages\Aluminium - Wikipedia, the free encyclopedia.mht" />
