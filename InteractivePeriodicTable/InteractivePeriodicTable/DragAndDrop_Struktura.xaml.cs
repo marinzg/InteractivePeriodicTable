@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Text.RegularExpressions;
 using InteractivePeriodicTable.Models;
 using InteractivePeriodicTable.Utils;
+using InteractivePeriodicTable.Data;
 
 namespace InteractivePeriodicTable
 {
@@ -67,7 +68,7 @@ namespace InteractivePeriodicTable
         {
             int score = DragAndDropDisplay.GetScore(correctGrouping);
 
-            SaveScorePrompt window = new SaveScorePrompt(score);
+            SaveScorePrompt window = new SaveScorePrompt(score, Game.DragDrop);
             window.ShowDialog();
 
             DragAndDropDisplay.Clear(this, correctGrouping);

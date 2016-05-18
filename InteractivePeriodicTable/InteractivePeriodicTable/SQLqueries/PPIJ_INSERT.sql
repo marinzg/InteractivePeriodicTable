@@ -76,7 +76,6 @@ INSERT INTO DidYouKnow (Fact) VALUES ('Lemons contain more sugar than strawberri
 INSERT INTO DidYouKnow (Fact) VALUES ('Lobster blood is colorless until it is exposed to air. Then the blood appears blue.');
 INSERT INTO DidYouKnow (Fact) VALUES ('Goldfish eyes perceive not only the visible spectrum, but also infrared and ultraviolet light.');
 INSERT INTO DidYouKnow (Fact) VALUES ('When you freeze saltwater or seawater slowly, you get freshwater ice. Icebergs are freshwater, too, although that is because they come \nfrom glaciers, which are made from freshwater (snow).');
-INSERT INTO DidYouKnow (Fact) VALUES ('Urh je jak.');
 INSERT INTO DidYouKnow (Fact) VALUES ('If you exposed a glass of water to space, it \nwould boil rather than freeze. However, the water vapor would \ncrystallize into ice afterward.');
 INSERT INTO DidYouKnow (Fact) VALUES ('Fresh egg will sink in fresh water. A stale egg will float.');
 INSERT INTO DidYouKnow (Fact) VALUES ('The wallpaper in Napoleons room was dyed with Scheeles \nGreen, which contains copper arsenide. In 1893 the \nItalian biochemist Gosio found that \ndampening wallpaper containing Scheeles Green allowed a mold to convert the \ncopper arsenide into poisonous arsenic vapor. Although this may not have been the \ncause of Napoleons death, it certainly cant have helped his health!');

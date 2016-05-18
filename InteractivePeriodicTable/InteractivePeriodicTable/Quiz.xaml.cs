@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using InteractivePeriodicTable.Utils;
 using InteractivePeriodicTable.Data;
 using InteractivePeriodicTable.ExtensionMethods;
+using InteractivePeriodicTable.Models;
 using System.Windows.Controls.Primitives;
 
 namespace InteractivePeriodicTable
@@ -628,7 +629,7 @@ namespace InteractivePeriodicTable
             {
                 dispatcherTimer.Stop();
 
-                SaveScorePrompt window = new SaveScorePrompt(score);
+                SaveScorePrompt window = new SaveScorePrompt(score, Game.Quiz);
 
                 this.Close();
 

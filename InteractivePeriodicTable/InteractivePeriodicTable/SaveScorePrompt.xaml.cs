@@ -4,46 +4,63 @@ using System.Data.SqlClient;
 using System.Windows.Input;
 using InteractivePeriodicTable.ExtensionMethods;
 using InteractivePeriodicTable.Utils;
+using InteractivePeriodicTable.Data;
 
 namespace InteractivePeriodicTable
 {
     public partial class SaveScorePrompt : Window
     {
         #region ČLANSKE VARIJABLE
-        private int score;
+        private Game gameType;
+        private int scoreToSave;
+
+        private SqlConnection dbConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString);
+        private SqlCommand dbCommand = new SqlCommand();
         #endregion
 
-        public SaveScorePrompt(int scr)
+        public SaveScorePrompt(int ScoreToSave, Game GameType)
         {
-            this.score = scr;
-
             InitializeComponent();
 
-            score_lbl.Content = "Score: " + score.ToString();
+            this.scoreToSave = ScoreToSave;
+            this.gameType = GameType;
+
+            score_lbl.Content = "Score: " + scoreToSave.ToString();
         }
 
         private void saveScore()
         {
-            if(InternetConnection.IsConnected() == false)
+            bool isConnected = InternetConnection.IsConnected();
+            if (isConnected == false)
             {
                 "You are not connected to internet!".Alert();
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(username.Text))
+            bool canSave = validateUserName();
+            if (canSave == false)
             {
-                "Please enter user name!".Alert();
-                return;
-            }
-            if (username.Text.Length > 20)
-            {
-                "Username can be max. 20 characters long!".Alert();
                 return;
             }
 
-            SqlConnection dbConnection = new SqlConnection();
-            dbConnection.ConnectionString = ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString;
+            if (gameType == Game.Quiz)
+            {
+                saveQuizScore();
+            }
+            else if (gameType == Game.DragDrop)
+            {
+                saveDnDScore();
+            }
+            else
+            {
+                "Such game does not exist!".Alert();
+                this.Close();
+            }
 
+            return;
+        }
+        private void saveQuizScore()
+        {
             using (dbConnection)
             {
                 try
@@ -52,18 +69,18 @@ namespace InteractivePeriodicTable
                 }
                 catch (SqlException ex)
                 {
-                    ex.ErrorMessageBox("Dogodila se pogreška prilikom otvaranje veze na bazu.");
+                    ex.ErrorMessageBox("There was an error trying to open connection to database.");
+                    return;
                 }
                 try
                 {
-                    SqlCommand dbCommand = new SqlCommand();
-                    dbCommand.CommandText = "INSERT INTO UserScore (UserName, Score) VALUES (@user, @score);";
+                    dbCommand.CommandText = "INSERT INTO UserScoreQuiz (UserName, Score) VALUES (@user, @score);";
                     dbCommand.Connection = dbConnection;
 
                     using (dbCommand)
                     {
                         dbCommand.Parameters.AddWithValue("@user", username.Text);
-                        dbCommand.Parameters.AddWithValue("@score", score);
+                        dbCommand.Parameters.AddWithValue("@score", scoreToSave);
 
                         dbCommand.ExecuteNonQuery();
                         "Score was successfully submitted!".Notify();
@@ -71,23 +88,79 @@ namespace InteractivePeriodicTable
                 }
                 catch (SqlException ex)
                 {
-                    ex.ErrorMessageBox("Dogodila se pogreška prilikom spremanja podataka u bazu.");
+                    ex.ErrorMessageBox("There was an error trying to save score to database.");
+                    return;
                 }
             }
 
             this.Close();
             return;
         }
+        private void saveDnDScore()
+        {
+            using (dbConnection)
+            {
+                try
+                {
+                    dbConnection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    ex.ErrorMessageBox("There was an error trying to open connection to database.");
+                    return;
+                }
+                try
+                {
+                    dbCommand.CommandText = "INSERT INTO UserScoreDnD (UserName, Score) VALUES (@user, @score);";
+                    dbCommand.Connection = dbConnection;
 
-        #region EVENTI
+                    using (dbCommand)
+                    {
+                        dbCommand.Parameters.AddWithValue("@user", username.Text);
+                        dbCommand.Parameters.AddWithValue("@score", scoreToSave);
+
+                        dbCommand.ExecuteNonQuery();
+                        "Score was successfully submitted!".Notify();
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    ex.ErrorMessageBox("There was an error trying to save score to database.");
+                    return;
+                }
+            }
+
+            this.Close();
+            return;
+        }
+        
+        private bool validateUserName()
+        {
+            if (string.IsNullOrWhiteSpace(username.Text))
+            {
+                "Please enter user name!".Alert();
+                return false;
+            }
+            if (username.Text.Length > 5)
+            {
+                "Username can be max. 5 characters long!".Alert();
+                return false;
+            }
+
+            return true;
+        }
+
+        #region DOGAĐAJI
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+
             return;
         }
         private void save_Click(object sender, RoutedEventArgs e)
         {
             saveScore();
+
             return;
         }
         private void Window_KeyDown(object sender, KeyEventArgs e)
