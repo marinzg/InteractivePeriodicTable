@@ -46,6 +46,11 @@ namespace InteractivePeriodicTable
         private Random rand = new Random();
 
         /// <summary>
+        ///     Omogućava da se ne ponavljaju pitanja na kvizu
+        /// </summary>
+        private List<Tuple<int, int>> listOfGeneratedQuestions = new List<Tuple<int, int>>();
+
+        /// <summary>
         ///     Sprema trenutni rezultat igrača.
         /// </summary>
         private int score = 0;
@@ -181,6 +186,7 @@ namespace InteractivePeriodicTable
             int numberOfQuestions = -1;
             int questionID = -1;
 
+            GenerateNextQuestion:
             if (questionType == 0)
             {
                 numberOfQuestions = questions.QuizWith4Ans.Count;
@@ -196,6 +202,14 @@ namespace InteractivePeriodicTable
                 numberOfQuestions = questions.QuizPictures.Count;
                 questionID = rand.Next(0, numberOfQuestions);
             }
+
+            Tuple<int, int> generatedQuestion = new Tuple<int, int>(questionType, questionID);
+            while (listOfGeneratedQuestions.Contains(generatedQuestion))
+            {
+                goto GenerateNextQuestion;
+            }
+
+            listOfGeneratedQuestions.Add(generatedQuestion);
 
             return questionID;
         }
