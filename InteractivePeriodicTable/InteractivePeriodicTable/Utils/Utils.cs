@@ -9,6 +9,7 @@ using System.Net;
 using InteractivePeriodicTable.Models;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace InteractivePeriodicTable.Utils
 {
@@ -81,7 +82,7 @@ namespace InteractivePeriodicTable.Utils
             }
             catch (DirectoryNotFoundException dnfe)
             {
-                dnfe.ErrorMessageBox("Nije pronađen direktorij " + Pathing.SysDir);
+                dnfe.ErrorMessageBox("Nije pronađen direktorij " + Pathing.ResourcesDir);
             }
             catch (IOException ioe)
             {
@@ -223,6 +224,18 @@ namespace InteractivePeriodicTable.Utils
                 score += correctGrouping[key];
 
             return score;
+        }
+        public static void PlayCorrectAnwerSound()//trebam još samo pronaći prikladne zvukove i dodati ih
+        {
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(Pathing.ResourcesDir+"");
+            player.Load();
+            Task.Factory.StartNew(() => { player.PlaySync(); });
+        }
+        public static void PlayWrongAnwerSound()
+        {
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(Pathing.ResourcesDir + "");
+            player.Load();
+            Task.Factory.StartNew(() => { player.PlaySync(); });
         }
     }
 }
