@@ -31,21 +31,25 @@ namespace InteractivePeriodicTable
         #region DOGAĐAJI
         private void DragAndDropMetali(object sender, RoutedEventArgs e)
         {
+            removeInstructions();
             Navigation.Content = new DragAndDrop_Metali(elements, categories);
         }
 
         private void DragAndDropStanje(object sender, RoutedEventArgs e)
         {
+            removeInstructions();
             Navigation.Content = new DragAndDrop_Stanje(elements, phases);
         }
 
         private void DragAndDropStruktura(object sender, RoutedEventArgs e)
         {
+            removeInstructions();
             Navigation.Content = new DragAndDrop_Struktura(elements, crystalStructures);
         }
 
         private void DragAndDropSkupine(object sender, RoutedEventArgs e)
         {
+            removeInstructions();
             Navigation.Content = new DragAndDrop_Skupine(elements, subcategories);
         }
         #endregion
@@ -245,6 +249,15 @@ namespace InteractivePeriodicTable
                 new CrystalStructure() {id = 5, name = "tetragonal" },
                 new CrystalStructure() {id = 6, name = "monoclinic" }
             };
+        }
+
+        private void removeInstructions()
+        {
+            HowToPlay.Visibility = Visibility.Hidden;
+            step1gif.Visibility = Visibility.Hidden;
+            step1instruction.Visibility = Visibility.Hidden;
+            step2gif.Visibility = Visibility.Hidden;
+            step2instruction.Visibility = Visibility.Hidden;
         }
         #endregion
 
