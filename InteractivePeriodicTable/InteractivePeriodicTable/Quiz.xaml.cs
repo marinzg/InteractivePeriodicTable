@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using InteractivePeriodicTable.Utils;
 using InteractivePeriodicTable.Data;
 using InteractivePeriodicTable.ExtensionMethods;
+using InteractivePeriodicTable.Models;
 using System.Windows.Controls.Primitives;
 
 namespace InteractivePeriodicTable
@@ -85,16 +86,24 @@ namespace InteractivePeriodicTable
 
             InitializeComponent();
 
-            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 50);
+            bool hasQuestions = checkIfAnyQuestions();
+            if( hasQuestions == true )
+            {
+                dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+                dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 50);
 
-            start = DateTime.Now;
-            dispatcherTimer.Start();
+                start = DateTime.Now;
+                dispatcherTimer.Start();
 
-            renderNextQuestion();
+                renderNextQuestion();
+            }
+            else
+            {
+                "There are no questions in quiz.json on your hard disk!".Alert();
+            }
         }
 
-        #region DOHVAT PITANJA
+        #region DOHVAT I PROVJERA PITANJA
         /// <summary>
         ///     Čita pitanja za kviz iz datoteke quiz.json te ih deserijalizira u klasu QuizQuestions.
         ///     Obrađuje moguće iznimke.
@@ -110,32 +119,43 @@ namespace InteractivePeriodicTable
                 }
 
                 questions = JsonConvert.DeserializeObject<QuizQuestions>(jsonQuizQuestions);
-
-                int questionsCount = questions.QuizPictures.Count + questions.QuizWith4Ans.Count + questions.QuizYesNo.Count;
-                if (questionsCount == 0)
-                {
-                    "There are no questions in quiz.json!".Alert();
-                    this.Close();
-                }
             }
             catch (FileNotFoundException fnfe)
             {
-                fnfe.ErrorMessageBox("Nije pronađena datoteka quiz.json !");
+                fnfe.ErrorMessageBox("File not found: quiz.json !");
             }
             catch (DirectoryNotFoundException dnfe)
             {
-                dnfe.ErrorMessageBox("Nije pronađen direktorij " + Pathing.SysDir);
+                dnfe.ErrorMessageBox("Directory not found: " + Pathing.SysDir);
             }
             catch (IOException ioe)
             {
-                ioe.ErrorMessageBox("Greška prilikom čitanja iz datoteke.");
+                ioe.ErrorMessageBox("Error trying to read from file.");
             }
             catch (Exception ex)
             {
-                ex.ErrorMessageBox("Dogodila se pogreška !");
+                ex.ErrorMessageBox("There was an unexpected error.");
             }
 
             return;
+        }
+
+        /// <summary>
+        ///     Metoda provjerava da li postoji ijedno pitanje u quiz.json-u
+        /// </summary>
+        /// <returns>
+        ///     true -> postoji barem jedno pitanje
+        ///     false -> ne postoji niti jedno pitanje
+        /// </returns>
+        private bool checkIfAnyQuestions()
+        {
+            int questionsCount = questions.QuizPictures.Count + questions.QuizWith4Ans.Count + questions.QuizYesNo.Count;
+            if (questionsCount == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
         #endregion
 
@@ -642,7 +662,7 @@ namespace InteractivePeriodicTable
             {
                 dispatcherTimer.Stop();
 
-                SaveScorePrompt window = new SaveScorePrompt(score);
+                SaveScorePrompt window = new SaveScorePrompt(score, Game.Quiz);
 
                 this.Close();
 

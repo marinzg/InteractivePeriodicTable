@@ -31,10 +31,17 @@ CREATE TABLE QuizPictures
 	Answer       NVARCHAR(100)   NOT NULL,
 );
 
-CREATE TABLE UserScore
+CREATE TABLE UserScoreQuiz
 (
-	UserName    NVARCHAR(20)    NOT NULL,
+	UserName    NVARCHAR(5)     NOT NULL,
 	Score       INTEGER         NOT NULL
 );
-CREATE INDEX IScore ON UserScore (Score);
+CREATE INDEX IQuizScore ON UserScoreQuiz (Score);
+
+CREATE TABLE UserScoreDnD
+(
+	UserName    NVARCHAR(5)     NOT NULL,
+	Score       INTEGER         NOT NULL
+);
+CREATE INDEX IDnDScore ON UserScoreDnD (Score);
 GO

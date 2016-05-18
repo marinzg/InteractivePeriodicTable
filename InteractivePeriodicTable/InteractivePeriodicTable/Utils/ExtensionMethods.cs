@@ -91,7 +91,7 @@ namespace InteractivePeriodicTable.ExtensionMethods
         {
             textBox.TextAlignment = TextAlignment.Center;
             textBox.VerticalAlignment = VerticalAlignment.Center;
-            textBox.Padding = new Thickness(5,5,5,5);
+            textBox.Padding = new Thickness(5, 5, 5, 5);
             textBox.Width = 250;
             textBox.Height = 30;
             textBox.Margin = new Thickness(0, 5, 0, 5);

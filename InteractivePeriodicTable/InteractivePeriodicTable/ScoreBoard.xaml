@@ -5,19 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InteractivePeriodicTable"
         mc:Ignorable="d"
-        Title="Scoreboard" Height="379.371" Width="241.559" Icon="/Resources/Images/Ikona.ico" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" FontSize="13.333">
+        Title="Scoreboard" Height="408.377" Width="241.559" Icon="/Resources/Images/Ikona.ico" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" FontSize="13.333">
     <Window.Background>
         <ImageBrush ImageSource="Resources/Images/q1.png" Stretch="UniformToFill"/>
     </Window.Background>
     <Grid Margin="0,0,2,-1" Opacity="0.9">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="67*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="Resources/Images/q1.png" Stretch="UniformToFill"/>
         </Grid.Background>
-        <StackPanel x:Name="scoreboardStackPanel" Margin="10,51,10.5,52.5" FlowDirection="LeftToRight">
+        <StackPanel x:Name="scoreboardStackPanel" Margin="11,87,10,17" FlowDirection="LeftToRight" Grid.ColumnSpan="2">
             <DataGrid x:Name="scoreBoard" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" IsReadOnly="True" Background="#FF7BE1EB" RowBackground="DarkTurquoise" Foreground="MidnightBlue" FontWeight="Bold" HorizontalGridLinesBrush="MidnightBlue" VerticalGridLinesBrush="MidnightBlue" HeadersVisibility="None" HorizontalScrollBarVisibility="Disabled"/>
         </StackPanel>
-        <Label x:Name="label" Content="Top 10 players" Foreground="DarkTurquoise" HorizontalAlignment="Left" Margin="64,10,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.188,0.608"/>
-        <Button x:Name="close" Content="Close" HorizontalAlignment="Left" Margin="73,281,0,0" VerticalAlignment="Top" Width="75" Click="close_Click" Background="DarkTurquoise" Foreground="MidnightBlue" BorderBrush="#FFC32D2D" BorderThickness="2" IsCancel="True" IsDefault="True"/>
+        <Label x:Name="label" Content="Top 10 players" Foreground="DarkTurquoise" HorizontalAlignment="Left" Margin="65,46,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.188,0.608" Grid.ColumnSpan="2"/>
+        <Button x:Name="close" Content="Close" HorizontalAlignment="Left" Margin="74,317,0,0" VerticalAlignment="Top" Width="75" Click="close_Click" Background="DarkTurquoise" Foreground="MidnightBlue" BorderBrush="#FFC32D2D" BorderThickness="2" IsCancel="True" IsDefault="True" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="gameTypeComboBox" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="55,17,0,0" VerticalAlignment="Top" Width="120" IsReadOnly="True" IsSynchronizedWithCurrentItem="True" SelectionChanged="gameTypeComboBox_SelectionChanged"/>
 
     </Grid>
 </Window>

@@ -59,7 +59,6 @@
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
-    <Reference Include="Microsoft.Synchronization, Version=2.1.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -141,6 +140,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\GameType.cs" />
     <Compile Include="DragAndDrop_Metali.xaml.cs">
       <DependentUpon>DragAndDrop_Metali.xaml</DependentUpon>
     </Compile>
@@ -250,6 +250,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Resources\Ideje_TODO_spec\Formular_Ideja.docx" />
+    <Content Include="Resources\Sys\facts.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sys\quiz.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\Images\a1.gif" />
     <Resource Include="Resources\Images\a2.gif" />
     <Content Include="Resources\QuizImages\alcohol.jpg">
@@ -266,12 +272,6 @@
     </Content>
     <Content Include="Resources\QuizImages\water.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Sys\facts.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Sys\quiz.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\Web_pages\Actinium - Wikipedia, the free encyclopedia.mht" />
     <Resource Include="Resources\Web_pages\Aluminium - Wikipedia, the free encyclopedia.mht" />

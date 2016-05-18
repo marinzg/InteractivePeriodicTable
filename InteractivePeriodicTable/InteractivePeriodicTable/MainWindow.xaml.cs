@@ -90,7 +90,16 @@ namespace InteractivePeriodicTable
                 int no_of_facts = factCollection.Facts.Count;
                 int fact_no = rand.Next(0, no_of_facts);
 
-                fact_tip.Text = factCollection.Facts[fact_no].Fact;
+                try
+                {
+                    fact_tip.Text = factCollection.Facts[fact_no].Fact;
+                }
+                catch(ArgumentOutOfRangeException ioor)
+                {
+                    ioor.ErrorMessageBox("There are no facts on your local drive!\nfacts.json is empty.");
+                    return;
+                }
+
                 fact_tip.Visibility = Visibility.Visible;
             }
 
@@ -130,6 +139,7 @@ namespace InteractivePeriodicTable
                     Update up = new Update();
                     up.updateQuiz();
                     up.updateFacts();
+                    getFactsFromJSON();
                     "Quiz questions and answers were succesfully updated!".Notify();
                 }
                 else
