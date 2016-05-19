@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
-using InteractivePeriodicTable.Models;
+using InteractivePeriodicTable.Data;
 
 namespace InteractivePeriodicTable
 {
@@ -45,24 +45,44 @@ namespace InteractivePeriodicTable
         }
 
         #region DOGAĐAJI
+        /// <summary>
+        ///     Metoda poziva ekran za igranje Drag&Drop igre metali.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DragAndDropMetali(object sender, RoutedEventArgs e)
         {
             removeInstructions();
             Navigation.Content = new DragAndDrop_Metali(elements, categories);
         }
 
+        /// <summary>
+        ///     Metoda poziva ekran za igranje Drag&Drop igre stanja.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DragAndDropStanje(object sender, RoutedEventArgs e)
         {
             removeInstructions();
             Navigation.Content = new DragAndDrop_Stanje(elements, phases);
         }
 
+        /// <summary>
+        ///     Metoda poziva ekran za igranje Drag&Drop igre strukture.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DragAndDropStruktura(object sender, RoutedEventArgs e)
         {
             removeInstructions();
             Navigation.Content = new DragAndDrop_Struktura(elements, crystalStructures);
         }
 
+        /// <summary>
+        ///     Metoda poziva ekran za igranje Drag&Drop igre skupine.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DragAndDropSkupine(object sender, RoutedEventArgs e)
         {
             removeInstructions();
@@ -234,6 +254,8 @@ namespace InteractivePeriodicTable
                 new ElementSubcategory() {id = 8, name = "halogen" },
                 new ElementSubcategory() {id = 9, name = "noble gas" }
             };
+
+            return;
         }
 
         /// <summary>
@@ -248,6 +270,8 @@ namespace InteractivePeriodicTable
                 new Phase() {id = 2, name = "gas" },
                 new Phase() {id = 3, name = "liquid" }
             };
+
+            return;
         }
 
         /// <summary>
@@ -265,8 +289,15 @@ namespace InteractivePeriodicTable
                 new CrystalStructure() {id = 5, name = "tetragonal" },
                 new CrystalStructure() {id = 6, name = "monoclinic" }
             };
-        }
 
+            return;
+        }
+        #endregion
+
+        #region METODA ZA SAKRIVANJE TUTORIALA
+        /// <summary>
+        ///     Metoda sakriva tutorial sa ekrana.
+        /// </summary>
         private void removeInstructions()
         {
             HowToPlay.Visibility = Visibility.Hidden;
@@ -274,8 +305,9 @@ namespace InteractivePeriodicTable
             step1instruction.Visibility = Visibility.Hidden;
             step2gif.Visibility = Visibility.Hidden;
             step2instruction.Visibility = Visibility.Hidden;
+
+            return;
         }
         #endregion
-
     }
 }

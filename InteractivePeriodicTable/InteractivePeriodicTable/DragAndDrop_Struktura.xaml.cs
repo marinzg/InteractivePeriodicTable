@@ -6,7 +6,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Text.RegularExpressions;
-using InteractivePeriodicTable.Models;
 using InteractivePeriodicTable.Utils;
 using InteractivePeriodicTable.Data;
 using System.Windows.Threading;
