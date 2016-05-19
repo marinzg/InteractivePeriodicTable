@@ -27,6 +27,7 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <ControlTemplate.Resources>
                         <Storyboard x:Key="ShowShine">
+   
                             <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Shine" Storyboard.TargetProperty="(UIElement.Opacity)">
                                 <SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1"/>
                             </DoubleAnimationUsingKeyFrames>
@@ -46,7 +47,7 @@
                                 <TranslateTransform X="0" Y="0"/>
                             </TransformGroup>
                         </Border.RenderTransform>
-                        <Border Background="{TemplateBinding Background}" CornerRadius="5,5,5,5" x:Name="border1">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="12,12,12,12"  x:Name="border1">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="0.5*"/>
@@ -60,17 +61,20 @@
                                         </LinearGradientBrush>
                                     </Border.Background>
                                 </Border>
-                                <Border Grid.Row="1" Opacity="0" x:Name="Shine" Width="Auto" Height="Auto" CornerRadius="0,0,5,5" Margin="1,0,-1,0" Background="{TemplateBinding BorderBrush}"/>
+                                <Border Grid.Row="1" Opacity="0" x:Name="Shine" Width="40" Height="Auto" CornerRadius="12,12,12,12" Margin="-1,0,0,0" Background="DarkBlue" />
                                 <ContentPresenter VerticalAlignment="Center"  Grid.RowSpan="2" HorizontalAlignment="Center" x:Name="contentPresenter"/>
                             </Grid>
                         </Border>
                     </Border>
+                    
                     <ControlTemplate.Triggers>
+                        
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" TargetName="border1" Value="0.5"/>
                             <Setter Property="Opacity" TargetName="border" Value="1"/>
                             <Setter Property="Opacity" TargetName="contentPresenter" Value="0.5"/>
                         </Trigger>
+                        
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="RenderTransform" TargetName="border">
                                 <Setter.Value>
@@ -83,7 +87,10 @@
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
+
                         <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Red"></Setter>
+                            <Setter Property="FontWeight" Value="ExtraBold" ></Setter>
                             <Trigger.ExitActions>
                                 <BeginStoryboard Storyboard="{StaticResource HideShine}" x:Name="HideShine_BeginStoryboard"/>
                             </Trigger.ExitActions>
