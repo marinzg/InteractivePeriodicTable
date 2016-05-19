@@ -24,8 +24,14 @@
 
         <Frame x:Name="Navigation" RenderTransformOrigin="1.028,0.505" NavigationUIVisibility="Hidden" Margin="0,0,103,0"/>
 
-        <Image x:Name="step1gif"  gif:AnimationBehavior.SourceUri="/Resources/Images/a1.gif" Stretch="Fill"  HorizontalAlignment="Center" Height="203" Margin="38,0,501,168.5" VerticalAlignment="Bottom" Width="311"/>
-        <Image x:Name="step2gif"  gif:AnimationBehavior.SourceUri="/Resources/Images/a2.gif" Stretch="Fill"  HorizontalAlignment="Center" Height="203" Margin="387,0,182,168.5" VerticalAlignment="Bottom" Width="281"/>
+        <Grid>
+            <Image x:Name="step1gif"  gif:AnimationBehavior.SourceUri="/Resources/Images/a1.gif" Stretch="Fill"  HorizontalAlignment="Center" Height="203" Margin="38,0,501,168.5" VerticalAlignment="Bottom" Width="311"/>
+            <Image x:Name="step2gif"  gif:AnimationBehavior.SourceUri="/Resources/Images/a2.gif" Stretch="Fill"  HorizontalAlignment="Center" Height="203" Margin="387,0,182,168.5" VerticalAlignment="Bottom" Width="281"/>
+            <Border CornerRadius="3"  BorderThickness="5" Background="Transparent" Margin="31,107,501,165.5" BorderBrush="DarkSalmon" Opacity="0.5"/>
+            <Border CornerRadius="3"  BorderThickness="5" Background="Transparent" Margin="381,107,182,168.5" BorderBrush="DarkSalmon" Opacity="0.5"  />
+        </Grid>
+
+
         <Label x:Name="HowToPlay" Content="How to play:" HorizontalAlignment="Left" Height="48" Margin="10,10,0,0" VerticalAlignment="Top" Width="218" FontWeight="Bold" FontSize="22" Foreground="DarkSalmon"/>
         <TextBlock x:Name="step1instruction" Text="Step 1: Pick an element and click on it by pressing left mouse button, continue to hold the button down and proceed to step 2." TextWrapping="Wrap" HorizontalAlignment="Left" Height="107" Margin="87,339,0,0" VerticalAlignment="Top" Width="218" FontWeight="Bold" FontSize="15" Foreground="DarkSalmon"/>
         <TextBlock x:Name="step2instruction" Text="Step 2: Drag the element to a matching box and release mouse button to drop it inside." TextWrapping="Wrap" HorizontalAlignment="Left" Height="107" Margin="417,339,0,0" VerticalAlignment="Top" Width="218" FontWeight="Bold" FontSize="15" Foreground="DarkSalmon"/>
