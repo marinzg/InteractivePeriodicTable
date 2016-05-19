@@ -285,7 +285,7 @@ namespace InteractivePeriodicTable
         {
             listBox.Items.Clear();
 
-            if (textBox.Text.Trim() != "")
+            if ( string.IsNullOrWhiteSpace(textBox.Text) == false )
             {
                 string regexPattern = (textBox.Text.ToString()) + "\\w*";
                 regexPattern = char.ToUpper(regexPattern[0]) + regexPattern.Substring(1); //prvo slovo veliko
