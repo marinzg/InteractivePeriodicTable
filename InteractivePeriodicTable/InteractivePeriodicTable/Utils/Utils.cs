@@ -10,6 +10,7 @@ using System.Net;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace InteractivePeriodicTable.Utils
 {
@@ -44,19 +45,10 @@ namespace InteractivePeriodicTable.Utils
     /// </summary>
     public static class Pathing
     {
-        public static readonly string LocalDir = setLocalDir();
+        public static readonly string LocalDir = Directory.GetCurrentDirectory();
         public static readonly string ResourcesDir = LocalDir + @"\Resources";
         public static readonly string SysDir = ResourcesDir + @"\Sys";
         public static readonly string QuizImgDir = ResourcesDir + @"\QuizImages";
-        
-        private static string setLocalDir()
-        {
-            string tmp = Directory.GetCurrentDirectory();
-
-            //tmp = tmp.Remove(tmp.IndexOf("\\bin"));
-
-            return tmp;
-        }
     }
 
     /// <summary>
@@ -137,45 +129,74 @@ namespace InteractivePeriodicTable.Utils
         public static HashSet<int> Generate(int howMany, int max, int min = 1)
         {
             HashSet<int> randomNumbers = new HashSet<int>();
+
             if (max - min < howMany)
+            {
                 return randomNumbers;
+            }
+                
             Random r = new Random();
-            //get howMany (arg) numbers from min to max
+
             do
             {
-                if (randomNumbers.Add(r.Next(min, max))) howMany--;
-            } while (howMany > 0);
+                if (randomNumbers.Add(r.Next(min, max)))
+                {
+                    howMany --;
+                }
+            }
+            while (howMany > 0);
+
             return randomNumbers;
         }
     }
 
+    /// <summary>
+    ///     Sadrži metode za upravljanje kontrolama u Drag&Drop igri.
+    /// </summary>
     public static class DragAndDropDisplay
     {
+        /// <summary>
+        ///     
+        /// </summary>
+        /// <param name="tmpElements"></param>
+        /// <param name="dragList"></param>
+        /// <param name="allButtons"></param>
         public static void AddButtons(List<Element> tmpElements, ListBox dragList, List<Button> allButtons)
         {
             HashSet<int> randomNumbers = RandomSetGenerator.Generate(Constants.DRAG_CONTAINER_COUNT, tmpElements.Count - 1, 0);
             foreach (int i in randomNumbers)
             {
-                Button b = new Button();
-                b.Content = tmpElements.ElementAt(i).symbol;
-                b.FontSize = 18;
-                b.Height = b.Width = 60;
-                b.HorizontalContentAlignment = HorizontalAlignment.Center;
-                b.VerticalContentAlignment = VerticalAlignment.Center;
-                b.Background = Brushes.DarkTurquoise;
-                b.FontWeight = FontWeights.SemiBold;
-                b.Foreground = Brushes.MidnightBlue;
-                allButtons.Add(b);
-                dragList.Items.Add(b);
+                Button elementButton = new Button();
+                elementButton.Content = tmpElements.ElementAt(i).symbol;
+                elementButton.FontSize = 18;
+                elementButton.Height = 60;
+                elementButton.Width = 60;
+                elementButton.HorizontalContentAlignment = HorizontalAlignment.Center;
+                elementButton.VerticalContentAlignment = VerticalAlignment.Center;
+                elementButton.Background = Brushes.DarkTurquoise;
+                elementButton.FontWeight = FontWeights.SemiBold;
+                elementButton.Foreground = Brushes.MidnightBlue;
+
+                allButtons.Add(elementButton);
+                dragList.Items.Add(elementButton);
             }
+
+            return;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="correctGrouping"></param>
+        /// <param name="thisPage"></param>
         public static void DisplayUpdatedPoints(Dictionary<string, int> correctGrouping, Page thisPage)
         {
-            String s = "";
+            string s = string.Empty;
             foreach (string tmpString in correctGrouping.Keys)
             {
                 s = Regex.Replace(tmpString, @" ", @"_");
-                foreach (Label l in Utils.VisualChildren.FindVisualChildren<Label>(thisPage))
+
+                foreach (Label l in VisualChildren.FindVisualChildren<Label>(thisPage))
                 {
                     if (l.Name.ToLower().Contains(s))
                     {
@@ -183,60 +204,119 @@ namespace InteractivePeriodicTable.Utils
                     }
                 }
             }
+
             AutoScroll(thisPage);
+
+            return;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="correctGrouping"></param>
+        /// <param name="box"></param>
+        /// <param name="points"></param>
         public static void UpdatePoints(Dictionary<string,int> correctGrouping, string box, int points)
         {
             if (correctGrouping.ContainsKey(box))
+            {
                 correctGrouping[box] += points;
+            }
             else
+            {
                 correctGrouping.Add(box, points);
+            }
+
+            return;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thisPage"></param>
         private static void AutoScroll(Page thisPage)
         {
             foreach (ListBox lb in VisualChildren.FindVisualChildren<ListBox>(thisPage))
             {
                 if (lb.Items.Count > 0)
-                    lb.ScrollIntoView(lb.Items[lb.Items.Count - 1]);
+                {
+                    int itemPosition = lb.Items.Count - 1;
+                    lb.ScrollIntoView( lb.Items[ itemPosition ] );
+                }
             }
+
+            return;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thisPage"></param>
+        /// <param name="correctGrouping"></param>
         public static void Clear(Page thisPage, Dictionary<string,int> correctGrouping)
         {
-            //clear listboxes where elements were dropped
             foreach (ListBox l in VisualChildren.FindVisualChildren<ListBox>(thisPage))
+            {
                 l.Items.Clear();
+            }
 
-            List<string> keys = new List<String>();
+            List<string> keys = new List<string>();
             foreach (string key in correctGrouping.Keys)
+            {
                 keys.Add(key);
+            }
+                
             foreach (string s in keys)
             {
                 correctGrouping[s] = 0;
             }
+
             DisplayUpdatedPoints(correctGrouping, thisPage);
+
             correctGrouping.Clear();
+
+            return;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="correctGrouping"></param>
+        /// <returns></returns>
         public static int GetScore(Dictionary<string, int> correctGrouping)
         {
             int score = 0;
 
-            //sum score from all categories
             foreach (string key in correctGrouping.Keys)
+            {
                 score += correctGrouping[key];
+            }
 
             return score;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static void PlayCorrectAnwerSound()//trebam još samo pronaći prikladne zvukove i dodati ih
         {
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(Pathing.ResourcesDir+"");
+            SoundPlayer player = new SoundPlayer(Pathing.ResourcesDir+"");
             player.Load();
             Task.Factory.StartNew(() => { player.PlaySync(); });
+
+            return;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static void PlayWrongAnwerSound()
         {
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(Pathing.ResourcesDir + "");
+            SoundPlayer player = new SoundPlayer(Pathing.ResourcesDir + "");
             player.Load();
             Task.Factory.StartNew(() => { player.PlaySync(); });
+
+            return;
         }
     }
 }
