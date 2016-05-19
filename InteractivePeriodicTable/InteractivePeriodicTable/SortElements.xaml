@@ -27,8 +27,8 @@
         <Grid>
             <Image x:Name="step1gif"  gif:AnimationBehavior.SourceUri="/Resources/Images/a1.gif" Stretch="Fill"  HorizontalAlignment="Center" Height="203" Margin="38,0,501,168.5" VerticalAlignment="Bottom" Width="311"/>
             <Image x:Name="step2gif"  gif:AnimationBehavior.SourceUri="/Resources/Images/a2.gif" Stretch="Fill"  HorizontalAlignment="Center" Height="203" Margin="387,0,182,168.5" VerticalAlignment="Bottom" Width="281"/>
-            <Border CornerRadius="3"  BorderThickness="5" Background="Transparent" Margin="31,107,501,165.5" BorderBrush="DarkSalmon" Opacity="0.5"/>
-            <Border CornerRadius="3"  BorderThickness="5" Background="Transparent" Margin="381,107,182,168.5" BorderBrush="DarkSalmon" Opacity="0.5"  />
+            <Border x:Name="border1" CornerRadius="3"  BorderThickness="5" Background="Transparent" Margin="31,107,501,165.5" BorderBrush="DarkSalmon" Opacity="0.5"/>
+            <Border x:Name="border2" CornerRadius="3"  BorderThickness="5" Background="Transparent" Margin="381,107,182,168.5" BorderBrush="DarkSalmon" Opacity="0.5"  />
         </Grid>
 
 

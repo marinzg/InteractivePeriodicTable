@@ -305,6 +305,8 @@ namespace InteractivePeriodicTable
             step1instruction.Visibility = Visibility.Hidden;
             step2gif.Visibility = Visibility.Hidden;
             step2instruction.Visibility = Visibility.Hidden;
+            border1.Visibility = Visibility.Hidden;
+            border2.Visibility = Visibility.Hidden;
 
             return;
         }
