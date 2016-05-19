@@ -16,43 +16,55 @@ namespace InteractivePeriodicTable
     public partial class MainWindow : Window
     {
         #region ČLANSKE VARIJABLE
+        /// <summary>
+        ///     Sprema key-value parove element button-a i njihovih boja pozadine prije nego se boja promijenila.
+        /// </summary>
         private Dictionary<string, Brush> previousBackgroundColors = new Dictionary<string, Brush>();
+
+        /// <summary>
+        ///     Sprema key-value parove element button-a i njihovih boja teksta prije nego se boja promijenila.
+        /// </summary>
         private Dictionary<string, Brush> previousForegroundColors = new Dictionary<string, Brush>();
+
+        /// <summary>
+        ///     Sprema sve zanimljivosti kako bi ih mogli prikazati.
+        /// </summary>
         private AllFacts factCollection = new AllFacts();
         #endregion
 
+        /// <summary>
+        ///     Povezuje textbox za pretraživanje elemenata i KeyDown događaj.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
-            //listBox.PreviewKeyDown += new KeyEventHandler(listBox_KeyDownOrUp); //Marko-eventhandler za listbox navigiranje arrowsima
-            //textBox.PreviewKeyDown += new KeyEventHandler(textBox_KeyDown); //Marko-eventhandler za arrow down
             textBox.PreviewKeyDown += new KeyEventHandler(txtSearchTerm_KeyDown);
         }
 
-
-
-        #region FACTS
+        #region METODA ZA UČITAVANJE ZANIMLJIVOSTI
         /// <summary>
         ///     Dohvaća zanimljivosti iz datoteke i serijalizira ih u objekt facts.
         /// </summary>
         private void getFactsFromJSON()
         {
+            string json = string.Empty;
+            string pathToFacts = Pathing.SysDir + "\\facts.json";
             try
             {
-                string json = "";
-                using (StreamReader sr = new StreamReader(Pathing.SysDir + "\\facts.json"))
+                using (StreamReader sr = new StreamReader(pathToFacts))
                 {
                     json = sr.ReadToEnd();
                 }
+
                 factCollection = JsonConvert.DeserializeObject<AllFacts>(json);
             }
             catch (FileNotFoundException fnfe)
             {
-                fnfe.ErrorMessageBox("Quiz.json file not found !");
+                fnfe.ErrorMessageBox("facts.json file not found !");
             }
             catch (DirectoryNotFoundException dnfe)
             {
-                dnfe.ErrorMessageBox("Directory not found " + Pathing.SysDir);
+                dnfe.ErrorMessageBox("Directory not found " + pathToFacts);
             }
             catch (IOException ioe)
             {
@@ -65,7 +77,9 @@ namespace InteractivePeriodicTable
 
             return;
         }
+        #endregion
 
+        #region DOGAĐAJI
         /// <summary>
         ///     Prikazuje nasumičnu zanimljivost.
         ///     Poziva se na klik i hover.
@@ -81,7 +95,7 @@ namespace InteractivePeriodicTable
             }
             else
             {
-                if(factCollection.Facts.Count == 0)
+                if (factCollection.Facts.Count == 0)
                 {
                     getFactsFromJSON();
                 }
@@ -94,7 +108,7 @@ namespace InteractivePeriodicTable
                 {
                     fact_tip.Text = factCollection.Facts[fact_no].Fact;
                 }
-                catch(ArgumentOutOfRangeException ioor)
+                catch (ArgumentOutOfRangeException ioor)
                 {
                     ioor.ErrorMessageBox("There are no facts on your local drive!\nfacts.json is empty.");
                     return;
@@ -117,12 +131,6 @@ namespace InteractivePeriodicTable
 
             return;
         }
-        #endregion
-
-
-
-
-        #region DOGAĐAJI
         /// <summary>
         ///     Poziva se kada netko hoće update-ati kviz i zanimljivosti.
         ///     Ako ima veze s internetom, skidaju se kviz i zanimljivosti.
@@ -210,11 +218,10 @@ namespace InteractivePeriodicTable
         /// <param name="e"></param>
         private void Element_klik(object sender, RoutedEventArgs e)
         {
-            Button element = (e.Source as Button);
-
+            Button element = e.Source as Button;
             try
             {
-                PopupWebpage popupWindow = new PopupWebpage(element.Name.ToString());
+                PopupWebpage popupWindow = new PopupWebpage(element.Name);
                 popupWindow.ShowDialog();
             }
             catch (Exception ex)
@@ -226,7 +233,7 @@ namespace InteractivePeriodicTable
         }
 
         /// <summary>
-        ///     Uklanja fokus sa search textbox-a
+        ///     Metoda uklanja fokus sa search textbox-a.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -251,7 +258,7 @@ namespace InteractivePeriodicTable
             }
             catch (Exception ex)
             {
-                ex.ErrorMessageBox("Error while trying to open element information!");
+                ex.ErrorMessageBox("Error while trying to open element information");
             }
 
             return;
@@ -264,17 +271,14 @@ namespace InteractivePeriodicTable
         /// <param name="e"></param>
         private void listBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ListBox chosenItem = (e.Source as ListBox);
+            ListBox chosenItem = e.Source as ListBox;
             string elementName = chosenItem.SelectedValue.ToString();
 
-            HighLightSpecificElement(elementName);
-            DeSelectOtherElements(elementName);
+            highLightSpecificElement(elementName);
+            deSelectOtherElements(elementName);
 
             return;
         }
-        #endregion
-
-        #region Highlighting i searchbox funkcionalnost
 
         /// <summary>
         /// Mimic "searchboxa" koristenjem listbox+textbox pošto wpf nema textbox sa autocomplete ko u Winform... Textchanged event se fire-a kako upisujemo text pretrazuje listu sa svim elementima i izdvaja match-eve
@@ -285,109 +289,62 @@ namespace InteractivePeriodicTable
         {
             listBox.Items.Clear();
 
-            if ( string.IsNullOrWhiteSpace(textBox.Text) == false )
+            if (string.IsNullOrWhiteSpace(textBox.Text) == false)
             {
-                string regexPattern = (textBox.Text.ToString()) + "\\w*";
+                string regexPattern = textBox.Text + "\\w*";
                 regexPattern = char.ToUpper(regexPattern[0]) + regexPattern.Substring(1); //prvo slovo veliko
 
                 Match match = Regex.Match(ElementNames.allElements, regexPattern);
                 while (match.Success && match.Value != "")
                 {
-                    listBox.Items.Add(match.Value.ToString());
-                    listBox.Visibility = Visibility.Visible;
-                    listBox.IsEnabled = true;
+                    listBox.Items.Add(match.Value);
 
                     match = match.NextMatch();
                 }
+
+                listBox.Visibility = Visibility.Visible;
+                listBox.IsEnabled = true;
             }
 
-            if (listBox.Items.IsEmpty || listBox.Items.Count == 119)
-            {
-                listBox.Visibility = Visibility.Collapsed;
-                if (listBox.Items.Count == 119) listBox.Items.Clear();
-            }
-
-            HighlightElementsOnTable();
-            OtherButtonsHighlight();
-            BringBackColors();
-        }
-
-        /// <summary>
-        /// vraca stare boje buttonima
-        /// </summary>
-        private void BringBackColors()
-        {
             if (listBox.Items.IsEmpty)
             {
-                foreach (Button allbuttons in Utils.VisualChildren.FindVisualChildren<Button>(this))
+                listBox.Visibility = Visibility.Collapsed;
+            }
+
+            if (listBox.Items.Count == 119)
+            {
+                if (listBox.Items.Count == 119)
                 {
-                    if (allbuttons.Background == Brushes.Gainsboro)
-                    {
-                        allbuttons.Background = previousBackgroundColors[allbuttons.Name];
-                    }
+                    listBox.Items.Clear();
                 }
             }
+
+            highlightElementsOnTable();
+            otherButtonsHighlight();
+            bringBackColors();
+
+            return;
         }
 
         /// <summary>
-        /// highlighta buttone iz searchboxa
+        ///     Metoda sprema boje svih element buttona kako bi kasnije mogli vratiti im boje na staro.
         /// </summary>
-        private void HighlightElementsOnTable()
-        {
-
-            foreach (Button buttonInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
-            {
-                if (listBox.Items.Contains(buttonInForm.Name.ToString()))
-                {
-                    buttonInForm.Background = Brushes.DarkBlue;
-                    buttonInForm.Foreground = Brushes.Gold;
-                }
-                else
-                {
-                    buttonInForm.Background = previousBackgroundColors[buttonInForm.Name];
-                    buttonInForm.Foreground = previousForegroundColors[buttonInForm.Name];
-                }
-            }
-        }
-
-
-        /// <summary>
-        /// ostali buttoni su "gray-ed out"
-        /// </summary>
-        private void OtherButtonsHighlight()
-        {
-
-            foreach (Button otherButtonsInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
-            {
-                if (otherButtonsInForm.Name.ToString() != "play_quiz" && otherButtonsInForm.Name.ToString() != "show_scoreboard" && otherButtonsInForm.Name.ToString() != "update" && otherButtonsInForm.Name.ToString() != "DragDropGames")
-                {
-                    if (listBox.Items.Contains(otherButtonsInForm.Name.ToString()) == false)
-                    {
-                        otherButtonsInForm.Background = Brushes.Gainsboro;
-                    }
-                }
-
-
-            }
-        }
-
-
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox_Loaded(object sender, RoutedEventArgs e)
         {
-            foreach (Button buttonInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
+            foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
             {
-                previousForegroundColors.Add(buttonInForm.Name, buttonInForm.Foreground);
+                previousForegroundColors.Add(elementButton.Name, elementButton.Foreground);
+                previousBackgroundColors.Add(elementButton.Name, elementButton.Background);
             }
-            foreach (Button buttonInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
-            {
-                previousBackgroundColors.Add(buttonInForm.Name, buttonInForm.Background);
-            }
+
+            return;
         }
 
-        
-
         /// <summary>
-        /// Navigacija unutar listboxa sa key-up down... Moguc prelazak iz listboxa unutar textboxa sa key up i nastavak ubacivanja inputa te izlazak iz textboxa i prelazak u listbox sa keydown eventom
+        ///     Navigacija unutar listboxa sa key-up down.
+        ///     Moguć prelazak iz listboxa unutar textboxa sa key up i nastavak ubacivanja inputa te izlazak iz textboxa i prelazak u listbox sa keydown eventom.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -395,12 +352,12 @@ namespace InteractivePeriodicTable
         {
             if (e.Key == Key.Down)
             {
-                if (listBox.SelectedIndex < (listBox.Items.Count - 1))
+                int numberOfElementsInListBox = listBox.Items.Count - 1;
+                if (listBox.SelectedIndex < numberOfElementsInListBox)
                 {
-
                     listBox.SelectedIndex++;
-                    HighLightSpecificElement(listBox.SelectedItem.ToString());
-                    DeSelectOtherElements(listBox.SelectedItem.ToString());
+                    highLightSpecificElement(listBox.SelectedItem.ToString());
+                    deSelectOtherElements(listBox.SelectedItem.ToString());
                 }
 
                 e.Handled = true;
@@ -410,9 +367,10 @@ namespace InteractivePeriodicTable
                 if (listBox.SelectedIndex > 0)
                 {
                     listBox.SelectedIndex--;
-                    HighLightSpecificElement(listBox.SelectedItem.ToString());
-                    DeSelectOtherElements(listBox.SelectedItem.ToString());
+                    highLightSpecificElement(listBox.SelectedItem.ToString());
+                    deSelectOtherElements(listBox.SelectedItem.ToString());
                 }
+
                 e.Handled = true;
             }
             else if (e.Key == Key.Enter)
@@ -421,6 +379,7 @@ namespace InteractivePeriodicTable
                 {
                     PopupWebpage popupWindow = new PopupWebpage(listBox.SelectedItem.ToString());
                     popupWindow.Show();
+
                     e.Handled = true;
                 }
                 catch (Exception ex)
@@ -428,50 +387,20 @@ namespace InteractivePeriodicTable
                     ex.ErrorMessageBox("Error while trying to open element information");
                 }
             }
+            else
+            {
+                e.Handled = false;
+            }
+
+            return;
         }
 
         /// <summary>
-        /// highlighta tocno odabrani element
+        ///     Metoda se poziva kada korisnik odluči igrati Drag&Drop igru.
+        ///     Pokušava otvoriti Drag&Drop igru.
         /// </summary>
-        /// <param name="name"></param>
-        private void HighLightSpecificElement(string name)
-        {
-            foreach (Button buttonInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
-            {
-                if (name == buttonInForm.Name.ToString())
-                {
-                    buttonInForm.Background = Brushes.DarkBlue;
-                    buttonInForm.Foreground = Brushes.Gold;
-                }
-                else
-                {
-                    buttonInForm.Background = previousBackgroundColors[buttonInForm.Name];
-                    buttonInForm.Foreground = previousForegroundColors[buttonInForm.Name];
-                }
-            }
-        }
-
-        /// <summary>
-        /// de selekcija ostlaih elemenata kada je odredjeni odabran "gray out"
-        /// </summary>
-        /// <param name="name"></param>
-        private void DeSelectOtherElements(string name)
-        {
-            foreach (Button otherButtonsInForm in Utils.VisualChildren.FindVisualChildren<Button>(this))
-            {
-                if (otherButtonsInForm.Name.ToString() != "play_quiz" && otherButtonsInForm.Name.ToString() != "show_scoreboard" && otherButtonsInForm.Name.ToString() != "update" && otherButtonsInForm.Name.ToString() != "DragDropGames")
-                {
-                    if (name != otherButtonsInForm.Name.ToString())
-                    {
-                        otherButtonsInForm.Background = Brushes.Gainsboro;
-                    }
-                }
-
-
-            }
-        }
-
-
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void play_DragDrop_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -483,28 +412,143 @@ namespace InteractivePeriodicTable
             {
                 ex.ErrorMessageBox("Can not open Sort elements game!");
             }
+
+            return;
         }
 
-
-       
+        /// <summary>
+        ///     Metoda se poziva kada je promijenjen odabir u listbox-u.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListBox chosenItem = (e.Source as ListBox);
-          
+            ListBox chosenItem = e.Source as ListBox;
+
             if (chosenItem.Items.Count != 0)
             {
-                HighLightSpecificElement(chosenItem.SelectedValue.ToString());
-                DeSelectOtherElements(chosenItem.SelectedValue.ToString());
+                highLightSpecificElement(chosenItem.SelectedValue.ToString());
+                deSelectOtherElements(chosenItem.SelectedValue.ToString());
             }
             else
             {
                 listBox.Visibility = Visibility.Collapsed;
                 listBox.Items.Clear();
             }
+
+            return;
+        }
+        #endregion
+
+        #region METODE ZA OZNAČAVANJE/ODZNAČAVANJE GUMBIJU
+        /// <summary>
+        ///     Metoda vraća stare boje buttonima.
+        /// </summary>
+        private void bringBackColors()
+        {
+            if (listBox.Items.IsEmpty)
+            {
+                foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
+                {
+                    if (elementButton.Background == Brushes.Gainsboro)
+                    {
+                        elementButton.Background = previousBackgroundColors[ elementButton.Name ];
+                    }
+                }
+            }
+
+            return;
         }
 
+        /// <summary>
+        ///     Metoda označava buttone iz searchboxa.
+        /// </summary>
+        private void highlightElementsOnTable()
+        {
+            foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
+            {
+                if ( listBox.Items.Contains(elementButton.Name) == true )
+                {
+                    elementButton.Background = Brushes.DarkBlue;
+                    elementButton.Foreground = Brushes.Gold;
+                }
+                else
+                {
+                    elementButton.Background = previousBackgroundColors[elementButton.Name];
+                    elementButton.Foreground = previousForegroundColors[elementButton.Name];
+                }
+            }
 
+            return;
+        }
 
+        /// <summary>
+        ///     Metoda postavlja boju buttona koji nisu u listbox-u u sivo.
+        /// </summary>
+        private void otherButtonsHighlight()
+        {
+            foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
+            {
+                if (elementButton.Name != "play_quiz" &&
+                    elementButton.Name != "show_scoreboard" &&
+                    elementButton.Name != "update" &&
+                    elementButton.Name != "DragDropGames" &&
+                    listBox.Items.Contains(elementButton.Name) == false)
+                {
+                    elementButton.Background = Brushes.Gainsboro;
+                }
+            }
+
+            return;
+        }
+
+        /// <summary>
+        ///     Metoda označava element button čiji naziv smo predali kao parametar.
+        /// </summary>
+        /// <param name="name">
+        ///     Jedinstveno označava element button.
+        /// </param>
+        private void highLightSpecificElement(string elementName)
+        {
+            foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
+            {
+                if (elementName == elementButton.Name)
+                {
+                    elementButton.Background = Brushes.DarkBlue;
+                    elementButton.Foreground = Brushes.Gold;
+                }
+                else
+                {
+                    elementButton.Background = previousBackgroundColors[elementButton.Name];
+                    elementButton.Foreground = previousForegroundColors[elementButton.Name];
+                }
+            }
+
+            return;
+        }
+
+        /// <summary>
+        ///     Metoda odznačava ostale element buttone kada je odredjeni odabran "gray out"
+        /// </summary>
+        /// <param name="name">
+        ///     Jedinstveno označava element button.
+        /// </param>
+        private void deSelectOtherElements(string elementName)
+        {
+            foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
+            {
+                if (elementButton.Name != "play_quiz" &&
+                    elementButton.Name != "show_scoreboard" &&
+                    elementButton.Name != "update" &&
+                    elementButton.Name != "DragDropGames" &&
+                    elementName != elementButton.Name)
+                {
+                    elementButton.Background = Brushes.Gainsboro;
+                }
+            }
+
+            return;
+        }
         #endregion
     }
 }
