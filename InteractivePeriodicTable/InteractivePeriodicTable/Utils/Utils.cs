@@ -10,6 +10,7 @@ using System.Net;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace InteractivePeriodicTable.Utils
 {
@@ -271,29 +272,51 @@ namespace InteractivePeriodicTable.Utils
             }
 
             DisplayUpdatedPoints(correctGrouping, thisPage);
+
             correctGrouping.Clear();
+
+            return;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="correctGrouping"></param>
+        /// <returns></returns>
         public static int GetScore(Dictionary<string, int> correctGrouping)
         {
             int score = 0;
 
-            //sum score from all categories
             foreach (string key in correctGrouping.Keys)
+            {
                 score += correctGrouping[key];
+            }
 
             return score;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static void PlayCorrectAnwerSound()//trebam još samo pronaći prikladne zvukove i dodati ih
         {
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(Pathing.ResourcesDir+"");
+            SoundPlayer player = new SoundPlayer(Pathing.ResourcesDir+"");
             player.Load();
             Task.Factory.StartNew(() => { player.PlaySync(); });
+
+            return;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static void PlayWrongAnwerSound()
         {
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(Pathing.ResourcesDir + "");
+            SoundPlayer player = new SoundPlayer(Pathing.ResourcesDir + "");
             player.Load();
             Task.Factory.StartNew(() => { player.PlaySync(); });
+
+            return;
         }
     }
 }
