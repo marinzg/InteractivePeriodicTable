@@ -92,6 +92,7 @@ namespace InteractivePeriodicTable
             {
                 fact_tip.Text = "There are no facts on your local drive! Try to do an update!";
                 fact_tip.Visibility = Visibility.Visible;
+                factBorder.Visibility = Visibility.Visible;
             }
             else
             {
@@ -115,6 +116,7 @@ namespace InteractivePeriodicTable
                 }
 
                 fact_tip.Visibility = Visibility.Visible;
+                factBorder.Visibility = Visibility.Visible;
             }
 
             return;
@@ -128,6 +130,7 @@ namespace InteractivePeriodicTable
         private void Fact_Leave(object sender, RoutedEventArgs e)
         {
             fact_tip.Visibility = Visibility.Hidden;
+            factBorder.Visibility = Visibility.Hidden;
 
             return;
         }

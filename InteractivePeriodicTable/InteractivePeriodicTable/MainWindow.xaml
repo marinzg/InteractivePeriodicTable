@@ -1,5 +1,4 @@
-﻿
-<Window
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -20,7 +19,7 @@
         Left="auto"
         Top="80"
         WindowState="Maximized" MouseLeftButtonDown="Window_MouseLeftButtonDown">
-    
+
 
 
 
@@ -219,18 +218,27 @@
             </Grid>
 
             <!--Blagi background za Dr. Pengu-a kako bi se lakse vidio na tamnoj pozadini :) -->
-            <Grid Name="BackgroundZaGif" MouseLeftButtonDown="Fact_ShowFact" MouseEnter="Fact_ShowFact" MouseLeave="Fact_Leave" HorizontalAlignment="Left" Height="58" Margin="236,240,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.43,1.474"  >
+            <Grid Name="BackgroundZaGif" MouseLeftButtonDown="Fact_ShowFact" MouseEnter="Fact_ShowFact" MouseLeave="Fact_Leave" HorizontalAlignment="Left" Height="58" Margin="236,240,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.43,1.474"   >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="26*"/>
                 </Grid.ColumnDefinitions>
-                <Grid.Background>
-                    <SolidColorBrush Color="LightBlue" Opacity="0.2"></SolidColorBrush>
-                </Grid.Background>
 
-                <TextBlock Name="fact_tip"  TextWrapping="WrapWithOverflow" Visibility="Hidden" Margin="64.593,-3,-527,-89" Background ="Transparent" FontSize="14" FontWeight="SemiBold" Foreground="LightCoral" RenderTransformOrigin="0.5,0.5" Grid.Column="1"></TextBlock>
+                <Border x:Name="penguinBorder" CornerRadius="15,15,15,15" BorderBrush="LightBlue" BorderThickness="4" Margin="-5,-3,0,0" Grid.ColumnSpan="2">
+                    <Border.Background>
+                        <LinearGradientBrush Opacity="0.6" StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="LightBlue" Offset="0"/>
+                            <GradientStop Color="LightGoldenrodYellow" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
 
-                <Image x:Name="image1" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill"   HorizontalAlignment="Center" Height="61" Margin="-9,0,-7,-3" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.43,1.474" Grid.ColumnSpan="2" />
+
+                <TextBlock x:Name="fact_tip" TextWrapping="WrapWithOverflow" Visibility="Hidden" Margin="65,-3,-516,-56" Background ="Transparent" FontSize="14" FontWeight="SemiBold" Foreground="LightCoral" RenderTransformOrigin="0.5,0.5" Grid.Column="1"></TextBlock>
+                <Border x:Name="factBorder" BorderBrush="LightCoral" BorderThickness="5" Opacity="0.5" Visibility="Hidden" Margin="57,-9,-521,-61" Grid.Column="1" CornerRadius="10,10,10,10"/>
+
+
+                <Image x:Name="penguin" gif:ImageBehavior.AnimatedSource="/Resources/Images/Pingvin_za_periodni.gif" Stretch="Fill"   HorizontalAlignment="Center" Height="61" Margin="-8,-3,-8,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.43,1.474" Grid.ColumnSpan="2" />
             </Grid>
 
 
@@ -343,8 +351,8 @@
     <Window.Background>
         <ImageBrush ImageSource="/Resources/Images/space.jpg" />
     </Window.Background>
-    
-    
+
+
 
 
 </Window>
