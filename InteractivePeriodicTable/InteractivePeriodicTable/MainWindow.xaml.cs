@@ -390,10 +390,15 @@ namespace InteractivePeriodicTable
                     ex.ErrorMessageBox("Error while trying to open element information");
                 }
             }
+            else if (e.Key == Key.Escape)
+            {
+                textBox.Text = "";
+            }
             else
             {
                 e.Handled = false;
             }
+           
 
             return;
         }
