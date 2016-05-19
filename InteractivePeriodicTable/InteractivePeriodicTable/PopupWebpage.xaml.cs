@@ -52,6 +52,7 @@ namespace InteractivePeriodicTable
                 else
                 {
                     "You are not connected to internet!".Alert();
+                    this.Close();
                     return;
                 }
             }

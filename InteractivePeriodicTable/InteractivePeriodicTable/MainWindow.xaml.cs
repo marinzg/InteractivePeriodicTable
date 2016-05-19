@@ -425,7 +425,7 @@ namespace InteractivePeriodicTable
                 }
                 catch (Exception ex)
                 {
-                    ErrorHandle.ErrorMessageBox(ex, "Error while trying to open element information");
+                    ex.ErrorMessageBox("Error while trying to open element information");
                 }
             }
         }

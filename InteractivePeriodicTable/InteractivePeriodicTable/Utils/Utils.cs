@@ -64,29 +64,30 @@ namespace InteractivePeriodicTable.Utils
     /// </summary>
     public static class ElementNames
     {
-        public static string allElements = getAllElements(Pathing.LocalDir);
+        public static string allElements = getAllElements();
 
-        private static string getAllElements(string path)
+        private static string getAllElements()
         {
             string myString = string.Empty;
+            string pathToElementNames = Pathing.ResourcesDir + "\\Materijali o elementima\\imena_elemenata.txt";
             try
             {
-                using (StreamReader myFile = new StreamReader(Pathing.ResourcesDir + "\\Materijali o elementima\\imena_elemenata.txt"))
+                using (StreamReader myFile = new StreamReader(pathToElementNames))
                 {
                     myString = myFile.ReadToEnd();
                 }
             }
             catch (FileNotFoundException fnfe)
             {
-                fnfe.ErrorMessageBox("Nije pronađena datoteka quiz.json !");
+                fnfe.ErrorMessageBox("File not found: imena_elemenata.txt !");
             }
             catch (DirectoryNotFoundException dnfe)
             {
-                dnfe.ErrorMessageBox("Nije pronađen direktorij " + Pathing.ResourcesDir);
+                dnfe.ErrorMessageBox("Directory not found: " + pathToElementNames);
             }
             catch (IOException ioe)
             {
-                ioe.ErrorMessageBox("Greška prilikom čitanja iz datoteke.");
+                ioe.ErrorMessageBox("Error trying to read from file.");
             }
 
             return myString;

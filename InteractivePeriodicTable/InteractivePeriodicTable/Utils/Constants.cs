@@ -21,6 +21,10 @@
         ///     Koliko se bodova dodaje za netočan odgovor.
         /// </summary>
         public const int NEGATIVE_POINT = -1;
+
+        /// <summary>
+        ///     Broj koliko elemenata želimo da se prikažu u Drag&Drop igri.
+        /// </summary>
         public const int DRAG_CONTAINER_COUNT = 18;
     }
 }
