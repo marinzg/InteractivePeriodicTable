@@ -153,7 +153,7 @@
             <Grid Margin="-106,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="1331" Height="826" Name="Labeli_i_2_prazna_gumba">
                 <Button x:Name="prazno1" Content="57-71" HorizontalAlignment="Left" Height="60" Margin="263,479,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <Button x:Name="prazno2" Content="89-103" HorizontalAlignment="Left" Height="60" Margin="263,539,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label Foreground="LightBlue" x:Name="label_group" Content="Group" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="633,83,0,0"/>
+                <Label Foreground="LightBlue" x:Name="label_group" Content="Group" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="629,83,0,0"/>
                 <Label Foreground="LightBlue" x:Name="label_period" Content="Period" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,359,0,0" RenderTransformOrigin="0.5,0.5">
                     <Label.RenderTransform>
                         <TransformGroup>
@@ -191,12 +191,12 @@
                 <Label Foreground="LightBlue" x:Name="label_group_period_Copy24" Content="7" HorizontalAlignment="Left" FontSize="23" FontWeight="Bold" Margin="83,539,0,0" Width="60" RenderTransformOrigin="1.421,0.421" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="60" VerticalAlignment="Top"/>
                 <Label x:Name="label" Content="Lanthanides" FontWeight="Bold" FontSize="21.333" HorizontalAlignment="Left" Height="37" Margin="158,641,0,0" VerticalAlignment="Top" Width="177" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue"/>
                 <Label x:Name="label_Copy" Content="Actinides" FontWeight="Bold" FontSize="21.333" HorizontalAlignment="Left" Height="41" Margin="174,698,0,0" VerticalAlignment="Top" Width="116" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="LightBlue"/>
-                <Label x:Name="label3" Content="Search an element:" HorizontalAlignment="Left" Height="31" Margin="83,24,0,0" VerticalAlignment="Top" Width="177" FontSize="18" FontWeight="Bold" Foreground="LightBlue"/>
+                <Label x:Name="label3" Content="Search an element:" HorizontalAlignment="Left" Height="31" Margin="142,26,0,0" VerticalAlignment="Top" Width="177" FontSize="18" FontWeight="Bold" Foreground="LightBlue"/>
             </Grid>
 
             <!-- Searchbox -->
             <Grid Name="Searchbox">
-                <TextBox x:Name="textBox"  HorizontalAlignment="Left" Height="33" Margin="208,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
+                <TextBox x:Name="textBox"  HorizontalAlignment="Left" Height="33" Margin="274,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
                 <ListBox x:Name="listBox" SelectedIndex="0" HorizontalAlignment="Left"  MaxHeight="110" Margin="208,59,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed" IsEnabled="False" MouseDoubleClick="listBox_MouseDoubleClick" SelectionChanged="listBox_SelectionChanged" MouseDown="listBox_MouseDown" Panel.ZIndex="100" >
                     <ListBox.Resources>
                         <Style TargetType="ListBox">
@@ -328,7 +328,7 @@
             </Grid>
 
 
-            <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="10" X2="500" Y2="10" Height="21" Margin="80,97,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="507" Panel.ZIndex="-1"/>
+            <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="10" X2="480" Y2="10" Height="21" Margin="91,97,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="507" Panel.ZIndex="-1"/>
             <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="10" X2="500" Y2="10" Height="21" Margin="659,97,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="507"/>
             <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="10" Y1="0" X2="10" Y2="150" Height="157" Margin="-10,183,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="22"/>
             <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="10" Y1="0" X2="10" Y2="150" Height="157" Margin="-10,425,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="22"/>
