@@ -1,7 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Windows.Controls;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Forms;
@@ -13,7 +11,6 @@ namespace InteractivePeriodicTable.ExtensionMethods
         /// <summary>
         ///     Metoda proširenja za centralizirano upravljanje pogreškama.
         ///     Dojavljuje poruku o iznimci.
-        ///     Gasi program.
         /// </summary>
         /// <param name="exception">
         ///     Iznimka koja se zapisuje u log.txt
@@ -35,8 +32,6 @@ namespace InteractivePeriodicTable.ExtensionMethods
             }
 
             System.Windows.Forms.MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            //Environment.Exit(0);
 
             return;
         }
