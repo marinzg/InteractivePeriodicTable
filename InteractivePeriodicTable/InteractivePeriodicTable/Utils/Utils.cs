@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Media;
+using System.Windows.Input;
 
 namespace InteractivePeriodicTable.Utils
 {
@@ -315,6 +316,98 @@ namespace InteractivePeriodicTable.Utils
             SoundPlayer player = new SoundPlayer(Pathing.ResourcesDir + "");
             player.Load();
             Task.Factory.StartNew(() => { player.PlaySync(); });
+
+            return;
+        }
+    }
+
+    public static class DragAndDropHelper
+    {
+        /// <summary>
+        ///     Helper to search up the VisualTree
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="current"></param>
+        /// <returns></returns>
+        public static T FindAnchestor<T>(DependencyObject current) where T : DependencyObject
+        {
+            do
+            {
+                if (current is T)
+                {
+                    return (T)current;
+                }
+                current = VisualTreeHelper.GetParent(current);
+            }
+            while (current != null);
+
+            return null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="startPoint"></param>
+        /// <param name="listBox"></param>
+        /// <param name="e"></param>
+        public static void CalcPointerPosition(Point startPoint, ListBox listBox, MouseEventArgs e)
+        {
+            // Uzmi trenutnu poziciju miša
+            Point mousePos = e.GetPosition(null);
+            Vector diff = startPoint - mousePos;
+
+            if (e.LeftButton == MouseButtonState.Pressed && (
+                Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
+            {
+                // Pronađi listbox u koji je odvučen gumb
+                ListBoxItem listViewItem = FindAnchestor<ListBoxItem>((DependencyObject)e.OriginalSource);
+
+                // Pronađi podatke iza ListViewItem-a
+                try
+                {
+                    Button element = (Button)listBox.ItemContainerGenerator.ItemFromContainer(listViewItem);
+
+                    // Pokreni Drag&Drop
+                    DataObject dragData = new DataObject("myFormat", element);
+
+                    if (element.IsPressed)
+                    {
+                        DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ex.ErrorMessageBox("There was an error trying to drag/drop button.");
+                }
+            }
+
+            return;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public static void DragEnter(object sender, ref DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent("myFormat") || sender == e.Source)
+            {
+                e.Effects = DragDropEffects.None;
+            }
+
+            return;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="startPoint"></param>
+        /// <param name="e"></param>
+        public static void MouseMove(ref Point startPoint, MouseEventArgs e)
+        {
+            startPoint = e.GetPosition(null);
 
             return;
         }

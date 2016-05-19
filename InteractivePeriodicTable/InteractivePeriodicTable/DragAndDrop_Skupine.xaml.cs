@@ -17,6 +17,7 @@ namespace InteractivePeriodicTable
     /// </summary>
     public partial class DragAndDrop_Skupine : Page
     {
+        #region ČLANSKE VARIJABLE
         private Point startPoint;
         private List<Element> allElements;
         private List<ElementSubcategory> allSubcategories;
@@ -24,6 +25,7 @@ namespace InteractivePeriodicTable
         private List<Button> allButtons = new List<Button>();
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private DateTime start;
+        #endregion
 
         public DragAndDrop_Skupine(List<Element> argElements, List<ElementSubcategory> argSubcategories)
         {
@@ -37,6 +39,7 @@ namespace InteractivePeriodicTable
             StartGame();
         }
 
+        #region METODE ZA POČETAK I KRAJ IGRE
         private void StartGame()
         {
             List<Element> tmpElements = new List<Element>();
@@ -55,13 +58,13 @@ namespace InteractivePeriodicTable
             string secondSubcategoryName = allSubcategories.Where(sc => sc.id == secondRandomNumber).ElementAt(0).name;
             this.groupBoxTwo.Header = secondSubcategoryName;
             this.DropListTwo.Name = this.labelTwoPoints.Name = Regex.Replace(secondSubcategoryName, @" ", @"_");
-            
+
             int thirdRandomNumber = randomNumbers.ElementAt(2);
             tmpElements.AddRange(allElements.Where(el => el.elementSubcategory == thirdRandomNumber));
             string thirdSubcategoryName = allSubcategories.Where(sc => sc.id == thirdRandomNumber).ElementAt(0).name;
             this.groupBoxThree.Header = thirdSubcategoryName;
             this.DropListThree.Name = this.labelThreePoints.Name = Regex.Replace(thirdSubcategoryName, @" ", @"_");
-            
+
             //create buttons to be dragged
             DragAndDropDisplay.AddButtons(tmpElements, DragList, allButtons);
 
@@ -71,7 +74,7 @@ namespace InteractivePeriodicTable
             start = DateTime.Now;
             dispatcherTimer.Start();
         }
-        
+
         private void GameOver()
         {
             int score = DragAndDropDisplay.GetScore(correctGrouping);
@@ -82,7 +85,16 @@ namespace InteractivePeriodicTable
             DragAndDropDisplay.Clear(this, correctGrouping);
             StartGame();
         }
+        #endregion
 
+        #region DOGAĐAJI
+        /// <summary>
+        ///     Metoda se poziva svakih 50ms odpočetka igre.
+        ///     Osvježava prikaz preostalog vremena.
+        ///     U slučaju da je vrijeme isteklo, prekida igru.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             TimeSpan elapsedTime = DateTime.Now - start;
@@ -100,82 +112,66 @@ namespace InteractivePeriodicTable
             return;
         }
 
+        /// <summary>
+        ///     Metoda gasi timer.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void stopTimer(object sender, EventArgs e)
         {
             dispatcherTimer.Stop();
+
             return;
         }
 
-        #region drag&drop implementation (from net)
+        /// <summary>
+        ///     Metoda pohranjuje poziciju miša prilikom klika.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void List_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // Store the mouse position
-            startPoint = e.GetPosition(null);
+            DragAndDropHelper.MouseMove(ref startPoint, e);
+
+            return;
         }
+
+        /// <summary>
+        ///     Metoda računa poziciju vučenog gumba.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void List_MouseMove(object sender, MouseEventArgs e)
         {
-            // Get the current mouse position
-            Point mousePos = e.GetPosition(null);
-            Vector diff = startPoint - mousePos;
+            DragAndDropHelper.CalcPointerPosition(startPoint, (ListBox)sender, e);
 
-            if (e.LeftButton == MouseButtonState.Pressed && (
-                Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
-                Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
-            {
-                // Get the dragged ListViewItem
-                ListBox listView = sender as ListBox;
-                ListBoxItem listViewItem =
-                    FindAnchestor<ListBoxItem>((DependencyObject)e.OriginalSource);
-
-                // Find the data behind the ListViewItem
-                try
-                {
-                    Button element = (Button)listView.ItemContainerGenerator.
-                    ItemFromContainer(listViewItem);
-
-                    // Initialize the drag & drop operation
-                    DataObject dragData = new DataObject("myFormat", element);
-                    if (element.IsPressed)
-                    {
-                        DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
-                    }
-                }
-                catch { }
-
-            }
-        }
-        // Helper to search up the VisualTree
-        private static T FindAnchestor<T>(DependencyObject current)
-            where T : DependencyObject
-        {
-            do
-            {
-                if (current is T)
-                {
-                    return (T)current;
-                }
-                current = VisualTreeHelper.GetParent(current);
-            }
-            while (current != null);
-            return null;
+            return;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DropList_DragEnter(object sender, DragEventArgs e)
         {
-            if (!e.Data.GetDataPresent("myFormat") ||
-                sender == e.Source)
-            {
-                e.Effects = DragDropEffects.None;
-            }
+            DragAndDropHelper.DragEnter(sender, ref e);
+
+            return;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DropList_Drop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent("myFormat"))
             {
                 Button element = e.Data.GetData("myFormat") as Button;
                 ListBox listView = sender as ListBox;
-                
+
                 //there was a bug that tried drop element twice
                 if (element.Parent != null && element.Parent.Equals(DragList))
                 {
@@ -184,7 +180,7 @@ namespace InteractivePeriodicTable
                     int elementSubcategory = allElements.Where(el => el.symbol.Equals(element.Content)).ElementAt(0).elementSubcategory;
 
                     //if user sorted correctly
-                    if(subcategoryId == elementSubcategory)
+                    if (subcategoryId == elementSubcategory)
                     {
                         element.Background = Brushes.LightGreen;
                         DragAndDropDisplay.UpdatePoints(correctGrouping, subcategory, Constants.POSITIVE_POINT);
@@ -207,7 +203,7 @@ namespace InteractivePeriodicTable
                     DragAndDropDisplay.DisplayUpdatedPoints(correctGrouping, this);
                     //DisplayUpdatedPoints();
                     //AutoScroll();
-                    
+
                 }
                 if (!DragList.HasItems) GameOver();
             }
