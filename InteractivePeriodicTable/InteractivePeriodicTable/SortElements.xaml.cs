@@ -4,16 +4,32 @@ using InteractivePeriodicTable.Models;
 
 namespace InteractivePeriodicTable
 {
-    /// <summary>
-    /// Interaction logic for SortElements.xaml
-    /// </summary>
     public partial class SortElements : Window
     {
         #region ČLANSKE VARIJABLE
+        /// <summary>
+        ///     Sprema sve elemente periodnog sustava.
+        /// </summary>
         private List<Element> elements;
+
+        /// <summary>
+        ///     Sprema sve kategroije elemenata.
+        /// </summary>
         private List<ElementCategory> categories;
+
+        /// <summary>
+        ///     Sprema sve potkategorije elemenata.
+        /// </summary>
         private List<ElementSubcategory> subcategories;
+
+        /// <summary>
+        ///     Sprema sva agregatna stanja elemenata.
+        /// </summary>
         private List<Phase> phases;
+
+        /// <summary>
+        ///     Sprema sve kristalne strukture elemenata.
+        /// </summary>
         private List<CrystalStructure> crystalStructures;
         #endregion
 
