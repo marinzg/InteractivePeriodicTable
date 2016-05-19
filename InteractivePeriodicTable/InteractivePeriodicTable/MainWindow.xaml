@@ -197,7 +197,7 @@
             <!-- Searchbox -->
             <Grid Name="Searchbox">
                 <TextBox x:Name="textBox"  HorizontalAlignment="Left" Height="33" Margin="208,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
-                <ListBox x:Name="listBox" SelectedIndex="0" HorizontalAlignment="Left" Height="Auto" Margin="268,130,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed" IsEnabled="False" MouseDoubleClick="listBox_MouseDoubleClick" SelectionChanged="listBox_SelectionChanged" MouseDown="listBox_MouseDown" >
+                <ListBox x:Name="listBox" SelectedIndex="0" HorizontalAlignment="Left" Height="Auto" Margin="208,59,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed" IsEnabled="False" MouseDoubleClick="listBox_MouseDoubleClick" SelectionChanged="listBox_SelectionChanged" MouseDown="listBox_MouseDown" Panel.ZIndex="100" >
                     <ListBox.Resources>
                         <Style TargetType="ListBox">
                             <Setter Property="ItemContainerStyle">
@@ -328,9 +328,7 @@
             </Grid>
 
 
-            <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="10" X2="500" Y2="10" Height="21" Margin="80,97,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="507">
-
-            </Line>
+            <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="10" X2="500" Y2="10" Height="21" Margin="80,97,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="507" Panel.ZIndex="-1"/>
             <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="0" Y1="10" X2="500" Y2="10" Height="21" Margin="659,97,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="507"/>
             <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="10" Y1="0" X2="10" Y2="150" Height="157" Margin="-10,183,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="22"/>
             <Line Fill="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="2" X1="10" Y1="0" X2="10" Y2="150" Height="157" Margin="-10,425,0,0" Stroke="LightBlue" VerticalAlignment="Top" Width="22"/>

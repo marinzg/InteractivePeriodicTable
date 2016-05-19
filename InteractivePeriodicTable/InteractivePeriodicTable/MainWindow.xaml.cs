@@ -503,9 +503,8 @@ namespace InteractivePeriodicTable
             }
         }
 
+
+
         #endregion
-
-
-
     }
 }
