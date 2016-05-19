@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using InteractivePeriodicTable.Utils;
 using InteractivePeriodicTable.Data;
 using InteractivePeriodicTable.ExtensionMethods;
-using InteractivePeriodicTable.Models;
 using System.Windows.Controls.Primitives;
 
 namespace InteractivePeriodicTable
@@ -49,7 +48,7 @@ namespace InteractivePeriodicTable
         /// <summary>
         ///     Omogućava da se ne ponavljaju pitanja na kvizu
         /// </summary>
-        private List<Tuple<int, int>> listOfGeneratedQuestions = new List<Tuple<int, int>>();
+        //private List<Tuple<int, int>> listOfGeneratedQuestions = new List<Tuple<int, int>>();
 
         /// <summary>
         ///     Sprema trenutni rezultat igrača.
@@ -206,7 +205,7 @@ namespace InteractivePeriodicTable
             int numberOfQuestions = -1;
             int questionID = -1;
 
-            GenerateNextQuestion:
+            //GenerateNextQuestion:
             if (questionType == 0)
             {
                 numberOfQuestions = questions.QuizWith4Ans.Count;
@@ -223,13 +222,13 @@ namespace InteractivePeriodicTable
                 questionID = rand.Next(0, numberOfQuestions);
             }
 
-            Tuple<int, int> generatedQuestion = new Tuple<int, int>(questionType, questionID);
-            while (listOfGeneratedQuestions.Contains(generatedQuestion))
-            {
-                goto GenerateNextQuestion;
-            }
+            //Tuple<int, int> generatedQuestion = new Tuple<int, int>(questionType, questionID);
+            //while (listOfGeneratedQuestions.Contains(generatedQuestion))
+            //{
+            //    goto GenerateNextQuestion;
+            //}
 
-            listOfGeneratedQuestions.Add(generatedQuestion);
+            //listOfGeneratedQuestions.Add(generatedQuestion);
 
             return questionID;
         }
@@ -644,7 +643,7 @@ namespace InteractivePeriodicTable
         }
 
         /// <summary>
-        ///     Poziva se svakih 50ms proteklog vremena tijekom igranja kviza.
+        ///     Poziva se svakih Constants.QUIZ_PLAY_TIME ms proteklog vremena tijekom igranja kviza.
         ///     Osvježava prikaz preostalog vremena.
         ///     Provjerava da li je prošlo vrijeme dozbvoljeno za igranje.
         ///     Ako je prošlo vrijeme za igru, poziva formu za upis rezultat na server.

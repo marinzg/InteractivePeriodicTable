@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using InteractivePeriodicTable.Models;
 using InteractivePeriodicTable.Utils;
 using InteractivePeriodicTable.Data;
+using System.Windows.Threading;
 
 namespace InteractivePeriodicTable
 {
@@ -22,10 +23,14 @@ namespace InteractivePeriodicTable
         private List<ElementSubcategory> allSubcategories;
         private Dictionary<string, int> correctGrouping = new Dictionary<string, int>();
         private List<Button> allButtons = new List<Button>();
+        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        private DateTime start;
 
         public DragAndDrop_Skupine(List<Element> argElements, List<ElementSubcategory> argSubcategories)
         {
             InitializeComponent();
+
+            this.Unloaded += stopTimer;
 
             this.allElements = argElements;
             this.allSubcategories = argSubcategories;
@@ -60,6 +65,12 @@ namespace InteractivePeriodicTable
             
             //create buttons to be dragged
             DragAndDropDisplay.AddButtons(tmpElements, DragList, allButtons);
+
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 50);
+
+            start = DateTime.Now;
+            dispatcherTimer.Start();
         }
         
         private void GameOver()
@@ -71,6 +82,29 @@ namespace InteractivePeriodicTable
 
             DragAndDropDisplay.Clear(this, correctGrouping);
             StartGame();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            TimeSpan elapsedTime = DateTime.Now - start;
+
+            string remainingTime = Convert.ToString(Constants.DD_PLAY_TIME - elapsedTime.Seconds);
+            timer.Content = "Time left: " + remainingTime + " s";
+
+            if (elapsedTime.Seconds >= Constants.DD_PLAY_TIME)
+            {
+                dispatcherTimer.Stop();
+
+                GameOver();
+            }
+
+            return;
+        }
+
+        private void stopTimer(object sender, EventArgs e)
+        {
+            dispatcherTimer.Stop();
+            return;
         }
 
         #region drag&drop implementation (from net)

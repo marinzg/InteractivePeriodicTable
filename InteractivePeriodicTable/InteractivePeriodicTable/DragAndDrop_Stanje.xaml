@@ -36,6 +36,7 @@
         <Label x:Name="labelSolidPoints" Content="0" HorizontalAlignment="Left" Margin="76,264,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="LightBlue"/>
         <Label x:Name="labelGasPoints" Content="0" HorizontalAlignment="Left" Margin="323,264,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FFADD8EB"/>
         <Label x:Name="labelLiquidPoints" Content="0" HorizontalAlignment="Left" Margin="580,264,0,0" VerticalAlignment="Top" Foreground="LightBlue" FontWeight="Bold"/>
+        <Label x:Name="timer" Content="Time left:" HorizontalAlignment="Left" Margin="23,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.517,-0.217" Foreground="#FFAED8E7" FontWeight="Bold"/>
     </Grid>
 
     <Page.Resources>

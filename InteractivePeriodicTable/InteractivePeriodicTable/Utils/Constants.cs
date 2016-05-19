@@ -8,6 +8,11 @@
         public const int QUIZ_PLAY_TIME = 30;
 
         /// <summary>
+        ///     Koliko sekundi početno traje Drag&Drop.
+        /// </summary>
+        public const int DD_PLAY_TIME = 30;
+
+        /// <summary>
         ///     Koliko se bodova dodaje za točan odgovor.
         /// </summary>
         public const int POSITIVE_POINT = 1;
