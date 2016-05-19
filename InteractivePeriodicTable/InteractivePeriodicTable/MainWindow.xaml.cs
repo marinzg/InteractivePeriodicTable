@@ -322,7 +322,8 @@ namespace InteractivePeriodicTable
                 }
             }
 
-            highlightElementsOnTable();
+            highlight(null, true);
+            //highlightElementsOnTable();
             otherButtonsHighlight();
             bringBackColors();
 
@@ -359,8 +360,9 @@ namespace InteractivePeriodicTable
                 if (listBox.SelectedIndex < numberOfElementsInListBox)
                 {
                     listBox.SelectedIndex++;
-                    highLightSpecificElement(listBox.SelectedItem.ToString());
-                    deSelectOtherElements(listBox.SelectedItem.ToString());
+                    highlight(listBox.SelectedItem.ToString(), false);
+                    //highLightSpecificElement(listBox.SelectedItem.ToString());
+                    //deSelectOtherElements(listBox.SelectedItem.ToString());
                 }
 
                 e.Handled = true;
@@ -370,8 +372,9 @@ namespace InteractivePeriodicTable
                 if (listBox.SelectedIndex > 0)
                 {
                     listBox.SelectedIndex--;
-                    highLightSpecificElement(listBox.SelectedItem.ToString());
-                    deSelectOtherElements(listBox.SelectedItem.ToString());
+                    highlight(listBox.SelectedItem.ToString(), false);
+                    //kighLightSpecificElement(listBox.SelectedItem.ToString());
+                    //deSelectOtherElements(listBox.SelectedItem.ToString());
                 }
 
                 e.Handled = true;
@@ -504,6 +507,8 @@ namespace InteractivePeriodicTable
                     listBox.Items.Contains(elementButton.Name) == false)
                 {
                     elementButton.Background = Brushes.Gainsboro;
+                    elementButton.FontWeight = FontWeights.Normal;
+                    elementButton.Foreground = Brushes.Black;
                 }
             }
 
@@ -556,6 +561,83 @@ namespace InteractivePeriodicTable
             }
 
             return;
+        }
+
+
+        private void highlight(string elementName, bool MultiOrSingle)
+        {
+            LinearGradientBrush gradient = new LinearGradientBrush();
+            gradient.StartPoint = new Point(0.5, 0);
+            gradient.EndPoint = new Point(0.5, 0.5);
+
+            gradient.GradientStops.Add(new GradientStop(Colors.Crimson, 0));
+            gradient.GradientStops.Add(new GradientStop(Colors.Indigo, 1));
+
+            if (MultiOrSingle == true)
+            {
+                foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
+                {
+                    if (listBox.Items.Contains(elementButton.Name) == true)
+                    {
+                       
+                        elementButton.Background = gradient;
+                        elementButton.FontWeight = FontWeights.Bold;
+                        elementButton.Foreground = Brushes.Gold;
+                    }
+                    else
+                    {
+                        elementButton.Background = previousBackgroundColors[elementButton.Name];
+                        elementButton.Foreground = previousForegroundColors[elementButton.Name];
+                    }
+                }
+                foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
+                {
+                    if (elementButton.Name != "play_quiz" &&
+                        elementButton.Name != "show_scoreboard" &&
+                        elementButton.Name != "update" &&
+                        elementButton.Name != "DragDropGames" &&
+                        listBox.Items.Contains(elementButton.Name) == false)
+                    {
+                        elementButton.Background = Brushes.Gainsboro;
+                        elementButton.FontWeight = FontWeights.Normal;
+                        elementButton.Foreground = Brushes.Black;
+                    }
+                }
+            }
+            else
+            {
+                foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
+                {
+                    if (elementName == elementButton.Name)
+                    {
+
+                        elementButton.Background = gradient;
+                        elementButton.FontWeight = FontWeights.Bold;
+                        elementButton.Foreground = Brushes.Gold;
+                    }
+                    else
+                    {
+                        elementButton.Background = previousBackgroundColors[elementButton.Name];
+                        elementButton.Foreground = previousForegroundColors[elementButton.Name];
+                    }
+                }
+
+                foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
+                {
+                    if (elementButton.Name != "play_quiz" &&
+                        elementButton.Name != "show_scoreboard" &&
+                        elementButton.Name != "update" &&
+                        elementButton.Name != "DragDropGames" &&
+                        elementName != elementButton.Name)
+                    {
+                        elementButton.Background = Brushes.Gainsboro;
+                        elementButton.FontWeight = FontWeights.Normal;
+                        elementButton.Foreground = Brushes.Black;
+                    }
+                }
+
+            }
+
         }
         #endregion
     }
