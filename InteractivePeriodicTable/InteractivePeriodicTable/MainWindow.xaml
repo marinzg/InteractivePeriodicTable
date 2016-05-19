@@ -154,8 +154,8 @@
 
             <!-- Svi ostali labeli unutar forme -->
             <Grid Margin="-106,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="1331" Height="826" Name="Labeli_i_2_prazna_gumba">
-                <Button x:Name="prazno1" Content="57-71" HorizontalAlignment="Left" Height="60" Margin="263,479,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Button x:Name="prazno2" Content="89-103" HorizontalAlignment="Left" Height="60" Margin="263,539,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="prazno1" Content="57-71" HorizontalAlignment="Left" Height="60" Margin="263,479,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE5A7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource RoundedButton}"/>
+                <Button x:Name="prazno2" Content="89-103" HorizontalAlignment="Left" Height="60" Margin="263,539,0,0" VerticalAlignment="Top" Width="60" Background="#FFFFE2F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource RoundedButton}"/>
                 <Label Foreground="LightBlue" x:Name="label_group" Content="Group" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="629,83,0,0"/>
                 <Label Foreground="LightBlue" x:Name="label_period" Content="Period" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,359,0,0" RenderTransformOrigin="0.5,0.5">
                     <Label.RenderTransform>
