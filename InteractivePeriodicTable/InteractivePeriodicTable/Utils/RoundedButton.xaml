@@ -25,7 +25,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <ControlTemplate.Resources>
+
+                    <!--
+                        <ControlTemplate.Resources>
                         <Storyboard x:Key="ShowShine">
    
                             <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Shine" Storyboard.TargetProperty="(UIElement.Opacity)">
@@ -37,7 +39,11 @@
                                 <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
-                    </ControlTemplate.Resources>
+                    </ControlTemplate.Resources> -->
+
+
+
+
                     <Border CornerRadius="12,12,12,12" BorderThickness="3,3,3,3" RenderTransformOrigin="0.5,0.5" x:Name="border" BorderBrush="DarkBlue">
                         <Border.RenderTransform>
                             <TransformGroup>
@@ -47,8 +53,26 @@
                                 <TranslateTransform X="0" Y="0"/>
                             </TransformGroup>
                         </Border.RenderTransform>
-                        
-                        <Border Background="{TemplateBinding Background}" CornerRadius="12,12,12,12"  x:Name="border1">
+
+                        <Border Background="{TemplateBinding Background}" CornerRadius="12,12,12,12"  x:Name="bordertrue">
+                            <Grid>
+                                
+                                <Border Opacity="0" x:Name="Shine" Width="Auto" Height="Auto" CornerRadius="0,0,10,10" Margin="0,0,0,0">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="Indigo" Offset="0"/>
+                                            <GradientStop Color="Crimson" Offset="0.5"/>
+                                            <GradientStop Color="Crimson" Offset="0.5"/>
+                                            <GradientStop Color="Indigo" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <ContentPresenter VerticalAlignment="Center"  Grid.RowSpan="2" HorizontalAlignment="Center" x:Name="contentPresenter"/>
+                            </Grid>
+                        </Border>
+                    </Border>
+
+                    <!-- <Border Background="{TemplateBinding Background}" CornerRadius="12,12,12,12"  x:Name="border1">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="0.5*"/>
@@ -78,7 +102,7 @@
                                     <ContentPresenter VerticalAlignment="Center"  Grid.RowSpan="2" HorizontalAlignment="Center" x:Name="contentPresenter"/>
                             </Grid>
                         </Border>
-                    </Border>
+                    </Border>-->
 
                     
                     
@@ -88,7 +112,7 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" TargetName="border" Value="1"/>
                             <Setter Property="Opacity" TargetName="contentPresenter" Value="0.5"/>
-                       </Trigger>
+                        </Trigger>
                         
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="RenderTransform" TargetName="border">
@@ -105,7 +129,7 @@
 
                         <Trigger Property="IsMouseOver" Value="True">
 
-                            <Setter Property="Opacity" TargetName="Shine" Value="1"></Setter>
+                           <!-- <Setter Property="Opacity" TargetName="Shine" Value="1"></Setter>
                             <Setter Property="Background" TargetName="Upper" >
                                 <Setter.Value>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -113,10 +137,11 @@
                                         <GradientStop Color="Crimson" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Setter.Value>
-                            </Setter>
-                            
+                            </Setter>-->
+
+                            <Setter Property="Opacity" TargetName="Shine" Value="1"/>
                             <Setter Property="Foreground" Value="Gold" />
-                            <Setter Property="FontWeight" Value="ExtraBold"/>
+                            <Setter Property="FontWeight"  Value="ExtraBold"/>
 
                         </Trigger>
                     </ControlTemplate.Triggers>
