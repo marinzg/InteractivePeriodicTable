@@ -277,9 +277,7 @@ namespace InteractivePeriodicTable
             ListBox chosenItem = e.Source as ListBox;
             string elementName = chosenItem.SelectedValue.ToString();
 
-            highLightSpecificElement(elementName);
-            deSelectOtherElements(elementName);
-
+            highlight(elementName, false);
             return;
         }
 
@@ -323,8 +321,6 @@ namespace InteractivePeriodicTable
             }
 
             highlight(null, true);
-            //highlightElementsOnTable();
-            otherButtonsHighlight();
             bringBackColors();
 
             return;
@@ -361,8 +357,6 @@ namespace InteractivePeriodicTable
                 {
                     listBox.SelectedIndex++;
                     highlight(listBox.SelectedItem.ToString(), false);
-                    //highLightSpecificElement(listBox.SelectedItem.ToString());
-                    //deSelectOtherElements(listBox.SelectedItem.ToString());
                 }
 
                 e.Handled = true;
@@ -373,8 +367,6 @@ namespace InteractivePeriodicTable
                 {
                     listBox.SelectedIndex--;
                     highlight(listBox.SelectedItem.ToString(), false);
-                    //kighLightSpecificElement(listBox.SelectedItem.ToString());
-                    //deSelectOtherElements(listBox.SelectedItem.ToString());
                 }
 
                 e.Handled = true;
@@ -438,8 +430,7 @@ namespace InteractivePeriodicTable
 
             if (chosenItem.Items.Count != 0)
             {
-                highLightSpecificElement(chosenItem.SelectedValue.ToString());
-                deSelectOtherElements(chosenItem.SelectedValue.ToString());
+                highlight(chosenItem.SelectedValue.ToString(), false);
             }
             else
             {
@@ -471,107 +462,25 @@ namespace InteractivePeriodicTable
             return;
         }
 
-        /// <summary>
-        ///     Metoda označava buttone iz searchboxa.
-        /// </summary>
-        private void highlightElementsOnTable()
-        {
-            foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
-            {
-                if ( listBox.Items.Contains(elementButton.Name) == true )
-                {
-                    elementButton.Background = Brushes.DarkBlue;
-                    elementButton.Foreground = Brushes.Gold;
-                }
-                else
-                {
-                    elementButton.Background = previousBackgroundColors[elementButton.Name];
-                    elementButton.Foreground = previousForegroundColors[elementButton.Name];
-                }
-            }
-
-            return;
-        }
-
-        /// <summary>
-        ///     Metoda postavlja boju buttona koji nisu u listbox-u u sivo.
-        /// </summary>
-        private void otherButtonsHighlight()
-        {
-            foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
-            {
-                if (elementButton.Name != "play_quiz" &&
-                    elementButton.Name != "show_scoreboard" &&
-                    elementButton.Name != "update" &&
-                    elementButton.Name != "DragDropGames" &&
-                    listBox.Items.Contains(elementButton.Name) == false)
-                {
-                    elementButton.Background = Brushes.Gainsboro;
-                    elementButton.FontWeight = FontWeights.Normal;
-                    elementButton.Foreground = Brushes.Black;
-                }
-            }
-
-            return;
-        }
-
-        /// <summary>
-        ///     Metoda označava element button čiji naziv smo predali kao parametar.
-        /// </summary>
-        /// <param name="name">
-        ///     Jedinstveno označava element button.
-        /// </param>
-        private void highLightSpecificElement(string elementName)
-        {
-            foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
-            {
-                if (elementName == elementButton.Name)
-                {
-                    elementButton.Background = Brushes.DarkBlue;
-                    elementButton.Foreground = Brushes.Gold;
-                }
-                else
-                {
-                    elementButton.Background = previousBackgroundColors[elementButton.Name];
-                    elementButton.Foreground = previousForegroundColors[elementButton.Name];
-                }
-            }
-
-            return;
-        }
-
-        /// <summary>
-        ///     Metoda odznačava ostale element buttone kada je odredjeni odabran "gray out"
-        /// </summary>
-        /// <param name="name">
-        ///     Jedinstveno označava element button.
-        /// </param>
-        private void deSelectOtherElements(string elementName)
-        {
-            foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
-            {
-                if (elementButton.Name != "play_quiz" &&
-                    elementButton.Name != "show_scoreboard" &&
-                    elementButton.Name != "update" &&
-                    elementButton.Name != "DragDropGames" &&
-                    elementName != elementButton.Name)
-                {
-                    elementButton.Background = Brushes.Gainsboro;
-                }
-            }
-
-            return;
-        }
-
-
+       /// <summary>
+       /// metoda koja ovisno o modu highlighta / deselecta elemente Single oznacava jedan, multi vise njih
+       /// </summary>
+       /// <param name="elementName"></param>
+       /// <param name="MultiOrSingle"></param>
         private void highlight(string elementName, bool MultiOrSingle)
         {
-            LinearGradientBrush gradient = new LinearGradientBrush();
-            gradient.StartPoint = new Point(0.5, 0);
-            gradient.EndPoint = new Point(0.5, 0.5);
+            LinearGradientBrush gradient1 = new LinearGradientBrush();
+            gradient1.StartPoint = new Point(0.5, 0);
+            gradient1.EndPoint = new Point(0.5, 1);
 
-            gradient.GradientStops.Add(new GradientStop(Colors.Crimson, 0));
-            gradient.GradientStops.Add(new GradientStop(Colors.Indigo, 1));
+            gradient1.GradientStops.Add(new GradientStop(Colors.Indigo, 0));
+            gradient1.GradientStops.Add(new GradientStop(Colors.Crimson, 0.5));
+            gradient1.GradientStops.Add(new GradientStop(Colors.Crimson, 0.5));
+            gradient1.GradientStops.Add(new GradientStop(Colors.Indigo, 1));
+            
+           
+
+
 
             if (MultiOrSingle == true)
             {
@@ -579,8 +488,7 @@ namespace InteractivePeriodicTable
                 {
                     if (listBox.Items.Contains(elementButton.Name) == true)
                     {
-                       
-                        elementButton.Background = gradient;
+                        elementButton.Background = gradient1;
                         elementButton.FontWeight = FontWeights.Bold;
                         elementButton.Foreground = Brushes.Gold;
                     }
@@ -611,7 +519,7 @@ namespace InteractivePeriodicTable
                     if (elementName == elementButton.Name)
                     {
 
-                        elementButton.Background = gradient;
+                        elementButton.Background = gradient1;
                         elementButton.FontWeight = FontWeights.Bold;
                         elementButton.Foreground = Brushes.Gold;
                     }
