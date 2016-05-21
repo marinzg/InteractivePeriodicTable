@@ -30,8 +30,8 @@
             <WebBrowser x:Name="browser" Visibility="hidden" />
 
             <!-- Grid sa sadržajem svih buttona koji su elementi. Ujedinjuje ih jedan click event...Elementi_klik-->
-            <Grid ButtonBase.Click = "Element_klik" VerticalAlignment="Center" HorizontalAlignment="Center" Height="826" Margin="-106,0,0,0" Width="1331">
-                <Button x:Name="Hydrogen" HorizontalAlignment="Left" Height="60" Margin="143,179,0,0" VerticalAlignment="Top" Width="60" Content="1&#xA;H" Background="#FFAEF59C" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource RoundedButton}"/>
+            <Grid ButtonBase.Click = "Element_klik" VerticalAlignment="Center" HorizontalAlignment="Center" Height="826" Margin="-106,0,0,0" Width="1331" >
+                <Button x:Name="Hydrogen" HorizontalAlignment="Left" Height="60" Margin="143,179,0,0" VerticalAlignment="Top" Width="60" Content="1&#xA;H" Background="#FFAEF59C" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource RoundedButton}" />
                 <Button x:Name="Lithium" Content="3&#xA;Li" HorizontalAlignment="Left" Height="60" Margin="143,239,0,0" VerticalAlignment="Top" Width="60" Background="#FFFBB35D" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource RoundedButton}"/>
                 <Button x:Name="Sodium" Content="11&#xA;Na" HorizontalAlignment="Left" Height="60" Margin="143,299,0,0" VerticalAlignment="Top" Width="60" Background="#FFFBB35D" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource RoundedButton}"/>
                 <Button x:Name="Potassium" Content="19&#xA;K" HorizontalAlignment="Left" Height="60" Margin="143,359,0,0" VerticalAlignment="Top" Width="60" Background="#FFFBB35D" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource RoundedButton}"/>
@@ -198,7 +198,7 @@
 
             <!-- Searchbox -->
             <Grid Name="Searchbox">
-                <TextBox x:Name="textBox" Background="LightBlue" HorizontalAlignment="Left" Height="33" Margin="274,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
+                <TextBox x:Name="textBox" Background="AliceBlue" HorizontalAlignment="Left" Height="33" Margin="274,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="textBox_TextChanged" FontSize="16" ToolTip="Search..." Loaded="textBox_Loaded" Padding="0 5 0 0"/>
                 <ListBox x:Name="listBox" SelectedIndex="0" HorizontalAlignment="Left"  Height="Auto" Margin="274,59,0,0" VerticalAlignment="Top" Width="204" Visibility="Collapsed" IsEnabled="False" MouseDoubleClick="listBox_MouseDoubleClick" SelectionChanged="listBox_SelectionChanged" MouseDown="listBox_MouseDown" Panel.ZIndex="100" Background="LightBlue" >
                     <ListBox.Resources>
                         <Style TargetType="ListBox">

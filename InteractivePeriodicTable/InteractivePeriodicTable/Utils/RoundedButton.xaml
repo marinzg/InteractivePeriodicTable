@@ -14,7 +14,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="RoundedButton" TargetType="{x:Type Button}">
+    <Style x:Key="RoundedButton" TargetType="{x:Type Button}" x:Name="butt">
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
@@ -57,7 +57,7 @@
                         <Border Background="{TemplateBinding Background}" CornerRadius="12,12,12,12"  x:Name="bordertrue">
                             <Grid>
                                 
-                                <Border Opacity="0" x:Name="Shine" Width="Auto" Height="Auto" CornerRadius="0,0,10,10" Margin="0,0,0,0">
+                                <Border Opacity="0" x:Name="Shine" Width="Auto" Height="Auto" CornerRadius="12,12,10,10" Margin="0,0,0,0">
                                     <Border.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                             <GradientStop Color="Indigo" Offset="0"/>
@@ -140,6 +140,7 @@
                             </Setter>-->
 
                             <Setter Property="Opacity" TargetName="Shine" Value="1"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="Gold"/>
                             <Setter Property="Foreground" Value="Gold" />
                             <Setter Property="FontWeight"  Value="ExtraBold"/>
 
