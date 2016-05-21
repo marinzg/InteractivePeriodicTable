@@ -49,7 +49,7 @@ namespace InteractivePeriodicTable.Utils
         public static readonly string LocalDir = Directory.GetCurrentDirectory();
         public static readonly string ResourcesDir = LocalDir + @"\Resources";
         public static readonly string SysDir = ResourcesDir + @"\Sys";
-        public static readonly string QuizImgDir = ResourcesDir + @"\QuizImages";
+        public static readonly string QuizWithImagesDir = ResourcesDir + @"\QuizWithImagesDir";
     }
 
     /// <summary>

@@ -148,7 +148,7 @@ namespace InteractivePeriodicTable
         /// </returns>
         private bool checkIfAnyQuestions()
         {
-            int questionsCount = questions.QuizPictures.Count + questions.QuizWith4Ans.Count + questions.QuizYesNo.Count;
+            int questionsCount = questions.QuizWith4Ans.Count + questions.QuizYesNo.Count + questions.QuizWithPictures.Count;
             if (questionsCount == 0)
             {
                 return false;
@@ -187,7 +187,7 @@ namespace InteractivePeriodicTable
             }
             else
             {
-                renderQuizPictures(questionID);
+                renderQuizWithPictures(questionID);
             }
 
             return;
@@ -218,7 +218,7 @@ namespace InteractivePeriodicTable
             }
             else
             {
-                numberOfQuestions = questions.QuizPictures.Count;
+                numberOfQuestions = questions.QuizWithPictures.Count;
                 questionID = rand.Next(0, numberOfQuestions);
             }
 
@@ -241,7 +241,7 @@ namespace InteractivePeriodicTable
         /// </returns>
         private byte pickQuestionType()
         {
-            byte questionType = 3; // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizPictures, 3->Pogreška
+            byte questionType = 3; // 0->QuizWith4Ans, 1->QuizYesNo, 2->QuizWithPictures, 3->Pogreška
 
             if (hasImages == true)
             {
@@ -386,17 +386,27 @@ namespace InteractivePeriodicTable
         /// <param name="questionID">
         ///     ID pitanja za prikaz.
         /// </param>
-        private void renderQuizPictures(int questionID)
+        private void renderQuizWithPictures(int questionID)
         {
             question.Text = "Write what you see in this image";
 
-            QuizPictures pickedQuestion = questions.QuizPictures[questionID];
+            QuizWithPictures pickedQuestion = questions.QuizWithPictures[questionID];
 
+            byte[] imageArray = File.ReadAllBytes(Pathing.QuizWithImagesDir + "\\" + pickedQuestion.Answer + ".jpg");
+            MemoryStream stream = new MemoryStream();
+            stream.Write(imageArray, 0, imageArray.Length);
+            stream.Position = 0;
+
+            System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
             BitmapImage imageData = new BitmapImage();
             imageData.BeginInit();
-                imageData.UriSource = new Uri(Pathing.QuizImgDir + "\\" + pickedQuestion.ImagePath, UriKind.Absolute);
-            imageData.EndInit();
 
+            MemoryStream ms = new MemoryStream();
+            img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+            ms.Seek(0, SeekOrigin.Begin);
+            imageData.StreamSource = ms;
+            imageData.EndInit();
+            
             Image image = new Image();
             image.Width = 300;
             image.Source = imageData;
@@ -423,7 +433,6 @@ namespace InteractivePeriodicTable
             this.sp.Children.Add(checkButton);
 
             this.KeyDown += Quiz_KeyDown;
-
             return;
         }
         #endregion
@@ -438,12 +447,12 @@ namespace InteractivePeriodicTable
         /// </returns>
         private bool checkImages()
         {
-            if ( Directory.Exists(Pathing.QuizImgDir) == false )
+            if (Directory.Exists(Pathing.QuizWithImagesDir) && Directory.GetFiles(Pathing.QuizWithImagesDir).Length == 0)
             {
-                "You are missing quiz images.\nYou won't get questions with images in quiz game.".Notify();
+                "You are missing quiz images.\nYou won't get questions with images in quiz game.\nPlease do an update!".Notify();
                 return false;
             }
-
+            /*
             List<string> missingPictures = new List<string>();
 
             foreach (QuizPictures pictureQuestion in questions.QuizPictures)
@@ -467,7 +476,7 @@ namespace InteractivePeriodicTable
 
                 return false;
             }
-
+            */
             return true;
         }
 
