@@ -480,6 +480,7 @@ namespace InteractivePeriodicTable
             gradient1.GradientStops.Add(new GradientStop(Colors.Crimson, 0.5));
             gradient1.GradientStops.Add(new GradientStop(Colors.Indigo, 1));
             
+            
            
 
 
@@ -509,6 +510,7 @@ namespace InteractivePeriodicTable
                         listBox.Items.Contains(elementButton.Name) == false)
                     {
                         elementButton.Background = Brushes.Gainsboro;
+                        elementButton.BorderBrush = Brushes.DarkBlue;
                         elementButton.FontWeight = FontWeights.Normal;
                         elementButton.Foreground = Brushes.Black;
                     }
@@ -522,6 +524,7 @@ namespace InteractivePeriodicTable
                     {
 
                         elementButton.Background = gradient1;
+                        elementButton.BorderBrush = Brushes.Gold;
                         elementButton.FontWeight = FontWeights.Bold;
                         elementButton.Foreground = Brushes.Gold;
                     }
@@ -541,6 +544,7 @@ namespace InteractivePeriodicTable
                         elementName != elementButton.Name)
                     {
                         elementButton.Background = Brushes.Gainsboro;
+                        elementButton.BorderBrush = Brushes.DarkBlue;
                         elementButton.FontWeight = FontWeights.Normal;
                         elementButton.Foreground = Brushes.Black;
                     }
@@ -550,5 +554,6 @@ namespace InteractivePeriodicTable
 
         }
         #endregion
+
     }
 }
