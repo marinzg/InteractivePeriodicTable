@@ -378,7 +378,7 @@ namespace InteractivePeriodicTable.Utils
                 }
                 catch (Exception ex)
                 {
-                    ex.ErrorMessageBox("There was an error trying to drag/drop button.");
+                    //ex.ErrorMessageBox("There was an error trying to drag/drop button.");
                 }
             }
 
