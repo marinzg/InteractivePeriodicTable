@@ -513,7 +513,7 @@ namespace InteractivePeriodicTable
                         listBox.Items.Contains(elementButton.Name) == false)
                     {
                         elementButton.Background = Brushes.Gainsboro;
-                        elementButton.BorderBrush = Brushes.DarkBlue;
+                        elementButton.BorderBrush = Brushes.Indigo;
                         elementButton.FontWeight = FontWeights.Normal;
                         elementButton.Foreground = Brushes.Black;
                     }
@@ -547,7 +547,7 @@ namespace InteractivePeriodicTable
                         elementName != elementButton.Name)
                     {
                         elementButton.Background = Brushes.Gainsboro;
-                        elementButton.BorderBrush = Brushes.DarkBlue;
+                        elementButton.BorderBrush = Brushes.Indigo;
                         elementButton.FontWeight = FontWeights.Normal;
                         elementButton.Foreground = Brushes.Black;
                     }

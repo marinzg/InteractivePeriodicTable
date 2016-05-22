@@ -30,7 +30,7 @@
             <WebBrowser x:Name="browser" Visibility="hidden" />
 
             <!-- Grid sa sadržajem svih buttona koji su elementi. Ujedinjuje ih jedan click event...Elementi_klik-->
-            <Grid ButtonBase.Click = "Element_klik" VerticalAlignment="Center" HorizontalAlignment="Center" Height="826" Margin="-106,0,0,0" Width="1331" >
+            <Grid ButtonBase.Click = "Element_klik" VerticalAlignment="Center" HorizontalAlignment="Center" Height="826" Margin="-106,0,0,0" Width="1331" x:Name="buttgrid">
                 <Button x:Name="Hydrogen" HorizontalAlignment="Left" Height="60" Margin="143,179,0,0" VerticalAlignment="Top" Width="60" Content="1&#xA;H" Background="#FFAEF59C" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource RoundedButton}" />
                 <Button x:Name="Lithium" Content="3&#xA;Li" HorizontalAlignment="Left" Height="60" Margin="143,239,0,0" VerticalAlignment="Top" Width="60" Background="#FFFBB35D" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource RoundedButton}"/>
                 <Button x:Name="Sodium" Content="11&#xA;Na" HorizontalAlignment="Left" Height="60" Margin="143,299,0,0" VerticalAlignment="Top" Width="60" Background="#FFFBB35D" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource RoundedButton}"/>

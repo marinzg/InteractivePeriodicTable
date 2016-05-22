@@ -17,9 +17,9 @@
     <Style x:Key="RoundedButton" TargetType="{x:Type Button}" x:Name="butt">
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" x:Name="tekst"/>
         <Setter Property="BorderThickness" Value="3"/>
-        <Setter Property="BorderBrush" Value="BlanchedAlmond"/>
+        <Setter Property="BorderBrush" Value="Indigo"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="0,0,1,1"/>
@@ -142,7 +142,7 @@
 
                             <Setter Property="Opacity" TargetName="Shine" Value="1"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="Gold"/>
-                            <Setter Property="Foreground"  Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                            <Setter Property="Foreground"  Value="Gold"/>
                             <Setter Property="FontWeight"  Value="ExtraBold"/>
 
                         </Trigger>
