@@ -35,11 +35,18 @@ namespace InteractivePeriodicTable.Data
     }
 
     [Serializable]
+    public class QuizWithPictures
+    {
+        public int ID { get; set; }
+        public string Answer { get; set; }
+    }
+
+    [Serializable]
     public class QuizQuestions
     {
         public List<QuizWith4Ans> QuizWith4Ans = new List<QuizWith4Ans>();
         public List<QuizYesNo> QuizYesNo = new List<QuizYesNo>();
-        public List<QuizPictures> QuizPictures = new List<QuizPictures>();
+        public List<QuizWithPictures> QuizWithPictures = new List<Data.QuizWithPictures>();
     }
     #endregion
 

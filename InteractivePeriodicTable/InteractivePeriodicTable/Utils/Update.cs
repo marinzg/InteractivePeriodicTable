@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using InteractivePeriodicTable.ExtensionMethods;
 using System;
+using System.Collections.Generic;
 
 namespace InteractivePeriodicTable.Utils
 {
@@ -73,8 +74,7 @@ namespace InteractivePeriodicTable.Utils
             return data.ToString();
         }
         #endregion
-
-
+        
 
 
         #region KVIZ & ZANIMLJIVOSTI
@@ -121,26 +121,7 @@ namespace InteractivePeriodicTable.Utils
 
             return quizData;
         }
-
-        /// <summary>
-        ///     Metoda vrši upit nad bazom podataka.
-        /// </summary>
-        /// <returns>
-        ///     Vraća sva pitanja sa slikama formatirana kao JSON niz.
-        /// </returns>
-        private string getQuizPictures()
-        {
-            string quizSelect = "SELECT '{' + '\"ID\":' + CAST(ID AS VARCHAR(4)) + ',' +" +
-                                            "'\"ImagePath\":' + '\"' + ImagePath + '\",' +" +
-                                            "'\"Answer\":' + '\"' + CAST(Answer AS NVARCHAR(100)) + '\"' +" +
-                                        "'},' AS data " +
-                                "FROM QuizPictures";
-
-            string quizData = getDataInJson(quizSelect);
-
-            return quizData;
-        }
-
+        
         /// <summary>
         ///     Metoda vrši upit nad bazom podataka.
         /// </summary>
@@ -156,6 +137,105 @@ namespace InteractivePeriodicTable.Utils
 
             return factsData;
         }
+
+        /// <summary>
+        ///     Metoda vrši upit nad bazom podataka.
+        /// </summary>
+        /// <returns>
+        ///     Vraća sva pitanja sa slikama formatirana kao JSON niz.
+        /// </returns>
+        private string getQuizWithPictures()
+        {
+            string quizSelect = "SELECT '{' + '\"ID\":' + CAST(ID AS VARCHAR(4)) + ',' +" +
+                                            "'\"Answer\":' + '\"' + CAST(Answer AS NVARCHAR(100)) + '\"' +" +
+                                        "'},' AS data " +
+                                "FROM QuizWithImages";
+
+            string quizData = getDataInJson(quizSelect);
+
+            SqlConnection dbConnection = new SqlConnection();
+            dbConnection.ConnectionString = ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString;
+            List<int> imagesToAdd = new List<int>();
+            using (dbConnection)
+            {
+                dbConnection.Open();
+
+                SqlCommand checkDB = new SqlCommand();
+                checkDB.CommandText = "SELECT ID, Answer FROM QuizWithImages";
+                checkDB.Connection = dbConnection;
+
+                using (checkDB)
+                {
+                    using (SqlDataReader dataReader = checkDB.ExecuteReader())
+                    {
+                        if (dataReader.HasRows == false)
+                        {
+                            return quizData;
+                        }
+                        while (dataReader.Read())
+                        {
+                            string fileName = dataReader[1].ToString();
+                            int ID = (int)dataReader[0];
+                            bool addThisFile = true;
+                            if (!Directory.Exists(Pathing.QuizWithImagesDir))
+                                Directory.CreateDirectory(Pathing.QuizWithImagesDir);
+
+                            IEnumerable<string> files1 = Directory.EnumerateFiles(Pathing.QuizWithImagesDir);
+                            foreach(string file in files1)
+                            {
+                                if (!file.Contains(fileName))
+                                    addThisFile = true;
+                                else
+                                {
+                                    addThisFile = false;
+                                    break;
+                                }
+                                    
+                                    
+                            }
+                            if (addThisFile && !imagesToAdd.Contains(ID))
+                                imagesToAdd.Add(ID);
+                        }
+                    }
+                }
+
+                StringBuilder sb = new StringBuilder();
+                foreach(int id in imagesToAdd)
+                {
+                    sb.Append("ID = '" + id + "' or ");
+                }
+                if(sb.Length>=8)
+                {
+                    sb.Remove(sb.Length - 4, 4);
+                    SqlCommand dbCommand = new SqlCommand();
+                    dbCommand.CommandText = "SELECT * FROM QuizWithImages WHERE " + sb.ToString();
+                    dbCommand.Connection = dbConnection;
+
+                    using (dbCommand)
+                    {
+                        using (SqlDataReader dataReader = dbCommand.ExecuteReader())
+                        {
+                            if (dataReader.HasRows == false)
+                            {
+                                return quizData;
+                            }
+                            while (dataReader.Read())
+                            {
+                                byte[] blob = (byte[])dataReader[1];
+                                if (!Directory.Exists(Pathing.QuizWithImagesDir))
+                                    Directory.CreateDirectory(Pathing.QuizWithImagesDir);
+                                File.WriteAllBytes(Pathing.QuizWithImagesDir + "\\" + dataReader[2].ToString() + ".jpg", blob);
+
+                            }
+                        }
+                    }
+                }
+                
+            }
+
+
+                return quizData;
+        }
         #endregion
 
 
@@ -166,13 +246,15 @@ namespace InteractivePeriodicTable.Utils
         /// </summary>
         public void updateQuiz()
         {
+            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.AppStarting;
             string quizWith4Ans = getQuizWith4Ans();
             string quizYesNo = getQuizYesNo();
-            string quizPictures = getQuizPictures();
+            string quizWithPictures = getQuizWithPictures();
 
             string jsonQuiz = "{ \"QuizWith4Ans\":" + quizWith4Ans + "," +
                                 "\"QuizYesNo\":" + quizYesNo + "," +
-                                "\"QuizPictures\":" + quizPictures + "}";
+                                "\"QuizWithPictures\":" + quizWithPictures + "}";
+            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
             try
             {
                 Directory.CreateDirectory(Pathing.SysDir);
