@@ -492,11 +492,14 @@ namespace InteractivePeriodicTable
                         elementButton.Background = gradient1;
                         elementButton.FontWeight = FontWeights.Bold;
                         elementButton.Foreground = Brushes.Gold;
+                        elementButton.BorderBrush = Brushes.Gold;
+
                     }
                     else
                     {
                         elementButton.Background = previousBackgroundColors[elementButton.Name];
                         elementButton.Foreground = previousForegroundColors[elementButton.Name];
+
                     }
                 }
                 foreach (Button elementButton in VisualChildren.FindVisualChildren<Button>(this))
