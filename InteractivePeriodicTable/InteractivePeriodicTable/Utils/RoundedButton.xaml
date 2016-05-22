@@ -142,8 +142,8 @@
 
                             <Setter Property="Opacity" TargetName="Shine" Value="1"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="Gold"/>
-                            <Setter Property="Foreground"  Value="Gold"/>
-                            <Setter Property="FontWeight"  Value="ExtraBold"/>
+                            <Setter Property="Button.Foreground"  Value="Gold"/>
+                            <Setter Property="Button.FontWeight"  Value="ExtraBold"/>
 
                         </Trigger>
                     </ControlTemplate.Triggers>
