@@ -492,7 +492,7 @@ namespace InteractivePeriodicTable
                     if (listBox.Items.Contains(elementButton.Name) == true)
                     {
                         elementButton.Background = gradient1;
-                        elementButton.FontWeight = FontWeights.Bold;
+                        elementButton.FontWeight = FontWeights.ExtraBold;
                         elementButton.Foreground = Brushes.Gold;
                         elementButton.BorderBrush = Brushes.Gold;
 
@@ -528,7 +528,7 @@ namespace InteractivePeriodicTable
 
                         elementButton.Background = gradient1;
                         elementButton.BorderBrush = Brushes.Gold;
-                        elementButton.FontWeight = FontWeights.Bold;
+                        elementButton.FontWeight = FontWeights.ExtraBold;
                         elementButton.Foreground = Brushes.Gold;
                     }
                     else

@@ -19,12 +19,13 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="BorderBrush" Value="DarkBlue"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="0,0,1,1"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
+                <ControlTemplate TargetType="{x:Type Button}" x:Name="butt1">
 
                     <!--
                         <ControlTemplate.Resources>
@@ -44,7 +45,7 @@
 
 
 
-                    <Border CornerRadius="12,12,12,12" BorderThickness="3,3,3,3" RenderTransformOrigin="0.5,0.5" x:Name="border" BorderBrush="Transparent">
+                    <Border CornerRadius="12,12,12,12" BorderThickness="3,3,3,3" RenderTransformOrigin="0.5,0.5" x:Name="border" BorderBrush="{TemplateBinding BorderBrush}">
                         <Border.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -53,11 +54,21 @@
                                 <TranslateTransform X="0" Y="0"/>
                             </TransformGroup>
                         </Border.RenderTransform>
+                        
+                        
 
                         <Border Background="{TemplateBinding Background}" CornerRadius="12,12,12,12"  x:Name="bordertrue">
                             <Grid>
                                 
-                                <Border Opacity="0" x:Name="Shine" Width="Auto" Height="Auto" CornerRadius="12,12,10,10" Margin="0,0,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.5*"/>
+                                    <RowDefinition Height="0.5*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border Grid.Row="1" Opacity="0.1" x:Name="Separator" Width="Auto" Height="Auto" CornerRadius="5,5,12,12" Background="DarkBlue"/>
+
+
+                                <Border Grid.RowSpan="2" Opacity="0" x:Name="Shine" Width="Auto" Height="Auto" CornerRadius="12,12,10,10" Margin="0,0,0,0">
                                     <Border.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                             <GradientStop Color="Indigo" Offset="0"/>
@@ -129,19 +140,9 @@
 
                         <Trigger Property="IsMouseOver" Value="True">
 
-                           <!-- <Setter Property="Opacity" TargetName="Shine" Value="1"></Setter>
-                            <Setter Property="Background" TargetName="Upper" >
-                                <Setter.Value>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="Indigo" Offset="0"/>
-                                        <GradientStop Color="Crimson" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Setter.Value>
-                            </Setter>-->
-
                             <Setter Property="Opacity" TargetName="Shine" Value="1"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="Gold"/>
-                            <Setter Property="Foreground"  Value="Gold" />
+                            <Setter Property="Foreground"  Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
                             <Setter Property="FontWeight"  Value="ExtraBold"/>
 
                         </Trigger>
