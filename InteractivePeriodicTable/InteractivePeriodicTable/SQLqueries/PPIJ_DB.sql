@@ -24,10 +24,10 @@ CREATE TABLE QuizYesNo
 	A2			 NVARCHAR(50)    NOT NULL,
 );
 
-CREATE TABLE QuizPictures
+CREATE TABLE QuizWithImages
 (
 	ID           INTEGER         PRIMARY KEY IDENTITY(1,1),
-	ImagePath    NVARCHAR(200)   NOT NULL,
+	Image        NVARCHAR(200)   NOT NULL,
 	Answer       NVARCHAR(100)   NOT NULL,
 );
 

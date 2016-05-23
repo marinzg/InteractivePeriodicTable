@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using InteractivePeriodicTable.ExtensionMethods;
 using System;
+using System.Windows.Forms;
 using System.Collections.Generic;
 
 namespace InteractivePeriodicTable.Utils
@@ -155,10 +156,20 @@ namespace InteractivePeriodicTable.Utils
 
             SqlConnection dbConnection = new SqlConnection();
             dbConnection.ConnectionString = ConfigurationManager.ConnectionStrings["PPIJ"].ConnectionString;
+
             List<int> imagesToAdd = new List<int>();
+
             using (dbConnection)
             {
-                dbConnection.Open();
+                try
+                {
+                    dbConnection.Open();
+                }
+                catch(SqlException ex)
+                {
+                    ex.ErrorMessageBox("There was an error trying to open connection to database.");
+                    return string.Empty;
+                }
 
                 SqlCommand checkDB = new SqlCommand();
                 checkDB.CommandText = "SELECT ID, Answer FROM QuizWithImages";
@@ -172,29 +183,35 @@ namespace InteractivePeriodicTable.Utils
                         {
                             return quizData;
                         }
+
                         while (dataReader.Read())
                         {
                             string fileName = dataReader[1].ToString();
                             int ID = (int)dataReader[0];
                             bool addThisFile = true;
-                            if (!Directory.Exists(Pathing.QuizWithImagesDir))
-                                Directory.CreateDirectory(Pathing.QuizWithImagesDir);
 
-                            IEnumerable<string> files1 = Directory.EnumerateFiles(Pathing.QuizWithImagesDir);
-                            foreach(string file in files1)
+                            if (Directory.Exists(Pathing.QuizWithImagesDir) == false)
                             {
-                                if (!file.Contains(fileName))
+                                Directory.CreateDirectory(Pathing.QuizWithImagesDir);
+                            }
+
+                            IEnumerable<string> images = Directory.EnumerateFiles(Pathing.QuizWithImagesDir);
+                            foreach(string image in images)
+                            {
+                                if (image.Contains(fileName) == false)
+                                {
                                     addThisFile = true;
+                                }
                                 else
                                 {
                                     addThisFile = false;
                                     break;
-                                }
-                                    
-                                    
+                                }      
                             }
-                            if (addThisFile && !imagesToAdd.Contains(ID))
+                            if (addThisFile == true && imagesToAdd.Contains(ID) == false)
+                            {
                                 imagesToAdd.Add(ID);
+                            }
                         }
                     }
                 }
@@ -204,9 +221,11 @@ namespace InteractivePeriodicTable.Utils
                 {
                     sb.Append("ID = '" + id + "' or ");
                 }
-                if(sb.Length>=8)
+
+                if(sb.Length >= 8)
                 {
                     sb.Remove(sb.Length - 4, 4);
+
                     SqlCommand dbCommand = new SqlCommand();
                     dbCommand.CommandText = "SELECT * FROM QuizWithImages WHERE " + sb.ToString();
                     dbCommand.Connection = dbConnection;
@@ -219,22 +238,23 @@ namespace InteractivePeriodicTable.Utils
                             {
                                 return quizData;
                             }
+
                             while (dataReader.Read())
                             {
                                 byte[] blob = (byte[])dataReader[1];
-                                if (!Directory.Exists(Pathing.QuizWithImagesDir))
-                                    Directory.CreateDirectory(Pathing.QuizWithImagesDir);
-                                File.WriteAllBytes(Pathing.QuizWithImagesDir + "\\" + dataReader[2].ToString() + ".jpg", blob);
 
+                                if (!Directory.Exists(Pathing.QuizWithImagesDir))
+                                {
+                                    Directory.CreateDirectory(Pathing.QuizWithImagesDir);
+                                }
+                                File.WriteAllBytes(Pathing.QuizWithImagesDir + "\\" + dataReader[2].ToString() + ".jpg", blob);
                             }
                         }
                     }
                 }
-                
             }
 
-
-                return quizData;
+            return quizData;
         }
         #endregion
 
@@ -246,7 +266,8 @@ namespace InteractivePeriodicTable.Utils
         /// </summary>
         public void updateQuiz()
         {
-            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.AppStarting;
+            Cursor.Current = Cursors.AppStarting;
+
             string quizWith4Ans = getQuizWith4Ans();
             string quizYesNo = getQuizYesNo();
             string quizWithPictures = getQuizWithPictures();
@@ -254,7 +275,9 @@ namespace InteractivePeriodicTable.Utils
             string jsonQuiz = "{ \"QuizWith4Ans\":" + quizWith4Ans + "," +
                                 "\"QuizYesNo\":" + quizYesNo + "," +
                                 "\"QuizWithPictures\":" + quizWithPictures + "}";
-            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+
+            Cursor.Current = Cursors.Default;
+
             try
             {
                 Directory.CreateDirectory(Pathing.SysDir);

@@ -39,6 +39,7 @@ namespace InteractivePeriodicTable
         {
             InitializeComponent();
             textBox.PreviewKeyDown += new KeyEventHandler(txtSearchTerm_KeyDown);
+
             Update u = new Update();
             u.updateQuiz();
         }

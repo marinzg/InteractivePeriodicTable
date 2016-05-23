@@ -259,21 +259,11 @@
     </Content>
     <Resource Include="Resources\Images\a1.gif" />
     <Resource Include="Resources\Images\a2.gif" />
-    <Content Include="Resources\QuizImages\alcohol.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\QuizImages\caffeine.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\QuizImages\flask.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\QuizImages\nitrogen.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\QuizImages\water.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\QuizImages\alcohol.jpg" />
+    <None Include="Resources\QuizImages\caffeine.jpg" />
+    <None Include="Resources\QuizImages\flask.jpg" />
+    <None Include="Resources\QuizImages\nitrogen.jpg" />
+    <None Include="Resources\QuizImages\water.jpg" />
     <Content Include="Resources\Web_pages\Actinium - Wikipedia, the free encyclopedia.mht">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

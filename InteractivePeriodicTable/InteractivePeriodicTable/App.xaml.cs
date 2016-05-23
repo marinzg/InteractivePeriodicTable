@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.IO;
 using InteractivePeriodicTable.Utils;
-
 using InteractivePeriodicTable.ExtensionMethods;
 using System;
 
