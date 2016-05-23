@@ -392,26 +392,39 @@ namespace InteractivePeriodicTable
 
             QuizWithPictures pickedQuestion = questions.QuizWithPictures[questionID];
 
-            byte[] imageArray = File.ReadAllBytes(Pathing.QuizWithImagesDir + "\\" + pickedQuestion.Answer + ".jpg");
-            MemoryStream stream = new MemoryStream();
-            stream.Write(imageArray, 0, imageArray.Length);
-            stream.Position = 0;
+            try
+            {
+                byte[] imageArray = File.ReadAllBytes(Pathing.QuizWithImagesDir + "\\" + pickedQuestion.Answer + ".jpg");
+                MemoryStream stream = new MemoryStream();
+                stream.Write(imageArray, 0, imageArray.Length);
+                stream.Position = 0;
 
-            System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
-            BitmapImage imageData = new BitmapImage();
-            imageData.BeginInit();
+                System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
+                BitmapImage imageData = new BitmapImage();
+                imageData.BeginInit();
 
-            MemoryStream ms = new MemoryStream();
-            img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-            ms.Seek(0, SeekOrigin.Begin);
-            imageData.StreamSource = ms;
-            imageData.EndInit();
-            
-            Image image = new Image();
-            image.Width = 300;
-            image.Source = imageData;
+                MemoryStream ms = new MemoryStream();
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+                ms.Seek(0, SeekOrigin.Begin);
+                imageData.StreamSource = ms;
+                imageData.EndInit();
 
-            this.sp.Children.Add(image);
+                Image image = new Image();
+                image.Width = 300;
+                image.Source = imageData;
+
+                this.sp.Children.Add(image);
+            }
+            catch(DirectoryNotFoundException dnf)
+            {
+                dnf.ErrorMessageBox("Folder containing quiz images was deleted while playing quiz!");
+                this.Close();
+            }
+            catch(FileNotFoundException fnf)
+            {
+                fnf.ErrorMessageBox(pickedQuestion.Answer + ".jpg image was deleted while playing quiz!");
+                this.Close();
+            }
 
             TextBox answerTextBox = new TextBox();
             answerTextBox.Name = "QuizPictures_txbx";
@@ -447,19 +460,19 @@ namespace InteractivePeriodicTable
         /// </returns>
         private bool checkImages()
         {
-            if (Directory.Exists(Pathing.QuizWithImagesDir) && Directory.GetFiles(Pathing.QuizWithImagesDir).Length == 0)
-            {
-                "You are missing quiz images.\nYou won't get questions with images in quiz game.\nPlease do an update!".Notify();
-                return false;
-            }
-            /*
+            //if (Directory.Exists(Pathing.QuizWithImagesDir) && Directory.GetFiles(Pathing.QuizWithImagesDir).Length == 0)
+            //{
+            //    "You are missing quiz images.\nYou won't get questions with images in quiz game.\nPlease do an update!".Notify();
+            //    return false;
+            //}
+
             List<string> missingPictures = new List<string>();
 
-            foreach (QuizPictures pictureQuestion in questions.QuizPictures)
+            foreach (QuizWithPictures pictureQuestion in questions.QuizWithPictures)
             {
-                if (File.Exists(Pathing.QuizImgDir + "\\" + pictureQuestion.ImagePath) == false)
+                if (File.Exists(Pathing.QuizWithImagesDir + "\\" + pictureQuestion.Answer + ".jpg") == false)
                 {
-                    missingPictures.Add(pictureQuestion.ImagePath);
+                    missingPictures.Add(pictureQuestion.Answer + ".jpg");
                 }
             }
 
@@ -476,7 +489,7 @@ namespace InteractivePeriodicTable
 
                 return false;
             }
-            */
+
             return true;
         }
 
