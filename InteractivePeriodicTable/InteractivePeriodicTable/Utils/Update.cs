@@ -219,7 +219,7 @@ namespace InteractivePeriodicTable.Utils
                 StringBuilder sb = new StringBuilder();
                 foreach(int id in imagesToAdd)
                 {
-                    sb.Append("ID = '" + id + "' or ");
+                    sb.Append("ID = '" + id + "' OR ");
                 }
 
                 if(sb.Length >= 8)
