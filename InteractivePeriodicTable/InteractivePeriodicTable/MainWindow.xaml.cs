@@ -282,6 +282,7 @@ namespace InteractivePeriodicTable
                 ex.ErrorMessageBox("Error while trying to open element information");
             }
 
+
             return;
         }
 
@@ -386,6 +387,10 @@ namespace InteractivePeriodicTable
                     listBox.SelectedIndex--;
                     highlight(listBox.SelectedItem.ToString(), false);
                 }
+                else if(listBox.SelectedIndex==0)
+                {
+                    textBox.Focus();
+                }
 
                 e.Handled = true;
             }
@@ -393,14 +398,10 @@ namespace InteractivePeriodicTable
             {
                 try
                 {
+                    
                     if(listBox.SelectedIndex == -1 && listBox.Items.Count > 0)
                     {
                         listBox.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        e.Handled = true;
-                        //return;
                     }
 
                     PopupWebpage popupWindow = new PopupWebpage(listBox.SelectedItem.ToString());
@@ -582,7 +583,9 @@ namespace InteractivePeriodicTable
             }
 
         }
+
         #endregion
 
+        
     }
 }
