@@ -11,7 +11,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:Custom="http://wpfcontrols.com/" x:Class="InteractivePeriodicTable.MainWindow"
         mc:Ignorable="d"
     
-        Title="Interactive Period Table"
+        Title="Interactive Periodic Table"
         Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
         Width="{x:Static SystemParameters.PrimaryScreenWidth}" 
         Icon="/Resources/Images/Ikona.ico"
