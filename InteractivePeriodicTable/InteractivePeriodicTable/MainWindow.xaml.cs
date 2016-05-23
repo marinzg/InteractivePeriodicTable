@@ -234,11 +234,16 @@ namespace InteractivePeriodicTable
         /// <param name="e"></param>
         private void Element_klik(object sender, RoutedEventArgs e)
         {
-            Button element = e.Source as Button;
             try
             {
+                Button element = e.Source as Button;
+
+                element.IsEnabled = false;
+
                 PopupWebpage popupWindow = new PopupWebpage(element.Name);
                 popupWindow.ShowDialog();
+
+                element.IsEnabled = true;
             }
             catch (Exception ex)
             {
@@ -384,10 +389,20 @@ namespace InteractivePeriodicTable
 
                 e.Handled = true;
             }
-            else if (e.Key == Key.Enter)
+            else if (e.Key == Key.Enter && string.IsNullOrWhiteSpace(textBox.Text) == false)
             {
                 try
                 {
+                    if(listBox.SelectedIndex == -1 && listBox.Items.Count > 0)
+                    {
+                        listBox.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+
                     PopupWebpage popupWindow = new PopupWebpage(listBox.SelectedItem.ToString());
                     popupWindow.Show();
 

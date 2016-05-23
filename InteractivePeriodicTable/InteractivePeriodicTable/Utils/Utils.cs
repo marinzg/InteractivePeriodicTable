@@ -376,9 +376,8 @@ namespace InteractivePeriodicTable.Utils
                         DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
-                    //ex.ErrorMessageBox("There was an error trying to drag/drop button.");
                 }
             }
 

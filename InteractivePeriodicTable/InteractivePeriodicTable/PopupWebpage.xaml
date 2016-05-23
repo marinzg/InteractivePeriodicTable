@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InteractivePeriodicTable"
         mc:Ignorable="d"
-        Title="Popup_webpage" Height="913.622" Width="1296.428"
+        Title="Popup_webpage" Height="480" Width="640"
         Icon="/Resources/Images/Ikona.ico"
         WindowStartupLocation="CenterScreen" 
         Left="100" Top="50">
-    <Grid>
+    <Grid Margin="10 10 10 10">
         <WebBrowser Name="browser1" Margin="-180,-98,-24.5,0.5" />
 
     </Grid>
