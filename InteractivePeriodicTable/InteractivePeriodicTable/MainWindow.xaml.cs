@@ -400,7 +400,7 @@ namespace InteractivePeriodicTable
                     else
                     {
                         e.Handled = true;
-                        return;
+                        //return;
                     }
 
                     PopupWebpage popupWindow = new PopupWebpage(listBox.SelectedItem.ToString());

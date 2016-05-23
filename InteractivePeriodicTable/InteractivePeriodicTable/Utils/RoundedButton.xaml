@@ -78,7 +78,7 @@
                                         </LinearGradientBrush>
                                     </Border.Background>
                                 </Border>
-                                <ContentPresenter VerticalAlignment="Center"  Grid.RowSpan="2" HorizontalAlignment="Center" x:Name="contentPresenter"/>
+                                <ContentPresenter VerticalAlignment="Center"  Grid.RowSpan="2" HorizontalAlignment="Center" x:Name="contentPresenter" TextBlock.Foreground="{TemplateBinding Foreground}" TextBlock.FontWeight="{TemplateBinding FontWeight}" />
                             </Grid>
                         </Border>
                     </Border>
@@ -142,8 +142,8 @@
 
                             <Setter Property="Opacity" TargetName="Shine" Value="1"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="Gold"/>
-                            <Setter Property="Button.Foreground"  Value="Gold"/>
-                            <Setter Property="Button.FontWeight"  Value="ExtraBold"/>
+                            <Setter Property="Button.Foreground" TargetName="contentPresenter" Value="Gold"/>
+                            <Setter Property="Button.FontWeight" TargetName="contentPresenter" Value="ExtraBold"/>
 
                         </Trigger>
                     </ControlTemplate.Triggers>
