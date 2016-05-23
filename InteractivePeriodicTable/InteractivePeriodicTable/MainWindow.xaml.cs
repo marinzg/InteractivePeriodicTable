@@ -40,8 +40,18 @@ namespace InteractivePeriodicTable
             InitializeComponent();
             textBox.PreviewKeyDown += new KeyEventHandler(txtSearchTerm_KeyDown);
 
-            Update u = new Update();
-            u.updateQuiz();
+            try
+            {
+                if (InternetConnection.IsConnected() == true)
+                {
+                    Update up = new Update();
+                    up.updateQuiz();
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ErrorMessageBox("Error while trying to download quiz images.");
+            }
         }
 
         #region METODA ZA UČITAVANJE ZANIMLJIVOSTI
