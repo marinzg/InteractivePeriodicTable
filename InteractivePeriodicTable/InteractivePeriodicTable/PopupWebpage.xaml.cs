@@ -7,9 +7,6 @@ using InteractivePeriodicTable.ExtensionMethods;
 
 namespace InteractivePeriodicTable
 {
-    /// <summary>
-    /// Interaction logic for Popup_webpage.xaml
-    /// </summary>
     public partial class PopupWebpage : Window
     {
         public PopupWebpage(string elementName)
