@@ -1,46 +1,46 @@
 Periodni 
-	-prikaz informacija o elementu - dovröeno
-	-pretraûivanje - dovröeno
+	-prikaz informacija o elementu - dovr≈°eno
+	-pretra≈æivanje - dovr≈°eno
 	-did you know - funfacts about elements - gumb - izbaci random fact o random elementu
 	-kviz
 	-drag and drop - klasifikacija elemenata - metali, polumetali i nemetali, blokovi (sfdp)
 
-*za one koji ûele znati viöe
+*za one koji ≈æele znati vi≈°e
 --------------------------------------------------------------------------------------------------------
 Kviz:
 	- se sastoji od nekoliko pitanja (koliko? kakvih?)
-	- bodovi se dobivaju iskljuËivo na toËne odgovore ovisno o vremenu koje je proölo od uËitavanja pitanja
-	- na kraju kviza, ako je korisnik napravio top 5 (globalni) rezultat, moûe upisati neko ime i upisati se na leaderboard
+	- bodovi se dobivaju iskljuƒçivo na toƒçne odgovore ovisno o vremenu koje je pro≈°lo od uƒçitavanja pitanja
+	- na kraju kviza, ako je korisnik napravio top 5 (globalni) rezultat, mo≈æe upisati neko ime i upisati se na leaderboard
 		- taj rezultat se sprema u bazu
 		
 --------------------------------------------------------------------------------------------------------
 TODO :
 	0. RANDOM
 		- Pocrniti text u HTML-u
-		- Nekakav globalni login da se ne mora nakon svake igre upisat ime (moûda bi bilo sjebano za napravit)
+		- Nekakav globalni login da se ne mora nakon svake igre upisat ime (mo≈æda bi bilo sjebano za napravit)
 
 	1. MAIN WINDOW
 		- Hover preko elementa u padajucoj listi mora oznaciti jedan (tocno taj) element
-		- Searchbox treba dovröiti
+		- Searchbox treba dovr≈°iti
 		- Hover preko elementa u mainwindow treba prikazati elektronsku konfiguraciju (prijedlog: ima negdje na githubu)
 
 	2. QUIZ
 		- Odgovore u kvizu random shuffleati
-		- Nakon öto se unese odgovor i pritisne enter, prikaûe se sljedeÊe pitanje
+		- Nakon ≈°to se unese odgovor i pritisne enter, prika≈æe se sljedeƒáe pitanje
 		- Promijenit ikonu
 
 	3. SAVE SCORE
 		- Promijenit ime prozora
 		- Promijenit ikonu
-		- Nakon öto se unese ime i pritisne enter - score se spremi
+		- Nakon ≈°to se unese ime i pritisne enter - score se spremi
 
 	4. DRAG&DROP
 		- Drag & Drop nejasan (petar)
 		- Dodati sortiranje po blokovima (sfdp)
 		- Promijenit ime prozora
 		- Promijenit ikonu
-		- Napisat neki tekst na poËetni ekran (moûda i neki GIF kak se igra il tak neö)
-		- Dodat vremensko ograniËenje?
+		- Napisat neki tekst na poƒçetni ekran (mo≈æda i neki GIF kak se igra il tak ne≈°)
+		- Dodat vremensko ograniƒçenje?
 
 		*D&D napravit s Behaviourom	
 	
@@ -52,13 +52,13 @@ Baza:
 server name: interactiveperiodictable.database.windows.net
 port: 1433
 Server admin login: PPiJ
-password : botickijeveliki001.
+password : FAPGOKAKOFasfdpgokfpgakop1337...
 Resource group: FERPPiJ
 
 Dozvoljen je pristup IP adresama u rasponu  70.0.0.0-255.255.255.254 (dakle, svima)
 
-Zbog toga svaki upit kojeg Êete izvröiti u bazi spremite u neki SQL fajl pod SQLQueries u projektu, da 
-imamo spremljeno u sluËaju da nam neko skröi bazu.
+Zbog toga svaki upit kojeg ƒáete izvr≈°iti u bazi spremite u neki SQL fajl pod SQLQueries u projektu, da 
+imamo spremljeno u sluƒçaju da nam neko skr≈°i bazu.
 
-Npr. sve insertove napiöete/izvröite u management studiju i onda C/P u PPIJ_INSERT u ovom repozitoriju.
+Npr. sve insertove napi≈°ete/izvr≈°ite u management studiju i onda C/P u PPIJ_INSERT u ovom repozitoriju.
 --------------------------------------------------------------------------------------------------------
